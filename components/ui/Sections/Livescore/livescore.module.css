@@ -28,5 +28,5 @@
 }
 
 .container {
-  @apply rounded-md hover:bg-gray-100 duration-300 p-2 bg-gray-50 shadow-sm mb-2;
+  @apply block rounded-md hover:bg-gray-100 duration-300 p-2 bg-gray-50 shadow-sm mb-2;
 }

@@ -1,3 +1,4 @@
+import Flexible from "components/ui/Flexible";
 import News from "components/ui/Sections/News";
 import getPosts, { getPostById } from "lib/readMarkdownFiles";
 import { GetServerSideProps, GetStaticProps } from "next";
@@ -21,7 +22,13 @@ export default function Article(props: Props) {
         <Fragment>
           <News.Header title={props.article.title} />
           <News.Content content={props.article.content} />
-          <News.Comment />
+
+          <div className="mb-4 font-bold text-sm">Toplam 18 Yorum</div>
+          <News.Comment comment="Dillinger is currently extended with the following plugins. Instructions on how to use them in your own application are linked below." />
+          <News.Comment comment="Dillinger is currently extended with the following plugins. Instructions on how to use them in your own application are linked below." />
+          <News.Comment comment="Dillinger is currently extended with the following plugins. Instructions on how to use them in your own application are linked below." />
+          <News.Comment comment="Dillinger is currently extended with the following plugins. Instructions on how to use them in your own application are linked below." />
+          <News.Comment comment="Dillinger is currently extended with the following plugins. Instructions on how to use them in your own application are linked below." />
         </Fragment>
       ) : null}
       {/*  */}
