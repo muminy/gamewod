@@ -1,0 +1,246 @@
+.team_header {
+  @apply h-[60px] rounded-md relative overflow-hidden;
+  background: linear-gradient(to right top, #020107, #ddd, #005ee2);
+}
+
+.team_header span {
+  background-color: #ffffffcb;
+  backdrop-filter: blur(20px);
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.team {
+  @apply xl:min-w-[200px] lg:min-w-[200px] min-w-[200px] pb-2 rounded-md;
+}
+
+.team_section {
+  @apply overflow-x-hidden;
+  margin-bottom: 40px;
+}
+
+.team_logo {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff2a;
+  backdrop-filter: blur(10px);
+  @apply rounded-md p-3 ml-4 mt-[-30px] border-2 border-white;
+}
+
+.team_name {
+  @apply font-medium text-sm -mt-8 text-gray-900;
+}
+
+.team_country {
+  @apply text-xs text-gray-400;
+}
+
+/* team roster */
+
+.header_bg {
+  height: 200px;
+  width: 100%;
+  @apply bg-gray-100 rounded-md;
+}
+
+.logo_area {
+  width: 120px;
+  height: 120px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -60px;
+
+  @apply mb-4 shadow-sm;
+}
+
+.tlogo_area {
+  width: 126px;
+  height: 126px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffffbd;
+  backdrop-filter: blur(10px);
+  @apply rounded-full border-4 border-white;
+}
+
+.team_area {
+  @apply mb-4;
+}
+
+.rteam_logo {
+  width: 80px;
+  height: 80px;
+}
+
+.team_info {
+  @apply ml-4 space-y-4;
+  margin-top: -30px;
+}
+
+.team_big_name {
+  @apply text-2xl font-bold;
+}
+
+.team_country_big {
+  @apply text-gray-500 text-sm;
+}
+
+.team_social_icons {
+  @apply border-2 border-white mt-[-22px] cursor-pointer bg-gray-200 hover:bg-gray-300 rounded-md p-2;
+}
+
+/* team roster */
+.rosters {
+  @apply space-y-1;
+}
+
+.player_area {
+  @apply rounded-xl bg-no-repeat bg-gray-200;
+  background-size: center center;
+}
+
+.blur_area {
+  background-color: #ffffff4b;
+  backdrop-filter: blur(30px);
+
+  @apply p-3 py-3 rounded-md;
+}
+
+.player_area img {
+  width: 30px;
+  height: 30px;
+
+  @apply rounded-full;
+}
+
+.p_name {
+  @apply font-medium ml-4 text-sm text-center text-gray-900;
+}
+
+/* team tabs */
+
+.team_tabs {
+  @apply space-x-8 border-b;
+}
+
+.team_tabs .tab {
+  @apply cursor-pointer mb-[-1px] border-b-2 border-transparent font-semibold py-3;
+  @apply duration-300 hover:text-black hover:border-black;
+}
+
+.team_tabs .tab span {
+  @apply text-sm text-gray-400 ml-3 font-medium;
+}
+
+.team_tabs .active_tab {
+  @apply border-b-2 text-black border-black;
+}
+
+.tabTitle {
+  @apply font-semibold mb-3;
+}
+
+/* matches tab */
+
+.match_stats_card {
+  @apply p-4 bg-gray-100 rounded-md w-2/12;
+}
+
+.m_value {
+  @apply font-black text-2xl text-gray-800;
+}
+
+.m_title {
+  @apply text-sm text-gray-400;
+}
+
+.match_card {
+  @apply mb-2 py-3 px-4 rounded-md hover:bg-gray-200 bg-gray-100 duration-300;
+}
+
+.date {
+  @apply font-medium text-sm text-gray-700;
+}
+
+.hide_div {
+  @apply hidden xl:flex lg:flex md:flex;
+}
+
+.vs {
+  @apply text-xs font-semibold text-gray-500;
+  font-size: 10px;
+  line-height: 24px;
+}
+
+.m_team {
+  @apply font-medium text-sm text-gray-900;
+}
+
+.losed {
+  @apply text-gray-400;
+}
+
+.score {
+  @apply font-medium text-sm;
+  line-height: 24px;
+}
+
+.gotodetail {
+  @apply text-sm text-gray-400 mr-2;
+}
+
+/* event card */
+
+.event_card {
+  @apply mb-2 py-3 px-4 rounded-md bg-gray-100 hover:bg-gray-100 duration-300;
+}
+
+.event_card img {
+  min-width: 32px;
+  height: 32px;
+}
+
+.e_title {
+  @apply font-medium text-xs text-gray-400;
+}
+
+.e_value {
+  @apply font-extrabold text-gray-900;
+}
+
+.e_name {
+  @apply font-medium;
+}
+
+.e_country {
+  @apply font-medium text-xs text-gray-600;
+}
+
+/* new card */
+
+.news_card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+
+  @apply rounded-md mb-3;
+}
+
+.news_title {
+  @apply font-bold text-lg mb-2 text-gray-900;
+  line-height: 25px;
+}
+
+.read_more {
+  @apply flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 duration-300;
+}
+.read_more span {
+  margin-right: 10px;
+}

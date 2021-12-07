@@ -1,0 +1,17 @@
+.sidebar {
+  @apply min-h-[calc(100vh-70px)] px-10;
+}
+
+.group_icon {
+  @apply rounded-md text-gray-400 duration-300;
+
+  width: 24px;
+  height: 24px;
+}
+
+.game_icon {
+  width: 28px;
+  height: 28px;
+
+  @apply p-1 rounded-[3px] text-white;
+}

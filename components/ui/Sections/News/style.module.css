@@ -1,0 +1,58 @@
+.header {
+  @apply py-10 flex flex-col items-center;
+}
+
+.title {
+  @apply text-4xl font-black text-center text-gray-900 max-w-3xl mb-10;
+  line-height: 50px;
+}
+
+.userProfile {
+  min-width: 32px;
+  width: 32px;
+  height: 32px;
+  @apply rounded-full;
+}
+
+.creator {
+  @apply font-medium text-sm text-gray-600;
+}
+
+.username {
+  @apply font-medium text-xs text-blue-600;
+}
+
+.content p {
+  margin-bottom: 20px;
+  @apply font-medium text-[15px] text-gray-900;
+}
+.content ul {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+.content ul li {
+  list-style-type: disc;
+  @apply text-sm text-gray-900 mb-1 last:mb-0;
+}
+.content :is(h1, h2) {
+  @apply font-semibold text-xl;
+  margin-bottom: 10px;
+}
+
+.content > pre {
+  margin-bottom: 20px;
+  @apply bg-gray-100 p-3 rounded-md;
+}
+.content a {
+  @apply text-blue-600;
+}
+
+.comment_user_icon {
+  @apply w-[32px] h-[32px] rounded-full mb-4;
+}
+
+.up_btn {
+  width: 32px;
+  height: 32px;
+  @apply rounded-full bg-gray-200 text-gray-600 flex items-center justify-center;
+}

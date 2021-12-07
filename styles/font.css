@@ -1,0 +1,5 @@
+@font-face {
+  font-family: "Wotfard";
+  src: url("./fonts/Wotfard-Medium.ttf") format("truetype"),
+    url("./fonts/Wotfard-SemiBold.ttf") format("truetype");
+}

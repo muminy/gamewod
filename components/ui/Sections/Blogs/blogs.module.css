@@ -1,0 +1,32 @@
+.blogtitle {
+  @apply font-bold text-xl text-gray-900 mb-3;
+}
+
+.blogdesc {
+  @apply text-sm text-gray-500 mb-3;
+  line-height: 20px;
+}
+
+.blog_icon {
+  @apply w-7 h-7 duration-300 rounded-md text-gray-600;
+}
+
+.blogImage {
+  @apply rounded-md h-[200px] w-full mb-4;
+  object-fit: cover;
+}
+
+.blogcard {
+  @apply relative;
+}
+
+.blog_action_panel {
+  @apply absolute top-0 left-2 my-2 w-[calc(100%-16px)] rounded-md p-1;
+
+  background-color: #ffffff9d;
+  backdrop-filter: blur(30px);
+}
+
+.date {
+  @apply text-xs text-gray-400 mb-2;
+}

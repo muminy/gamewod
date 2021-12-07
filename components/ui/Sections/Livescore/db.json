@@ -1,0 +1,98 @@
+[
+  {
+    "away_team": {
+      "name": "Virtus.pro",
+      "logoURL": "https://img-cdn.hltv.org/teamlogo/yZ6Bpuui1rW3jocXQ68XgZ.svg?ixlib=java-2.1.0&s=f39be1d3e7baf30a4e7f0b1216720875",
+      "score": 14
+    },
+    "home_team": {
+      "name": "Faze Clan",
+      "logoURL": "https://img-cdn.hltv.org/teamlogo/SMhzsxzbkIrgqCOOKGRXlW.svg?ixlib=java-2.1.0&s=e6a9ce0345c7d703e5eaac14307f69aa",
+      "score": 7
+    },
+    "event": {
+      "time": "20.00",
+      "name": "Funspark ULTI 2021 Europe Playoffs 2"
+    }
+  },
+  {
+    "away_team": {
+      "name": "G2",
+      "logoURL": "https://img-cdn.hltv.org/teamlogo/zFLwAELOD15BjJSDMMNBWQ.png?ixlib=java-2.1.0&w=50&s=affb583e6716d8ee904826992255cc4b",
+      "score": 3
+    },
+    "home_team": {
+      "name": "Furia",
+      "logoURL": "https://img-cdn.hltv.org/teamlogo/mvNQc4csFGtxXk5guAh8m1.svg?ixlib=java-2.1.0&s=11e5056829ad5d6c06c5961bbe76d20c",
+      "score": 7
+    },
+    "event": {
+      "time": "14.00",
+      "name": "Exeedme Revolution 2021"
+    }
+  },
+  {
+    "away_team": {
+      "name": "Liquid",
+      "logoURL": "https://img-cdn.hltv.org/teamlogo/JMeLLbWKCIEJrmfPaqOz4O.svg?ixlib=java-2.1.0&s=c02caf90234d3a3ebac074c84ba1ea62",
+      "score": 14
+    },
+    "home_team": {
+      "name": "Mouz",
+      "logoURL": "https://img-cdn.hltv.org/teamlogo/RfR1zmFJ0eP08VmFb6UOu3.png?ixlib=java-2.1.0&w=50&s=051cbffad4d1c25468d83abee6f4fe23",
+      "score": 7
+    },
+    "event": {
+      "time": "16.00",
+      "name": "Elisa Invitational Winter 2021"
+    }
+  },
+  {
+    "away_team": {
+      "name": "Liquid",
+      "logoURL": "https://img-cdn.hltv.org/teamlogo/JMeLLbWKCIEJrmfPaqOz4O.svg?ixlib=java-2.1.0&s=c02caf90234d3a3ebac074c84ba1ea62",
+      "score": 14
+    },
+    "home_team": {
+      "name": "Mouzs",
+      "logoURL": "https://img-cdn.hltv.org/teamlogo/RfR1zmFJ0eP08VmFb6UOu3.png?ixlib=java-2.1.0&w=50&s=051cbffad4d1c25468d83abee6f4fe23",
+      "score": 7
+    },
+    "event": {
+      "time": "16.00",
+      "name": "Elisa Invitational Winter 2021"
+    }
+  },
+  {
+    "away_team": {
+      "name": "Liquidd",
+      "logoURL": "https://img-cdn.hltv.org/teamlogo/JMeLLbWKCIEJrmfPaqOz4O.svg?ixlib=java-2.1.0&s=c02caf90234d3a3ebac074c84ba1ea62",
+      "score": 14
+    },
+    "home_team": {
+      "name": "Mouz",
+      "logoURL": "https://img-cdn.hltv.org/teamlogo/RfR1zmFJ0eP08VmFb6UOu3.png?ixlib=java-2.1.0&w=50&s=051cbffad4d1c25468d83abee6f4fe23",
+      "score": 7
+    },
+    "event": {
+      "time": "16.00",
+      "name": "Elisa Invitational Winter 2021"
+    }
+  },
+  {
+    "away_team": {
+      "name": "Liquid",
+      "logoURL": "https://img-cdn.hltv.org/teamlogo/JMeLLbWKCIEJrmfPaqOz4O.svg?ixlib=java-2.1.0&s=c02caf90234d3a3ebac074c84ba1ea62",
+      "score": 14
+    },
+    "home_team": {
+      "name": "Mouzz",
+      "logoURL": "https://img-cdn.hltv.org/teamlogo/RfR1zmFJ0eP08VmFb6UOu3.png?ixlib=java-2.1.0&w=50&s=051cbffad4d1c25468d83abee6f4fe23",
+      "score": 7
+    },
+    "event": {
+      "time": "16.00",
+      "name": "Elisa Invitational Winter 2021"
+    }
+  }
+]

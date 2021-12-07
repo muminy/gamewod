@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "name": "Vitality",
+    "logo": "https://img-cdn.hltv.org/teamlogo/GAlByJtDTnkgbb9p_71SUL.png?ixlib=java-2.1.0&w=50&s=2838cd78a5ebb5c9fea4c485908e9dbb",
+    "country": "Türkiye"
+  },
+  {
+    "id": "2",
+    "name": "Ence",
+    "logo": "https://img-cdn.hltv.org/teamlogo/-X8NoyWC_1gYqUHvZqcpkc.svg?ixlib=java-2.1.0&s=85bb9daa6f846fa097c5942f2565fdb8",
+    "country": "Europe"
+  },
+  {
+    "id": "3",
+    "name": "Liquid",
+    "logo": "https://img-cdn.hltv.org/teamlogo/JMeLLbWKCIEJrmfPaqOz4O.svg?ixlib=java-2.1.0&s=c02caf90234d3a3ebac074c84ba1ea62",
+    "country": "United States"
+  },
+  {
+    "id": "4",
+    "name": "Gambit",
+    "logo": "https://img-cdn.hltv.org/teamlogo/pNV-lVdpvYZIkDwHdEXXg-.svg?ixlib=java-2.1.0&s=8b557b5b4d283208976340ef1bc44c76",
+    "country": "Russia"
+  },
+  {
+    "id": "5",
+    "name": "Virtus.pro",
+    "logo": "https://img-cdn.hltv.org/teamlogo/yZ6Bpuui1rW3jocXQ68XgZ.svg?ixlib=java-2.1.0&s=f39be1d3e7baf30a4e7f0b1216720875",
+    "country": "CIS"
+  },
+  {
+    "id": "7",
+    "name": "Mouz",
+    "logo": "https://img-cdn.hltv.org/teamlogo/RfR1zmFJ0eP08VmFb6UOu3.png?ixlib=java-2.1.0&w=50&s=051cbffad4d1c25468d83abee6f4fe23",
+    "country": "Europe"
+  },
+  {
+    "id": "8",
+    "name": "Astralist",
+    "logo": "https://img-cdn.hltv.org/teamlogo/9bgXHp-oh1oaXr7F0mTGmd.svg?ixlib=java-2.1.0&s=f567161ab183001be33948b98c4b2067",
+    "country": "Denmark"
+  },
+  {
+    "id": "9",
+    "name": "Fnatic",
+    "logo": "https://img-cdn.hltv.org/teamlogo/dLtWEdSV58lIX1amAFggy0.svg?ixlib=java-2.1.0&s=f24d0a7b3ef24ed57184a51d35202b4e",
+    "country": "England"
+  }
+]

@@ -1,0 +1,11 @@
+.forum {
+  @apply rounded-md hover:bg-gray-100 duration-300 p-2 bg-gray-50 shadow-sm mb-2;
+}
+
+.title {
+  @apply font-semibold text-black;
+}
+
+.date {
+  @apply font-medium text-xs text-gray-400;
+}

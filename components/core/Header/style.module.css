@@ -1,0 +1,9 @@
+.header {
+  @apply h-[70px] flex items-center w-full dark:bg-black;
+}
+
+.menuLink {
+  @apply text-sm px-3 duration-200 whitespace-nowrap font-medium;
+  @apply hover:text-gray-900;
+  @apply text-gray-500;
+}
