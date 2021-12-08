@@ -1,0 +1,37 @@
+.match_card {
+  @apply py-4;
+}
+
+.team_info {
+  @apply border-2 border-r-4 border-b-4 duration-75 rounded-md p-4 py-10 mb-4;
+  @apply hover:bg-gray-50 hover:border-gray-300;
+}
+
+.team {
+  @apply w-2/4 flex flex-col items-center;
+}
+
+.team_logo {
+  min-width: 80px;
+  width: 80px;
+  height: 80px;
+
+  @apply mb-3;
+}
+
+.team_name {
+  @apply font-semibold text-gray-700;
+}
+
+.team_lineup {
+  @apply w-2/4;
+}
+
+.p_image_cover {
+  @apply p-[3px] border-4 rounded-xl;
+}
+
+.player_image {
+  border-radius: inherit;
+  @apply w-14;
+}
