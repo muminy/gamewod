@@ -34,7 +34,7 @@ export default function BlogSection() {
         {blogs.map((item) => (
           <Grid.Span
             key={item.id}
-            span="xl:col-span-6 lg:col-span-6 col-span-12"
+            span="xl:col-span-4 lg:col-span-6 col-span-12"
           >
             <BlogCard {...item} />
           </Grid.Span>

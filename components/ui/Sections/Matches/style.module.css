@@ -1,26 +1,23 @@
-.match_card {
-  @apply py-4;
-}
-
 .team_info {
-  @apply border-2 border-r-4 border-b-4 duration-75 rounded-md p-4 py-10 mb-4;
-  @apply hover:bg-gray-50 hover:border-gray-300;
+  @apply py-3 px-4;
 }
 
 .team {
-  @apply w-2/4 flex flex-col items-center;
+  @apply w-2/4 flex first:flex-row-reverse items-center;
 }
 
 .team_logo {
-  min-width: 80px;
-  width: 80px;
-  height: 80px;
+  min-width: 30px;
+  height: 30px;
+  @apply mx-4;
+}
 
-  @apply mb-3;
+.versus {
+  @apply mx-4 font-bold text-sm text-gray-500;
 }
 
 .team_name {
-  @apply font-semibold text-gray-700;
+  @apply font-bold text-gray-900;
 }
 
 .team_lineup {
@@ -28,10 +25,89 @@
 }
 
 .p_image_cover {
-  @apply p-[3px] border-4 rounded-xl;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(
+    90deg,
+    #cd5d7d 0%,
+    #a7c5eb 72%,
+    #949cdf 100%
+  );
+  @apply p-0.5 rounded-full;
 }
 
 .player_image {
   border-radius: inherit;
-  @apply w-14;
+  @apply w-14 border-[2px] border-white;
+}
+
+.player {
+  @apply p-4 last:border-b-0;
+}
+
+.away_lu .player {
+  @apply flex-row-reverse;
+}
+
+.away_lu .player_info {
+  margin-right: 14px;
+}
+.team_lineup .player_info {
+  margin-left: 14px;
+}
+
+.maps {
+  @apply w-full h-8 last:mb-0 relative mb-1 rounded-sm overflow-hidden;
+}
+
+.map_image_area {
+  position: absolute;
+  @apply h-8 w-full;
+}
+
+.map_image {
+  @apply w-full h-full;
+  vertical-align: middle;
+  object-fit: cover;
+}
+
+.map_info {
+  @apply z-20 w-full flex items-center justify-center h-8 text-center font-medium text-white text-sm;
+  backdrop-filter: blur(1px);
+  line-height: 26px;
+  background: #00000075;
+}
+
+.pick {
+  position: relative;
+  width: 50%;
+  overflow: hidden;
+  @apply py-2.5 rounded-md bg-gray-100 hover:bg-gray-200 duration-200 first:mr-1 last:ml-1;
+}
+
+.pick .tname {
+  @apply ml-2 font-semibold text-sm;
+}
+.match_card {
+  @apply bg-white border mb-2 rounded-md;
+}
+.pick img {
+  width: 24px;
+  height: 24px;
+}
+
+.chat_area {
+  height: calc(100vh - 100px);
+  @apply flex-col justify-between bg-white rounded-md p-3 border;
+}
+
+.chattext {
+  padding: 10px 10px;
+  word-wrap: break-word;
+  @apply text-sm py-1 text-gray-700 hover:bg-gray-100 duration-200 rounded-md;
+}
+
+.chat_form {
+  @apply w-full px-2 py-2 rounded-md border-2 text-sm outline-none resize-none;
+  @apply ring-2 ring-offset-2 ring-gray-500;
 }

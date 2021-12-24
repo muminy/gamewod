@@ -17,7 +17,7 @@ export default function Hero() {
           >
             <div className="relative">
               <div className={style.title}>
-                The Russians' adventure at the last DreamHack event ends in
+                The Russians adventure at the last DreamHack event ends in
                 the semi-finals.
               </div>
             </div>

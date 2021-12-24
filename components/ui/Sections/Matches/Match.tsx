@@ -10,11 +10,12 @@ export interface TeamProps {
 export default function MatchCard() {
   return (
     <div className={style.match_card}>
-      <Flexible className={style.team_info}>
+      <Flexible alignItem="items-center" className={style.team_info}>
         <Team
           name="Dignitas"
           logo="https://img-cdn.hltv.org/teamlogo/w2EJ4p_IcYGMu0Cs2G4ZUn.png?ixlib=java-2.1.0&w=100&s=e285954f5def874e2ea44d1547339657"
         />
+        <div className={style.versus}>VS</div>
         <Team
           name="Movistar Riders"
           logo="https://img-cdn.hltv.org/teamlogo/Y37ZjhQhf-74eg44YCXe_m.png?ixlib=java-2.1.0&w=100&s=07c7f78adddce9861546f8facb29e5ba"

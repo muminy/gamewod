@@ -5,14 +5,19 @@ import STYLE from "constants/style";
 
 export default function Match() {
   return (
-    <div className={classNames(STYLE.paddingHorizontal)}>
-      <Grid.Col>
-        <Grid.Span span="col-span-4">
+    <div className={classNames(STYLE.paddingHorizontal, "border-t py-4")}>
+      <Grid.Col className="py-2">
+        <Grid.Span span="xl:block lg:block md:block hidden xl:col-span-3 col-span-5">
+          <Matches.Chat />
+        </Grid.Span>
+        <Grid.Span span="xl:col-span-6 lg:col-span-7 md:col-span-7 col-span-12">
           <Matches.MatchCard />
-
-          <div className="font-semibold text-lg mb-4">Lineups</div>
-
+          <Matches.Maps />
           <Matches.Lineups />
+          <Matches.Poll />
+        </Grid.Span>
+        <Grid.Span span="xl:block lg:block md:block hidden xl:col-span-3 col-span-5">
+          <Matches.Chat />
         </Grid.Span>
       </Grid.Col>
     </div>

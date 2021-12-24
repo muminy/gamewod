@@ -20,7 +20,7 @@ export default function Matches() {
 
 export const GeneralStats = () => {
   return (
-    <Flexible className="space-x-4 mb-10">
+    <Flexible className="space-x-4 mb-10 flex-wrap">
       <div className={style.match_stats_card}>
         <div className={style.m_value}>18</div>
         <div className={style.m_title}>Toplam Maç</div>

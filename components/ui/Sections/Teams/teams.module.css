@@ -127,11 +127,11 @@
 /* team tabs */
 
 .team_tabs {
-  @apply space-x-8 border-b;
+  @apply space-x-8 border-b overflow-x-auto overflow-y-hidden w-full;
 }
 
 .team_tabs .tab {
-  @apply cursor-pointer mb-[-1px] border-b-2 border-transparent font-semibold py-3;
+  @apply cursor-pointer mb-[-1px] border-b-2 border-transparent font-semibold py-3 whitespace-nowrap;
   @apply duration-300 hover:text-black hover:border-black;
 }
 
@@ -150,7 +150,7 @@
 /* matches tab */
 
 .match_stats_card {
-  @apply p-4 bg-gray-100 rounded-md w-2/12;
+  @apply p-4 bg-gray-100 rounded-md xl:w-2/12 lg:w-3/12 md:w-4/12 w-6/12;
 }
 
 .m_value {
