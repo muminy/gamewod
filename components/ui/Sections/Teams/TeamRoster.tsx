@@ -15,6 +15,7 @@ export default function TeamRoster(props: Props) {
         <div
           style={{ backgroundImage: `url(${item.logo})` }}
           className={style.player_area}
+          key={item.id}
         >
           <Flexible alignItem="items-center" className={style.blur_area}>
             <img src={item.logo} />
