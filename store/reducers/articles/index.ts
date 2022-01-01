@@ -15,8 +15,8 @@ const initialState: StateProps = {
 
 export default function articleReducer(
   state = initialState,
-  action: PayloadAction<ArticleProps[]>
-) {
+  action: AnyAction
+): StateProps {
   switch (action.type) {
     case SET_ARTICLE:
       return { ...state, articles: action.payload };
