@@ -41,5 +41,5 @@
 
 .alt_card {
   @apply h-[420px];
-  @apply xl:col-span-3 lg:col-span-3 col-span-6;
+  @apply xl:col-span-3 lg:col-span-6 col-span-12;
 }
