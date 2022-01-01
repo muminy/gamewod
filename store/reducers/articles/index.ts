@@ -1,3 +1,4 @@
+import { PayloadAction } from "@reduxjs/toolkit";
 import { ArticleProps } from "constants/types";
 import { AnyAction } from "redux";
 import { SET_ARTICLE, SET_GRID_ARTICLE } from "store/types";
@@ -12,13 +13,9 @@ const initialState: StateProps = {
   grids: [],
 };
 
-export interface ActionProps extends AnyAction {
-  payload: ArticleProps[];
-}
-
 export default function articleReducer(
   state = initialState,
-  action: AnyAction
+  action: PayloadAction<ArticleProps[]>
 ) {
   switch (action.type) {
     case SET_ARTICLE:
