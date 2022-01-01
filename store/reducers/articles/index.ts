@@ -18,7 +18,7 @@ export interface ActionProps extends AnyAction {
 
 export default function articleReducer(
   state = initialState,
-  action: ActionProps
+  action: AnyAction
 ) {
   switch (action.type) {
     case SET_ARTICLE:

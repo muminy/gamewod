@@ -33,7 +33,7 @@ export default function BlogSection() {
     <section>
       <CustomTitle morable="/">Son Gelişmeler</CustomTitle>
       <Grid.Col gap="xl:gap-x-10 lg:gap-x-6 gap-x-4 gap-y-5">
-        {articles.map((item) => (
+        {articles.map((item: any) => (
           <Grid.Span
             key={item.id}
             span="xl:col-span-4 lg:col-span-6 col-span-12"
