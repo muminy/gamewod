@@ -12,9 +12,13 @@ const initialState: StateProps = {
   grids: [],
 };
 
+export interface ActionProps extends AnyAction {
+  payload: ArticleProps[];
+}
+
 export default function articleReducer(
   state = initialState,
-  action: { type: string; payload: ArticleProps[] }
+  action: ActionProps
 ) {
   switch (action.type) {
     case SET_ARTICLE:
