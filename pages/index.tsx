@@ -1,18 +1,47 @@
-import type { NextPage } from "next";
+import type { NextPage, GetServerSideProps } from "next";
+import { useEffect } from "react";
 
 // ** components
 import Grid from "components/ui/Grid";
-import TeamSection from "components/ui/Sections/Teams";
 import BlogSection from "components/ui/Sections/Blogs";
 import Hero from "components/ui/Sections/Hero";
-import Livescore from "components/ui/Sections/Livescore";
 import Forums from "components/ui/Sections/Forums";
 import STYLE from "constants/style";
-import classNames from "classnames";
 
-const Home: NextPage = () => {
+// node packages
+import classNames from "classnames";
+import qs from "qs";
+
+// api
+import { handleGetArticles } from "services/article";
+import { get_grid_posts } from "services/filters";
+import { useDispatch } from "react-redux";
+import {
+  handleAddArticles,
+  handleAddGridArticles,
+} from "store/actions/articles";
+import { ArticleProps } from "constants/types";
+import Layout from "components/core/Layout";
+
+interface Props {
+  articles: {
+    data: ArticleProps[];
+  };
+  GArticles: {
+    data: ArticleProps[];
+  };
+}
+
+const Home: NextPage<Props> = (props) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(handleAddArticles(props.articles.data));
+    dispatch(handleAddGridArticles(props.GArticles.data));
+  }, [dispatch]);
+
   return (
-    <div className="relative">
+    <Layout className="relative">
       <Hero />
       {/* <TeamSection /> */}
 
@@ -30,8 +59,21 @@ const Home: NextPage = () => {
           <Forums />
         </Grid.Span>
       </Grid.Col>
-    </div>
+    </Layout>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  // ...
+  const articles = await handleGetArticles({ query: get_grid_posts() });
+  const gridArticles = await handleGetArticles({ query: get_grid_posts(true) });
+
+  return {
+    props: {
+      articles,
+      GArticles: gridArticles,
+    },
+  };
 };
 
 export default Home;

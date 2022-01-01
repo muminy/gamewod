@@ -4,33 +4,42 @@ import Flexible from "components/ui/Flexible/flex";
 import style from "./style.module.css";
 import classNames from "classnames";
 
+const menus = [
+  {
+    title: "CS:GO",
+  },
+  {
+    title: "Valorant",
+  },
+  {
+    title: "Pubg",
+  },
+  {
+    title: "Röportaj",
+  },
+  {
+    title: "Turnuvalar",
+  },
+  {
+    title: "Gelecek Güncellemeler",
+  },
+];
+
 const MenuList: React.FC = () => {
   return (
-    <Flexible
-      alignItem="items-center"
-      className="mr-4 hidden xl:flex lg:flex"
-    >
-      <Link href="/">
-        <a
-          className={classNames(
-            style.menuLink,
-            "dark:text-[#ffffff80] dark:hover:text-white"
-          )}
-        >
-          Marketplace
-        </a>
-      </Link>
-      <div className="divider" />
-      <Link href="/">
-        <a
-          className={classNames(
-            style.menuLink,
-            "dark:text-[#ffffff80] dark:hover:text-white"
-          )}
-        >
-          How its work
-        </a>
-      </Link>
+    <Flexible alignItem="items-center" className="hidden xl:flex lg:flex">
+      {menus.map((item) => (
+        <Link key={item.title} href="/">
+          <a
+            className={classNames(
+              style.menuLink,
+              "dark:text-[#ffffff80] dark:hover:text-white"
+            )}
+          >
+            {item.title}
+          </a>
+        </Link>
+      ))}
     </Flexible>
   );
 };

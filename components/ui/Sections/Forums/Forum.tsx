@@ -6,11 +6,9 @@ import db from "./db.json";
 
 // ** components
 import CustomTitle from "components/ui/Title";
-import Button from "components/ui/button/Button";
 
 // ** moment js for date locale
 import moment from "moment";
-import "moment/locale/tr";
 
 // ** cn opt
 import cn from "classnames";
@@ -34,10 +32,11 @@ export default function Forums() {
 
 export const ForumCard: React.FC<ForumProps> = (props) => {
   return (
-    <div className={cn(style.forum, "group")}>
-      <div className={cn(style.title)}>{props.title}</div>
+    <div className={cn(style.forum, "group bg-graypink")}>
+      <div className={cn(style.title, "text-darkcolor")}>{props.title}</div>
+
       <span className={style.date}>
-        {moment(props.date).locale("tr").format("D MMMM, y")}
+        {moment(props.date).format("D MMMM, y")}
       </span>
     </div>
   );

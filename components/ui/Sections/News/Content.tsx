@@ -6,8 +6,6 @@ export interface Props {
 
 export default function Content(props: Props) {
   return (
-    <ReactMarkdown className={style.content}>
-      {props.content}
-    </ReactMarkdown>
+    <ReactMarkdown className={style.content}>{props.content}</ReactMarkdown>
   );
 }

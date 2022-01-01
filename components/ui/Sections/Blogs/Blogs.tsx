@@ -1,4 +1,3 @@
-import cn from "classnames";
 import Flaticon from "components/ui/Flaticon";
 import Flexible from "components/ui/Flexible";
 import Grid from "components/ui/Grid";
@@ -8,30 +7,33 @@ import {
   RightArrowPath,
   UpIconPath,
 } from "constants/flaticons";
+import CustomTitle from "components/ui/Title";
+
+// packages
 import Link from "next/link";
+import Image from "next/image";
+import cn from "classnames";
 
 import style from "./blogs.module.css";
-import blogs from "./db.json";
 
 // ** moment js
 import moment from "moment";
 import "moment/locale/tr";
-import CustomTitle from "components/ui/Title";
 
-export interface BlogProps {
-  title: string;
-  description: string;
-  date: string;
-  image: string;
-  id: string;
-}
+// store hook
+import { useAppSelector } from "store/hooks";
+import { ArticleProps } from "constants/types";
+import { baseURL } from "services/apis";
+import slugify from "slugify";
 
 export default function BlogSection() {
+  const articles = useAppSelector((state) => state.articles.articles);
+
   return (
     <section>
       <CustomTitle morable="/">Son Gelişmeler</CustomTitle>
       <Grid.Col gap="xl:gap-x-10 lg:gap-x-6 gap-x-4 gap-y-5">
-        {blogs.map((item) => (
+        {articles.map((item) => (
           <Grid.Span
             key={item.id}
             span="xl:col-span-4 lg:col-span-6 col-span-12"
@@ -44,24 +46,51 @@ export default function BlogSection() {
   );
 }
 
-export const BlogCard: React.FC<BlogProps> = (props) => {
+export const BlogCard: React.FC<ArticleProps> = (props) => {
+  const articleImage = props.attributes.image.data;
+  const blurDataURL = "/assets/images/default.webp";
+
+  const slug = slugify(props.attributes.title, {
+    replacement: "-",
+    lower: true,
+  });
+
   return (
-    <div className={style.blogcard}>
-      <img className={style.blogImage} src={props.image} />
-      <div className={style.date}>
-        {moment(props.date).locale("tr").format("D MMMM, y")}
-      </div>
+    <Link href={`/article/${props.id}/${slug}`}>
+      <a className={style.blogcard}>
+        {articleImage ? (
+          <Image
+            width={500}
+            height={350}
+            blurDataURL={blurDataURL}
+            placeholder="blur"
+            className={style.blogImage}
+            src={`${baseURL}${articleImage.attributes.formats.medium.url}`}
+          />
+        ) : (
+          <Image
+            width={500}
+            height={350}
+            blurDataURL={blurDataURL}
+            placeholder="blur"
+            className={style.blogImage}
+            src={blurDataURL}
+          />
+        )}
+        <div className={style.date}>
+          {moment(props.attributes.createdAt).locale("tr").format("DD MMMM, y")}
+        </div>
 
-      <h3 className={style.blogtitle}>{props.title}</h3>
+        <h3 className={style.blogtitle}>{props.attributes.title}</h3>
 
-      <Link href="/">
-        <a className="flex items-center text-gray-800 hover:text-black font-medium text-sm">
-          <span className="mr-2">Devamını Oku</span>
-          <Flaticon paths={RightArrowPath} size={14} />
-        </a>
-      </Link>
+        <Link href="/">
+          <a className="flex items-center text-gray-800 hover:text-black font-medium text-sm">
+            <span className="mr-2">Devamını Oku</span>
+            <Flaticon paths={RightArrowPath} size={14} />
+          </a>
+        </Link>
 
-      <Flexible
+        {/* <Flexible
         className={style.blog_action_panel}
         justifyContent="justify-between"
       >
@@ -104,7 +133,8 @@ export const BlogCard: React.FC<BlogProps> = (props) => {
             <Flaticon paths={BookmarkIconPath} size={20} />
           </Flexible>
         </button>
-      </Flexible>
-    </div>
+      </Flexible> */}
+      </a>
+    </Link>
   );
 };

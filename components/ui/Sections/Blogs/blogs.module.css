@@ -12,7 +12,7 @@
 }
 
 .blogImage {
-  @apply rounded-md h-[200px] w-full mb-4;
+  @apply rounded-md mb-4;
   object-fit: cover;
 }
 
@@ -28,5 +28,5 @@
 }
 
 .date {
-  @apply text-xs text-gray-400 mb-2;
+  @apply text-xs text-gray-400 mb-2 mt-1;
 }

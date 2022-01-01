@@ -22,7 +22,7 @@ const Header: React.FC = (props) => {
       >
         <Flexible className="w-full" alignItem="items-center">
           <Link href="/">
-            <a className="font-medium text-gray-900 text-xl">
+            <a className="font-black tracking-[10px] uppercase text-gray-900 text-xl">
               <span className="font-black">Game</span>wod
             </a>
           </Link>
@@ -30,7 +30,7 @@ const Header: React.FC = (props) => {
 
         <Flexible alignItem="items-center">
           <MenuList />
-          <Button
+          {/* <Button
             color="icon"
             className="min-w-[40px] hover:bg-gray-200 flex items-center justify-center"
           >
@@ -41,17 +41,17 @@ const Header: React.FC = (props) => {
             className="min-w-[40px] ml-1 hover:bg-gray-200 flex items-center justify-center"
           >
             <Flaticon paths={BellFilledPaths} size={16} />
-          </Button>
-          <WalletButton className="ml-2 hidden xl:block lg:block">
+          </Button> */}
+          {/* <WalletButton className="ml-2 hidden xl:block lg:block">
             Connect Wallet
-          </WalletButton>
+          </WalletButton> */}
           {/* <button className="border h-10 w-10 text-gray-600 dark:border-darkBorder dark:text-darkText dark:hover:text-white center-center rounded-full mr-4">
             <Flaticon color="currentColor" size={14} paths={Sun} />
           </button> */}
-          <Avatar
+          {/* <Avatar
             className="xl:ml-5 lg:ml-5 ml-2"
             imageURL="https://cdn.dribbble.com/users/257709/avatars/small/c55d07ba8357667826532348f89a28f4.png?1614072057"
-          />
+          /> */}
         </Flexible>
       </Flexible>
     </div>
