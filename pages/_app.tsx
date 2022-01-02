@@ -30,7 +30,11 @@ const ProvideUser: FunctionComponent<IProps> = (props: IProps) => {
     const usertoken = getUsertoken();
 
     verify(usertoken || "", (error, document) => {
-      if (error) return console.log("Token expired");
+      if (error) {
+        dispatch(handleAddUser(null));
+        console.log("Token expired");
+        return;
+      }
       dispatch(handleAddUser(document));
     });
   }, []);

@@ -45,7 +45,7 @@ const Header: React.FC = (props) => {
 
         {user.loading ? (
           <HeaderSkeleton />
-        ) : user ? (
+        ) : user.user ? (
           <Flexible alignItem="items-center">
             {/* <Button
         color="icon"
