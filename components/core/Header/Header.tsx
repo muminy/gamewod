@@ -80,15 +80,14 @@ const Header: React.FC = (props) => {
           </Flexible>
         ) : (
           <Flexible alignItem="items-center">
-            <a href="/login" className="whitespace-nowrap text-sm font-medium">
-              Giriş yap
-            </a>
-            <a
-              href="/signup"
-              className="hidden hover:bg-opacity-90 ml-3 xl:block lg:block bg-darkcolor text-white whitespace-nowrap px-4 text-sm font-medium py-2 rounded-md"
-            >
-              Kayıt ol
-            </a>
+            <Link href="/login">
+              <a className="whitespace-nowrap text-sm font-medium">Giriş yap</a>
+            </Link>
+            <Link href="/signup">
+              <a className="hidden hover:bg-opacity-90 ml-3 xl:block lg:block bg-darkcolor text-white whitespace-nowrap px-4 text-sm font-medium py-2 rounded-md">
+                Kayıt ol
+              </a>
+            </Link>
           </Flexible>
         )}
       </Flexible>
