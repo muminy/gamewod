@@ -29,18 +29,28 @@ const MenuList: React.FC = () => {
   return (
     <Flexible alignItem="items-center" className="hidden xl:flex lg:flex">
       {menus.map((item) => (
-        <Link key={item.title} href="/">
-          <a
-            className={classNames(
-              style.menuLink,
-              "dark:text-[#ffffff80] dark:hover:text-white"
-            )}
-          >
-            {item.title}
-          </a>
-        </Link>
+        <LinkCard key={item.title} {...item} />
       ))}
     </Flexible>
+  );
+};
+
+interface LinkProps {
+  title: string;
+}
+
+export const LinkCard = (props: LinkProps) => {
+  return (
+    <Link href="/">
+      <a
+        className={classNames(
+          style.menuLink,
+          "dark:text-[#ffffff80] dark:hover:text-white"
+        )}
+      >
+        {props.title}
+      </a>
+    </Link>
   );
 };
 

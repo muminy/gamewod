@@ -1,0 +1,4 @@
+.card {
+  @apply xl:h-[420px] lg:h-[420px] md:h-[310px] h-[210px];
+  @apply xl:col-span-3 lg:col-span-6 md:col-span-6 col-span-12 rounded-md;
+}

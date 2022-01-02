@@ -12,19 +12,33 @@ import { baseURL } from "services/apis";
 import style from "./hero.module.css";
 
 // store selector
-import { useAppSelector } from "store/hooks";
 import { ArticleProps } from "constants/types";
 import slugify from "slugify";
+import { useEffect, useState } from "react";
+import { handleGetArticles } from "services/article";
+import { get_grid_posts } from "services/filters";
+import { HeroSkeleton } from "components/Skeleton/Hero";
 
 export default function Hero() {
-  const garticles = useAppSelector((state) => state.articles.grids);
+  const [articles, setArticles] = useState<ArticleProps[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    handleGetArticles({ query: get_grid_posts(true) }).then((response) => {
+      // get grid posts
+      setArticles(response.data);
+      setLoading(false);
+    });
+  }, []);
 
   return (
     <div className={cn(style.section, F.paddingHorizontal)}>
       <Grid.Col cols="grid-cols-12">
-        {garticles.map((item) => (
-          <ArticleCard {...item} key={item.id} />
-        ))}
+        {loading ? (
+          <HeroSkeleton />
+        ) : (
+          articles.map((item) => <ArticleCard {...item} key={item.id} />)
+        )}
       </Grid.Col>
     </div>
   );

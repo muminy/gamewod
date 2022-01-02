@@ -10,36 +10,10 @@ import STYLE from "constants/style";
 
 // node packages
 import classNames from "classnames";
-import qs from "qs";
 
-// api
-import { handleGetArticles } from "services/article";
-import { get_grid_posts } from "services/filters";
-import { useDispatch } from "react-redux";
-import {
-  handleAddArticles,
-  handleAddGridArticles,
-} from "store/actions/articles";
-import { ArticleProps } from "constants/types";
 import Layout from "components/core/Layout";
 
-interface Props {
-  articles: {
-    data: ArticleProps[];
-  };
-  GArticles: {
-    data: ArticleProps[];
-  };
-}
-
-const Home: NextPage<Props> = (props) => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(handleAddArticles(props.articles.data));
-    dispatch(handleAddGridArticles(props.GArticles.data));
-  }, [dispatch]);
-
+const Home: NextPage = () => {
   return (
     <Layout className="relative">
       <Hero />
@@ -61,19 +35,6 @@ const Home: NextPage<Props> = (props) => {
       </Grid.Col>
     </Layout>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  // ...
-  const articles = await handleGetArticles({ query: get_grid_posts() });
-  const gridArticles = await handleGetArticles({ query: get_grid_posts(true) });
-
-  return {
-    props: {
-      articles,
-      GArticles: gridArticles,
-    },
-  };
 };
 
 export default Home;

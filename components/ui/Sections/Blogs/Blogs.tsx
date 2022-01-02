@@ -25,22 +25,39 @@ import { useAppSelector } from "store/hooks";
 import { ArticleProps } from "constants/types";
 import { baseURL } from "services/apis";
 import slugify from "slugify";
+import { useEffect, useState } from "react";
+import { handleGetArticles } from "services/article";
+import { get_grid_posts } from "services/filters";
+import { BlogSkeleton } from "components/Skeleton/Blog";
 
 export default function BlogSection() {
-  const articles = useAppSelector((state) => state.articles.articles);
+  const [articles, setArticles] = useState<ArticleProps[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    handleGetArticles({ query: get_grid_posts() }).then((response) => {
+      // get grid posts
+      setArticles(response.data);
+      setLoading(false);
+    });
+  }, []);
 
   return (
     <section>
       <CustomTitle morable="/">Son Gelişmeler</CustomTitle>
       <Grid.Col gap="xl:gap-x-10 lg:gap-x-6 gap-x-4 gap-y-5">
-        {articles.map((item) => (
-          <Grid.Span
-            key={item.id}
-            span="xl:col-span-4 lg:col-span-6 col-span-12"
-          >
-            <BlogCard {...item} />
-          </Grid.Span>
-        ))}
+        {loading ? (
+          <BlogSkeleton />
+        ) : (
+          articles.map((item) => (
+            <Grid.Span
+              key={item.id}
+              span="xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12"
+            >
+              <BlogCard {...item} />
+            </Grid.Span>
+          ))
+        )}
       </Grid.Col>
     </section>
   );

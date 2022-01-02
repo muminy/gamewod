@@ -6,4 +6,26 @@
   @apply text-sm px-3.5 duration-200 whitespace-nowrap font-semibold last:pr-0;
   @apply hover:text-yellow-700;
   @apply text-gray-600;
+  @apply text-left;
+}
+
+.open-menu {
+  display: block;
+  position: fixed;
+  height: 100vh;
+  bottom: 0px;
+  background-color: #ffffff;
+  z-index: 2;
+  transform: translateX(-100px);
+  animation: openMenu 0.3s forwards;
+  box-shadow: rgb(132 148 165 / 20%) 0px 8px 16px;
+}
+
+@keyframes openMenu {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(-100px);
+  }
 }

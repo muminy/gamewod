@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import Layout from "components/core/Layout";
+import { ArticleSkeleton } from "components/Skeleton/Article";
 import Flexible from "components/ui/Flexible";
 import News from "components/ui/Sections/News";
 import STYLE from "constants/style";
@@ -12,7 +13,7 @@ import { handleGetArticleById } from "services/article";
 import { handleCreateComment } from "services/comment";
 
 export interface Props {
-  article: ArticleProps;
+  id: number;
 }
 
 export interface ServerSideProps {
@@ -24,16 +25,19 @@ export interface ServerSideProps {
 export default function Article(props: Props) {
   const [open, setOpen] = useState(false);
   const [creating, setCreating] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  const [article, setArticle] = useState<ArticleProps | null>(null);
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState(
-    props.article.id ? props.article.attributes.comments.data : []
+    article ? article.attributes.comments.data : []
   );
 
   const toggle = () => setOpen(!open);
 
   const handleAddComment = () => {
     setCreating(true);
-    handleCreateComment({ comment, name: "as", post: props.article.id }).then(
+    handleCreateComment({ comment, name: "as", post: props.id }).then(
       (response) => {
         // get if created comment
         setComments(comments.concat(response.data));
@@ -42,6 +46,14 @@ export default function Article(props: Props) {
       }
     );
   };
+
+  useEffect(() => {
+    handleGetArticleById({ id: props.id }).then((response) => {
+      // get article data
+      setArticle(response.data);
+      setLoading(false);
+    });
+  }, []);
 
   const sortComment = (a: ArticleComment, b: ArticleComment) => {
     return (
@@ -53,13 +65,15 @@ export default function Article(props: Props) {
   return (
     <Layout>
       <div className={classNames(STYLE.paddingHorizontal, "max-w-5xl mx-auto")}>
-        {props.article.id ? (
+        {loading ? (
+          <ArticleSkeleton />
+        ) : article ? (
           <Fragment>
             <News.Header
-              date={props.article.attributes.createdAt}
-              title={props.article.attributes.title}
+              date={article.attributes.createdAt}
+              title={article.attributes.title}
             />
-            <News.Content content={props.article.attributes.content} />
+            <News.Content content={article.attributes.content} />
 
             <div className="mb-10 rounded-md">
               <div className="text-gray-600 text-opacity-70 text-sm font-medium mb-3">
@@ -119,17 +133,16 @@ export default function Article(props: Props) {
           </Fragment>
         ) : null}
       </div>
-      {/*  */}
     </Layout>
   );
 }
 
 export const getServerSideProps = async (ctx: ServerSideProps) => {
-  const posts = await handleGetArticleById({ id: ctx.query.id });
+  // const posts = await handleGetArticleById({ id: ctx.query.id });
 
   return {
     props: {
-      article: posts.data,
+      id: ctx.query.id,
     },
   };
 };

@@ -1,0 +1,35 @@
+.userform_area {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.form_sidebar {
+  @apply w-2/6 h-full;
+}
+
+.form_sidebar img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.form_input {
+  @apply rounded-md px-3 py-2.5 mb-3 w-full outline-none border border-white bg-graypink;
+  @apply hover:ring-4 hover:bg-white hover:ring-pink-100 hover:right-3;
+  @apply focus:bg-white focus:ring-pink-100 focus:ring-4 focus:border focus:border-pink-600;
+}
+
+.form_area {
+  @apply flex flex-col w-4/6 h-full px-10 overflow-y-auto float-right;
+  @apply xl:justify-center lg:justify-center justify-start xl:py-0 lg:py-0 py-10;
+}
+
+.form_container {
+  @apply xl:w-2/4 lg:w-2/4 w-full;
+}
+
+.logo {
+  @apply w-10 h-10 absolute font-semibold text-green-900 text-sm top-4 left-4 rounded-xl flex items-center justify-center;
+  background-color: #ffffff77;
+  backdrop-filter: blur(24px);
+}

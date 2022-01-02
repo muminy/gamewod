@@ -1,10 +1,12 @@
 import { configureStore, compose } from "@reduxjs/toolkit";
 import articleReducer from "./reducers/articles";
+import userReducer from "./reducers/user";
 // ...
 
 const store = configureStore({
   reducer: {
     articles: articleReducer,
+    user: userReducer,
   },
 });
 
