@@ -14,6 +14,7 @@ import { handleUserLogin } from "services/user";
 import { handleAddUser } from "store/actions/user";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 const Login: NextPage = () => {
   const [username, setUsername] = useState("");
@@ -50,6 +51,9 @@ const Login: NextPage = () => {
 
   return (
     <Flexible className={style.userform_area}>
+      <Head>
+        <title>Gamewod.com | Giriş</title>
+      </Head>
       <div className={style.form_sidebar}>
         <img src="https://rarible.com/9db0a6651f2ce1120811.jpg" />
 
@@ -80,7 +84,7 @@ const Login: NextPage = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             id="username"
-            className={style.form_input}
+            className={classNames(style.form_input, "mb-4")}
           />
 
           <label
@@ -94,7 +98,7 @@ const Login: NextPage = () => {
             onChange={(e) => setPassword(e.target.value)}
             id="password"
             type={"password"}
-            className={classNames(style.form_input)}
+            className={classNames(style.form_input, "mb-4")}
           />
 
           {errorMessage && (

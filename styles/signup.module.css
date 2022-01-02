@@ -14,7 +14,7 @@
 }
 
 .form_input {
-  @apply rounded-md px-3 py-2.5 mb-3 w-full outline-none border border-white bg-graypink;
+  @apply rounded-md px-3 py-2.5 w-full outline-none border border-white bg-graypink;
   @apply hover:ring-4 hover:bg-white hover:ring-pink-100 hover:right-3;
   @apply focus:bg-white focus:ring-pink-100 focus:ring-4 focus:border focus:border-pink-600;
 }
