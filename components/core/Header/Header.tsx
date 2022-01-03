@@ -28,12 +28,8 @@ const Header: React.FC = (props) => {
 
   return (
     <div className={classNames(style.header, F.paddingHorizontal)}>
-      <Flexible
-        justifyContent="justify-between"
-        alignItem="items-center"
-        className="w-full"
-      >
-        <Flexible alignItem="items-center">
+      <Flexible alignItem="items-center" className="w-full">
+        <Flexible className="mr-auto" alignItem="items-center">
           <Link href="/">
             <a className="font-black tracking-[10px] uppercase text-gray-900 text-xl">
               <span className="font-black">Game</span>wod
@@ -41,45 +37,43 @@ const Header: React.FC = (props) => {
           </Link>
         </Flexible>
 
+        <div className="mx-4 w-full xl:block lg:block hidden">
+          <input
+            placeholder="Ara.."
+            className="w-full bg-gray-100 rounded-md py-2 px-5 outline-none focus:ring-2 focus:bg-white focus:ring-gray-200"
+          />
+        </div>
+
         <MenuList />
 
         {user.loading ? (
           <HeaderSkeleton />
         ) : user.user ? (
-          <Flexible alignItem="items-center">
-            {/* <Button
-        color="icon"
-        className="min-w-[40px] hover:bg-gray-200 flex items-center justify-center"
-      >
-        <Flaticon paths={CrownFilledPaths} size={16} />
-      </Button>
-      <Button
-        color="icon"
-        className="min-w-[40px] ml-1 hover:bg-gray-200 flex items-center justify-center"
-      >
-        <Flaticon paths={BellFilledPaths} size={16} />
-      </Button> */}
+          <Flexible alignItem="items-center" className="space-x-2 ml-2">
+            <Button
+              color="icon"
+              className="min-w-[40px] border flex items-center justify-center"
+            >
+              <Flaticon paths={CrownFilledPaths} size={14} />
+            </Button>
+            <Button
+              color="icon"
+              className="min-w-[40px] border flex items-center justify-center"
+            >
+              <Flaticon paths={BellFilledPaths} size={14} />
+            </Button>
 
-            {/* <button className="border h-10 w-10 text-gray-600 dark:border-darkBorder dark:text-darkText dark:hover:text-white center-center rounded-full mr-4">
-        <Flaticon color="currentColor" size={14} paths={Sun} />
-      </button> */}
+            <button className="rounded-full px-6 h-[40px] hover:border-gray-300 border whitespace-nowrap font-medium text-sm">
+              Forum Aç
+            </button>
             <Link href={`/user/${user.user?.username}`}>
               <a>
-                <Avatar
-                  className="xl:ml-5 lg:ml-5 ml-2"
-                  imageURL="https://cdn.dribbble.com/users/257709/avatars/small/c55d07ba8357667826532348f89a28f4.png?1614072057"
-                />
+                <Avatar imageURL="https://cdn.dribbble.com/users/14190/avatars/small/b268425ca6ef849dc03cf2723a44a16f.png?1414231950" />
               </a>
             </Link>
-
-            <button className="block xl:hidden lg:hidden" onClick={toggle}>
-              <Flaticon paths={MenuIconPath} viewBox="0 0 512 512" />
-            </button>
-
-            <ResponsiveMenu open={open} toggle={toggle} />
           </Flexible>
         ) : (
-          <Flexible alignItem="items-center">
+          <Flexible className="xl:flex lg:flex hidden" alignItem="items-center">
             <Link href="/login">
               <a className="whitespace-nowrap text-sm font-medium">Giriş yap</a>
             </Link>
@@ -90,6 +84,12 @@ const Header: React.FC = (props) => {
             </Link>
           </Flexible>
         )}
+
+        <button className="block xl:hidden lg:hidden" onClick={toggle}>
+          <Flaticon paths={MenuIconPath} viewBox="0 0 512 512" />
+        </button>
+
+        <ResponsiveMenu open={open} toggle={toggle} />
       </Flexible>
     </div>
   );

@@ -1,19 +1,6 @@
 import type { NextPage, GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
 
-// ** components
-import Grid from "components/ui/Grid";
-import BlogSection from "components/ui/Sections/Blogs";
-import Hero from "components/ui/Sections/Hero";
-import Forums from "components/ui/Sections/Forums";
-import STYLE from "constants/style";
-
-// node packages
-import classNames from "classnames";
-import qs from "qs";
-
-// api
-
 import style from "styles/signup.module.css";
 
 import Flexible from "components/ui/Flexible";
@@ -107,7 +94,7 @@ const Signup: NextPage = () => {
   }, [email]);
 
   return (
-    <Flexible className={style.userform_area}>
+    <div className={style.userform_area}>
       <Head>
         <title>Gamewod.com | Kayıt ol</title>
       </Head>
@@ -128,7 +115,7 @@ const Signup: NextPage = () => {
             Güvenli bir şekilde kayıt olup topluluğumuza katılabilirsiniz.
           </div>
 
-          <div className="xl:flex lg:flex block xl:space-x-4 lg:space-x-4 mb-3">
+          <div className="flex xl:space-x-4 lg:space-x-4 space-x-2 mb-3">
             <div className={style.form_container}>
               <label
                 htmlFor="name"
@@ -206,7 +193,7 @@ const Signup: NextPage = () => {
             )}
           </div>
 
-          <div className="xl:flex lg:flex block xl:space-x-4 lg:space-x-4 mb-3">
+          <div className="flex xl:space-x-4 lg:space-x-4 space-x-2 mb-3">
             <div className={style.form_container}>
               <label
                 htmlFor="password"
@@ -270,7 +257,7 @@ const Signup: NextPage = () => {
           </div>
         </div>
       </div>
-    </Flexible>
+    </div>
   );
 };
 

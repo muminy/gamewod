@@ -14,12 +14,12 @@ const menus = [
   {
     title: "Pubg",
   },
-  {
-    title: "Röportaj",
-  },
-  {
-    title: "Turnuvalar",
-  },
+  // {
+  //   title: "Röportaj",
+  // },
+  // {
+  //   title: "Turnuvalar",
+  // },
   {
     title: "Gelecek Güncellemeler",
   },
@@ -27,7 +27,7 @@ const menus = [
 
 const MenuList: React.FC = () => {
   return (
-    <Flexible alignItem="items-center" className="hidden xl:flex lg:flex">
+    <Flexible alignItem="items-center" className="hidden xl:flex lg:flex mr-4">
       {menus.map((item) => (
         <LinkCard key={item.title} {...item} />
       ))}

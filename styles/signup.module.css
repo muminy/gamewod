@@ -2,15 +2,19 @@
   width: 100%;
   height: 100vh;
   position: relative;
+
+  @apply xl:flex lg:flex xl:h-screen lg:h-screen h-[60px] w-full;
 }
 
 .form_sidebar {
-  @apply w-2/6 h-full;
+  @apply xl:w-2/6 lg:w-2/6 w-full h-full;
 }
 
 .form_sidebar img {
   height: 100%;
   object-fit: cover;
+
+  @apply xl:w-auto lg:w-auto w-full;
 }
 
 .form_input {
@@ -20,8 +24,11 @@
 }
 
 .form_area {
-  @apply flex flex-col w-4/6 h-full px-10 overflow-y-auto float-right;
-  @apply xl:justify-center lg:justify-center justify-start xl:py-0 lg:py-0 py-10;
+  @apply flex flex-col px-10 overflow-y-auto float-right;
+  @apply xl:justify-center lg:justify-center justify-start xl:py-0 lg:py-0 py-4;
+  @apply xl:w-4/6 lg:w-4/6 w-full;
+
+  @apply xl:px-10 lg:px-6 px-4;
 }
 
 .form_container {
@@ -32,4 +39,6 @@
   @apply w-10 h-10 absolute font-semibold text-green-900 text-sm top-4 left-4 rounded-xl flex items-center justify-center;
   background-color: #ffffff77;
   backdrop-filter: blur(24px);
+
+  @apply xl:top-4 lg:top-4 top-2.5;
 }

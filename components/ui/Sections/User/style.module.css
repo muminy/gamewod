@@ -1,0 +1,19 @@
+.username {
+  background: -webkit-linear-gradient(45deg, #3c68e2, #f560e1 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  @apply font-medium;
+}
+
+.tabbtn {
+  font-size: 15px;
+  @apply py-2 px-3;
+  @apply font-medium disabled:text-gray-400;
+}
+
+.active-tab {
+  @apply border-b-2 border-black;
+}
+.tabbtn span {
+  @apply text-sm ml-2 px-2 py-1 bg-gray-100 rounded-full text-gray-600;
+}

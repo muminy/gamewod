@@ -1,7 +1,9 @@
 import classNames from "classnames";
+import STYLE from "constants/style";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import * as React from "react";
+import Footer from "../Footer";
 import Header from "../Header";
 
 type MetaType = {
@@ -34,12 +36,7 @@ const Layout: React.FC<Props> = (props) => {
   );
 
   return (
-    <div
-      className={classNames(
-        "min-h-screen 2xl:max-w-[1700px] mx-auto dark:bg-black",
-        className
-      )}
-    >
+    <div className={classNames(className)}>
       <Head>
         <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
@@ -62,8 +59,12 @@ const Layout: React.FC<Props> = (props) => {
       </Head>
 
       <Header />
-      {props.children}
-      {/* <Footer /> */}
+
+      <main className="min-h-screen 2xl:max-w-[1700px] mx-auto dark:bg-black mb-20">
+        {props.children}
+      </main>
+
+      <Footer />
     </div>
   );
 };

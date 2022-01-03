@@ -50,14 +50,16 @@ const tDetail = {
 
 export default function TeamPage() {
   return (
-    <div className={classNames(STYLE.paddingHorizontal)}>
-      <TeamHeader {...tDetail} />
-      <TeamTabs />
-      {/* <Grid.Col>
+    <Layout>
+      <div className={classNames(STYLE.paddingHorizontal)}>
+        <TeamHeader {...tDetail} />
+        <TeamTabs />
+        {/* <Grid.Col>
         <Grid.Span span="col-span-2">
           <TeamRoster players={tDetail.players} />
         </Grid.Span>
       </Grid.Col> */}
-    </div>
+      </div>
+    </Layout>
   );
 }

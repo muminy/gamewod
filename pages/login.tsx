@@ -50,7 +50,7 @@ const Login: NextPage = () => {
   };
 
   return (
-    <Flexible className={style.userform_area}>
+    <div className={style.userform_area}>
       <Head>
         <title>Gamewod.com | Giriş</title>
       </Head>
@@ -128,7 +128,7 @@ const Login: NextPage = () => {
           </div>
         </div>
       </div>
-    </Flexible>
+    </div>
   );
 };
 

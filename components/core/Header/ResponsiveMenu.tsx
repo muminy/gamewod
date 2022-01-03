@@ -1,8 +1,6 @@
 import { Fragment, FC } from "react";
 import Link from "next/link";
 import Flexible from "components/ui/Flexible/flex";
-import style from "./style.module.css";
-import classNames from "classnames";
 import { Dialog, Transition } from "@headlessui/react";
 import { LinkCard } from "./MenuLists";
 
@@ -62,7 +60,7 @@ const ResponsiveMenu: React.FC<MenuProps> = (props) => {
               leaveFrom="translate-x-0"
               leaveTo="translate-x-full"
             >
-              <div className="relative w-screen max-w-[200px] ml-auto">
+              <div className="relative w-screen max-w-[300px] ml-auto">
                 <Transition.Child
                   as={Fragment}
                   enter="ease-in-out duration-500"
@@ -82,10 +80,23 @@ const ResponsiveMenu: React.FC<MenuProps> = (props) => {
                     </button>
                   </div>
                 </Transition.Child>
-                <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
+                <div className="h-full flex flex-col py-3 bg-white shadow-xl overflow-y-scroll">
                   {menus.map((item) => (
                     <LinkCard {...item} key={item.title} />
                   ))}
+
+                  <Flexible className="mt-auto px-3" alignItem="items-center">
+                    <Link href="/login">
+                      <a className="hover:bg-gray-200 w-full text-center mr-3 bg-gray-100 text-gray-900 whitespace-nowrap px-4 text-sm font-medium py-2 rounded-md">
+                        Giriş yap
+                      </a>
+                    </Link>
+                    <Link href="/signup">
+                      <a className="hover:bg-opacity-90 w-full text-center ml-3 bg-darkcolor text-white whitespace-nowrap px-4 text-sm font-medium py-2 rounded-md">
+                        Kayıt ol
+                      </a>
+                    </Link>
+                  </Flexible>
                 </div>
               </div>
             </Transition.Child>
