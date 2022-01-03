@@ -29,12 +29,12 @@ export const CommentCard = () => {
       </div>
       <div className="px-3">
         <div className="font-medium text-gray-300 mb-1">
-          "
+          {'"'}
           <span className="text-gray-900 px-2">
             İşçilerde 5 sene okul okuyup 1-2 sene KPSS çalışıp memur olabilir.
             Hatta herkes okusun işçi kesimi ortadan yok edelim.
           </span>
-          "
+          {'"'}
         </div>
 
         <div className="text-sm text-gray-400">10 Upvote</div>
