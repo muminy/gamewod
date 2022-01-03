@@ -31,8 +31,8 @@ const Header: React.FC = (props) => {
       <Flexible alignItem="items-center" className="w-full">
         <Flexible className="mr-auto" alignItem="items-center">
           <Link href="/">
-            <a className="font-black tracking-[10px] uppercase text-gray-900 text-xl">
-              <span className="font-black">Game</span>wod
+            <a className="font-black tracking-[4px] uppercase text-gray-900 text-xl">
+              GW
             </a>
           </Link>
         </Flexible>
@@ -52,13 +52,13 @@ const Header: React.FC = (props) => {
           <Flexible alignItem="items-center" className="space-x-2 ml-2">
             <Button
               color="icon"
-              className="min-w-[40px] border flex items-center justify-center"
+              className="min-w-[40px] border items-center justify-center hidden xl:flex lg:flex"
             >
               <Flaticon paths={CrownFilledPaths} size={14} />
             </Button>
             <Button
               color="icon"
-              className="min-w-[40px] border flex items-center justify-center"
+              className="min-w-[40px] border  items-center justify-center hidden xl:flex lg:flex"
             >
               <Flaticon paths={BellFilledPaths} size={14} />
             </Button>
@@ -85,9 +85,13 @@ const Header: React.FC = (props) => {
           </Flexible>
         )}
 
-        <button className="block xl:hidden lg:hidden" onClick={toggle}>
-          <Flaticon paths={MenuIconPath} viewBox="0 0 512 512" />
-        </button>
+        <Button
+          color="icon"
+          onClick={toggle}
+          className="min-w-[40px] border ml-2 items-center justify-center flex xl:hidden lg:hidden"
+        >
+          <Flaticon paths={MenuIconPath} viewBox="0 0 512 512" size={14} />
+        </Button>
 
         <ResponsiveMenu open={open} toggle={toggle} />
       </Flexible>
