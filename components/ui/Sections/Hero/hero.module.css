@@ -3,7 +3,7 @@
   height: 100%;
   background-size: cover;
   background-position: center;
-  @apply rounded-md relative flex items-end p-4;
+  @apply rounded-md relative flex items-end p-4 cursor-pointer;
 }
 
 .gridContainer::before {

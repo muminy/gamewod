@@ -1,4 +1,6 @@
+import "../styles/font.css";
 import "../styles/globals.css";
+
 import type { AppProps } from "next/app";
 import { FunctionComponent, useEffect, ReactNode } from "react";
 

@@ -11,33 +11,32 @@ import { baseURL } from "services/apis";
 // style
 import style from "./hero.module.css";
 
-// store selector
-import { ArticleProps } from "constants/types";
+// packages
 import slugify from "slugify";
-import { useEffect, useState } from "react";
-import { handleGetArticles } from "services/article";
-import { get_grid_posts } from "services/filters";
+import useSWR from "swr";
+import { motion } from "framer-motion";
+
+import { ArticleProps } from "constants/types";
 import { HeroSkeleton } from "components/Skeleton/Hero";
+import { grid_posts } from "services/article/config";
+import { fetcher } from "lib/fetcher";
 
 export default function Hero() {
-  const [articles, setArticles] = useState<ArticleProps[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { data: articles, error } = useSWR(grid_posts, fetcher);
 
-  useEffect(() => {
-    handleGetArticles({ query: get_grid_posts(true) }).then((response) => {
-      // get grid posts
-      setArticles(response.data);
-      setLoading(false);
-    });
-  }, []);
+  if (error) {
+    return <div>Lütfen bunu bize bildiriniz</div>;
+  }
 
   return (
     <div className={cn(style.section, F.paddingHorizontal)}>
       <Grid.Col cols="grid-cols-12">
-        {loading ? (
+        {!articles ? (
           <HeroSkeleton />
         ) : (
-          articles.map((item) => <ArticleCard {...item} key={item.id} />)
+          articles.data.map((item: ArticleProps) => (
+            <ArticleCard {...item} key={item.id} />
+          ))
         )}
       </Grid.Col>
     </div>
@@ -52,8 +51,10 @@ export const ArticleCard = (props: ArticleProps) => {
 
   return (
     <Grid.Span key={props.id} span={style.alt_card}>
-      <Link href={`/article/${props.id}/${slug}`}>
-        <a
+      <Link href={"/article/[id]/[slug]"} as={`/article/${props.id}/${slug}`}>
+        <motion.a
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           style={
             props.attributes.image.data
               ? {
@@ -68,7 +69,7 @@ export const ArticleCard = (props: ArticleProps) => {
           <div className="relative">
             <div className={style.title}>{props.attributes.title}</div>
           </div>
-        </a>
+        </motion.a>
       </Link>
     </Grid.Span>
   );

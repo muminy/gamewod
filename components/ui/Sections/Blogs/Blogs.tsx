@@ -20,36 +20,31 @@ import style from "./blogs.module.css";
 import moment from "moment";
 import "moment/locale/tr";
 
-// store hook
-import { useAppSelector } from "store/hooks";
+// packages
+import slugify from "slugify";
+import useSWR from "swr";
+
 import { ArticleProps } from "constants/types";
 import { baseURL } from "services/apis";
-import slugify from "slugify";
-import { useEffect, useState } from "react";
-import { handleGetArticles } from "services/article";
-import { get_grid_posts } from "services/filters";
+import { blog_posts } from "services/article/config";
+import { fetcher } from "lib/fetcher";
 import { BlogSkeleton } from "components/Skeleton/Blog";
 
 export default function BlogSection() {
-  const [articles, setArticles] = useState<ArticleProps[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { data: articles, error } = useSWR(blog_posts, fetcher);
 
-  useEffect(() => {
-    handleGetArticles({ query: get_grid_posts() }).then((response) => {
-      // get grid posts
-      setArticles(response.data);
-      setLoading(false);
-    });
-  }, []);
+  if (error) {
+    return <div>Lütfen bunu bize bildiriniz</div>;
+  }
 
   return (
     <section>
       <CustomTitle morable="/">Son Gelişmeler</CustomTitle>
       <Grid.Col gap="xl:gap-x-10 lg:gap-x-6 gap-x-4 gap-y-5">
-        {loading ? (
+        {!articles ? (
           <BlogSkeleton />
         ) : (
-          articles.map((item) => (
+          articles.data.map((item: ArticleProps) => (
             <Grid.Span
               key={item.id}
               span="xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12"
@@ -73,7 +68,7 @@ export const BlogCard: React.FC<ArticleProps> = (props) => {
   });
 
   return (
-    <Link href={`/article/${props.id}/${slug}`}>
+    <Link href={"/article/[id]/[slug]"} as={`/article/${props.id}/${slug}`}>
       <a className={style.blogcard}>
         {articleImage ? (
           <Image
@@ -100,57 +95,10 @@ export const BlogCard: React.FC<ArticleProps> = (props) => {
 
         <h3 className={style.blogtitle}>{props.attributes.title}</h3>
 
-        <Link href="/">
-          <a className="flex items-center text-gray-800 hover:text-black font-medium text-sm">
-            <span className="mr-2">Devamını Oku</span>
-            <Flaticon paths={RightArrowPath} size={14} />
-          </a>
-        </Link>
-
-        {/* <Flexible
-        className={style.blog_action_panel}
-        justifyContent="justify-between"
-      >
-        <button className="flex items-center group">
-          <Flexible
-            alignItem="items-center"
-            justifyContent="justify-center"
-            className={cn(
-              style.blog_icon,
-              "group-hover:bg-gray-100 group-hover:text-gray-700"
-            )}
-          >
-            <Flaticon paths={UpIconPath} size={20} />
-          </Flexible>
-          <span className="font-bold text-sm text-gray-600 ml-2">14</span>
-        </button>
-
-        <button className="flex items-center group">
-          <Flexible
-            alignItem="items-center"
-            justifyContent="justify-center"
-            className={cn(
-              style.blog_icon,
-              "group-hover:bg-gray-100 group-hover:text-gray-700"
-            )}
-          >
-            <Flaticon paths={CommentIconPath} size={20} />
-          </Flexible>
-        </button>
-
-        <button className="flex items-center group">
-          <Flexible
-            alignItem="items-center"
-            justifyContent="justify-center"
-            className={cn(
-              style.blog_icon,
-              "group-hover:bg-gray-100 group-hover:text-gray-700"
-            )}
-          >
-            <Flaticon paths={BookmarkIconPath} size={20} />
-          </Flexible>
-        </button>
-      </Flexible> */}
+        <div className="flex items-center text-gray-800 hover:text-black font-medium text-sm">
+          <span className="mr-2">Devamını Oku</span>
+          <Flaticon paths={RightArrowPath} size={14} />
+        </div>
       </a>
     </Link>
   );
