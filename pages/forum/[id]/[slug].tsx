@@ -13,11 +13,17 @@ import moment from "moment";
 import useSWR from "swr";
 import { motion } from "framer-motion";
 
-import { find_post } from "services/article/config";
-import { handleCreateComment } from "services/comment";
-import { ArticleComment } from "constants/types";
-import { fetcher } from "lib/fetcher";
+import { find_forum, find_post } from "services/article/config";
+import {
+  handleCreateComment,
+  handleCreateForumComment,
+} from "services/comment";
+import { ArticleComment, IComment } from "constants/types";
+import { fetcherV2 } from "lib/fetcher";
 import { NextPageContext } from "next";
+import ForumHead from "components/ui/Sections/Forums/Content/ForumHead";
+import ForumContent from "components/ui/Sections/Forums/Content/ForumContent";
+import ForumComment from "components/ui/Sections/Forums/Content/ForumComment";
 
 export interface Props {
   id: number;
@@ -29,8 +35,8 @@ export interface ServerSideProps {
   };
 }
 
-export default function Article(props: Props) {
-  const { data: article, error } = useSWR(find_post(props.id), fetcher);
+export default function Forum(props: Props) {
+  const { data, error } = useSWR(find_forum(props.id), fetcherV2);
 
   const [open, setOpen] = useState(false);
   const [creating, setCreating] = useState(false);
@@ -42,55 +48,53 @@ export default function Article(props: Props) {
 
   const handleAddComment = () => {
     setCreating(true);
-    handleCreateComment({ comment, name: "as", post: props.id }).then(
+    handleCreateForumComment({ comment, fid: data.forum.id }).then(
       (response) => {
         // get if created comment
-        setComments(comments.concat(response.data));
+        setComments(comments.concat(response.comment));
         setComment("");
         setCreating(false);
+        console.log(response);
       }
     );
   };
 
   useEffect(() => {
-    if (article) {
-      setComments(article.data ? article.data.attributes.comments.data : []);
+    if (data) {
+      setComments(data.forum ? data.forum.comments : []);
     }
-  }, [article]);
-
-  const sortComment = (a: ArticleComment, b: ArticleComment) => {
-    return (
-      moment(b.attributes.createdAt).unix() -
-      moment(a.attributes.createdAt).unix()
-    );
-  };
+  }, [data]);
 
   return (
     <Layout
       metas={
-        article &&
-        article.data && {
-          date: article?.data.attributes.createdAt,
-          description: article?.data.attributes.desc,
+        data &&
+        data.forum && {
+          date: data.forum.createdAt,
+          description: data.forum.content,
           title:
-            `${article?.data.attributes.title} | Gamewod.com` ||
-            "Bulunamadı | Gamewod.com",
+            `${data.forum.title} | Gamewod.com` || "Bulunamadı | Gamewod.com",
         }
       }
     >
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className={classNames(STYLE.paddingHorizontal, "max-w-5xl mx-auto")}
+        className={classNames(
+          STYLE.paddingHorizontal,
+          "max-w-5xl mx-auto py-4"
+        )}
       >
-        {article ? (
-          article.data ? (
+        {data ? (
+          data.forum ? (
             <Fragment>
-              <News.Header
-                date={article.data.attributes.createdAt}
-                title={article.data.attributes.title}
+              <ForumHead
+                date={data.forum.createdAt}
+                title={data.forum.title}
+                user={data.forum.user}
               />
-              <News.Content content={article.data.attributes.content} />
+
+              <ForumContent content={data.forum.content} />
 
               <div className="mb-10 rounded-md">
                 <div className="text-gray-600 text-opacity-70 text-sm font-medium mb-3">
@@ -141,14 +145,8 @@ export default function Article(props: Props) {
                 Yorumlar ({comments.length})
               </div>
 
-              {comments.sort(sortComment).map((item: ArticleComment) => (
-                <News.Comment
-                  key={item.id}
-                  date={item.attributes.createdAt}
-                  id={item.id}
-                  name={item.attributes.name}
-                  comment={item.attributes.comment}
-                />
+              {comments.map((item: IComment) => (
+                <ForumComment key={item.id} {...item} />
               ))}
             </Fragment>
           ) : (
@@ -170,6 +168,6 @@ interface InitialProps extends NextPageContext {
   };
 }
 
-Article.getInitialProps = async (ctx: InitialProps) => {
+Forum.getInitialProps = async (ctx: InitialProps) => {
   return { id: ctx.query.id };
 };

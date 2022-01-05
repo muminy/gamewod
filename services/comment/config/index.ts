@@ -1,1 +1,2 @@
-export const comment = "/comments";
+export const comments = "/comments";
+export const comment = "/comment";

@@ -63,7 +63,7 @@ const Header: React.FC = (props) => {
               <Flaticon paths={BellFilledPaths} size={14} />
             </Button>
 
-            <Link href={"/article/new"}>
+            <Link href={"/forum/new"}>
               <a className="rounded-full flex items-center px-6 h-[40px] hover:border-gray-300 border whitespace-nowrap font-medium text-sm">
                 Forum Aç
               </a>
