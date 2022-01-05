@@ -1,33 +1,35 @@
-import cn from "classnames";
-import Flexible from "components/ui/Flexible";
 import Grid from "components/ui/Grid";
-import style from "../style.module.css";
+import { IComment, IForum } from "constants/types";
 
-export default function Forums() {
+interface Props {
+  forums: IForum[];
+}
+
+export default function Forums(props: Props) {
   return (
     <div className="xl:w-4/6 lg:w-4/6  mx-auto">
       <Grid.Col>
-        <ForumCard />
-        <ForumCard />
-        <ForumCard />
-        <ForumCard />
-        <ForumCard />
+        {props.forums.map((item) => (
+          <ForumCard {...item} key={item.id} />
+        ))}
       </Grid.Col>
     </div>
   );
 }
 
-export const ForumCard = () => {
+interface CardProps {
+  title: string;
+  comments: IComment[];
+}
+
+export const ForumCard = (props: CardProps) => {
   return (
     <Grid.Span
       span="xl:col-span-6 lg:col-span-6 col-span-12"
       className="rounded-md border p-3"
     >
-      <div className="font-medium">
-        İşçilerde 5 sene okul okuyup 1-2 sene KPSS çalışıp memur olabilir. Hatta
-        herkes okusun işçi kesimi ortadan yok edelim.
-      </div>
-      <div className="text-sm text-gray-400">10 Yorum</div>
+      <div className="font-medium">{props.title}</div>
+      <div className="text-sm text-gray-400">{props.comments.length} Yorum</div>
     </Grid.Span>
   );
 };

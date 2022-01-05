@@ -1,5 +1,6 @@
 import style from "./style.module.css";
 import ReactMarkdown from "react-markdown";
+
 export interface Props {
   content: string;
 }

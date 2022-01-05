@@ -63,9 +63,11 @@ const Header: React.FC = (props) => {
               <Flaticon paths={BellFilledPaths} size={14} />
             </Button>
 
-            <button className="rounded-full px-6 h-[40px] hover:border-gray-300 border whitespace-nowrap font-medium text-sm">
-              Forum Aç
-            </button>
+            <Link href={"/article/new"}>
+              <a className="rounded-full flex items-center px-6 h-[40px] hover:border-gray-300 border whitespace-nowrap font-medium text-sm">
+                Forum Aç
+              </a>
+            </Link>
             <Link href={`/user/${user.user?.username}`}>
               <a>
                 <Avatar imageURL="https://cdn.dribbble.com/users/14190/avatars/small/b268425ca6ef849dc03cf2723a44a16f.png?1414231950" />

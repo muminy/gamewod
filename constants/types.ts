@@ -68,6 +68,8 @@ export interface IUser {
   createdAt: string;
 }
 
+export interface IVoteComment {}
+
 export interface IComment {
   comment: string;
   createdAt: string;
@@ -77,6 +79,7 @@ export interface IComment {
   user: IUser | null;
   userID: number | null;
   forum: IForum | null;
+  votes: IVoteComment[];
 }
 
 export interface IForum {

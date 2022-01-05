@@ -1,5 +1,6 @@
 import cn from "classnames";
 import Flexible from "components/ui/Flexible";
+import { IComment, IForum } from "constants/types";
 import { useState } from "react";
 import style from "../style.module.css";
 import Comments from "./Comment";
@@ -24,7 +25,12 @@ const tabs = [
   },
 ];
 
-export default function Tabs() {
+interface IProps {
+  forums: IForum[];
+  comments: IComment[];
+}
+
+export default function Tabs(props: IProps) {
   const [selectedTab, setSelectedTab] = useState("topluluk");
 
   return (
@@ -48,8 +54,8 @@ export default function Tabs() {
         ))}
       </Flexible>
 
-      {selectedTab === "topluluk" && <Forums />}
-      {selectedTab === "yorum" && <Comments />}
+      {selectedTab === "topluluk" && <Forums forums={props.forums} />}
+      {selectedTab === "yorum" && <Comments comments={props.comments} />}
     </div>
   );
 }
