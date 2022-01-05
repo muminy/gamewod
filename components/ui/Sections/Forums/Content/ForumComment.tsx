@@ -47,7 +47,7 @@ export default function ForumComment(props: IComment) {
         <div className="text-[14px] mb-3">
           <span className="font-semibold pr-1">@{props.user?.username}</span>{" "}
           {props.comment.split("\n").map((item) => (
-            <span className="inline-block mb-2">{`${item}`}</span>
+            <span key={item} className="inline-block mb-2">{`${item}`}</span>
           ))}
         </div>
 
