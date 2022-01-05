@@ -37,7 +37,7 @@ export default function Article() {
       <div
         className={classNames(
           STYLE.paddingHorizontal,
-          "max-w-5xl mx-auto py-10"
+          "max-w-5xl mx-auto xl:py-10 lg:xl:py-8 py-2"
         )}
       >
         <div className="mb-10">
