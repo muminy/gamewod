@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import Layout from "components/core/Layout";
 import Editor from "components/ui/Editor";
+import STYLE from "constants/style";
 import { IForum } from "constants/types";
 import Link from "next/link";
 import { useState } from "react";
@@ -33,7 +34,12 @@ export default function Article() {
 
   return (
     <Layout>
-      <div className="max-w-3xl mx-auto py-20">
+      <div
+        className={classNames(
+          STYLE.paddingHorizontal,
+          "max-w-5xl mx-auto py-10"
+        )}
+      >
         <div className="mb-10">
           <div className="font-semibold mb-2">Konu Başlığı</div>
           <input

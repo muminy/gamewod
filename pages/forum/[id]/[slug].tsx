@@ -82,7 +82,7 @@ export default function Forum(props: Props) {
         animate={{ opacity: 1 }}
         className={classNames(
           STYLE.paddingHorizontal,
-          "max-w-5xl mx-auto py-4"
+          "max-w-5xl mx-auto py-2"
         )}
       >
         {data ? (
