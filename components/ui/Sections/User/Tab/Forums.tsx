@@ -11,9 +11,16 @@ export default function Forums(props: Props) {
   return (
     <div className="xl:w-4/6 lg:w-4/6  mx-auto">
       <Grid.Col>
-        {props.forums.map((item) => (
-          <ForumCard {...item} key={item.id} />
-        ))}
+        {props.forums.length === 0 ? (
+          <Grid.Span
+            span="col-span-12"
+            className="py-10 text-center bg-gray-100 rounded-md text-gray-600 "
+          >
+            Forum Oluşturmadı
+          </Grid.Span>
+        ) : (
+          props.forums.map((item) => <ForumCard {...item} key={item.id} />)
+        )}
       </Grid.Col>
     </div>
   );

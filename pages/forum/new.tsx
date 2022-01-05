@@ -1,12 +1,23 @@
-import classNames from "classnames";
+import { CancelFilledIconPath } from "constants/flaticons";
+import STYLE from "constants/style";
+
+// **components
 import Layout from "components/core/Layout";
 import Editor from "components/ui/Editor";
-import STYLE from "constants/style";
-import { IForum } from "constants/types";
+import Flaticon from "components/ui/Flaticon";
+import Flexible from "components/ui/Flexible";
+import Select from "components/ui/FormElements/Select";
+
+// ** packages
 import Link from "next/link";
-import { useState } from "react";
-import { handleCreateForum } from "services/forum";
 import slugify from "slugify";
+import classNames from "classnames";
+import { useState } from "react";
+
+import { IForum } from "constants/types";
+import { handleCreateForum } from "services/forum";
+
+const categories = ["CSGO", "Valorant", "PUBG"];
 
 export default function Article() {
   const [title, setTitle] = useState("");
@@ -14,20 +25,19 @@ export default function Article() {
   const [creating, setCreating] = useState(false);
   const [success, setSuccess] = useState<boolean>(false);
   const [forum, setForum] = useState<IForum>();
+  const [category, setCategory] = useState<string[]>([]);
 
   const handleCreate = () => {
     setCreating(true);
-    handleCreateForum({ title, content }).then((response) => {
+    handleCreateForum({ title, content, category }).then((response) => {
       // creating response data
-      console.log("forum created");
-
       if (response.status === 200) {
+        console.log("forum created");
         setSuccess(true);
         setForum(response.forum);
         setContent("");
         setTitle("");
       }
-
       setCreating(false);
     });
   };
@@ -70,6 +80,46 @@ export default function Article() {
             content={content}
             setContent={(con: string) => setContent(con)}
           />
+        </div>
+
+        <div className="mb-10">
+          <div className="font-semibold mb-2">Konu Kategorisi</div>
+
+          <Select
+            className="py-3 px-6 mb-4"
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+              setCategory(category.concat(e.target.value))
+            }
+          >
+            <option selected>Bir Kategori Seçin</option>
+            {categories
+              .filter((cate) => !category.includes(cate))
+              .map((item) => (
+                <option
+                  disabled={category.includes(item)}
+                  value={item}
+                  key={item}
+                  className="disabled:bg-green-500 text-gray-900 py-3"
+                >
+                  {item}
+                </option>
+              ))}
+          </Select>
+
+          <Flexible className="space-x-2">
+            {category.map((item) => (
+              <button
+                onClick={() =>
+                  setCategory(category.filter((cate) => cate !== item))
+                }
+                className="px-3 py-1 text-sm hover:bg-gray-200 duration-200 bg-gray-100 flex items-center space-x-2 rounded-full"
+                key={item}
+              >
+                <span>{item}</span>
+                <Flaticon paths={CancelFilledIconPath} size={14} />
+              </button>
+            ))}
+          </Flexible>
         </div>
 
         <button

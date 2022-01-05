@@ -1,8 +1,5 @@
-import cn from "classnames";
-import Flexible from "components/ui/Flexible";
 import Grid from "components/ui/Grid";
 import { IComment } from "constants/types";
-import style from "../style.module.css";
 
 interface Props {
   comments: IComment[];
@@ -12,9 +9,16 @@ export default function Comments(props: Props) {
   return (
     <div className="xl:w-4/6 lg:w-4/6 mx-auto">
       <Grid.Col>
-        {props.comments.map((item) => (
-          <CommentCard key={item.id} {...item} />
-        ))}
+        {props.comments.length === 0 ? (
+          <Grid.Span
+            span="col-span-12"
+            className="py-10 text-center bg-gray-100 rounded-md text-gray-600 "
+          >
+            Yorum Oluşturmadı
+          </Grid.Span>
+        ) : (
+          props.comments.map((item) => <CommentCard key={item.id} {...item} />)
+        )}
       </Grid.Col>
     </div>
   );
@@ -39,7 +43,9 @@ export const CommentCard = (props: IComment) => {
           <span className="text-gray-900">{props.comment}</span>
         </div>
 
-        <div className="text-sm text-gray-400">{props.votes.length} Upvote</div>
+        <button className="text-sm text-gray-400">
+          {props.votes.length} Upvote
+        </button>
       </div>
     </Grid.Span>
   );

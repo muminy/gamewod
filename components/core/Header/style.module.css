@@ -30,3 +30,25 @@
     transform: translateX(-100px);
   }
 }
+
+.avatarDD {
+  @apply relative;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  min-width: 200px;
+  right: 0;
+  top: 50px;
+  box-shadow: rgba(4, 4, 5, 0.089) 0px 0px 10px 2px;
+  transition: all 0.12s ease-in-out 0s;
+  @apply rounded-md p-2;
+}
+
+.avatarDD:focus-within .dropdown {
+  display: block;
+}
+.dropdown :is(a, button) {
+  @apply w-full hover:bg-gray-100 duration-200 block py-2 rounded-md text-left px-3;
+}

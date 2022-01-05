@@ -18,6 +18,7 @@ import Link from "next/link";
 import ResponsiveMenu from "./ResponsiveMenu";
 import { useAppSelector } from "store/hooks";
 import { HeaderSkeleton } from "components/Skeleton/Header";
+import Dropdown from "./Dropdown";
 
 const Header: React.FC = (props) => {
   const [open, setOpen] = React.useState(false);
@@ -68,11 +69,12 @@ const Header: React.FC = (props) => {
                 Forum Aç
               </a>
             </Link>
-            <Link href={`/user/${user.user?.username}`}>
-              <a>
-                <Avatar imageURL="https://cdn.dribbble.com/users/14190/avatars/small/b268425ca6ef849dc03cf2723a44a16f.png?1414231950" />
-              </a>
-            </Link>
+
+            <button className={style.avatarDD}>
+              <Avatar imageURL="https://cdn.dribbble.com/users/14190/avatars/small/b268425ca6ef849dc03cf2723a44a16f.png?1414231950" />
+
+              <Dropdown />
+            </button>
           </Flexible>
         ) : (
           <Flexible className="xl:flex lg:flex hidden" alignItem="items-center">

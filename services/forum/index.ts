@@ -5,6 +5,7 @@ import { find_forum, forum } from "./config";
 interface Props {
   title: string;
   content: string;
+  category: string[];
 }
 
 export async function handleCreateForum(props: Props) {
@@ -19,4 +20,14 @@ export async function handleCreateForum(props: Props) {
 export async function handleFindForum(props: { id: number }) {
   const find = await ApiV2.get(find_forum(props.id));
   return find.data;
+}
+
+export async function handleDeleteForum(props: { id: number }) {
+  const dforum = await ApiV2.delete(forum, {
+    headers: {
+      Authorization: `Bearer ${getUsertoken()}`,
+    },
+    data: props,
+  });
+  return dforum.data;
 }

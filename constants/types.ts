@@ -68,7 +68,12 @@ export interface IUser {
   createdAt: string;
 }
 
-export interface IVoteComment {}
+export interface IVoteComment {
+  id: number;
+  commentId: number;
+  createdAt: string;
+  userID: number;
+}
 
 export interface IComment {
   comment: string;
