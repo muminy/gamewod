@@ -25,7 +25,7 @@ export default function Editor({ content, setContent }: IProps) {
   };
 
   return (
-    <div className="border rounded-md z-10">
+    <div className="border dark:border-dark-border rounded-md z-10">
       <Toolbar
         preview={preview}
         setPreview={(prev) => setPreview(prev)}

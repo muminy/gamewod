@@ -18,9 +18,9 @@ export default function Modal(props: Props) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.2 }}
-        className="w-full h-screen flex items-center justify-center bg-gray-900 bg-opacity-20 fixed left-0 top-0"
+        className="w-full h-screen flex items-center justify-center dark:bg-gray-400 dark:bg-opacity-20 bg-gray-900 bg-opacity-20 fixed left-0 top-0"
       >
-        <div className="w-1/6 bg-white rounded-md">
+        <div className="w-1/6 dark:bg-black bg-white rounded-md">
           <Flexible
             className="p-4"
             justifyContent="justify-between"
@@ -28,7 +28,7 @@ export default function Modal(props: Props) {
           >
             <div>{props.title || "Modal"}</div>
             <button
-              className="p-2 bg-gray-100 rounded-md text-gray-500 hover:bg-gray-200 hover:text-gray-900 duration-200"
+              className="p-2 bg-gray-100 dark:bg-dark-border dark:hover:text-white rounded-md text-gray-500 hover:bg-gray-200 hover:text-gray-900 duration-200"
               onClick={props.onClose}
             >
               <Flaticon size={16} paths={CancelFilledIconPath} />

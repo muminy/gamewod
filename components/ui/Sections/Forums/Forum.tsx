@@ -26,8 +26,6 @@ export default function Forums() {
     return <div>Bunu bize bildiriniz.</div>;
   }
 
-  console.log(data);
-
   return (
     <section>
       <CustomTitle morable="/">Topluluk</CustomTitle>

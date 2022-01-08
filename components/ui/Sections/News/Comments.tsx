@@ -14,7 +14,7 @@ export interface Props {
 
 export default function Comment(props: Props) {
   return (
-    <Flexible className="w-full mb-2 hover:border-gray-900 duration-300 border-2 border-b-4 border-r-4 shadow-sm rounded-xl p-3">
+    <Flexible className="w-full mb-2 hover:border-gray-900 dark:border-dark-border dark:hover:border-dark-borderlight duration-300 border-2 border-b-4 border-r-4 shadow-sm rounded-xl p-3">
       <div className="flex flex-col items-center">
         <RandomAvatar id={props.id % 8} size={40} />
         {/* <img

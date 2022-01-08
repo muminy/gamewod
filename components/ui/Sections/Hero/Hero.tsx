@@ -31,12 +31,12 @@ export default function Hero() {
   return (
     <div className={cn(style.section, F.paddingHorizontal)}>
       <Grid.Col cols="grid-cols-12">
-        {!articles ? (
-          <HeroSkeleton />
-        ) : (
+        {articles ? (
           articles.data.map((item: ArticleProps) => (
             <ArticleCard {...item} key={item.id} />
           ))
+        ) : (
+          <HeroSkeleton />
         )}
       </Grid.Col>
     </div>

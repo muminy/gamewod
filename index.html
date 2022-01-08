@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <button id="start">Start Time</button>
+      <button id="stop">Stop Time</button>
+      <span id="time">-</span>
+    </div>
+    <script>
+      var timer = null;
+      var lastTimerValue = null;
+      let timerInterval;
+
+      const startBtn = document.getElementById("start");
+      const stopBtn = document.getElementById("stop");
+      const preview = document.getElementById("time");
+
+      const getCurrentDiffTimte = () => {
+        /* ----------|     Çıkarılması gereken zaman    |----------- */
+        if (lastTimerValue) {
+          const diffTime = new Date().getTime() - lastTimerValue;
+          return timer + diffTime;
+        } else {
+          return new Date().getTime();
+        }
+      };
+
+      const getDiff = () => {
+        const now = new Date().getTime();
+        const past = Math.abs(now - timer);
+        return Math.round(past / 1000);
+      };
+
+      const updateTimer = () => {
+        timer = getCurrentDiffTimte();
+        timerInterval = setInterval(() => {
+          preview.innerText = getDiff();
+        }, 1000);
+      };
+
+      const startTimer = () => {
+        console.log("started");
+        updateTimer();
+      };
+
+      const stopTimer = () => {
+        clearInterval(timerInterval);
+        lastTimerValue = new Date().getTime();
+      };
+
+      const main = () => {
+        console.log("1");
+      };
+
+      startBtn.onclick = startTimer;
+      stopBtn.onclick = stopTimer;
+
+      window.addEventListener("load", main);
+    </script>
+  </body>
+</html>

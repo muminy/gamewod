@@ -41,13 +41,18 @@ export default function ForumComment(props: IComment) {
 
   return (
     <Flexible className="space-x-3 mb-3">
-      <div className="min-w-[24px] h-[24px] rounded-full bg-gray-200" />
+      <div className="min-w-[24px] h-[24px] rounded-full dark:bg-dark-border bg-gray-200" />
 
       <div className="">
-        <div className="text-[14px] mb-3">
-          <span className="font-semibold pr-1">@{props.user?.username}</span>{" "}
+        <div className="text-[14px]">
+          <span className="font-semibold pr-1 dark:text-gray-200">
+            @{props.user?.username}
+          </span>{" "}
           {props.comment.split("\n").map((item) => (
-            <span key={item} className="inline-block mb-2">{`${item}`}</span>
+            <span
+              key={item}
+              className="inline-block mb-2 dark:text-gray-300"
+            >{`${item}`}</span>
           ))}
         </div>
 
@@ -55,9 +60,10 @@ export default function ForumComment(props: IComment) {
           <button
             onClick={alreadyVote ? handleUnVote : handleUpVote}
             className={classNames(
-              "text-xs hover:underline hover:text-gray-900 font-medium",
+              "text-xs hover:underline dark:hover:text-gray-100 hover:text-gray-900 font-medium",
               {
-                "text-red-500": alreadyVote,
+                "text-red-500 dark:text-green-400 dark:hover:text-green-500":
+                  alreadyVote,
                 "text-gray-400 ": !alreadyVote,
               }
             )}
@@ -66,7 +72,7 @@ export default function ForumComment(props: IComment) {
           </button>
 
           <Link href={"/"}>
-            <a className="text-xs text-gray-400 hover:underline hover:text-gray-900 font-medium">
+            <a className="text-xs dark:hover:text-red-400 text-gray-400 hover:underline hover:text-gray-900 font-medium">
               Bildir
             </a>
           </Link>

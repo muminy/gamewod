@@ -9,8 +9,6 @@ import { fetcherV2 } from "lib/fetcher";
 import { find_user } from "services/user/config";
 import { ProfileSkeleton } from "components/Skeleton/Profile";
 import NotFound from "components/ui/NotFound";
-import { useAppSelector } from "store/hooks";
-import useCurrentUser from "hooks/useCurrentUser";
 
 interface IProps {
   username: string;
@@ -18,8 +16,6 @@ interface IProps {
 
 const Profile: NextPage<IProps> = (props) => {
   const { data, error } = useSWR(find_user(props.username), fetcherV2);
-
-  // const [currentUser] = useCurrentUser({ username: props.username });
 
   if (error) {
     return <div>Lütfen bunu bize bildirin</div>;

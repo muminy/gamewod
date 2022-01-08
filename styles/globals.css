@@ -6,6 +6,12 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+html.dark {
+  background-color: #000000;
+  min-height: 100vh;
+  width: 100%;
+}
+
 :root {
   --h-padding: 0px 2.5rem;
 }

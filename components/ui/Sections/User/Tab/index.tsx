@@ -36,7 +36,7 @@ export default function Tabs(props: IProps) {
   return (
     <div>
       <Flexible
-        className="border-b space-x-2 mb-4"
+        className="border-b space-x-2 mb-4 dark:border-dark-border"
         justifyContent="justify-center"
       >
         {tabs.map((item) => (

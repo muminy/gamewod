@@ -12,10 +12,13 @@ import Select from "components/ui/FormElements/Select";
 import Link from "next/link";
 import slugify from "slugify";
 import classNames from "classnames";
-import { useState } from "react";
+import React, { useState } from "react";
 
 import { IForum } from "constants/types";
 import { handleCreateForum } from "services/forum";
+import Input from "components/ui/FormElements/Input";
+import { useAppSelector } from "store/hooks";
+import NotFound from "components/ui/NotFound";
 
 const categories = ["CSGO", "Valorant", "PUBG"];
 
@@ -26,6 +29,8 @@ export default function Article() {
   const [success, setSuccess] = useState<boolean>(false);
   const [forum, setForum] = useState<IForum>();
   const [category, setCategory] = useState<string[]>([]);
+
+  const user = useAppSelector((state) => state.user);
 
   const handleCreate = () => {
     setCreating(true);
@@ -42,6 +47,12 @@ export default function Article() {
     });
   };
 
+  if (user.loading) {
+    return <div className="">Yükleniyor</div>;
+  } else if (!user.user) {
+    return <NotFound />;
+  }
+
   return (
     <Layout>
       <div
@@ -52,11 +63,13 @@ export default function Article() {
       >
         <div className="mb-10">
           <div className="font-semibold mb-2">Konu Başlığı</div>
-          <input
+          <Input
             value={title}
-            onChange={(event) => setTitle(event.target.value)}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+              setTitle(event.target.value)
+            }
             placeholder="Sorum size..."
-            className="focus:ring-2 ring-offset-2 mb-2 rounded-md ring-gray-200 border px-3 py-3 outline-none w-full focus:border-gray-200"
+            className="focus:ring-2 dark:focus:ring-0 ring-offset-2 mb-2 rounded-md ring-gray-200 border px-5 py-3 outline-none w-full focus:border-gray-200"
           />
           <p className="text-sm text-gray-500">
             Lütfen argo ve hakaret içeren kelimeler kullanmayınız
@@ -141,7 +154,7 @@ export default function Article() {
         </button>
 
         {forum && (
-          <div className="text-gray-500">
+          <div className="text-gray-500 dark:text-gray-300">
             Konunuz Açıldı, konunuza gitmek için{" "}
             <Link
               href={`/forum/${forum.id}/${slugify(forum.title, {

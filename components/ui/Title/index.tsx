@@ -19,7 +19,7 @@ export default function CustomTitle({ children, morable }: Props) {
 
       {morable && (
         <Link href={morable}>
-          <a className="text-xs font-medium text-gray-400 hover:text-gray-900 duration-300">
+          <a className="text-xs font-medium text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 duration-300">
             Tümünü Gör
           </a>
         </Link>

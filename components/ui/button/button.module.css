@@ -8,6 +8,10 @@
   height: 34px;
 }
 
+:global(.dark) .btn-icon {
+  @apply text-darktext-color hover:border-dark-borderlight hover:text-gray-200 border border-dark-border;
+}
+
 .btn-more {
   @apply text-center w-full flex items-center justify-center py-4 rounded-md bg-gray-100;
 }

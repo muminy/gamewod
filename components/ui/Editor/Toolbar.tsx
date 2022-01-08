@@ -24,19 +24,22 @@ export default function Toolbar(props: Props) {
   const toggleImageLink = () => setOpenImageModal(!openImageModal);
 
   return (
-    <Flexible justifyContent="justify-between" className="border-b p-1">
+    <Flexible
+      justifyContent="justify-between"
+      className="border-b p-1 dark:border-dark-border"
+    >
       <Flexible>
         <button
           onClick={toggleImageLink}
           disabled={props.preview}
-          className="h-[34px] w-[30px] flex justify-center items-center duration-200 rounded-md hover:bg-gray-100 text-gray-600"
+          className="h-[34px] w-[30px] flex justify-center dark:hover:bg-dark-border dark:hover:text-gray-300 items-center duration-200 rounded-md hover:bg-gray-100 text-gray-600"
         >
           <ImageFilledIcon size={14} />
         </button>
         <button
           disabled={props.preview}
           onClick={toggleMLink}
-          className="h-[34px] w-[30px] flex justify-center items-center duration-200 rounded-md hover:bg-gray-100 text-gray-600"
+          className="h-[34px] w-[30px] flex justify-center dark:hover:bg-dark-border dark:hover:text-gray-300 items-center duration-200 rounded-md hover:bg-gray-100 text-gray-600"
         >
           <Flaticon
             paths={LinkFilledIconPath}
@@ -50,9 +53,9 @@ export default function Toolbar(props: Props) {
         <button
           onClick={toggle}
           className={classNames(
-            "h-[34px] font-medium text-sm px-4 duration-200 hover:bg-gray-100 rounded-md text-gray-400",
+            "h-[34px] font-medium text-sm px-4 duration-200 dark:hover:bg-dark-border hover:bg-gray-100 rounded-md text-gray-400",
             {
-              "bg-gray-100 text-gray-900": !props.preview,
+              "bg-gray-100 text-gray-900 dark:bg-dark-border": !props.preview,
             }
           )}
         >
@@ -61,9 +64,9 @@ export default function Toolbar(props: Props) {
         <button
           onClick={toggle}
           className={classNames(
-            "h-[34px] font-medium text-sm px-4 duration-200 hover:bg-gray-100 rounded-md text-gray-400",
+            "h-[34px] font-medium text-sm px-4 duration-200 hover:bg-gray-100 dark:hover:bg-dark-border rounded-md text-gray-400",
             {
-              "bg-gray-100 text-gray-900": props.preview,
+              "bg-gray-100 text-gray-900 dark:bg-dark-border": props.preview,
             }
           )}
         >

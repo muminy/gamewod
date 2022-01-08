@@ -102,7 +102,7 @@ export default function Forum(props: Props) {
                 />
 
                 <div className="mb-10 rounded-md">
-                  <div className="text-gray-600 text-opacity-70 text-sm font-medium mb-3">
+                  <div className="text-gray-600 text-opacity-70 dark:text-gray-500 text-sm font-medium mb-3">
                     Giriş yapmadan hızl bir şekilde yorum yaparak görüşlerinizi
                     bildirebilirsiniz.
                   </div>
@@ -146,7 +146,7 @@ export default function Forum(props: Props) {
                   )}
                 </div>
 
-                <div className="mb-4 font-bold text-sm">
+                <div className="mb-4 font-bold text-sm dark:text-gray-400">
                   Yorumlar ({comments.length})
                 </div>
 

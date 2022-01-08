@@ -3,7 +3,7 @@
 }
 
 .title {
-  @apply font-semibold;
+  @apply font-medium;
 }
 
 .date {
@@ -16,4 +16,12 @@
 
 .fcontent a {
   @apply text-blue-500;
+}
+
+:global(.dark) .forum {
+  @apply bg-dark-border;
+}
+
+:global(.dark) .title {
+  @apply text-gray-300;
 }

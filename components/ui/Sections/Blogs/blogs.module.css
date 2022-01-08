@@ -1,5 +1,5 @@
 .blogtitle {
-  @apply font-bold text-xl text-gray-900 mb-3;
+  @apply font-bold text-xl mb-3 dark:!text-white;
 }
 
 .blogdesc {

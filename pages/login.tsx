@@ -8,13 +8,12 @@ import classNames from "classnames";
 
 import style from "styles/signup.module.css";
 
-import Flexible from "components/ui/Flexible";
 import Link from "next/link";
+import Head from "next/head";
 import { handleUserLogin } from "services/user";
 import { handleAddUser } from "store/actions/user";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
-import Head from "next/head";
 
 const Login: NextPage = () => {
   const [username, setUsername] = useState("");
@@ -31,7 +30,6 @@ const Login: NextPage = () => {
 
     handleUserLogin({ username, password }).then((response) => {
       // check user login
-      console.log(response);
 
       if (response.status === 200) {
         dispatch(handleAddUser(response.user));

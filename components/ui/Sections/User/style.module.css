@@ -17,3 +17,13 @@
 .tabbtn span {
   @apply text-sm ml-2 px-2 py-1 bg-gray-100 rounded-full text-gray-600;
 }
+
+:global(.dark) .tabbtn {
+  @apply disabled:text-gray-700 text-gray-500;
+}
+:global(.dark) .tabbtn span {
+  @apply bg-dark-border text-gray-400;
+}
+:global(.dark) .active-tab {
+  @apply text-gray-200;
+}

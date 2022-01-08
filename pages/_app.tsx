@@ -5,6 +5,7 @@ import type { AppProps } from "next/app";
 import { FunctionComponent, useEffect, ReactNode } from "react";
 
 import { Provider, useDispatch } from "react-redux";
+import { ThemeProvider } from "next-themes";
 import store from "store";
 import getUsertoken from "helpers/usertoken";
 import { verify } from "helpers/jwt";
@@ -13,11 +14,13 @@ import { handleAddUser } from "store/actions/user";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Provider store={store}>
-      <ProvideUser>
-        <Component {...pageProps} />
-      </ProvideUser>
-    </Provider>
+    <ThemeProvider attribute="class">
+      <Provider store={store}>
+        <ProvideUser>
+          <Component {...pageProps} />
+        </ProvideUser>
+      </Provider>
+    </ThemeProvider>
   );
 }
 

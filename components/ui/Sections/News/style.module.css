@@ -31,12 +31,24 @@
   object-fit: cover;
   height: 350px;
   margin: 25px auto;
-  border-radius: 20px;
-  border: 2px;
-  border-bottom: 5px;
-  border-right: 5px;
   border-style: solid;
-  @apply border-gray-300;
+  @apply border-gray-300 rounded-xl;
+}
+
+:global(.dark) .content img {
+  @apply border-dark-border;
+}
+
+:global(.dark) .content p {
+  @apply text-gray-300;
+}
+
+:global(.dark) .content :is(h1, h2, h3, h4) {
+  @apply text-gray-100;
+}
+
+:global(.dark) .title {
+  @apply text-gray-100;
 }
 
 .content p {

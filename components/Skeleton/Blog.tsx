@@ -38,23 +38,23 @@ export const BlogCardSkeleton = () => {
     <div>
       <div
         className={classNames(
-          "bg-gray-200 mb-2 animate-pulse w-full h-[220px] rounded-md"
+          "bg-gray-200 mb-2 dark:bg-dark-border animate-pulse w-full h-[220px] rounded-md"
         )}
       />
       <div
         className={classNames(
-          "bg-gray-200 mb-4 animate-pulse w-20 h-2 rounded-md"
+          "bg-gray-200 mb-4 dark:bg-dark-border animate-pulse w-20 h-2 rounded-md"
         )}
       />
 
       <div
         className={classNames(
-          "bg-gray-200 mb-2 animate-pulse w-full h-4 rounded-md"
+          "bg-gray-200 mb-2 dark:bg-dark-border animate-pulse w-full h-4 rounded-md"
         )}
       />
       <div
         className={classNames(
-          "bg-gray-200 mb-2 animate-pulse w-2/4 h-4 rounded-md"
+          "bg-gray-200 mb-2 dark:bg-dark-border animate-pulse w-2/4 h-4 rounded-md"
         )}
       />
     </div>

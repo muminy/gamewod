@@ -41,9 +41,7 @@ export default function BlogSection() {
     <section>
       <CustomTitle morable="/">Son Gelişmeler</CustomTitle>
       <Grid.Col gap="xl:gap-x-10 lg:gap-x-6 gap-x-4 gap-y-5">
-        {!articles ? (
-          <BlogSkeleton />
-        ) : (
+        {articles ? (
           articles.data.map((item: ArticleProps) => (
             <Grid.Span
               key={item.id}
@@ -52,6 +50,8 @@ export default function BlogSection() {
               <BlogCard {...item} />
             </Grid.Span>
           ))
+        ) : (
+          <BlogSkeleton />
         )}
       </Grid.Col>
     </section>
@@ -95,7 +95,7 @@ export const BlogCard: React.FC<ArticleProps> = (props) => {
 
         <h3 className={style.blogtitle}>{props.attributes.title}</h3>
 
-        <div className="flex items-center text-gray-800 hover:text-black font-medium text-sm">
+        <div className="flex items-center dark:hover:text-white dark:text-gray-400 duration-200 text-gray-500 hover:text-gray-900 font-medium text-sm">
           <span className="mr-2">Devamını Oku</span>
           <Flaticon paths={RightArrowPath} size={14} />
         </div>

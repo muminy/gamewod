@@ -41,7 +41,7 @@ export const ForumCard = (props: CardProps) => {
   return (
     <Grid.Span
       span="xl:col-span-6 lg:col-span-6 col-span-12"
-      className="rounded-md border p-3"
+      className="rounded-md border p-3 dark:border-dark-border"
     >
       <Link href={`/forum/${props.id}/${slug}`}>
         <a className="block">

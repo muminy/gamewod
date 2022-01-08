@@ -93,7 +93,7 @@ export default function Article(props: Props) {
               <News.Content content={article.data.attributes.content} />
 
               <div className="mb-10 rounded-md">
-                <div className="text-gray-600 text-opacity-70 text-sm font-medium mb-3">
+                <div className="text-gray-600 dark:text-gray-500 text-opacity-70 text-sm font-medium mb-3">
                   Giriş yapmadan hızl bir şekilde yorum yaparak görüşlerinizi
                   bildirebilirsiniz.
                 </div>
@@ -104,7 +104,7 @@ export default function Article(props: Props) {
                       rows={4}
                       value={comment}
                       onChange={(e) => setComment(e.target.value)}
-                      className="rounded-md w-full border-2 resize-none px-3 py-3 text-sm"
+                      className="rounded-md w-full border-2 resize-none px-3 py-3 text-sm dark:bg-transparent dark:border-dark-border dark:outline-black dark:focus:border-dark-borderlight"
                       placeholder="Yorum içeriği"
                     />
 
@@ -114,14 +114,14 @@ export default function Article(props: Props) {
                     >
                       <button
                         onClick={handleAddComment}
-                        className="text-sm font-medium rounded-md bg-[#f3effd] px-3 py-1.5"
+                        className="text-sm font-medium rounded-md bg-[#f3effd] dark:hover:bg-opacity-80 dark:bg-dark-border dark:text-gray-400 px-3 py-1.5"
                       >
                         {creating ? "Yorum yapılıyor..." : "Yorum yap"}
                       </button>
 
                       <button
                         onClick={toggle}
-                        className="text-sm text-gray-500 font-medium rounded-md block bg-[#f5f5f5] px-3 py-1.5"
+                        className="text-sm text-gray-500 rounded-md block dark:hover:bg-opacity-20 dark:bg-red-100 dark:bg-opacity-25 dark:text-red-200 bg-[#f5f5f5] px-3 py-1.5"
                       >
                         İptal
                       </button>
