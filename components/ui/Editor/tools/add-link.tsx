@@ -19,7 +19,7 @@ export default function AddLink(props: Props) {
           setUrl(e.target.value)
         }
         value={url}
-        classes="text-sm py-2 px-5 mb-4"
+        className="text-sm py-2 px-5 mb-4"
         placeholder="Url.com"
       />
 

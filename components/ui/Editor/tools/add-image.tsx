@@ -18,7 +18,7 @@ export default function AddImage(props: Props) {
           setUrl(e.target.value)
         }
         value={url}
-        classes="text-sm py-2 px-5 mb-4"
+        className="text-sm py-2 px-5 mb-4"
         placeholder="Url.com/defaul.png"
       />
 
