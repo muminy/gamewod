@@ -23,6 +23,10 @@
   @apply focus:bg-white focus:ring-pink-100 focus:ring-4 focus:border focus:border-pink-600;
 }
 
+:global(.dark) .form_input {
+  @apply ring-dark-borderlight focus:border-dark-border bg-transparent border-dark-border;
+}
+
 .form_area {
   @apply flex flex-col px-10 overflow-y-auto float-right;
   @apply xl:justify-center lg:justify-center justify-start xl:py-0 lg:py-0 py-4;
@@ -41,4 +45,12 @@
   backdrop-filter: blur(24px);
 
   @apply xl:top-4 lg:top-4 top-2.5;
+}
+
+.label {
+  @apply font-semibold text-gray-700 block text-sm mb-2;
+}
+
+:global(.dark) .label {
+  @apply text-gray-400;
 }

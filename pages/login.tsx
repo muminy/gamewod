@@ -62,20 +62,19 @@ const Login: NextPage = () => {
 
       <div className={style.form_area}>
         <div className="xl:w-1/4 lg:w-2/4 w-full mx-auto">
-          <div className="font-bold text-gray-700 mb-1">Giriş yap</div>
+          <div className="font-bold text-gray-700 dark:text-gray-100 mb-1">
+            Giriş yap
+          </div>
 
-          <div className="text-3xl font-black text-gray-700 mb-3">
+          <div className="text-3xl font-black text-gray-700 dark:text-gray-100 mb-3">
             Hoşgeldiniz!
           </div>
 
-          <div className="font-medium text-gray-600 mb-10">
+          <div className="font-medium text-gray-600 dark:text-gray-400  mb-10">
             Hesabınıza güvenli bir şekilde giriş yapabilirsiniz
           </div>
 
-          <label
-            htmlFor="username"
-            className="font-semibold text-sm mb-1 block"
-          >
+          <label htmlFor="username" className={style.label}>
             Kullanıcı adı
           </label>
           <input
@@ -85,10 +84,7 @@ const Login: NextPage = () => {
             className={classNames(style.form_input, "mb-4")}
           />
 
-          <label
-            htmlFor="password"
-            className="font-semibold block text-sm mb-1"
-          >
+          <label htmlFor="password" className={style.label}>
             Şifre
           </label>
           <input
@@ -113,7 +109,7 @@ const Login: NextPage = () => {
 
           <button
             onClick={handleLogin}
-            className="mt-4 px-4 mb-10 rounded-md py-1.5 text-sm font-medium bg-gray-900 text-gray-100"
+            className="mt-4 px-4 mb-10 rounded-md py-1.5 text-sm font-medium dark:bg-dark-border bg-gray-900 text-gray-100"
           >
             {loading ? "Giriş Yapılıyor..." : "Giriş Yap"}
           </button>

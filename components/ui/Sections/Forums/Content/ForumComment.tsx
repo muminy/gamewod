@@ -45,9 +45,11 @@ export default function ForumComment(props: IComment) {
 
       <div className="">
         <div className="text-[14px]">
-          <span className="font-semibold pr-1 dark:text-gray-200">
-            @{props.user?.username}
-          </span>{" "}
+          <Link href={`/user/${props.user?.username}`}>
+            <a className="font-semibold pr-1 dark:text-gray-200">
+              @{props.user?.username}
+            </a>
+          </Link>{" "}
           {props.comment.split("\n").map((item) => (
             <span
               key={item}

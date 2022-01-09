@@ -97,3 +97,7 @@ export interface IForum {
   user: IUser | null;
   userId: number | null;
 }
+
+export interface IToggle {
+  toggle: () => void;
+}

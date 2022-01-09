@@ -33,12 +33,12 @@ export default function Dropdown() {
         <a className="font-medium text-sm">Ayarlar</a>
       </Link>
 
-      <button
+      <div
         onClick={onLogout}
-        className="font-medium text-sm text-red-500 hover:!bg-red-50"
+        className="font-medium text-left py-1.5 rounded-md text-sm text-red-500 hover:!bg-red-50"
       >
         Çıkış Yap
-      </button>
+      </div>
     </motion.div>
   );
 }

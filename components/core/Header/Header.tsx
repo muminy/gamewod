@@ -31,7 +31,7 @@ const Header: React.FC = (props) => {
 
   return (
     <div className={classNames(style.header, F.paddingHorizontal)}>
-      <div className="grid grid-cols-12 w-full space-x-4">
+      <div className="xl:grid lg:grid flex grid-cols-12 w-full xl:space-x-4 lg:space-x-4 space-x-2">
         <Flexible className="mr-auto col-span-3" alignItem="items-center">
           <Link href="/">
             <a className="font-bold text-gray-900 text-2xl">
@@ -47,7 +47,7 @@ const Header: React.FC = (props) => {
         ) : user.user ? (
           <Flexible
             alignItem="items-center"
-            className="space-x-2 ml-2 col-span-3 justify-end"
+            className="space-x-2 ml-2 xl:col-span-3 lg:col-span-3 col-span-9 justify-end"
           >
             {" "}
             <Button
@@ -79,21 +79,19 @@ const Header: React.FC = (props) => {
             </Link>
             <button className={style.avatarDD}>
               <Avatar imageURL="https://cdn.dribbble.com/users/14190/avatars/small/b268425ca6ef849dc03cf2723a44a16f.png?1414231950" />
-
               <Dropdown />
             </button>
           </Flexible>
         ) : (
           <Flexible
-            className="xl:flex lg:flex hidden space-x-3 col-span-3 "
+            className="xl:flex lg:flex hidden space-x-3 col-span-3 justify-end"
             alignItem="items-center"
           >
-            <span className="w-[1px] h-6 bg-gray-200 block" />
             <Link href="/login">
               <a className="whitespace-nowrap text-sm font-medium">Giriş yap</a>
             </Link>
             <Link href="/signup">
-              <a className="hidden hover:bg-opacity-90 xl:block lg:block bg-darkcolor text-white whitespace-nowrap px-4 text-sm font-medium py-2 rounded-md">
+              <a className="hidden hover:bg-opacity-90 xl:block lg:block dark:bg-dark-border bg-darkcolor text-white whitespace-nowrap px-4 text-sm font-medium py-2 rounded-md">
                 Kayıt ol
               </a>
             </Link>

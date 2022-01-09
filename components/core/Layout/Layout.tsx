@@ -18,6 +18,7 @@ type Props = {
   children?: React.ReactNode;
   metas?: MetaType;
   className?: string;
+  disableContainer?: boolean;
 };
 
 const Layout: React.FC<Props> = (props) => {
@@ -60,7 +61,15 @@ const Layout: React.FC<Props> = (props) => {
 
       <Header />
 
-      <main className="min-h-screen 2xl:max-w-[1700px] mx-auto dark:bg-black mb-20">
+      <main
+        className={classNames(
+          "min-h-screen 2xl:max-w-[1700px] mx-auto dark:bg-black mb-20",
+          props.className,
+          {
+            "2xl:max-w-full": props.disableContainer,
+          }
+        )}
+      >
         {props.children}
       </main>
 

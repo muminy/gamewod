@@ -4,7 +4,7 @@ import { useState } from "react";
 import Flaticon from "../Flaticon";
 import Flexible from "../Flexible";
 import ImageFilledIcon from "../icons/Image";
-import Modal from "../Modal";
+import Modal from "../EditorModal";
 import AddImage from "./tools/add-image";
 import AddLink from "./tools/add-link";
 

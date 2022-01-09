@@ -24,6 +24,7 @@ import { NextPageContext } from "next";
 import ForumHead from "components/ui/Sections/Forums/Content/ForumHead";
 import ForumContent from "components/ui/Sections/Forums/Content/ForumContent";
 import ForumComment from "components/ui/Sections/Forums/Content/ForumComment";
+import MakeComment from "components/ui/MakeComment";
 
 export interface Props {
   id: number;
@@ -42,7 +43,7 @@ export default function Forum(props: Props) {
   const [creating, setCreating] = useState(false);
 
   const [comment, setComment] = useState("");
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState<IComment[]>([]);
 
   const toggle = () => setOpen(!open);
 
@@ -101,52 +102,14 @@ export default function Forum(props: Props) {
                   content={data.forum.content}
                 />
 
-                <div className="mb-10 rounded-md">
-                  <div className="text-gray-600 text-opacity-70 dark:text-gray-500 text-sm font-medium mb-3">
-                    Giriş yapmadan hızl bir şekilde yorum yaparak görüşlerinizi
-                    bildirebilirsiniz.
-                  </div>
+                <MakeComment
+                  fid={data.forum.id}
+                  setComments={(comment: IComment) =>
+                    setComments(comments.concat(comment))
+                  }
+                />
 
-                  {open ? (
-                    <div className="relative">
-                      <textarea
-                        rows={4}
-                        value={comment}
-                        onChange={(e) => setComment(e.target.value)}
-                        className="rounded-md w-full border-2 resize-none px-3 py-3 text-sm"
-                        placeholder="Yorum içeriği"
-                      />
-
-                      <Flexible
-                        justifyContent="justify-end"
-                        className="space-x-2"
-                      >
-                        <button
-                          onClick={handleAddComment}
-                          className="text-sm font-medium rounded-md bg-[#f3effd] px-3 py-1.5"
-                        >
-                          {creating ? "Yorum yapılıyor..." : "Yorum yap"}
-                        </button>
-
-                        <button
-                          onClick={toggle}
-                          className="text-sm text-gray-500 font-medium rounded-md block bg-[#f5f5f5] px-3 py-1.5"
-                        >
-                          İptal
-                        </button>
-                      </Flexible>
-                    </div>
-                  ) : (
-                    <button
-                      onClick={toggle}
-                      className="bg-[#4834d4] font-semibold text-sm text-white rounded-md py-3 w-full mb-2"
-                    >
-                      Yorum Yap
-                    </button>
-                  )}
-                </div>
-
-                <div className="mb-4 font-bold text-sm dark:text-gray-400">
+                <div className="mb-4 font-semibold text-sm text-gray-600 dark:text-gray-400">
                   Yorumlar ({comments.length})
                 </div>
 

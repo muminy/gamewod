@@ -6,6 +6,7 @@ import db from "./db.json";
 
 // ** components
 import CustomTitle from "components/ui/Title";
+import ErrorFound from "components/ui/Error/ErrorFound";
 
 // ** moment js for date locale
 import moment from "moment";
@@ -18,21 +19,22 @@ import { fetcherV2 } from "lib/fetcher";
 import { IForum } from "constants/types";
 import Link from "next/link";
 import slugify from "slugify";
+import { ForumCardSkeleton } from "components/Skeleton/Forum";
 
 export default function Forums() {
   const { data, error } = useSWR(forum, fetcherV2);
 
   if (error) {
-    return <div>Bunu bize bildiriniz.</div>;
+    return <ErrorFound />;
   }
 
   return (
     <section>
-      <CustomTitle morable="/">Topluluk</CustomTitle>
+      <CustomTitle>Topluluk</CustomTitle>
       {data ? (
         data.forums.map((item: IForum) => <ForumCard key={item.id} {...item} />)
       ) : (
-        <div>uuw</div>
+        <ForumCardSkeleton />
       )}
     </section>
   );

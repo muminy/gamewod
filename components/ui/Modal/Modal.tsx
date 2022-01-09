@@ -1,41 +1,45 @@
-import { CancelFilledIconPath } from "constants/flaticons";
+import classNames from "classnames";
 import { motion } from "framer-motion";
+import React, { useEffect } from "react";
 import { ReactNode } from "react-markdown/lib/react-markdown";
-import Flaticon from "../Flaticon";
-import Flexible from "../Flexible";
 
 interface Props {
   open: boolean;
-  onClose: () => void;
-  title?: string;
   component: () => ReactNode;
+  size?: "xl" | "lg" | "md" | "sm";
+  toggle: () => void;
 }
 
 export default function Modal(props: Props) {
-  if (props.open) {
+  const { component, size, open, toggle } = props;
+
+  useEffect(() => {
+    document.getElementById("modal_area");
+    onclick = (e: any) => {
+      if (e.target.id === "modal_area") {
+        toggle();
+      }
+    };
+  }, [open]);
+
+  if (open) {
     return (
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.2 }}
-        className="w-full h-screen flex items-center justify-center dark:bg-gray-400 dark:bg-opacity-20 bg-gray-900 bg-opacity-20 fixed left-0 top-0"
+        id="modal_area"
+        className="w-full h-screen z-50 flex items-center justify-center dark:bg-gray-400 dark:bg-opacity-20 bg-gray-900 bg-opacity-20 fixed left-0 top-0"
       >
-        <div className="w-1/6 dark:bg-black bg-white rounded-md">
-          <Flexible
-            className="p-4"
-            justifyContent="justify-between"
-            alignItem="items-center"
-          >
-            <div>{props.title || "Modal"}</div>
-            <button
-              className="p-2 bg-gray-100 dark:bg-dark-border dark:hover:text-white rounded-md text-gray-500 hover:bg-gray-200 hover:text-gray-900 duration-200"
-              onClick={props.onClose}
-            >
-              <Flaticon size={16} paths={CancelFilledIconPath} />
-            </button>
-          </Flexible>
-
-          <div className="p-4">{props.component()}</div>
+        <div
+          className={classNames("dark:bg-black bg-white rounded-md", {
+            "w-8/12": size === "xl",
+            "w-6/12": size === "lg",
+            "w-4/12": size === "md",
+            "w-2/12": size === "sm",
+          })}
+        >
+          {component()}
         </div>
       </motion.div>
     );

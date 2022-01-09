@@ -39,7 +39,7 @@ export default function BlogSection() {
 
   return (
     <section>
-      <CustomTitle morable="/">Son Gelişmeler</CustomTitle>
+      <CustomTitle>Son Gelişmeler</CustomTitle>
       <Grid.Col gap="xl:gap-x-10 lg:gap-x-6 gap-x-4 gap-y-5">
         {articles ? (
           articles.data.map((item: ArticleProps) => (

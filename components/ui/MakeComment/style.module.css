@@ -1,0 +1,7 @@
+.button {
+  @apply bg-[#4834d4] font-semibold text-sm text-white rounded-md py-3 w-full mb-2;
+}
+
+.title {
+  @apply text-gray-600 text-opacity-70 dark:text-gray-500 text-sm font-medium mb-3;
+}

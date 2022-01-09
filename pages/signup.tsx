@@ -14,6 +14,7 @@ import {
 import { useDispatch } from "react-redux";
 import { handleAddUser } from "store/actions/user";
 import { useRouter } from "next/router";
+import { validateEmail } from "helpers/utils";
 
 type IAvailable = "LOADED" | "LOADING" | "EXIST" | "AVAILABLE";
 
@@ -109,18 +110,17 @@ const Signup: NextPage = () => {
 
       <div className={style.form_area}>
         <div className="xl:w-2/4 lg:w-3/4 w-full mx-auto">
-          <div className="text-3xl font-black text-gray-700 mb-3">Kayıt ol</div>
+          <div className="text-3xl font-black dark:text-gray-100 text-gray-700 mb-3">
+            Kayıt ol
+          </div>
 
-          <div className="font-medium text-gray-600 mb-10">
+          <div className="font-medium text-gray-600 dark:text-gray-400 mb-10">
             Güvenli bir şekilde kayıt olup topluluğumuza katılabilirsiniz.
           </div>
 
           <div className="flex xl:space-x-4 lg:space-x-4 space-x-2 mb-3">
             <div className={style.form_container}>
-              <label
-                htmlFor="name"
-                className="font-semibold text-sm mb-1 block"
-              >
+              <label htmlFor="name" className={style.label}>
                 İsim
               </label>
               <input
@@ -132,10 +132,7 @@ const Signup: NextPage = () => {
             </div>
 
             <div className={style.form_container}>
-              <label
-                htmlFor="surname"
-                className="font-semibold text-sm mb-1 block"
-              >
+              <label htmlFor="surname" className={style.label}>
                 Kullanıcı adı
               </label>
               <input
@@ -168,7 +165,7 @@ const Signup: NextPage = () => {
           </div>
 
           <div className="w-full mb-3">
-            <label htmlFor="mail" className="font-semibold text-sm mb-1 block">
+            <label htmlFor="mail" className={style.label}>
               E-Mail
             </label>
             <input
@@ -181,9 +178,15 @@ const Signup: NextPage = () => {
             {availableEmail === "LOADING" ? (
               <span>Kullanıcı kontrol ediliyor...</span>
             ) : availableEmail === "AVAILABLE" ? (
-              <span className="text-sm text-green-500 font-medium">
-                Bu kullanıcı Email kullanılabilir
-              </span>
+              validateEmail(email) ? (
+                <span className="text-sm text-green-500 font-medium">
+                  Bu kullanıcı Email kullanılabilir
+                </span>
+              ) : (
+                <span className="text-sm text-red-500 font-medium">
+                  Email Adresi girin
+                </span>
+              )
             ) : (
               availableEmail === "EXIST" && (
                 <span className="text-sm text-red-500 font-medium">
@@ -195,10 +198,7 @@ const Signup: NextPage = () => {
 
           <div className="flex xl:space-x-4 lg:space-x-4 space-x-2 mb-3">
             <div className={style.form_container}>
-              <label
-                htmlFor="password"
-                className="font-semibold text-sm mb-1 block"
-              >
+              <label htmlFor="password" className={style.label}>
                 Password
               </label>
               <input
@@ -211,10 +211,7 @@ const Signup: NextPage = () => {
             </div>
 
             <div className={style.form_container}>
-              <label
-                htmlFor="repassword"
-                className="font-semibold text-sm mb-1 block"
-              >
+              <label htmlFor="repassword" className={style.label}>
                 Re-Password
               </label>
               <input
@@ -244,15 +241,17 @@ const Signup: NextPage = () => {
             disabled={
               !availableUsername || !availableEmail || !username.match(match)
             }
-            className="mt-4 px-4 mb-10 disabled:bg-opacity-75 rounded-md py-1.5 text-sm font-medium bg-gray-900 text-gray-100"
+            className="mt-4 px-4 dark:bg-dark-border mb-10 disabled:bg-opacity-75 rounded-md py-1.5 text-sm font-medium bg-gray-900 text-gray-100"
           >
             {loading ? "Kayıt olunuyor.." : "Kayıt ol"}
           </button>
 
-          <div className="font-medium">
+          <div className="text-gray-700 dark:text-gray-300">
             Hesabın var mı?
             <Link href="/login">
-              <a className="text-blue-600 ml-1">Giriş yap</a>
+              <a className="text-blue-600 dark:text-green-400 ml-1">
+                Giriş yap
+              </a>
             </Link>
           </div>
         </div>

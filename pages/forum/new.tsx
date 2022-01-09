@@ -27,12 +27,19 @@ export default function Article() {
   const [content, setContent] = useState("");
   const [creating, setCreating] = useState(false);
   const [success, setSuccess] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const [forum, setForum] = useState<IForum>();
   const [category, setCategory] = useState<string[]>([]);
 
   const user = useAppSelector((state) => state.user);
 
   const handleCreate = () => {
+    if (!title || !content) {
+      setErrorMessage("Lütfen zorunlu alanları doldurunuz");
+      setTimeout(() => setErrorMessage(""), 2000);
+      return;
+    }
+
     setCreating(true);
     handleCreateForum({ title, content, category }).then((response) => {
       // creating response data
@@ -61,15 +68,20 @@ export default function Article() {
           "max-w-5xl mx-auto xl:py-10 lg:py-8 py-0"
         )}
       >
+        {errorMessage && (
+          <div className="text-red-400 mb-4 font-medium text-sm">
+            {errorMessage}
+          </div>
+        )}
         <div className="mb-10">
-          <div className="font-semibold mb-2">Konu Başlığı</div>
+          <div className="font-semibold mb-2">Konu Başlığı*</div>
           <Input
             value={title}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               setTitle(event.target.value)
             }
             placeholder="Sorum size..."
-            className="focus:ring-2 dark:focus:ring-0 ring-offset-2 mb-2 rounded-md ring-gray-200 border px-5 py-3 outline-none w-full focus:border-gray-200"
+            className="focus:ring-2 dark:focus:ring-0 ring-offset-2 mb-2 rounded-md ring-gray-200 border !px-5 py-3 outline-none w-full focus:border-gray-200"
           />
           <p className="text-sm text-gray-500">
             Lütfen argo ve hakaret içeren kelimeler kullanmayınız
@@ -77,7 +89,7 @@ export default function Article() {
         </div>
 
         <div className="mb-10">
-          <div className="font-semibold">Konu İçeriği</div>
+          <div className="font-semibold">Konu İçeriği*</div>
           <div className="text-sm mb-2 text-gray-500">
             Konu içeriği{" "}
             <a
@@ -125,7 +137,7 @@ export default function Article() {
                 onClick={() =>
                   setCategory(category.filter((cate) => cate !== item))
                 }
-                className="px-3 py-1 text-sm hover:bg-gray-200 duration-200 bg-gray-100 flex items-center space-x-2 rounded-full"
+                className="px-3 py-1 text-sm dark:bg-dark-border hover:bg-gray-200 duration-200 bg-gray-100 flex items-center space-x-2 rounded-full"
                 key={item}
               >
                 <span>{item}</span>

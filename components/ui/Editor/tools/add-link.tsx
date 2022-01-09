@@ -1,5 +1,5 @@
 import Input from "components/ui/FormElements/Input";
-import Modal from "components/ui/Modal";
+import Modal from "components/ui/EditorModal";
 import React, { useState } from "react";
 
 interface Props {
