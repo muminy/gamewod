@@ -34,7 +34,7 @@ const Header: React.FC = (props) => {
       <div className="xl:grid lg:grid flex grid-cols-12 w-full xl:space-x-4 lg:space-x-4 space-x-2">
         <Flexible className="mr-auto col-span-3" alignItem="items-center">
           <Link href="/">
-            <a className="font-bold text-gray-900 text-2xl">
+            <a>
               <Logo size={18} />
             </a>
           </Link>
@@ -73,7 +73,7 @@ const Header: React.FC = (props) => {
               <Flaticon paths={BellFilledPaths} size={14} />
             </Button>
             <Link href={"/forum/new"}>
-              <a className="rounded-full flex items-center px-6 h-[40px] dark:border-dark-border dark:hover:bg-dark-borderlight !dark:text-darktext-color hover:border-gray-300 border whitespace-nowrap font-medium text-sm">
+              <a className="rounded-full flex items-center px-6 h-[40px] dark:border-dark-border dark:hover:bg-white dark:hover:bg-opacity-10 !dark:text-darktext-color hover:border-gray-300 border whitespace-nowrap font-medium text-sm">
                 Forum Aç
               </a>
             </Link>

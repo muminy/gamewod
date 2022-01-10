@@ -30,7 +30,7 @@ export default function ForumContent(props: IProps) {
 
       <Flexible className="space-x-3">
         <Link href={"/"}>
-          <a className="text-sm font-medium hover:underline text-gray-400">
+          <a className="text-sm font-medium hover:underline dark:hover:text-gray-400 dark:text-gray-500 text-gray-400">
             Bildir
           </a>
         </Link>
@@ -38,7 +38,7 @@ export default function ForumContent(props: IProps) {
         {currentUser && (
           <>
             <Link href={"/"}>
-              <a className="text-sm font-medium hover:underline text-gray-400">
+              <a className="text-sm font-medium hover:underline dark:hover:text-gray-400 dark:text-gray-500 text-gray-400">
                 Düzenle
               </a>
             </Link>

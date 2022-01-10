@@ -25,3 +25,7 @@
 :global(.dark) .title {
   @apply text-gray-300;
 }
+
+:global(.dark) .fcontent {
+  color: #ffffff;
+}

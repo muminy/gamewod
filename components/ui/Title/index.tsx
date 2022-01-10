@@ -13,7 +13,7 @@ export default function CustomTitle({ children, morable }: Props) {
       justifyContent="justify-between"
       alignItem="items-center"
     >
-      <h4 className="font-bold text-xl text-black text-opacity-90">
+      <h4 className="font-bold text-xl dark:text-gray-300 text-black text-opacity-90">
         {children}
       </h4>
 

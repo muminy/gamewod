@@ -72,8 +72,8 @@ export const BlogCard: React.FC<ArticleProps> = (props) => {
       <a className={style.blogcard}>
         {articleImage ? (
           <Image
-            width={500}
-            height={350}
+            width={900}
+            height={550}
             blurDataURL={blurDataURL}
             placeholder="blur"
             className={style.blogImage}
@@ -81,8 +81,8 @@ export const BlogCard: React.FC<ArticleProps> = (props) => {
           />
         ) : (
           <Image
-            width={500}
-            height={350}
+            width={900}
+            height={550}
             blurDataURL={blurDataURL}
             placeholder="blur"
             className={style.blogImage}

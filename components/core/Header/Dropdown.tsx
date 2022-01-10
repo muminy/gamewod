@@ -35,7 +35,7 @@ export default function Dropdown() {
 
       <div
         onClick={onLogout}
-        className="font-medium text-left py-1.5 rounded-md text-sm text-red-500 hover:!bg-red-50"
+        className="font-medium text-left py-1.5 rounded-md text-sm dark:hover:!bg-opacity-10 text-red-500 hover:!bg-red-50"
       >
         Çıkış Yap
       </div>

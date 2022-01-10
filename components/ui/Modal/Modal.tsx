@@ -33,10 +33,10 @@ export default function Modal(props: Props) {
       >
         <div
           className={classNames("dark:bg-black bg-white rounded-md", {
-            "w-8/12": size === "xl",
-            "w-6/12": size === "lg",
-            "w-4/12": size === "md",
-            "w-2/12": size === "sm",
+            "xl:w-8/12 lg:w-11/12 w-full": size === "xl",
+            "xl:w-6/12 lg:w-10/12 w-full": size === "lg",
+            "xl:w-4/12 lg:w-8/12 w-full": size === "md",
+            "xl:w-2/12 lg:w-6/12 w-full": size === "sm",
           })}
         >
           {component()}

@@ -19,9 +19,9 @@ export default function ForumHead(props: IProps) {
           <div className="w-10 h-10 dark:bg-dark-border bg-gray-200 rounded-full" />
 
           <div className="font-medium">
-            <div className="dark:text-gray-400">{props.user.name}</div>
+            <div className="dark:text-gray-300">{props.user.name}</div>
 
-            <div className="text-xs text-gray-600">
+            <div className="text-xs dark:text-gray-400 text-gray-600">
               {moment(props.date).locale("tr").format("DD MMMM, y")}
             </div>
           </div>

@@ -2,29 +2,24 @@ import { Fragment, useEffect, useState } from "react";
 
 // components
 import Layout from "components/core/Layout";
-import Flexible from "components/ui/Flexible";
-import News from "components/ui/Sections/News";
 import STYLE from "constants/style";
 import { ArticleSkeleton } from "components/Skeleton/Article";
 
 // ** packages
 import classNames from "classnames";
-import moment from "moment";
 import useSWR from "swr";
 import { motion } from "framer-motion";
 
-import { find_forum, find_post } from "services/article/config";
-import {
-  handleCreateComment,
-  handleCreateForumComment,
-} from "services/comment";
-import { ArticleComment, IComment } from "constants/types";
+import { find_forum } from "services/article/config";
+
+import { IComment } from "constants/types";
 import { fetcherV2 } from "lib/fetcher";
 import { NextPageContext } from "next";
 import ForumHead from "components/ui/Sections/Forums/Content/ForumHead";
 import ForumContent from "components/ui/Sections/Forums/Content/ForumContent";
 import ForumComment from "components/ui/Sections/Forums/Content/ForumComment";
 import MakeComment from "components/ui/MakeComment";
+import ErrorFound from "components/ui/Error/ErrorFound";
 
 export interface Props {
   id: number;
@@ -39,26 +34,11 @@ export interface ServerSideProps {
 export default function Forum(props: Props) {
   const { data, error } = useSWR(find_forum(props.id), fetcherV2);
 
-  const [open, setOpen] = useState(false);
-  const [creating, setCreating] = useState(false);
-
-  const [comment, setComment] = useState("");
   const [comments, setComments] = useState<IComment[]>([]);
 
-  const toggle = () => setOpen(!open);
-
-  const handleAddComment = () => {
-    setCreating(true);
-    handleCreateForumComment({ comment, fid: data.forum.id }).then(
-      (response) => {
-        // get if created comment
-        setComments(comments.concat(response.comment));
-        setComment("");
-        setCreating(false);
-        console.log(response);
-      }
-    );
-  };
+  if (data && error) {
+    return <ErrorFound />;
+  }
 
   useEffect(() => {
     if (data) {

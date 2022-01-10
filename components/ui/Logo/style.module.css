@@ -1,13 +1,15 @@
 .logo {
-  @apply w-10 h-10 p-[2px] rounded-full relative font-semibold text-sm flex items-center justify-center;
+  @apply h-9 p-[3px] rounded-xl relative font-semibold text-sm flex items-center justify-center;
 }
 
 .logo .bg {
   @apply block absolute w-full h-full left-0 top-0;
-  background-color: #8bc6ec;
-  background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
-
+  background-image: linear-gradient(-225deg, #eaccf8 48%, #6654f1 100%);
   border-radius: inherit;
+}
+
+:global(.dark) .logo span:last-child {
+  @apply bg-dark-border bg-opacity-70;
 }
 
 .logo span:last-child {
@@ -15,5 +17,5 @@
   height: 100%;
   background-color: #ffffffa9;
   backdrop-filter: blur(4px);
-  @apply rounded-full flex items-center justify-center text-gray-900 font-black text-opacity-80;
+  @apply rounded-xl flex items-center justify-center font-black;
 }

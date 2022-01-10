@@ -26,10 +26,10 @@ const Home: NextPage = () => {
         {/* <Grid.Span span="2xl:col-span-3 xl:col-span-4 col-span-12">
           <Livescore />
         </Grid.Span> */}
-        <Grid.Span span="2xl:col-span-8 xl:col-span-8 col-span-12">
+        <Grid.Span span="2xl:col-span-8 xl:col-span-8 lg:col-span-8 md:col-span-7 col-span-12">
           <BlogSection />
         </Grid.Span>
-        <Grid.Span span="2xl:col-span-4 xl:col-span-12 col-span-12">
+        <Grid.Span span="2xl:col-span-4 xl:col-span-4 lg:col-span-4 md:col-span-5 col-span-12">
           <Forums />
         </Grid.Span>
       </Grid.Col>

@@ -17,7 +17,7 @@
 }
 
 .blogcard {
-  @apply relative block bg-white;
+  @apply relative block;
 }
 
 .blog_action_panel {

@@ -35,7 +35,7 @@ const ResponsiveMenu: React.FC<MenuProps> = (props) => {
     <Transition.Root show={props.open} as={Fragment}>
       <Dialog
         as="div"
-        className="fixed inset-0 overflow-hidden"
+        className="fixed inset-0 overflow-hidden z-10"
         onClose={props.toggle}
       >
         <div className="absolute inset-0 overflow-hidden">
@@ -70,10 +70,10 @@ const ResponsiveMenu: React.FC<MenuProps> = (props) => {
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
                 >
-                  <div className="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4">
+                  <div className="absolute top-0 left-0 -ml-6 pt-2 pr-2 flex sm:-ml-10 sm:pr-4">
                     <button
                       type="button"
-                      className="rounded-md outline-none text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
+                      className="rounded-md outline-none text-gray-300 hover:text-white"
                       onClick={props.toggle}
                     >
                       x
@@ -92,7 +92,7 @@ const ResponsiveMenu: React.FC<MenuProps> = (props) => {
                       </a>
                     </Link>
                     <Link href="/signup">
-                      <a className="hover:bg-opacity-90 w-full text-center ml-3 dark:bg-gray-800 dark:text-white  bg-darkcolor text-white whitespace-nowrap px-4 text-sm font-medium py-2 rounded-md">
+                      <a className="hover:bg-opacity-90 w-full text-center ml-3 dark:bg-dark-borderlight dark:text-white  bg-darkcolor text-white whitespace-nowrap px-4 text-sm font-medium py-2 rounded-md">
                         Kayıt ol
                       </a>
                     </Link>
