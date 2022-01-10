@@ -36,15 +36,15 @@ export default function Forum(props: Props) {
 
   const [comments, setComments] = useState<IComment[]>([]);
 
-  if (data && error) {
-    return <ErrorFound />;
-  }
-
   useEffect(() => {
     if (data) {
       setComments(data.forum ? data.forum.comments : []);
     }
   }, [data]);
+
+  if (error) {
+    return <ErrorFound />;
+  }
 
   return (
     <Layout
