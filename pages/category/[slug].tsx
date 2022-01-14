@@ -39,31 +39,33 @@ export default function Category(props: IProps) {
     <Layout disableContainer>
       <CategoryHeader {...category} />
 
-      <div className={STYLE.paddingHorizontal}>
-        {Articles ? (
-          Articles.data.length === 0 ? (
+      {Articles ? (
+        Articles.data.length === 0 ? (
+          <div className={STYLE.paddingHorizontal}>
             <NoData title="Bu Kategoriye Ait Paylaşım Bulunamadı" />
-          ) : (
-            <Grid.Col
-              cols="2xl:grid-cols-5 xl:grid-cols-6 grid-cols-6"
-              className={classNames(STYLE.paddingHorizontal, "xl:gap-x-10")}
-            >
-              {Articles.data.map((item: ICategory) =>
-                item.attributes.posts.data.map((item: ArticleProps) => (
-                  <Grid.Span
-                    span="2xl:col-span-1 xl:col-span-2 lg:col-span-3 md:col-span-6 col-span-12"
-                    key={item.id}
-                  >
-                    <BlogCard {...item} />
-                  </Grid.Span>
-                ))
-              )}
-            </Grid.Col>
-          )
+          </div>
         ) : (
+          <Grid.Col
+            cols="2xl:grid-cols-5 xl:grid-cols-6 grid-cols-6"
+            className={classNames(STYLE.paddingHorizontal, "xl:gap-x-10")}
+          >
+            {Articles.data.map((item: ICategory) =>
+              item.attributes.posts.data.map((item: ArticleProps) => (
+                <Grid.Span
+                  span="2xl:col-span-1 xl:col-span-2 lg:col-span-3 md:col-span-6 col-span-12"
+                  key={item.id}
+                >
+                  <BlogCard {...item} />
+                </Grid.Span>
+              ))
+            )}
+          </Grid.Col>
+        )
+      ) : (
+        <Grid.Col>
           <BlogSkeleton />
-        )}
-      </div>
+        </Grid.Col>
+      )}
     </Layout>
   );
 }

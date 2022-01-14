@@ -4,7 +4,7 @@ import style from "./style.module.css";
 
 export function BlogSkeleton() {
   return (
-    <Grid.Col>
+    <>
       <Grid.Span span="xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
         <BlogCardSkeleton />
       </Grid.Span>
@@ -29,7 +29,7 @@ export function BlogSkeleton() {
       <Grid.Span span="xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
         <BlogCardSkeleton />
       </Grid.Span>
-    </Grid.Col>
+    </>
   );
 }
 
