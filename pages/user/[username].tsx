@@ -9,6 +9,7 @@ import { fetcherV2 } from "lib/fetcher";
 import { find_user } from "services/user/config";
 import { ProfileSkeleton } from "components/Skeleton/Profile";
 import NotFound from "components/ui/NotFound";
+import { NextSeoProps } from "next-seo";
 
 interface IProps {
   username: string;
@@ -21,17 +22,19 @@ const Profile: NextPage<IProps> = (props) => {
     return <div>Lütfen bunu bize bildirin</div>;
   }
 
-  return (
-    <Layout
-      metas={
-        data &&
-        data.user && {
-          description: data.user.username + "Gamewod Profili",
+  const seo = data?.forum
+    ? ({
+        openGraph: {
+          description: `${data.user.username} Gamewod Profili`,
           title: `${data.user.name} | Gamewod.com`,
-        }
-      }
-      className="relative"
-    >
+        },
+        description: `${data.user.username} Gamewod Profili`,
+        title: `${data.user.name} | Gamewod.com`,
+      } as NextSeoProps)
+    : {};
+
+  return (
+    <Layout seo={seo} className="relative">
       {data ? (
         data.user ? (
           <motion.div
