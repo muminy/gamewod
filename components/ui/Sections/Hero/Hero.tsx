@@ -30,10 +30,12 @@ export default function Hero() {
 
   return (
     <div className={cn(style.section, F.paddingHorizontal)}>
-      <Grid.Col cols="grid-cols-12">
+      <Grid.Col className="items-center" cols="grid-cols-12">
         {articles ? (
           articles.data.map((item: ArticleProps) => (
-            <ArticleCard {...item} key={item.id} />
+            <Grid.Span key={item.id} span={style.alt_card}>
+              <ArticleCard {...item} key={item.id} />
+            </Grid.Span>
           ))
         ) : (
           <HeroSkeleton />
@@ -50,27 +52,25 @@ export const ArticleCard = (props: ArticleProps) => {
   });
 
   return (
-    <Grid.Span key={props.id} span={style.alt_card}>
-      <Link href={"/article/[id]/[slug]"} as={`/article/${props.id}/${slug}`}>
-        <motion.a
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          style={
-            props.attributes.image.data
-              ? {
-                  backgroundImage: `url(${baseURL}${props.attributes.image.data.attributes.formats.medium.url})`,
-                }
-              : {
-                  backgroundImage: "url('/assets/images/default.webp')",
-                }
-          }
-          className={style.gridContainer}
-        >
-          <div className="relative">
-            <div className={style.title}>{props.attributes.title}</div>
-          </div>
-        </motion.a>
-      </Link>
-    </Grid.Span>
+    <Link href={"/article/[id]/[slug]"} as={`/article/${props.id}/${slug}`}>
+      <motion.a
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        style={
+          props.attributes.image.data
+            ? {
+                backgroundImage: `url(${baseURL}${props.attributes.image.data.attributes.formats.medium.url})`,
+              }
+            : {
+                backgroundImage: "url('/assets/images/default.webp')",
+              }
+        }
+        className={style.gridContainer}
+      >
+        <div className="relative">
+          <div className={style.title}>{props.attributes.title}</div>
+        </div>
+      </motion.a>
+    </Link>
   );
 };

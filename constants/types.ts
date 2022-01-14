@@ -101,3 +101,23 @@ export interface IForum {
 export interface IToggle {
   toggle: () => void;
 }
+
+export interface ICategoryAttributes {
+  createdAt: string;
+  name: string;
+  posts: { data: ArticleProps[] };
+  publishedAt: string;
+  updatedAt: string;
+}
+
+export interface ICategory {
+  id: number;
+  attributes: ICategoryAttributes;
+}
+
+export interface MenuCategoryProps {
+  title: string;
+  href: string;
+  info: string;
+  id: string;
+}

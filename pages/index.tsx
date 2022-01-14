@@ -15,7 +15,7 @@ import Layout from "components/core/Layout";
 
 const Home: NextPage = () => {
   return (
-    <Layout className="relative">
+    <Layout disableContainer className="relative">
       <Hero />
       {/* <TeamSection /> */}
 

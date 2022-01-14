@@ -3,27 +3,7 @@ import Link from "next/link";
 import Flexible from "components/ui/Flexible/flex";
 import style from "./style.module.css";
 import classNames from "classnames";
-
-const menus = [
-  {
-    title: "CS:GO",
-  },
-  {
-    title: "Valorant",
-  },
-  {
-    title: "Pubg",
-  },
-  // {
-  //   title: "Röportaj",
-  // },
-  // {
-  //   title: "Turnuvalar",
-  // },
-  {
-    title: "Gelecek Güncellemeler",
-  },
-];
+import { menus } from "constants/datas";
 
 const MenuList: React.FC = () => {
   return (
@@ -40,11 +20,12 @@ const MenuList: React.FC = () => {
 
 interface LinkProps {
   title: string;
+  href: string;
 }
 
 export const LinkCard = (props: LinkProps) => {
   return (
-    <Link href="/">
+    <Link href={props.href}>
       <a
         className={classNames(
           style.menuLink,

@@ -20,6 +20,7 @@ import { IForum } from "constants/types";
 import Link from "next/link";
 import slugify from "slugify";
 import { ForumCardSkeleton } from "components/Skeleton/Forum";
+import NoData from "components/ui/NoData";
 
 export default function Forums() {
   const { data, error } = useSWR(forum, fetcherV2);
@@ -32,7 +33,13 @@ export default function Forums() {
     <section>
       <CustomTitle>Topluluk</CustomTitle>
       {data ? (
-        data.forums.map((item: IForum) => <ForumCard key={item.id} {...item} />)
+        data.forums.length === 0 ? (
+          <NoData title="Henüz Bir Konu Girilmedi" />
+        ) : (
+          data.forums.map((item: IForum) => (
+            <ForumCard key={item.id} {...item} />
+          ))
+        )
       ) : (
         <ForumCardSkeleton />
       )}

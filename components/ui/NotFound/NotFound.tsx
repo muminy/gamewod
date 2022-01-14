@@ -4,6 +4,7 @@ export default function NotFound({ title }: { title?: string }) {
       <div className="font-bold text-2xl">
         {title || "Bir sorunla karşılaştık"}
       </div>
+
       <p className="text-gray-500 mb-4">
         Sorun olduğunu düşünüyorsanız lütfen bunu bize bildirin.
       </p>

@@ -3,32 +3,12 @@ import Link from "next/link";
 import Flexible from "components/ui/Flexible/flex";
 import { Dialog, Transition } from "@headlessui/react";
 import { LinkCard } from "./MenuLists";
+import { menus } from "constants/datas";
 
 interface MenuProps {
   toggle: () => void;
   open: boolean;
 }
-
-const menus = [
-  {
-    title: "CS:GO",
-  },
-  {
-    title: "Valorant",
-  },
-  {
-    title: "Pubg",
-  },
-  {
-    title: "Röportaj",
-  },
-  {
-    title: "Turnuvalar",
-  },
-  {
-    title: "Gelecek Güncellemeler",
-  },
-];
 
 const ResponsiveMenu: React.FC<MenuProps> = (props) => {
   return (

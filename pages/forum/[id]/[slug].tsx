@@ -20,6 +20,7 @@ import ForumContent from "components/ui/Sections/Forums/Content/ForumContent";
 import ForumComment from "components/ui/Sections/Forums/Content/ForumComment";
 import MakeComment from "components/ui/MakeComment";
 import ErrorFound from "components/ui/Error/ErrorFound";
+import { NextSeoProps } from "next-seo";
 
 export interface Props {
   id: number;
@@ -36,6 +37,19 @@ export default function Forum(props: Props) {
 
   const [comments, setComments] = useState<IComment[]>([]);
 
+  const seo = data?.forum
+    ? ({
+        openGraph: {
+          description: data.forum.content,
+          title:
+            `${data.forum.title} | Gamewod.com` || "Bulunamadı | Gamewod.com",
+        },
+        description: data.forum.content,
+        title:
+          `${data.forum.title} | Gamewod.com` || "Bulunamadı | Gamewod.com",
+      } as NextSeoProps)
+    : {};
+
   useEffect(() => {
     if (data) {
       setComments(data.forum ? data.forum.comments : []);
@@ -47,17 +61,7 @@ export default function Forum(props: Props) {
   }
 
   return (
-    <Layout
-      metas={
-        data &&
-        data.forum && {
-          date: data.forum.createdAt,
-          description: data.forum.content,
-          title:
-            `${data.forum.title} | Gamewod.com` || "Bulunamadı | Gamewod.com",
-        }
-      }
-    >
+    <Layout seo={seo}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

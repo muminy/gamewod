@@ -18,6 +18,7 @@ import { handleCreateComment } from "services/comment";
 import { ArticleComment } from "constants/types";
 import { fetcher } from "lib/fetcher";
 import { NextPageContext } from "next";
+import { NextSeoProps } from "next-seo";
 
 export interface Props {
   id: number;
@@ -37,6 +38,21 @@ export default function Article(props: Props) {
 
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
+
+  const seo = article
+    ? ({
+        openGraph: {
+          description: article?.data.attributes.desc,
+          title:
+            `${article?.data.attributes.title} | Gamewod.com` ||
+            "Bulunamadı | Gamewod.com",
+        },
+        description: article?.data.attributes.desc,
+        title:
+          `${article?.data.attributes.title} | Gamewod.com` ||
+          "Bulunamadı | Gamewod.com",
+      } as NextSeoProps)
+    : {};
 
   const toggle = () => setOpen(!open);
 
@@ -66,18 +82,7 @@ export default function Article(props: Props) {
   };
 
   return (
-    <Layout
-      metas={
-        article &&
-        article.data && {
-          date: article?.data.attributes.createdAt,
-          description: article?.data.attributes.desc,
-          title:
-            `${article?.data.attributes.title} | Gamewod.com` ||
-            "Bulunamadı | Gamewod.com",
-        }
-      }
-    >
+    <Layout seo={seo}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

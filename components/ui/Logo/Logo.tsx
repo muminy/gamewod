@@ -6,9 +6,10 @@ export default function LogoSVG({ size }: { size: number }) {
     <Flexible alignItem="items-center">
       <div className={style.logo}>
         <span className={style.bg} />
-        <span className="z-10 uppercase px-4 dark:text-white text-gray-900 dark:text-opacity-90 text-opacity-60">
-          Gamewod
-        </span>
+        <div className="z-10 uppercase dark:text-white text-gray-900 dark:text-opacity-90 text-opacity-60">
+          <span className="hidden px-4 xl:block lg:block">Gamewod</span>
+          <span className="block px-2 xl:hidden lg:hidden">GW</span>
+        </div>
       </div>
     </Flexible>
   );

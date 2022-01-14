@@ -1,0 +1,27 @@
+.title {
+  @apply text-[48px] font-black text-gray-800;
+}
+
+.header {
+  @apply border-b border-t mb-10 xl:py-8 lg:py-4 py-3;
+}
+
+.info {
+  @apply xl:w-3/6 lg:w-4/6 w-full;
+}
+
+.card_title {
+  @apply font-semibold text-xl h-[70px];
+}
+
+:global(.dark) .header {
+  @apply border-dark-border;
+}
+
+:global(.dark) .title {
+  @apply text-gray-200;
+}
+
+:global(.dark) .info {
+  @apply text-gray-400;
+}
