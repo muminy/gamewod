@@ -19,6 +19,7 @@ import { ArticleComment } from "constants/types";
 import { fetcher } from "lib/fetcher";
 import { NextPageContext } from "next";
 import { NextSeoProps } from "next-seo";
+import Input from "components/ui/FormElements/Input";
 
 export interface Props {
   id: number;
@@ -36,6 +37,7 @@ export default function Article(props: Props) {
   const [open, setOpen] = useState(false);
   const [creating, setCreating] = useState(false);
 
+  const [username, setUsername] = useState("");
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
 
@@ -58,11 +60,12 @@ export default function Article(props: Props) {
 
   const handleAddComment = () => {
     setCreating(true);
-    handleCreateComment({ comment, name: "as", post: props.id }).then(
+    handleCreateComment({ comment, name: username, post: props.id }).then(
       (response) => {
         // get if created comment
         setComments(comments.concat(response.data));
         setComment("");
+        setUsername("");
         setCreating(false);
       }
     );
@@ -105,21 +108,30 @@ export default function Article(props: Props) {
 
                 {open ? (
                   <div className="relative">
-                    <textarea
-                      rows={4}
-                      value={comment}
-                      onChange={(e) => setComment(e.target.value)}
-                      className="rounded-md w-full border-2 resize-none px-3 py-3 text-sm dark:bg-transparent dark:border-dark-border dark:outline-black dark:focus:border-dark-borderlight"
-                      placeholder="Yorum içeriği"
-                    />
+                    <div>
+                      <textarea
+                        rows={4}
+                        value={comment}
+                        onChange={(e) => setComment(e.target.value)}
+                        className="rounded-md w-full border-2 resize-none px-3 py-3 text-sm dark:bg-transparent dark:border-dark-border dark:outline-black dark:focus:border-dark-borderlight"
+                        placeholder="Yorum içeriği"
+                      />
+                      <input
+                        className="w-full dark:border-dark-border dark:bg-transparent focus:border-black dark:focus:border-dark-borderlight outline-none py-2 mb-3 text-sm px-3 border-2 rounded-md"
+                        placeholder="Ad"
+                        onChange={(event) => setUsername(event.target.value)}
+                        value={username}
+                      />
+                    </div>
 
                     <Flexible
                       justifyContent="justify-end"
+                      alignItem="items-center"
                       className="space-x-2"
                     >
                       <button
                         onClick={handleAddComment}
-                        className="text-sm font-medium rounded-md bg-[#f3effd] dark:hover:bg-opacity-80 dark:bg-dark-border dark:text-gray-400 px-3 py-1.5"
+                        className="text-sm whitespace-nowrap font-medium rounded-md bg-[#f3effd] dark:hover:bg-opacity-80 dark:bg-dark-border dark:text-gray-400 px-3 py-1.5"
                       >
                         {creating ? "Yorum yapılıyor..." : "Yorum yap"}
                       </button>
