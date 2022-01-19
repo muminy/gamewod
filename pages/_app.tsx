@@ -2,7 +2,7 @@ import "../styles/font.css";
 import "../styles/globals.css";
 
 import type { AppProps } from "next/app";
-import { FunctionComponent, useEffect, ReactNode } from "react";
+import { FunctionComponent, useEffect, ReactNode, Fragment } from "react";
 
 import { Provider, useDispatch } from "react-redux";
 import { ThemeProvider } from "next-themes";
@@ -44,7 +44,7 @@ const ProvideUser: FunctionComponent<IProps> = (props: IProps) => {
     });
   }, []);
 
-  return <>{props.children}</>;
+  return <div>{props.children}</div>;
 };
 
 export default MyApp;

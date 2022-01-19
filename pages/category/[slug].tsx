@@ -1,23 +1,22 @@
-import Layout from "components/core/Layout";
-import { BlogSkeleton } from "components/Skeleton/Blog";
-import Grid from "components/ui/Grid";
-import { BlogCard } from "components/ui/Sections/Blogs/Blogs";
-import { menus } from "constants/datas";
-import STYLE from "constants/style";
-import {
-  ArticleAttributes,
-  ArticleProps,
-  ICategory,
-  MenuCategoryProps,
-} from "constants/types";
-import { fetcher } from "lib/fetcher";
-import { NextPageContext } from "next";
-import { category_posts } from "services/article/config";
 import useSWR from "swr";
-import ErrorFound from "components/ui/Error";
 import classNames from "classnames";
+import { NextPageContext } from "next";
+
+// ** components
+import Layout from "components/core/Layout";
+import Grid from "components/ui/Grid";
+import STYLE from "constants/style";
+import ErrorFound from "components/ui/Error";
 import CategoryHeader from "components/ui/Category/Header";
 import NoData from "components/ui/NoData";
+
+import { ArticleProps, ICategory, MenuCategoryProps } from "constants/types";
+import { fetcher } from "lib/fetcher";
+import { category_posts } from "services/article/config";
+import { BlogSkeleton } from "components/Skeleton/Blog";
+import { BlogCard } from "components/ui/Sections/Blogs/Blogs";
+import { menus } from "constants/datas";
+import { NextSeoProps } from "next-seo";
 
 interface IProps {
   category: null | MenuCategoryProps;
@@ -35,8 +34,22 @@ export default function Category(props: IProps) {
     return <ErrorFound />;
   }
 
+  const title = `${category?.title} | Gamewod.com`;
+  const description = `${category?.title} Alanındaki son gelişmeler`;
+
+  const seo = category
+    ? ({
+        openGraph: {
+          description,
+          title,
+        },
+        description,
+        title,
+      } as NextSeoProps)
+    : {};
+
   return (
-    <Layout disableContainer>
+    <Layout seo={seo} disableContainer>
       <CategoryHeader {...category} />
 
       {Articles ? (

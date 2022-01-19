@@ -5,9 +5,9 @@ import { ReactNode } from "react-markdown/lib/react-markdown";
 
 interface Props {
   open: boolean;
-  component: () => ReactNode;
   size?: "xl" | "lg" | "md" | "sm";
   toggle: () => void;
+  component: () => ReactNode;
 }
 
 export default function Modal(props: Props) {

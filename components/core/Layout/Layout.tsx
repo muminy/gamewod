@@ -22,11 +22,10 @@ export interface ILayout {
 }
 
 const Layout: React.FC<ILayout> = (props) => {
-  const router = useRouter();
-
   return (
     <div>
       <NextSeo
+        {...initialseo}
         {...props.seo}
         twitter={{ ...initialseo.twitter, ...props.seo?.twitter }}
         openGraph={{ ...initialseo.openGraph, ...props.seo?.openGraph }}
@@ -34,7 +33,7 @@ const Layout: React.FC<ILayout> = (props) => {
       <Header />
       <main
         className={classNames(
-          "min-h-screen 2xl:max-w-[1700px] mx-auto dark:bg-black mb-20",
+          "min-h-[calc(100vh-450px)] 2xl:max-w-[1700px] mx-auto dark:bg-black mb-20",
           props.className,
           {
             "2xl:max-w-full": props.disableContainer,

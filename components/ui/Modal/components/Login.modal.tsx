@@ -113,7 +113,11 @@ export default function LoginModal({ toggle }: IToggle) {
           }
         )}
       >
-        {successMessage ? "Giriş Başarılı" : "Giriş Yap"}
+        {successMessage
+          ? "Giriş Başarılı"
+          : loading
+          ? "Giriş Yapılıyor"
+          : "Giriş Yap"}
       </button>
 
       {errorMessage && (

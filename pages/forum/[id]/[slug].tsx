@@ -36,6 +36,7 @@ export default function Forum(props: Props) {
   const { data, error } = useSWR(find_forum(props.id), fetcherV2);
 
   const [comments, setComments] = useState<IComment[]>([]);
+  const [deleted, setDeleted] = useState<boolean>(false);
 
   const seo = data?.forum
     ? ({
@@ -72,7 +73,7 @@ export default function Forum(props: Props) {
       >
         {data ? (
           data.forum ? (
-            data.forum.status ? (
+            !deleted && data.forum.status ? (
               <Fragment>
                 <ForumHead
                   date={data.forum.createdAt}
@@ -84,6 +85,7 @@ export default function Forum(props: Props) {
                   username={data.forum.user.username}
                   id={data.forum.id}
                   content={data.forum.content}
+                  deleted={() => setDeleted(true)}
                 />
 
                 <MakeComment

@@ -2,14 +2,18 @@ import type { NextPage, NextPageContext } from "next";
 import useSWR from "swr";
 import { motion } from "framer-motion";
 
+import { NextSeoProps } from "next-seo";
+
+// ** components
 import Layout from "components/core/Layout";
 import STYLE from "constants/style";
 import UserProfile from "components/ui/Sections/User";
+import NotFound from "components/ui/NotFound";
+import ErrorFound from "components/ui/Error/ErrorFound";
+
 import { fetcherV2 } from "lib/fetcher";
 import { find_user } from "services/user/config";
 import { ProfileSkeleton } from "components/Skeleton/Profile";
-import NotFound from "components/ui/NotFound";
-import { NextSeoProps } from "next-seo";
 
 interface IProps {
   username: string;
@@ -19,10 +23,10 @@ const Profile: NextPage<IProps> = (props) => {
   const { data, error } = useSWR(find_user(props.username), fetcherV2);
 
   if (error) {
-    return <div>Lütfen bunu bize bildirin</div>;
+    return <ErrorFound />;
   }
 
-  const seo = data?.forum
+  const seo = data?.user
     ? ({
         openGraph: {
           description: `${data.user.username} Gamewod Profili`,

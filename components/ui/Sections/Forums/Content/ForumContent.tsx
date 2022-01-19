@@ -10,6 +10,7 @@ interface IProps {
   content: string;
   username: string;
   id: number;
+  deleted: () => void;
 }
 
 export default function ForumContent(props: IProps) {
@@ -20,6 +21,7 @@ export default function ForumContent(props: IProps) {
       handleDeleteForum({ id: props.id }).then((response) => {
         // ** delete forum response
         console.log(response);
+        props.deleted();
       });
     }
   };

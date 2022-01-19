@@ -1,0 +1,26 @@
+.taskheader button {
+  @apply font-medium px-2 first:pl-0 hover:border-gray-800 hover:text-gray-900 text-gray-400 py-2 border-b-2 border-white;
+}
+
+.taskheader button.active {
+  @apply text-gray-900 border-gray-800;
+}
+
+.taskheader {
+  @apply space-x-2 border-b mb-4;
+}
+
+.tasks .taskarea {
+  @apply bg-[#f4f6fa] w-1/5 p-5 rounded-md;
+}
+
+.tasks {
+  @apply space-x-10;
+}
+
+.taskarea .task {
+  @apply p-5 bg-white rounded-md shadow-sm;
+}
+.task .title {
+  @apply font-medium mb-2;
+}

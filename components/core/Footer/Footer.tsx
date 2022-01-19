@@ -23,7 +23,7 @@ export default function Footer() {
   return (
     <Flexible
       justifyContent="justify-between"
-      className="p-10 dark:border-dark-border border-t"
+      className="p-10 dark:border-dark-border border-t mt-auto"
     >
       <Grid.Col className="container mx-auto">
         <Grid.Span
