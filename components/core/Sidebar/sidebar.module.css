@@ -1,5 +1,10 @@
 .sidebar {
-  @apply min-h-[calc(100vh-70px)] px-10;
+  @apply fixed left-0 border-r min-h-screen flex flex-col justify-center;
+  width: 90px;
+}
+
+:global(.dark) .sidebar {
+  @apply border-dark-border;
 }
 
 .group_icon {

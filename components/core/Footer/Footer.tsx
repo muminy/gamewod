@@ -61,6 +61,9 @@ export default function Footer() {
           <Link href={"/"}>
             <a className={style.footer_link}>Bug & Görüş bidirimi</a>
           </Link>
+          <Link href={"/"}>
+            <a className={style.footer_link}>Gizlilik Politikası</a>
+          </Link>
         </Grid.Span>
 
         <Grid.Span
@@ -77,12 +80,6 @@ export default function Footer() {
           </Link>
           <Link href={"/"}>
             <a className={style.footer_link}>Facebook</a>
-          </Link>
-          <Link href={"/"}>
-            <a className={style.footer_link}>Telegram</a>
-          </Link>
-          <Link href={"/"}>
-            <a className={style.footer_link}>Discord</a>
           </Link>
         </Grid.Span>
 

@@ -51,7 +51,7 @@ export const ForumCard: React.FC<IForum> = (props) => {
   const slug = slugify(props.title, { replacement: "-", lower: true });
   return (
     <Link href={`/forum/${props.id}/${slug}`}>
-      <a className={cn(style.forum, "group bg-graypink block")}>
+      <a className={cn(style.forum, "group bg-[#f3f5f7] block")}>
         <div className={cn(style.title, "text-darkcolor")}>{props.title}</div>
 
         <span className={style.date}>

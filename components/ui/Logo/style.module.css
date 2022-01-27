@@ -1,5 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500;600;700;800;900&display=swap");
+
 .logo {
-  @apply xl:w-auto lg:w-auto w-9 h-9 overflow-hidden rounded-xl relative font-semibold text-sm flex items-center justify-center;
+  @apply text-3xl text-gray-700;
+  font-family: "Vollkorn", serif;
+  font-weight: 700;
 }
 
 .logo .bg {
@@ -24,7 +28,9 @@
 
   @apply rounded-xl;
 }
-
+:global(.dark) .logo {
+  @apply text-white;
+}
 :global(.dark) .logo div:last-child {
   @apply bg-dark-border bg-opacity-70;
 }

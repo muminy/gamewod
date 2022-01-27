@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Flexible from "../Flexible";
 
 export default function ErrorFound() {
@@ -9,9 +10,11 @@ export default function ErrorFound() {
     >
       <div className="text-lg font-medium">Bir sorunla karşılaştık</div>
       <p className="text-gray-400 mb-4 text-sm">Lütfen bunu bize bildiriniz</p>
-      <button className="bg-blue-600 text-white px-6 py-1.5 rounded-full">
-        Bildir
-      </button>
+      <Link href={"/tasks"}>
+        <a className="bg-blue-600 text-white px-6 py-1.5 rounded-full">
+          Bildir
+        </a>
+      </Link>
     </Flexible>
   );
 }

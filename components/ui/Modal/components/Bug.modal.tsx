@@ -3,7 +3,6 @@ import Flaticon from "components/ui/Flaticon";
 import Flexible from "components/ui/Flexible";
 import Input from "components/ui/FormElements/Input";
 import Select from "components/ui/FormElements/Select";
-import { memo } from "react";
 
 export default function BugModal() {
   return (

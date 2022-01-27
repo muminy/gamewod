@@ -1,13 +1,19 @@
 .header {
-  @apply h-[78px] flex items-center w-full dark:bg-black;
+  @apply h-[98px] flex items-center w-full dark:bg-black;
 }
 
 .menuLink {
-  @apply text-sm px-3.5 duration-200 whitespace-nowrap font-semibold last:pr-0;
-  @apply hover:text-blue-700;
-  @apply text-gray-600;
+  @apply text-sm px-4 duration-200 whitespace-nowrap font-semibold;
+  @apply hover:text-gray-700;
+  @apply text-gray-400;
   @apply text-left;
   @apply mb-2 xl:mb-0 lg:mb-0;
+  @apply py-2 rounded-xl;
+  @apply hover:bg-gray-100;
+}
+
+:global(.dark) .menuLink {
+  @apply hover:bg-dark-borderlight;
 }
 
 .open-menu {

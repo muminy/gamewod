@@ -10,13 +10,8 @@ import {
   ValorantFilledPaths,
 } from "constants/flaticons";
 import Flexible from "components/ui/Flexible";
-import classNames from "classnames";
-
-interface LinkProps {
-  href: string;
-  title: string;
-  icon: string[];
-}
+import { LinkProps } from "constants/types";
+import MenuLink from "./MenuLink";
 
 interface GameProps extends LinkProps {
   viewBox?: string;
@@ -66,5 +61,13 @@ const game_links: GameProps[] = [
 ];
 
 export default function Sidebar() {
-  return <div className={style.sidebar}></div>;
+  return (
+    <div className={style.sidebar}>
+      <div className="xl:space-y-8 lg:space-y-6 space-y-2">
+        {pure_links.map((item) => (
+          <MenuLink key={item.href} {...item} />
+        ))}
+      </div>
+    </div>
+  );
 }

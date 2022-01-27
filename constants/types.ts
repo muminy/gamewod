@@ -121,3 +121,9 @@ export interface MenuCategoryProps {
   info: string;
   id: string;
 }
+
+export interface LinkProps {
+  href: string;
+  title: string;
+  icon: string[];
+}

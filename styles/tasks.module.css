@@ -7,7 +7,7 @@
 }
 
 .taskheader {
-  @apply space-x-2 border-b mb-4;
+  @apply space-x-2 border-b mb-10;
 }
 
 .tasks .taskarea {
