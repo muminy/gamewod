@@ -23,10 +23,17 @@ export const menus = [
     href: "/category/roportajlar",
     info: "",
   },
-  // {
-  //   title: "Turnuvalar",
-  // },
-  // {
-  //   title: "Gelecek Güncellemeler",
-  // },
+  {
+    id: "gununmaclari",
+    title: "Günün Maçları",
+    href: "/matches",
+    responsive: true,
+  },
+  {
+    id: "clips",
+    title: "Popüler Clipler",
+    href: "/clips",
+    info: "",
+    responsive: true,
+  },
 ];

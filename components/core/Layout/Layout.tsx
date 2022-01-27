@@ -23,17 +23,12 @@ const Layout: React.FC<ILayout> = (props) => {
         twitter={{ ...initialseo.twitter, ...props.seo?.twitter }}
         openGraph={{ ...initialseo.openGraph, ...props.seo?.openGraph }}
       />
-      <Flexible>
-        <Sidebar />
-        <div className="w-full ml-[90px]">
-          <Header />
-          <main className={classNames("dark:bg-black mb-20 ", props.className)}>
-            {props.children}
-          </main>
+      <Header />
+      <main className={classNames("dark:bg-black mb-20 ", props.className)}>
+        {props.children}
+      </main>
 
-          <Footer />
-        </div>
-      </Flexible>
+      <Footer />
     </div>
   );
 };
