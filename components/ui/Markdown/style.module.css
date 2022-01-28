@@ -37,12 +37,8 @@
 }
 
 .content img:not(.modal_image) {
-  width: 100%;
-  object-fit: cover;
-  height: 350px;
-  margin: 25px auto;
-  border-style: solid;
-  @apply border-gray-300 rounded-xl;
+  /* box-shadow: #214d9e -6px 6px 0px !important; */
+  /* @apply !border-gray-900 !border-2 !rounded-xl; */
 }
 
 :global(.dark) .content img {
