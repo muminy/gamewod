@@ -3,6 +3,6 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ["api.gamewod.com"],
+    domains: ["api.gamewod.com", "pbs.twimg.com"],
   },
 };
