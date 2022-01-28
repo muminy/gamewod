@@ -46,7 +46,7 @@ const Profile: NextPage<IProps> = (props) => {
             animate={{ opacity: 1 }}
             className={STYLE.paddingHorizontal}
           >
-            <UserProfile.Header />
+            <UserProfile.Header {...data.user} />
             <UserProfile.Cover {...data.user} />
             <UserProfile.Tab {...data.user} />
           </motion.div>

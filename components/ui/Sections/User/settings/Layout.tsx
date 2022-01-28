@@ -1,7 +1,5 @@
-import Layout from "components/core/Layout";
-import Flexible from "components/ui/Flexible";
 import Settings from "./";
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import Grid from "components/ui/Grid";
 
 interface Props {

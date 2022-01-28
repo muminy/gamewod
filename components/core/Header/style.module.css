@@ -38,7 +38,7 @@
 }
 
 .avatarDD {
-  @apply relative;
+  @apply relative border rounded-full;
 }
 
 .dropdown {

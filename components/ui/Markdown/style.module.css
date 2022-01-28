@@ -1,0 +1,126 @@
+.header {
+  @apply py-10 flex flex-col items-center;
+}
+
+.title {
+  @apply text-4xl font-black text-center text-gray-900 max-w-3xl mb-2;
+  line-height: 50px;
+}
+
+.userProfile {
+  min-width: 32px;
+  width: 32px;
+  height: 32px;
+  @apply rounded-full;
+}
+
+.creator {
+  @apply font-medium text-sm text-gray-600;
+}
+
+.username {
+  @apply font-medium text-xs text-blue-600;
+}
+
+.content {
+  @apply mb-20;
+}
+
+.content .modal_image {
+  @apply w-10 h-10 rounded-full;
+}
+
+.modal_card {
+  box-shadow: #191629 -6px 6px 0px;
+  @apply border-2 border-gray-900 rounded-md px-3 py-2 w-[200px]
+    bg-white;
+}
+
+.content img:not(.modal_image) {
+  width: 100%;
+  object-fit: cover;
+  height: 350px;
+  margin: 25px auto;
+  border-style: solid;
+  @apply border-gray-300 rounded-xl;
+}
+
+:global(.dark) .content img {
+  @apply border-dark-border;
+}
+
+:global(.dark) .content p {
+  @apply text-gray-300;
+}
+
+:global(.dark) .content :is(h1, h2, h3, h4) {
+  @apply text-gray-100;
+}
+
+:global(.dark) .title {
+  @apply text-gray-100;
+}
+
+.content p {
+  margin-bottom: 20px;
+  line-height: 33px;
+  @apply text-[18px] text-gray-700;
+}
+.content ul {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+.content ul li {
+  list-style-type: disc;
+  @apply text-sm text-gray-900 mb-1 last:mb-0;
+}
+.content :is(h1, h2) {
+  @apply font-semibold text-xl;
+  margin-bottom: 10px;
+}
+
+.content > pre {
+  margin-bottom: 20px;
+  @apply bg-gray-100 p-3 rounded-md;
+}
+.content a {
+  @apply text-blue-600 font-semibold;
+}
+
+.comment_user_icon {
+  @apply min-w-[40px] h-[40px] rounded-full mb-4;
+}
+
+.up_btn {
+  width: 28px;
+  height: 28px;
+  @apply rounded-full hover:bg-gray-100 duration-300 text-gray-600 flex items-center justify-center;
+}
+
+.comment_user {
+  @apply font-medium text-gray-900;
+}
+
+.comment_text {
+  @apply text-sm font-medium mb-3;
+}
+
+.comment_username {
+  @apply text-gray-400 text-xs font-medium ml-2 flex items-center;
+}
+
+.comment_username::before {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  @apply bg-gray-300 rounded-full mr-2;
+}
+
+.up_vote {
+  @apply w-[32px] h-[32px] hover:bg-gray-200 duration-300 bg-gray-100 rounded-full flex items-center justify-center text-gray-600;
+}
+
+.comment_date {
+  @apply mb-4 font-medium text-xs text-gray-400;
+}

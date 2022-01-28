@@ -29,7 +29,7 @@ export default function Modal(props: Props) {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.2 }}
         id="modal_area"
-        className="w-full h-screen z-50 flex items-center justify-center dark:bg-gray-400 dark:bg-opacity-20 bg-gray-900 bg-opacity-20 fixed left-0 top-0"
+        className="w-full h-screen z-[1000] flex items-center justify-center dark:bg-gray-400 dark:bg-opacity-20 bg-gray-900 bg-opacity-20 fixed left-0 top-0"
       >
         <div
           className={classNames("dark:bg-black bg-white rounded-md", {

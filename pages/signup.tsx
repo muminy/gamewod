@@ -71,7 +71,6 @@ const Signup: NextPage = () => {
 
     handleUserSignup({ name, username, password, email }).then((response) => {
       // response user singup
-      console.log(response);
       setSuccessMessage("Kayıt olundu");
       setLoading(false);
       dispatch(handleAddUser(response.user));
@@ -83,13 +82,13 @@ const Signup: NextPage = () => {
   };
 
   useEffect(() => {
-    if (username.length) {
+    if (username) {
       handleCheckUsername();
     }
   }, [username]);
 
   useEffect(() => {
-    if (email.length) {
+    if (email) {
       handleCheckEmail();
     }
   }, [email]);

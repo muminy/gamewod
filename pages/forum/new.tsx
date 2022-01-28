@@ -107,7 +107,7 @@ export default function Article() {
           />
         </div>
 
-        <div className="mb-10">
+        {/* <div className="mb-10">
           <div className="font-semibold mb-2">Konu Kategorisi</div>
 
           <Select
@@ -145,13 +145,13 @@ export default function Article() {
               </button>
             ))}
           </Flexible>
-        </div>
+        </div> */}
 
         <button
           disabled={creating || success}
           onClick={handleCreate}
           className={classNames(
-            "bg-blue-600 text-white py-3 px-10 rounded-full",
+            "bg-gray-900 focus:ring-2 ring-gray-900 ring-offset-2 text-white py-3 px-10 rounded-full",
             {
               "bg-green-400 font-semibold mb-10 !text-gray-900": success,
               "disabled:opacity-40": !success,

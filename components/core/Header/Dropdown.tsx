@@ -29,7 +29,7 @@ export default function Dropdown() {
         <a className="font-medium text-sm">Profilim</a>
       </Link>
 
-      <Link href={`/settings`}>
+      <Link href={`/settings/profile`}>
         <a className="font-medium text-sm">Ayarlar</a>
       </Link>
 

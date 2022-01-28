@@ -12,7 +12,7 @@ export default function Comments(props: Props) {
         {props.comments.length === 0 ? (
           <Grid.Span
             span="col-span-12"
-            className="py-10 text-center bg-gray-100 rounded-md text-gray-600 "
+            className="py-10 text-center dark:bg-dark-border dark:text-white bg-gray-100 rounded-md text-gray-600 "
           >
             Yorum Oluşturmadı
           </Grid.Span>
@@ -22,11 +22,6 @@ export default function Comments(props: Props) {
       </Grid.Col>
     </div>
   );
-}
-
-interface CardProps {
-  title: string;
-  comments: IComment;
 }
 
 export const CommentCard = (props: IComment) => {

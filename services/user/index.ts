@@ -1,5 +1,15 @@
+import getUsertoken from "helpers/usertoken";
 import { ApiInstance, ApiV2 } from "../apis";
-import { user_login, user, check_username, check_email } from "./config";
+import {
+  user_login,
+  user,
+  check_username,
+  check_email,
+  update_detail,
+  change_username,
+  change_email,
+  change_password,
+} from "./config";
 
 interface ILogin {
   username: string;
@@ -19,9 +29,16 @@ interface ICheckUsername {
 }
 
 interface ICheckEmail {
-  email: string;
+  email?: string;
   id: number;
 }
+
+interface IChangePassword {
+  old_password?: string;
+  new_password: string;
+  id: number;
+}
+
 export async function handleUserLogin(props: ILogin) {
   const login = await ApiV2.post(user_login, props);
   return login.data;
@@ -40,4 +57,49 @@ export async function handleCheckUserUsername(props: ICheckUsername) {
 export async function handleCheckUserEmail(props: ICheckEmail) {
   const check = await ApiV2.post(check_email, props);
   return check.data;
+}
+
+export async function handleUpdateUserDetail(props: any) {
+  const forms = new FormData();
+
+  Object.keys(props).map((item) => {
+    if (props[item]) {
+      forms.append(item, props[item]);
+    }
+  });
+
+  const upt = await ApiV2.patch(update_detail, forms, {
+    data: forms,
+    headers: {
+      Authorization: `Bearer ${getUsertoken()}`,
+    },
+  });
+  return upt.data;
+}
+
+export async function handleChangeUsername(props: ICheckUsername) {
+  const upt = await ApiV2.patch(change_username, props, {
+    headers: {
+      Authorization: `Bearer ${getUsertoken()}`,
+    },
+  });
+  return upt.data;
+}
+
+export async function handleChangeEmail(props: ICheckEmail) {
+  const upt = await ApiV2.patch(change_email, props, {
+    headers: {
+      Authorization: `Bearer ${getUsertoken()}`,
+    },
+  });
+  return upt.data;
+}
+
+export async function handleChangePassword(props: IChangePassword) {
+  const upt = await ApiV2.patch(change_password, props, {
+    headers: {
+      Authorization: `Bearer ${getUsertoken()}`,
+    },
+  });
+  return upt.data;
 }

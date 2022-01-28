@@ -9,11 +9,13 @@ import { useRouter } from "next/router";
 
 export default function SettingPage() {
   const router = useRouter();
-  const { user } = useUserdata();
+  const { data } = useUserdata();
 
   return (
     <Layout className={classNames(STYLE.paddingHorizontal, "mb-0 py-10")}>
-      {user.user ? (
+      {data.loading ? (
+        "loading"
+      ) : data.user ? (
         <SettingLayout>
           {router.query.slug === "profile" ? (
             <Settings.Profile />

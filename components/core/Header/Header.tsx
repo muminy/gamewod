@@ -21,6 +21,7 @@ import { useAppSelector } from "store/hooks";
 import { HeaderSkeleton } from "components/Skeleton/Header";
 import Dropdown from "./Dropdown";
 import Logo from "components/ui/Logo";
+import { baseURLV2 } from "services/apis";
 
 const Header: React.FC = (props) => {
   const [open, setOpen] = React.useState(false);
@@ -60,7 +61,7 @@ const Header: React.FC = (props) => {
                 size={14}
               />
             </Button>
-            <Button
+            {/* <Button
               color="icon"
               className="min-w-[40px] border items-center justify-center hidden xl:flex lg:flex"
             >
@@ -71,14 +72,20 @@ const Header: React.FC = (props) => {
               className="min-w-[40px] border items-center justify-center hidden xl:flex lg:flex"
             >
               <Flaticon paths={BellFilledPaths} size={14} />
-            </Button>
+            </Button> */}
             <Link href={"/forum/new"}>
               <a className="rounded-full flex items-center px-6 h-[40px] dark:border-dark-border dark:hover:bg-white dark:hover:bg-opacity-10 !dark:text-darktext-color hover:border-gray-300 border whitespace-nowrap font-medium text-sm">
                 Forum Aç
               </a>
             </Link>
             <button className={style.avatarDD}>
-              <Avatar imageURL="https://cdn.dribbble.com/users/14190/avatars/small/b268425ca6ef849dc03cf2723a44a16f.png?1414231950" />
+              <Avatar
+                imageURL={
+                  user.user.image
+                    ? `${baseURLV2}/uploads/users/${user.user.image}`
+                    : "https://cdn.dribbble.com/users/14190/avatars/small/b268425ca6ef849dc03cf2723a44a16f.png?1414231950"
+                }
+              />
               <Dropdown />
             </button>
           </Flexible>

@@ -66,6 +66,8 @@ export interface IUser {
   status: boolean;
   username: string;
   createdAt: string;
+  image: string | null;
+  headerImage: string | null;
 }
 
 export interface IVoteComment {

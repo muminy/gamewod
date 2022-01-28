@@ -5,21 +5,21 @@ import Layout from "components/core/Layout";
 import Flexible from "components/ui/Flexible";
 import News from "components/ui/Sections/News";
 import STYLE from "constants/style";
+import Markdown from "components/ui/Markdown";
 import { ArticleSkeleton } from "components/Skeleton/Article";
 
 // ** packages
+import { NextPageContext } from "next";
 import classNames from "classnames";
 import moment from "moment";
 import useSWR from "swr";
 import { motion } from "framer-motion";
+import { NextSeoProps } from "next-seo";
 
 import { find_post } from "services/article/config";
 import { handleCreateComment } from "services/comment";
 import { ArticleComment } from "constants/types";
 import { fetcher } from "lib/fetcher";
-import { NextPageContext } from "next";
-import { NextSeoProps } from "next-seo";
-import Input from "components/ui/FormElements/Input";
 
 export interface Props {
   id: number;
@@ -98,7 +98,7 @@ export default function Article(props: Props) {
                 date={article.data.attributes.createdAt}
                 title={article.data.attributes.title}
               />
-              <News.Content content={article.data.attributes.content} />
+              <Markdown content={article.data.attributes.content} />
 
               <div className="mb-10 rounded-md">
                 <div className="text-gray-600 dark:text-gray-500 text-opacity-70 text-sm font-medium mb-3">
