@@ -49,7 +49,7 @@ export default function Category(props: IProps) {
     : {};
 
   return (
-    <Layout seo={seo} disableContainer>
+    <Layout seo={seo}>
       <CategoryHeader {...category} />
 
       {Articles ? (

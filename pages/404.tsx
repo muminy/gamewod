@@ -16,7 +16,7 @@ import NotFound from "components/ui/NotFound";
 
 const NotFoundPage: NextPage = () => {
   return (
-    <Layout disableContainer className="relative">
+    <Layout className="relative">
       <NotFound />
     </Layout>
   );
