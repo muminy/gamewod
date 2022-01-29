@@ -20,6 +20,7 @@ import { find_post } from "services/article/config";
 import { handleCreateComment } from "services/comment";
 import { ArticleComment } from "constants/types";
 import { fetcher } from "lib/fetcher";
+import ArticleInfo from "components/ui/Article/ArticleInfo";
 
 export interface Props {
   id: number;

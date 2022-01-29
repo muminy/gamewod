@@ -33,11 +33,11 @@ export default function ForumContent(props: IProps) {
       <Flexible className="space-x-3">
         {currentUser ? (
           <Fragment>
-            <Link href={"/"}>
+            {/* <Link href={"/"}>
               <a className="text-sm font-medium hover:underline dark:hover:text-gray-400 dark:text-gray-500 text-gray-400">
                 Düzenle
               </a>
-            </Link>
+            </Link> */}
 
             <button
               onClick={handleDelete}

@@ -8,3 +8,7 @@ export default function LogoSVG({ size }: { size: number }) {
     </Flexible>
   );
 }
+
+export const LetterLogo = () => {
+  return <div className={style.gw}>GW</div>;
+};

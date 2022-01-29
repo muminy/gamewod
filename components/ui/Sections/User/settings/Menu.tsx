@@ -7,11 +7,11 @@ export default function Header() {
   const router = useRouter();
 
   return (
-    <div className="border rounded-md overflow-hidden">
+    <div className="border rounded-md overflow-hidden dark:border-dark-border">
       <Link href={"/settings/profile"}>
         <a
           className={classNames(style.menu, {
-            "bg-gray-50": router.query.slug === "profile",
+            "bg-gray-50 dark:bg-dark-border": router.query.slug === "profile",
           })}
         >
           Profile
@@ -20,7 +20,7 @@ export default function Header() {
       <Link href={"/settings/security"}>
         <a
           className={classNames(style.menu, {
-            "bg-gray-50": router.query.slug === "security",
+            "bg-gray-50 dark:bg-dark-border": router.query.slug === "security",
           })}
         >
           Security

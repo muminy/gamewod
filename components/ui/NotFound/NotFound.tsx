@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface IProps {
   type?: "404" | "500";
 }
@@ -16,9 +18,11 @@ export default function NotFound(props: IProps) {
         Sorun olduğunu düşünüyorsanız lütfen bunu bize bildirin.
       </p>
 
-      <button className="bg-primary text-white px-7 py-2 font-medium rounded-full">
-        Bildir
-      </button>
+      <Link href={"/tasks"}>
+        <a className="bg-primary text-white px-7 py-2 font-medium rounded-full">
+          Bildir
+        </a>
+      </Link>
     </div>
   );
 }

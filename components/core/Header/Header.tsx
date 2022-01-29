@@ -81,9 +81,8 @@ const Header: React.FC = (props) => {
             <button className={style.avatarDD}>
               <Avatar
                 imageURL={
-                  user.user.image
-                    ? `${baseURLV2}/uploads/users/${user.user.image}`
-                    : "https://cdn.dribbble.com/users/14190/avatars/small/b268425ca6ef849dc03cf2723a44a16f.png?1414231950"
+                  user.user.image &&
+                  `${baseURLV2}/uploads/users/${user.user.image}`
                 }
               />
               <Dropdown />

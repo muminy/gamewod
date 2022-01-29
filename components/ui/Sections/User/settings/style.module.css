@@ -1,3 +1,35 @@
 .menu {
   @apply block px-4 py-3 hover:bg-gray-100 duration-200 border-b last:border-b-0;
 }
+
+:global(.dark) .menu {
+  @apply border-dark-border hover:bg-dark-border;
+}
+
+.uplaodlabel {
+  @apply flex items-center cursor-pointer mb-3 justify-center w-full border border-dashed h-20 font-medium;
+}
+
+:global(.dark) .uplaodlabel {
+  @apply border-dark-border;
+}
+
+.button {
+  @apply bg-gray-900 focus:ring-2 ring-offset-2 ring-gray-900 mb-4 text-white px-6 font-medium py-2.5 rounded-2xl;
+}
+
+:global(.dark) .button {
+  @apply bg-dark-border;
+}
+
+.input {
+  @apply py-3 px-5 rounded-md w-full border;
+}
+
+:global(.dark) .input {
+  @apply border-dark-border bg-transparent;
+}
+
+.formTitle {
+  @apply font-semibold block text-sm mb-1.5;
+}

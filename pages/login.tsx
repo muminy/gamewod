@@ -10,16 +10,19 @@ import style from "styles/signup.module.css";
 
 import Link from "next/link";
 import Head from "next/head";
+
 import { handleUserLogin } from "services/user";
 import { handleAddUser } from "store/actions/user";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 
+import Notify from "components/ui/Notify";
+
 const Login: NextPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
@@ -33,7 +36,7 @@ const Login: NextPage = () => {
 
       if (response.status === 200) {
         dispatch(handleAddUser(response.user));
-        setSuccessMessage("Giriş başarılı");
+        setSuccessMessage(true);
         setTimeout(() => router.push("/"), 1000);
         console.log("user logged");
         // set user token
@@ -101,12 +104,6 @@ const Login: NextPage = () => {
             </div>
           )}
 
-          {successMessage && (
-            <div className="text-green-700 text-sm font-medium mb-2">
-              {successMessage}
-            </div>
-          )}
-
           <button
             onClick={handleLogin}
             className="mt-4 px-4 mb-10 rounded-md py-1.5 text-sm font-medium dark:bg-dark-border bg-gray-900 text-gray-100"
@@ -122,6 +119,8 @@ const Login: NextPage = () => {
           </div>
         </div>
       </div>
+
+      {successMessage && <Notify.Success title="Giriş Başarılı" />}
     </div>
   );
 };

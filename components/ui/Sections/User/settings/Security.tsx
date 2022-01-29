@@ -1,4 +1,5 @@
 import Flexible from "components/ui/Flexible";
+import Notify from "components/ui/Notify";
 import { IUser } from "constants/types";
 import { validateEmail } from "helpers/utils";
 import useToggle from "hooks/useToggle";
@@ -8,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { handleChangeEmail, handleChangePassword } from "services/user";
 import { handleAddUser } from "store/actions/user";
+import style from "./style.module.css";
 
 export default function Security() {
   const { data } = useUserdata();
@@ -21,6 +23,7 @@ export default function Security() {
   const [email, setEmail] = useState(data.user?.email);
   const [errorMessage, setErrorMessage] = useState(null);
   const [errorMessagePassword, setErrorMessagePassword] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const setUser = (user: IUser, jwt: string) => {
     dispatch(handleAddUser(user));
@@ -31,12 +34,14 @@ export default function Security() {
     eToggle();
 
     const response = await handleChangeEmail({
-      id: data.user?.id || -1,
+      id: data.user?.id,
       email,
     });
 
     if (response.status === 200) {
       setUser(response.user, response.jwt);
+      setSuccess(true);
+      setTimeout(() => setSuccess(false), 3000);
     } else {
       setErrorMessage(response.error);
     }
@@ -48,13 +53,15 @@ export default function Security() {
     pToggle();
     if (formdata.new_password === formdata.new_repassword) {
       const response = await handleChangePassword({
-        id: data.user?.id || -1,
+        id: data.user?.id,
         new_password: formdata.new_password,
         old_password: formdata.old_password,
       });
 
       if (response.status === 200) {
         setUser(response.user, response.jwt);
+        setSuccess(true);
+        setTimeout(() => setSuccess(false), 3000);
       } else {
         setErrorMessagePassword(response.error);
       }
@@ -68,40 +75,46 @@ export default function Security() {
     <div>
       <form className="mb-10" onSubmit={handleSubmit(handleUpdatePassword)}>
         <div className="mb-5">
-          <h3 className="font-semibold mb-1">Eski Şifreniz</h3>
+          <label htmlFor="pass" className={style.formTitle}>
+            Eski Şifreniz
+          </label>
           <input
             type={"password"}
+            id="pass"
             {...register("old_password", { required: true })}
             placeholder="Kullanıcı Adı"
-            className="py-3 px-5 rounded-md w-full border"
+            className={style.input}
           />
         </div>
 
         <Flexible className="mb-10 space-x-5">
           <div className="w-2/4">
-            <h3 className="font-semibold mb-1">Yeni Şifreniz</h3>
+            <label htmlFor="new_pass" className={style.formTitle}>
+              Yeni Şifreniz
+            </label>
             <input
               type={"password"}
+              id="new_pass"
               {...register("new_password", { required: true })}
               placeholder="Kullanıcı Adı"
-              className="py-3 px-5 rounded-md w-full border"
+              className={style.input}
             />
           </div>
           <div className="w-2/4">
-            <h3 className="font-semibold mb-1">Yeni Şifre Tekrar</h3>
+            <label htmlFor="new_pas" className={style.formTitle}>
+              Yeni Şifre Tekrar
+            </label>
             <input
               type={"password"}
+              id="new_pas"
               {...register("new_repassword", { required: true })}
               placeholder="Kullanıcı Adı"
-              className="py-3 px-5 rounded-md w-full border"
+              className={style.input}
             />
           </div>
         </Flexible>
 
-        <button
-          type="submit"
-          className="bg-gray-900 text-white mb-2 px-6 font-medium py-2.5 rounded-2xl"
-        >
+        <button type="submit" className={style.button}>
           {pLoading ? "Değiştiriliyor..." : "Değiştir"}
         </button>
 
@@ -113,17 +126,20 @@ export default function Security() {
       </form>
 
       <div className="mb-10">
-        <h3 className="font-semibold text-lg">Email Adresiniz</h3>
+        <label htmlFor="email" className="font-semibold text-lg">
+          Email Adresiniz
+        </label>
         <div className="text-gray-500 text-sm mb-3">
           E-mail adresinizi sadece sizin istediğiniz kullanıcılar tarafından
           görülecektir.
         </div>
         <input
           type={"text"}
+          id="email"
           defaultValue={email}
           onChange={(event) => setEmail(event.target.value)}
           placeholder="Email Adresiniz"
-          className="py-3 px-5 rounded-md w-full border mb-1"
+          className={style.input}
         />
 
         {!validateEmail(email) && (
@@ -142,10 +158,12 @@ export default function Security() {
       <button
         onClick={handleUpdateEmail}
         disabled={!validateEmail(email)}
-        className="bg-gray-900 focus:ring-2 ring-offset-2 ring-gray-900 mb-4 text-white px-6 font-medium py-2.5 rounded-2xl"
+        className={style.button}
       >
         {eLoading ? "Kayıt Ediliyor..." : "Kaydet"}
       </button>
+
+      {success && <Notify.Success title="Değişiklikler Kayıt Edildi" />}
     </div>
   );
 }

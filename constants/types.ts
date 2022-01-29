@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface SVGProps {
   size?: number;
   color?: string;
@@ -127,5 +129,5 @@ export interface MenuCategoryProps {
 export interface LinkProps {
   href: string;
   title: string;
-  icon: string[];
+  icon: () => ReactNode;
 }

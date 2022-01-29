@@ -8,7 +8,7 @@ import style from "./avatar.module.css";
 
 interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
-  imageURL?: string;
+  imageURL?: string | null;
   className?: string;
 }
 
@@ -24,7 +24,12 @@ export default function Avatar({
   ...props
 }: AvatarProps) {
   return (
-    <div className={cn(style.avatar, className)} {...props}>
+    <div
+      className={cn(style.avatar, className, {
+        "bg-gray-200": !imageURL,
+      })}
+      {...props}
+    >
       {children}
       {imageURL && <img src={imageURL} />}
     </div>

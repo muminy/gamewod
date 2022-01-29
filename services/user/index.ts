@@ -25,18 +25,18 @@ interface ISignup {
 
 interface ICheckUsername {
   username: string;
-  id: number;
+  id?: number;
 }
 
 interface ICheckEmail {
   email?: string;
-  id: number;
+  id?: number;
 }
 
 interface IChangePassword {
   old_password?: string;
   new_password: string;
-  id: number;
+  id?: number;
 }
 
 export async function handleUserLogin(props: ILogin) {

@@ -1,6 +1,6 @@
 .sidebar {
-  @apply fixed left-0 border-r min-h-screen xl:flex lg:flex hidden flex-col justify-center;
-  width: 90px;
+  @apply fixed h-screen py-4 pr-8 bg-white z-10 items-end xl:flex lg:flex hidden flex-col justify-between;
+  width: 120px;
 }
 
 :global(.dark) .sidebar {
@@ -9,7 +9,6 @@
 
 .group_icon {
   @apply rounded-md text-gray-400 duration-300;
-
   width: 24px;
   height: 24px;
 }
@@ -19,4 +18,11 @@
   height: 28px;
 
   @apply p-1 rounded-[3px] text-white;
+}
+
+.header {
+  @apply flex items-center justify-center;
+}
+.menulist {
+  @apply xl:space-y-6 sticky justify-center lg:space-y-4 space-y-2;
 }

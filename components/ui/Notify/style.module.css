@@ -1,0 +1,7 @@
+.notify {
+  box-shadow: rgba(0, 0, 0, 0.137) 0px 0px 4px 1px;
+  background-color: #ffffffd5;
+  backdrop-filter: blur(10px);
+
+  @apply z-50 mx-auto rounded-xl flex items-center text-sm space-x-2 font-semibold text-gray-600 px-3 py-3 min-w-[250px];
+}

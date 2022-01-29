@@ -1,6 +1,4 @@
-import type { NextPage, GetServerSideProps } from "next";
-import { useEffect } from "react";
-
+import type { NextPage } from "next";
 // ** components
 import Grid from "components/ui/Grid";
 import BlogSection from "components/ui/Sections/Blogs";
@@ -8,14 +6,14 @@ import Hero from "components/ui/Sections/Hero";
 import Forums from "components/ui/Sections/Forums";
 import STYLE from "constants/style";
 
-// node packages
+// packages
 import classNames from "classnames";
 
 import Layout from "components/core/Layout";
 
 const Home: NextPage = () => {
   return (
-    <Layout disableContainer className="relative">
+    <Layout className="relative">
       <Hero />
       {/* <TeamSection /> */}
 

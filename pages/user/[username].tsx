@@ -22,10 +22,6 @@ interface IProps {
 const Profile: NextPage<IProps> = (props) => {
   const { data, error } = useSWR(find_user(props.username), fetcherV2);
 
-  if (error) {
-    return <ErrorFound />;
-  }
-
   const seo = data?.user
     ? ({
         openGraph: {
@@ -39,7 +35,9 @@ const Profile: NextPage<IProps> = (props) => {
 
   return (
     <Layout seo={seo} className="relative">
-      {data ? (
+      {error ? (
+        <NotFound />
+      ) : data ? (
         data.user ? (
           <motion.div
             initial={{ opacity: 0 }}

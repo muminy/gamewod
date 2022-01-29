@@ -1,4 +1,6 @@
+import classNames from "classnames";
 import Flexible from "components/ui/Flexible";
+import Notify from "components/ui/Notify";
 import { IUser } from "constants/types";
 import { makeProfileImageURL } from "helpers/utils";
 import useToggle from "hooks/useToggle";
@@ -12,6 +14,7 @@ import {
   handleUpdateUserDetail,
 } from "services/user";
 import { handleAddUser } from "store/actions/user";
+import style from "./style.module.css";
 
 type IAvailable = "LOADED" | "LOADING" | "EXIST" | "AVAILABLE";
 
@@ -23,6 +26,7 @@ export default function Profile() {
   const [username, setUsername] = useState("");
   const [availableUsername, setAvailableUsername] =
     useState<IAvailable>("LOADED");
+  const [success, setSuccess] = useState(false);
 
   const match = /^[A-Za-z0-9]*$/;
 
@@ -54,6 +58,8 @@ export default function Profile() {
 
     if (response.status === 200) {
       setUser(response.user, response.jwt);
+      setSuccess(true);
+      setTimeout(() => setSuccess(false), 3000);
     }
 
     unameToggle();
@@ -79,6 +85,8 @@ export default function Profile() {
 
     if (userdata.status === 200) {
       setUser(userdata.user, userdata.jwt);
+      setSuccess(true);
+      setTimeout(() => setSuccess(false), 3000);
     }
 
     toggle();
@@ -95,10 +103,7 @@ export default function Profile() {
       <Flexible className="space-x-5 mb-10">
         <div className="w-2/4">
           <h3 className="font-semibold text-lg mb-3">Profil Fotoğrafı</h3>
-          <label
-            htmlFor="pphoto"
-            className="flex items-center cursor-pointer mb-3 justify-center w-full border border-dashed h-20 font-medium"
-          >
+          <label htmlFor="pphoto" className={style.uplaodlabel}>
             Profil Fotoğrafı Değiştir
           </label>
           <input
@@ -117,10 +122,7 @@ export default function Profile() {
         </div>
         <div className="w-2/4">
           <h3 className="font-semibold text-lg mb-3">Kapak Fotoğrafı</h3>
-          <label
-            htmlFor="headerphoto"
-            className="flex items-center mb-3 cursor-pointer justify-center w-full border border-dashed h-20 font-medium"
-          >
+          <label htmlFor="headerphoto" className={style.uplaodlabel}>
             Kapak Fotoğrafı Değiştir
           </label>
           <input
@@ -141,39 +143,40 @@ export default function Profile() {
       </Flexible>
 
       <div className="mb-10">
-        <h3 className="font-semibold text-lg">Adınız</h3>
+        <label htmlFor="name" className="font-semibold block text-lg">
+          Adınız
+        </label>
         <div className="text-gray-500 text-sm mb-3">
           Adınızın herkes tarafından görülebileceğini unutumayınız.
         </div>
         <input
-          id="pphoto"
+          id="name"
           type={"text"}
           defaultValue={data.user?.name}
           {...register("name")}
           placeholder="Adınızı Giriniz"
-          className="py-3 px-5 rounded-md w-full border"
+          className={style.input}
         />
       </div>
 
-      <button
-        type="submit"
-        className="bg-gray-900 focus:ring-2 ring-offset-2 ring-gray-900 mb-10 text-white px-6 font-medium py-2.5 rounded-2xl"
-      >
+      <button type="submit" className={classNames(style.button, "!mb-10")}>
         {loading ? "Kayıt Ediliyor..." : "Kaydet"}
       </button>
 
       <div className="mb-10">
-        <h3 className="font-semibold text-lg">Kullanıcı Adı</h3>
+        <label htmlFor="username" className="font-semibold block text-lg">
+          Kullanıcı Adı
+        </label>
         <div className="text-gray-500 text-sm mb-3">
           Kullanıcı adınızı girerken Türkçe karakter kullanmayınız.
         </div>
         <input
-          id="pphoto"
+          id="username"
           defaultValue={data.user?.username}
           onChange={(event) => setUsername(event.target.value)}
           type={"text"}
           placeholder="Kullanıcı Adı"
-          className="py-3 px-5 rounded-md w-full border"
+          className={style.input}
         />
 
         {!username.match(match) ? (
@@ -198,10 +201,12 @@ export default function Profile() {
       <button
         type="button"
         onClick={handleUpdateUsername}
-        className="bg-gray-900 focus:ring-2 ring-offset-2 ring-gray-900 text-white px-6 font-medium py-2.5 rounded-2xl"
+        className={style.button}
       >
         {usernameLoading ? "Değiştiriliyor..." : "Değiştir"}
       </button>
+
+      {success && <Notify.Success title="Değişiklikler Kayıt Edildi" />}
     </form>
   );
 }

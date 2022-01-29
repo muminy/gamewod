@@ -38,3 +38,8 @@
 .logo div:last-child {
   @apply rounded-xl flex items-center justify-center font-black;
 }
+
+.gw {
+  font-family: "Vollkorn", serif;
+  @apply font-black;
+}
