@@ -9,10 +9,10 @@ interface IProps {
 
 export default function Success(props: IProps) {
   return (
-    <div className="fixed top-0 w-full left-0 z-0 flex justify-center">
+    <div className="fixed bottom-0 w-full left-0 z-0 flex justify-center">
       <motion.div
-        initial={{ marginTop: 16 }}
-        animate={{ marginTop: 30 }}
+        initial={{ marginBottom: 16 }}
+        animate={{ marginBottom: 30 }}
         className={style.notify}
       >
         {!props.icon && (
