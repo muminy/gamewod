@@ -7,5 +7,5 @@
 }
 
 :global(.dark) .footer_link {
-  @apply text-gray-400 hover:text-white;
+  @apply text-darktext-color hover:text-white;
 }

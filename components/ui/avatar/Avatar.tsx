@@ -2,6 +2,7 @@
 import cn from "classnames";
 import { colors } from "constants/colors";
 import { FC, useMemo } from "react";
+import { baseURLV2 } from "services/apis";
 
 // ** style
 import style from "./avatar.module.css";
@@ -31,7 +32,10 @@ export default function Avatar({
       {...props}
     >
       {children}
-      {imageURL && <img src={imageURL} />}
+      <img
+        className="object-cover"
+        src={imageURL || `${baseURLV2}/uploads/users/default.png`}
+      />
     </div>
   );
 }

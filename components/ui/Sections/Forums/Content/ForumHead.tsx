@@ -1,5 +1,6 @@
 import Flexible from "components/ui/Flexible";
 import { IUser } from "constants/types";
+import { defaultUserImage, makeProfileImageURL } from "helpers/utils";
 import moment from "moment";
 import Link from "next/link";
 
@@ -12,11 +13,20 @@ interface IProps {
 export default function ForumHead(props: IProps) {
   return (
     <div className="mb-8 py-2">
-      <div className="text-2xl font-medium">{props.title}</div>
+      <div className="text-2xl font-medium mb-2">{props.title}</div>
 
-      {/* <Link href={`/user/${props.user.username}`}>
+      <Link href={`/user/${props.user.username}`}>
         <a className="flex space-x-3 items-center">
-          <div className="w-8 h-8 dark:bg-dark-border bg-gray-200 rounded-full" />
+          <div className="w-8 h-8 dark:bg-dark-border bg-gray-200 rounded-full">
+            <img
+              className="w-full h-full object-cover rounded-full"
+              src={
+                props.user.image
+                  ? makeProfileImageURL(props.user.image)
+                  : defaultUserImage
+              }
+            />
+          </div>
 
           <div className="font-medium">
             <div className="dark:text-gray-300 text-sm">{props.user.name}</div>
@@ -26,7 +36,7 @@ export default function ForumHead(props: IProps) {
             </div>
           </div>
         </a>
-      </Link> */}
+      </Link>
     </div>
   );
 }

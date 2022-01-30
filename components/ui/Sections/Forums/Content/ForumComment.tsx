@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import Flexible from "components/ui/Flexible";
-import { IComment, IUser, IVoteComment } from "constants/types";
-import moment from "moment";
+import { IComment, IVoteComment } from "constants/types";
+import { defaultUserImage, makeProfileImageURL } from "helpers/utils";
 import Link from "next/link";
 import { useState } from "react";
 import {
@@ -22,7 +22,7 @@ export default function ForumComment(props: IComment) {
   const handleUpVote = () => {
     handleUpvoteForumComment({ commentId: props.id }).then((response) => {
       // get vote response data
-      console.log(response);
+      console.log("response upvote");
       if (response.status === 200) {
         setVotes(votes.concat(response.vote));
       }
@@ -32,7 +32,7 @@ export default function ForumComment(props: IComment) {
   const handleUnVote = () => {
     handleUnvoteForumComment({ commentId: props.id }).then((response) => {
       // get vote response data
-      console.log(response);
+      console.log("response unvote");
       if (response.status === 200) {
         setVotes(votes.filter((item) => item.userID !== user.user?.id));
       }
@@ -41,9 +41,18 @@ export default function ForumComment(props: IComment) {
 
   return (
     <Flexible className="space-x-3 mb-3">
-      <div className="min-w-[24px] h-[24px] rounded-full dark:bg-dark-border bg-gray-200" />
+      <div className="min-w-[32px] h-[32px] rounded-full dark:bg-dark-border bg-gray-200">
+        <img
+          className="w-full rounded-full h-full object-cover"
+          src={
+            props.user?.image
+              ? makeProfileImageURL(props.user.image)
+              : defaultUserImage
+          }
+        />
+      </div>
 
-      <div className="">
+      <div>
         <div className="text-[14px]">
           <Link href={`/user/${props.user?.username}`}>
             <a className="font-semibold pr-1 dark:text-gray-200">

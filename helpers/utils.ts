@@ -9,3 +9,5 @@ export const validateEmail = (email?: string) =>
 export const makeProfileImageURL = (url: string) => {
   return `${baseURLV2}/uploads/users/${url}`;
 };
+
+export const defaultUserImage = `${baseURLV2}/uploads/users/default.png`;

@@ -19,7 +19,7 @@
 }
 
 :global(.dark) .tabbtn {
-  @apply disabled:text-gray-700 text-gray-500;
+  @apply disabled:text-gray-700 text-darktext-color;
 }
 :global(.dark) .tabbtn span {
   @apply bg-dark-border text-gray-400;

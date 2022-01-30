@@ -1,5 +1,7 @@
 import Grid from "components/ui/Grid";
 import { IComment } from "constants/types";
+import Link from "next/link";
+import slugify from "slugify";
 
 interface Props {
   comments: IComment[];
@@ -17,7 +19,15 @@ export default function Comments(props: Props) {
             Yorum Oluşturmadı
           </Grid.Span>
         ) : (
-          props.comments.map((item) => <CommentCard key={item.id} {...item} />)
+          props.comments.map((item) => (
+            <Grid.Span
+              key={item.id}
+              span="xl:col-span-6 lg:col-span-6 col-span-12"
+              className="rounded-md border dark:border-dark-border"
+            >
+              <CommentCard {...item} />
+            </Grid.Span>
+          ))
         )}
       </Grid.Col>
     </div>
@@ -25,25 +35,25 @@ export default function Comments(props: Props) {
 }
 
 export const CommentCard = (props: IComment) => {
-  return (
-    <Grid.Span
-      span="xl:col-span-6 lg:col-span-6 col-span-12"
-      className="rounded-md p-1 border dark:border-dark-border"
-    >
-      <div className="bg-graypink dark:text-gray-400 dark:bg-dark-border text-gray-700 rounded-md px-3 py-2 mb-2">
-        {props.forum?.title}
-      </div>
-      <div className="px-3">
-        <div className="font-medium text-gray-300 mb-1">
-          <span className="text-gray-900 dark:text-gray-200">
-            {props.comment}
-          </span>
-        </div>
+  const forumSlug = slugify(props.forum.title, {
+    lower: true,
+    replacement: "-",
+  });
 
-        <button className="text-sm text-gray-400">
-          {props.votes.length} Upvote
-        </button>
-      </div>
-    </Grid.Span>
+  return (
+    <Link href={`/forum/${props.forumID}/${forumSlug}`}>
+      <a>
+        <div className="border-b dark:border-dark-border dark:text-white font-medium text-gray-700 px-3 py-2 mb-1">
+          {props.forum?.title}
+        </div>
+        <div className="px-3">
+          <div className="text-gray-300 mb-1">
+            <span className="text-gray-500 dark:text-darktext-color">
+              {props.comment}
+            </span>
+          </div>
+        </div>
+      </a>
+    </Link>
   );
 };

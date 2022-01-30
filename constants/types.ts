@@ -87,7 +87,7 @@ export interface IComment {
   status: boolean;
   user: IUser | null;
   userID: number | null;
-  forum: IForum | null;
+  forum: IForum;
   votes: IVoteComment[];
 }
 

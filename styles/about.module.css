@@ -1,0 +1,19 @@
+.content {
+  @apply rounded-2xl bg-opacity-40 text-gray-700 text-opacity-90;
+}
+
+.content p {
+  margin-bottom: 16px;
+  @apply text-lg;
+}
+
+:global(.dark) .content p {
+  color: #cacaca;
+}
+:global(.dark) .content p b {
+  @apply text-white;
+}
+
+.staticcontainer {
+  @apply dark:bg-black rounded-3xl xl:py-20 lg:py-16 py-10 xl:px-10 lg:px-10 px-8;
+}

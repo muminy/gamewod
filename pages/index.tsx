@@ -19,7 +19,7 @@ const Home: NextPage = () => {
 
       <Grid.Col
         gap="gap-y-10 xl:gap-x-10 lg:gap-x-6 gap-x-4"
-        className={classNames(STYLE.paddingHorizontal, "mb-10")}
+        className={classNames(STYLE.paddingHorizontal)}
       >
         {/* <Grid.Span span="2xl:col-span-3 xl:col-span-4 col-span-12">
           <Livescore />

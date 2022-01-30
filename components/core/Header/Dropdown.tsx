@@ -15,7 +15,7 @@ export default function Dropdown() {
     localStorage.removeItem("usertoken");
     dispatch(handleAddUser(null));
 
-    router.push("/");
+    router.push(router.asPath);
   };
 
   return (

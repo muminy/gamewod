@@ -1,10 +1,9 @@
 import Flexible from "components/ui/Flexible";
 import { IUser } from "constants/types";
-import { makeProfileImageURL } from "helpers/utils";
+import { defaultUserImage, makeProfileImageURL } from "helpers/utils";
 import useCurrentUser from "hooks/useCurrentUser";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { baseURLV2 } from "services/apis";
 
 export default function Header(props: IUser) {
   const router = useRouter();
@@ -40,12 +39,12 @@ export default function Header(props: IUser) {
           </Link>
         )}
 
-        {props.image && (
-          <img
-            className="w-full h-full object-cover"
-            src={makeProfileImageURL(props.image)}
-          />
-        )}
+        <img
+          className="w-full h-full object-cover"
+          src={
+            props.image ? makeProfileImageURL(props.image) : defaultUserImage
+          }
+        />
       </div>
     </Flexible>
   );
