@@ -11,7 +11,12 @@ const AreEqual = (prev: IProps, next: IProps) => {
   return prev.value === next.value;
 };
 
-const InputV2 = memo(({ label, isRequired, labelClass, ...props }: IProps) => {
+export default memo(function InputV2({
+  label,
+  isRequired,
+  labelClass,
+  ...props
+}: IProps) {
   return (
     <label
       htmlFor={label}
@@ -32,6 +37,5 @@ const InputV2 = memo(({ label, isRequired, labelClass, ...props }: IProps) => {
       />
     </label>
   );
-}, AreEqual);
-
-export default InputV2;
+},
+AreEqual);
