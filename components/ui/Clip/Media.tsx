@@ -1,6 +1,4 @@
-import { LinkFilledIconPath } from "constants/flaticons";
 import Link from "next/link";
-import Flaticon from "../Flaticon";
 
 export default function Media() {
   return (
@@ -28,9 +26,9 @@ export default function Media() {
       <div className="max-w-5xl">
         <div className="text-sm mb-4 text-gray-900 text-opacity-60 font-medium">
           Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled.
+          industry. Lorem Ipsum has been the industry{"'"}s standard dummy text
+          ever since the 1500s, when an unknown printer took a galley of type
+          and scrambled.
         </div>
 
         <div className="flex space-x-3">
