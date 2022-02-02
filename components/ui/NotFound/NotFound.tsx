@@ -18,7 +18,7 @@ export default function NotFound(props: IProps) {
         Sorun olduğunu düşünüyorsanız lütfen bunu bize bildirin.
       </p>
 
-      <Link href={"/tasks"}>
+      <Link href={"/bug"}>
         <a className="bg-primary text-white px-7 py-2 font-medium rounded-full">
           Bildir
         </a>

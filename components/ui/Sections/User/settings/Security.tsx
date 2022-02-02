@@ -4,7 +4,7 @@ import { IUser } from "constants/types";
 import { validateEmail } from "helpers/utils";
 import useToggle from "hooks/useToggle";
 import useUserdata from "hooks/useUserdata";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { handleChangeEmail, handleChangePassword } from "services/user";
@@ -21,7 +21,7 @@ export default function Security() {
   const { value: pLoading, toggle: pToggle } = useToggle();
 
   const [email, setEmail] = useState(data.user?.email);
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
   const [errorMessagePassword, setErrorMessagePassword] = useState("");
   const [success, setSuccess] = useState(false);
 
@@ -44,6 +44,7 @@ export default function Security() {
       setTimeout(() => setSuccess(false), 3000);
     } else {
       setErrorMessage(response.error);
+      setTimeout(() => setErrorMessage(""), 2000);
     }
 
     eToggle();
@@ -61,12 +62,14 @@ export default function Security() {
       if (response.status === 200) {
         setUser(response.user, response.jwt);
         setSuccess(true);
-        setTimeout(() => setSuccess(false), 3000);
+        setTimeout(() => setSuccess(false), 2000);
       } else {
         setErrorMessagePassword(response.error);
+        setTimeout(() => setErrorMessagePassword(""), 2000);
       }
     } else {
       setErrorMessagePassword("Yeni Şifreler Uyuşmuyor");
+      setTimeout(() => setErrorMessagePassword(""), 2000);
     }
     pToggle();
   };
@@ -117,12 +120,6 @@ export default function Security() {
         <button type="submit" className={style.button}>
           {pLoading ? "Değiştiriliyor..." : "Değiştir"}
         </button>
-
-        {errorMessagePassword && (
-          <span className="text-sm block text-red-500 font-medium">
-            {errorMessagePassword}
-          </span>
-        )}
       </form>
 
       <div className="mb-10">
@@ -147,12 +144,6 @@ export default function Security() {
             Geçerli Bir Email Adresi Giriniz.
           </span>
         )}
-
-        {errorMessage && (
-          <span className="text-sm block text-red-500 font-medium">
-            {errorMessage}
-          </span>
-        )}
       </div>
 
       <button
@@ -164,6 +155,9 @@ export default function Security() {
       </button>
 
       {success && <Notify.Success title="Değişiklikler Kayıt Edildi" />}
+      {(errorMessage || errorMessagePassword) && (
+        <Notify.Error title={errorMessage || errorMessagePassword} />
+      )}
     </div>
   );
 }

@@ -47,7 +47,7 @@ export default function ForumContent(props: IProps) {
             </button>
           </Fragment>
         ) : (
-          <Link href={"/"}>
+          <Link href={"/bug"}>
             <a className="text-sm font-medium hover:underline dark:hover:text-gray-400 dark:text-gray-500 text-gray-400">
               Bildir
             </a>

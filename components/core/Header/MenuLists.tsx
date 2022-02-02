@@ -10,7 +10,7 @@ const MenuList: React.FC = () => {
   return (
     <Flexible
       alignItem="items-center"
-      className="hidden space-x-1 xl:flex lg:flex mr-4 col-span-6 justify-center"
+      className="hidden space-x-1 xl:flex lg:flex mr-4 ml-10 justify-center"
     >
       {menus.map((item) => (
         <LinkCard key={item.title} {...item} />
@@ -30,11 +30,9 @@ export const LinkCard = (props: LinkProps) => {
     <Link href={props.href}>
       <a
         className={classNames(
-          style.menuLink,
-          "dark:text-darktext-color dark:hover:text-white",
+          "font-semibold text-sm text-gray-400 hover:text-gray-900 py-2 px-3",
           {
-            "bg-gray-100 dark:bg-dark-borderlight dark:!text-gray-300 !text-gray-900":
-              asPath === props.href,
+            "!text-gray-900": asPath === props.href,
           }
         )}
       >

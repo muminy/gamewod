@@ -40,17 +40,15 @@ export default function ForumComment(props: IComment) {
   };
 
   return (
-    <Flexible className="space-x-3 mb-3">
-      <div className="min-w-[32px] h-[32px] rounded-full dark:bg-dark-border bg-gray-200">
-        <img
-          className="w-full rounded-full h-full object-cover"
-          src={
-            props.user?.image
-              ? makeProfileImageURL(props.user.image)
-              : defaultUserImage
-          }
-        />
-      </div>
+    <Flexible className="space-x-3 mb-3 last:mb-0">
+      <Link href={`/user/${props.user?.username}`}>
+        <a className="min-w-[32px] h-[32px] block rounded-full dark:bg-dark-border bg-gray-200">
+          <img
+            className="w-full rounded-full h-full object-cover"
+            src={makeProfileImageURL(props.user.image)}
+          />
+        </a>
+      </Link>
 
       <div>
         <div className="text-[14px]">
@@ -82,7 +80,7 @@ export default function ForumComment(props: IComment) {
             {votes.length} {alreadyVote ? "Liked" : "Likes"}
           </button>
 
-          <Link href={"/"}>
+          <Link href={"/bug"}>
             <a className="text-xs dark:hover:text-red-400 text-gray-400 hover:underline hover:text-gray-900 font-medium">
               Bildir
             </a>

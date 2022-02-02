@@ -21,6 +21,7 @@ import ForumComment from "components/ui/Sections/Forums/Content/ForumComment";
 import MakeComment from "components/ui/MakeComment";
 import ErrorFound from "components/ui/Error/ErrorFound";
 import { NextSeoProps } from "next-seo";
+import Grid from "components/ui/Grid";
 
 export interface Props {
   id: number;
@@ -66,43 +67,44 @@ export default function Forum(props: Props) {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className={classNames(
-          STYLE.paddingHorizontal,
-          "py-6 max-w-5xl mx-auto"
-        )}
+        className={classNames(STYLE.paddingHorizontal)}
       >
         {data ? (
           data.forum ? (
             !deleted && data.forum.status ? (
-              <Fragment>
-                <ForumHead
-                  date={data.forum.createdAt}
-                  title={data.forum.title}
-                  user={data.forum.user}
-                />
+              <Grid.Col className="xl:gap-10 lg:gap-8 gap-5 2xl:max-w-[1700px] xl:max-w-7xl mx-auto">
+                <Grid.Span span="xl:col-span-8 lg:col-span-8 col-span-12">
+                  <ForumHead
+                    date={data.forum.createdAt}
+                    title={data.forum.title}
+                    user={data.forum.user}
+                  />
 
-                <ForumContent
-                  username={data.forum.user.username}
-                  id={data.forum.id}
-                  content={data.forum.content}
-                  deleted={() => setDeleted(true)}
-                />
+                  <ForumContent
+                    username={data.forum.user.username}
+                    id={data.forum.id}
+                    content={data.forum.content}
+                    deleted={() => setDeleted(true)}
+                  />
+                </Grid.Span>
 
-                <MakeComment
-                  fid={data.forum.id}
-                  setComments={(comment: IComment) =>
-                    setComments(comments.concat(comment))
-                  }
-                />
+                <Grid.Span span="xl:col-span-4 lg:col-span-4 col-span-12">
+                  <MakeComment
+                    fid={data.forum.id}
+                    setComments={(comment: IComment) =>
+                      setComments(comments.concat(comment))
+                    }
+                  />
 
-                <div className="mb-4 font-semibold text-sm text-gray-600 dark:text-gray-400">
-                  Yorumlar ({comments.length})
-                </div>
+                  <div className="mb-4 font-semibold text-sm text-gray-600 dark:text-gray-400">
+                    Yorumlar ({comments.length})
+                  </div>
 
-                {comments.map((item: IComment) => (
-                  <ForumComment key={item.id} {...item} />
-                ))}
-              </Fragment>
+                  {comments.map((item: IComment) => (
+                    <ForumComment key={item.id} {...item} />
+                  ))}
+                </Grid.Span>
+              </Grid.Col>
             ) : (
               <div className="text-center bg-gray-100 py-10 rounded-md text-gray-700">
                 Bu Konu Silindi

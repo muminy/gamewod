@@ -1,0 +1,137 @@
+[
+  {
+    "user": {
+      "id": 1,
+      "name": "Müğüü2",
+      "username": "admin",
+      "email": "abo@gmail.com",
+      "password": "123456",
+      "image": "1643324229717-707204632-ipigjtdb_400x400.jpg",
+      "headerImage": "1643325393461-729763176-group-8748.png",
+      "role": "SUPER_ADMIN",
+      "point": 30,
+      "level": 3,
+      "status": true,
+      "createdAt": "2022-01-14T16:58:53.664Z",
+      "updatedAt": "2022-01-31T13:17:11.073Z",
+      "bio": null,
+      "socials": null,
+      "website": null
+    },
+    "comment": "awdawd",
+    "createdAt": "2022-01-28T20:14:58.802Z",
+    "forum": {
+      "id": 6,
+      "title": "Deneme içerik 2",
+      "content": "Napirrsiiizzz  ![Resim başlığı](https://pbs.twimg.com/media/FKMv8cVakAo7yhC?format=jpg&name=small)",
+      "userId": 1,
+      "createdAt": "2022-01-28T15:29:46.773Z",
+      "status": true,
+      "category": []
+    },
+    "status": true,
+    "id": 5,
+    "votes": [
+      {
+        "id": 37,
+        "commentId": 5,
+        "createdAt": "2022-01-30T17:42:01.819Z",
+        "userID": 1
+      },
+      {
+        "id": 41,
+        "commentId": 5,
+        "createdAt": "2022-01-31T13:17:11.070Z",
+        "userID": 5
+      }
+    ]
+  },
+  {
+    "user": {
+      "id": 1,
+      "name": "Müğüü2",
+      "username": "admin",
+      "email": "abo@gmail.com",
+      "password": "123456",
+      "image": "1643324229717-707204632-ipigjtdb_400x400.jpg",
+      "headerImage": "1643325393461-729763176-group-8748.png",
+      "role": "SUPER_ADMIN",
+      "point": 30,
+      "level": 3,
+      "status": true,
+      "createdAt": "2022-01-14T16:58:53.664Z",
+      "updatedAt": "2022-01-31T13:17:11.073Z",
+      "bio": null,
+      "socials": null,
+      "website": null
+    },
+    "comment": "222222",
+    "createdAt": "2022-01-30T20:30:59.839Z",
+    "forum": {
+      "id": 6,
+      "title": "Deneme içerik 2",
+      "content": "Napirrsiiizzz  ![Resim başlığı](https://pbs.twimg.com/media/FKMv8cVakAo7yhC?format=jpg&name=small)",
+      "userId": 1,
+      "createdAt": "2022-01-28T15:29:46.773Z",
+      "status": true,
+      "category": []
+    },
+    "status": true,
+    "id": 6,
+    "votes": [
+      {
+        "id": 40,
+        "commentId": 6,
+        "createdAt": "2022-01-31T13:17:10.458Z",
+        "userID": 5
+      }
+    ]
+  },
+  {
+    "user": {
+      "id": 3,
+      "name": "Müü2",
+      "username": "user",
+      "email": "eren@gmail.com",
+      "password": "123456",
+      "image": null,
+      "headerImage": null,
+      "role": "USER",
+      "point": 8,
+      "level": 1,
+      "status": true,
+      "createdAt": "2022-01-30T20:39:44.863Z",
+      "updatedAt": "2022-01-31T13:17:09.816Z",
+      "bio": null,
+      "socials": null,
+      "website": null
+    },
+    "comment": "Benim yourmke",
+    "createdAt": "2022-01-30T21:03:42.716Z",
+    "forum": {
+      "id": 6,
+      "title": "Deneme içerik 2",
+      "content": "Napirrsiiizzz  ![Resim başlığı](https://pbs.twimg.com/media/FKMv8cVakAo7yhC?format=jpg&name=small)",
+      "userId": 1,
+      "createdAt": "2022-01-28T15:29:46.773Z",
+      "status": true,
+      "category": []
+    },
+    "status": true,
+    "id": 7,
+    "votes": [
+      {
+        "id": 38,
+        "commentId": 7,
+        "createdAt": "2022-01-30T22:46:59.953Z",
+        "userID": 1
+      },
+      {
+        "id": 39,
+        "commentId": 7,
+        "createdAt": "2022-01-31T13:17:09.806Z",
+        "userID": 5
+      }
+    ]
+  }
+]

@@ -23,17 +23,44 @@ export const menus = [
     href: "/category/roportajlar",
     info: "",
   },
+  // {
+  //   id: "gununmaclari",
+  //   title: "Günün Maçları",
+  //   href: "/matches",
+  //   responsive: true,
+  // },
+  // {
+  //   id: "clips",
+  //   title: "Popüler Clipler",
+  //   href: "/clips",
+  //   info: "",
+  //   responsive: true,
+  // },
+];
+
+export const clipmenu = [
   {
-    id: "gununmaclari",
-    title: "Günün Maçları",
-    href: "/matches",
-    responsive: true,
+    id: "yeni",
+    title: "Yeni",
   },
   {
-    id: "clips",
-    title: "Popüler Clipler",
-    href: "/clips",
-    info: "",
-    responsive: true,
+    id: "csgo",
+    title: "CSGO",
+  },
+  {
+    id: "valorant",
+    title: "Valorant",
+  },
+  {
+    id: "pubg",
+    title: "PUBG",
+  },
+  {
+    id: "lol",
+    title: "LOL",
+  },
+  {
+    id: "populer",
+    title: "Popüler",
   },
 ];

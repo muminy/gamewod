@@ -1,7 +1,8 @@
 import PlayerCardSkeleton from "components/Skeleton/Player";
 import Flexible from "components/ui/Flexible";
-import { makeProfileImageURL } from "helpers/utils";
+import { defaultUserImage, makeProfileImageURL } from "helpers/utils";
 import useFetchUser from "hooks/useFetchUser";
+import useToggle from "hooks/useToggle";
 import Link from "next/link";
 import style from "../style.module.css";
 
@@ -10,31 +11,48 @@ interface IProps {
 }
 
 export default function Player(props: IProps) {
-  const { loading, data, error } = useFetchUser(props);
+  const { value, toggle } = useToggle();
 
   return (
-    <span className="group relative">
+    <span
+      onMouseLeave={toggle}
+      onMouseEnter={toggle}
+      className="group relative"
+    >
       <Link href={`/user/${props.username}`}>
         <a>@{props.username}</a>
       </Link>
 
-      <div className="py-1.5 hidden group-hover:block absolute top-5">
-        <div className={style.modal_card}>
+      {value && <PlayerCard {...props} />}
+    </span>
+  );
+}
+
+const PlayerCard = (props: IProps) => {
+  const { loading, data, error } = useFetchUser(props);
+  return (
+    <div className="py-1.5 absolute top-5">
+      <Link href={`/user/${props.username}`}>
+        <a className={style.modal_card}>
           {loading ? (
             <PlayerCardSkeleton />
           ) : data && data.user ? (
-            <Flexible className="space-x-3 items-center group-hover:flex ">
-              <div className="w-10 h-10 rounded-full bg-gray-200">
-                {data.user.image && (
-                  <img
-                    src={makeProfileImageURL(data.user.image)}
-                    className={style.modal_image}
-                  />
-                )}
+            <Flexible className="space-x-3 items-center">
+              <div className="w-10 h-10 rounded-full">
+                <img
+                  src={
+                    data.user.image
+                      ? makeProfileImageURL(data.user.image)
+                      : defaultUserImage
+                  }
+                  className={style.modal_image}
+                />
               </div>
 
               <div className="">
-                <div className="font-medium">{data.user.name}</div>
+                <div className="font-medium dark:text-white text-gray-800">
+                  {data.user.name}
+                </div>
                 <div className="text-gray-400 font-medium text-sm">
                   @{data.user.username}
                 </div>
@@ -43,8 +61,8 @@ export default function Player(props: IProps) {
           ) : (
             <div>Uppps</div>
           )}
-        </div>
-      </div>
-    </span>
+        </a>
+      </Link>
+    </div>
   );
-}
+};

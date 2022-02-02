@@ -63,14 +63,20 @@ export default function Category(props: IProps) {
             className={classNames(STYLE.paddingHorizontal, "xl:gap-x-10")}
           >
             {Articles.data.map((item: ICategory) =>
-              item.attributes.posts.data.map((item: ArticleProps) => (
-                <Grid.Span
-                  span="2xl:col-span-1 xl:col-span-2 lg:col-span-3 md:col-span-6 col-span-12"
-                  key={item.id}
-                >
-                  <BlogCard {...item} />
+              item.attributes.posts.data.length === 0 ? (
+                <Grid.Span span={"col-span-12"}>
+                  <NoData title="Bu Kategoriye Ait Paylaşım Bulunamadı" />
                 </Grid.Span>
-              ))
+              ) : (
+                item.attributes.posts.data.map((item: ArticleProps) => (
+                  <Grid.Span
+                    span="2xl:col-span-1 xl:col-span-2 lg:col-span-3 md:col-span-6 col-span-12"
+                    key={item.id}
+                  >
+                    <BlogCard {...item} />
+                  </Grid.Span>
+                ))
+              )
             )}
           </Grid.Col>
         )

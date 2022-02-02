@@ -44,7 +44,7 @@ const ProvideUser: FunctionComponent<IProps> = (props: IProps) => {
     });
   }, []);
 
-  return <div>{props.children}</div>;
+  return <>{props.children}</>;
 };
 
 export default MyApp;

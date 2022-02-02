@@ -7,9 +7,9 @@ export default function About() {
   return (
     <Layout
       seo={{ title: "Hakkımızda", openGraph: { title: "Hakkımızda" } }}
-      className={classNames("mb-0 py-10", F.paddingHorizontal)}
+      className={classNames("mb-10 hf", F.paddingHorizontal)}
     >
-      <div className="bg-pink-50 dark:bg-black rounded-3xl py-20">
+      <div className="bg-pink-50 h-full dark:bg-black rounded-3xl py-20">
         <div className="max-w-5xl mx-auto">
           <h3 className="font-bold dark:text-white mb-2 text-lg text-gray-700 text-opacity-90">
             Hakkımızda

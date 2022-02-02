@@ -1,13 +1,16 @@
 import classNames from "classnames";
+import F from "constants/style";
+import useToggle from "hooks/useToggle";
+
+import style from "styles/about.module.css";
+
+import { useEffect, useState } from "react";
+import { handleCreateContact } from "services/contact";
+
 import Layout from "components/core/Layout";
 import InputV2 from "components/ui/FormElements/Inputv2";
 import TextareaV2 from "components/ui/FormElements/Textareav2";
 import Notify from "components/ui/Notify";
-import F from "constants/style";
-import useToggle from "hooks/useToggle";
-import { useState } from "react";
-import { handleCreateContact } from "services/contact";
-import style from "styles/about.module.css";
 
 export default function Tasks() {
   const [name, setName] = useState("");
@@ -69,45 +72,41 @@ export default function Tasks() {
           </h3>
           <div className={classNames(style.content, "mb-10")}>
             <InputV2
-              props={{
-                placeholder: "E....",
-                value: name,
-                onChange: (event: React.ChangeEvent<HTMLInputElement>) =>
-                  setName(event.target.value),
-              }}
+              placeholder="Emare"
+              value={name}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                setName(event.target.value)
+              }
               label="Adınız"
               isRequired
             />
 
             <InputV2
-              props={{
-                placeholder: "E....",
-                value: email,
-                onChange: (event: React.ChangeEvent<HTMLInputElement>) =>
-                  setEmail(event.target.value),
-              }}
+              placeholder="aaaa@aaa.com"
+              value={email}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                setEmail(event.target.value)
+              }
               label="Email Adresiniz"
               isRequired
             />
 
             <InputV2
-              props={{
-                placeholder: "x hatası",
-                value: thread,
-                onChange: (event: React.ChangeEvent<HTMLInputElement>) =>
-                  setThread(event.target.value),
-              }}
+              placeholder="x hatası"
+              value={thread}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                setThread(event.target.value)
+              }
               label="Konu"
               isRequired
             />
 
             <TextareaV2
-              props={{
-                placeholder: "x hatası detayı",
-                value: content,
-                onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) =>
-                  setContent(event.target.value),
-              }}
+              placeholder="x hatası detayı"
+              value={content}
+              onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
+                setContent(event.target.value)
+              }
               label="İçerik"
               isRequired
             />

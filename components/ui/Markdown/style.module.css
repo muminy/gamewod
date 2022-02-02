@@ -22,18 +22,19 @@
   @apply font-medium text-xs text-blue-600;
 }
 
-.content {
-  @apply mb-20;
-}
-
 .content .modal_image {
   @apply w-10 h-10 rounded-full;
 }
 
 .modal_card {
   box-shadow: #191629 -6px 6px 0px;
-  @apply border-2 border-gray-900 rounded-md px-3 py-2 w-[200px]
+  @apply border-2 block border-gray-900 rounded-md px-3 py-2 w-[200px]
     bg-white;
+}
+
+:global(.dark) .modal_card {
+  box-shadow: #3f3f3f -6px 6px 0px;
+  @apply bg-dark-border;
 }
 
 .content img:not(.modal_image) {

@@ -8,7 +8,7 @@ export default function PrivacyPolicy() {
   return (
     <Layout
       seo={{ title: "Hakkımızda", openGraph: { title: "Hakkımızda" } }}
-      className={classNames("mb-0 py-10", F.paddingHorizontal)}
+      className={classNames("mb-10", F.paddingHorizontal)}
     >
       <div className="bg-yellow-50 dark:bg-opacity-0 rounded-3xl py-20">
         <div className="max-w-5xl mx-auto">

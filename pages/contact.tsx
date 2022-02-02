@@ -72,45 +72,41 @@ export default function Contact() {
           </div>
           <div className={classNames(style.content, "mb-10")}>
             <InputV2
-              props={{
-                placeholder: "E....",
-                value: name,
-                onChange: (event: React.ChangeEvent<HTMLInputElement>) =>
-                  setName(event.target.value),
-              }}
+              placeholder="Emare"
+              value={name}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                setName(event.target.value)
+              }
               label="Adınız"
               isRequired
             />
 
             <InputV2
-              props={{
-                placeholder: "E....",
-                value: email,
-                onChange: (event: React.ChangeEvent<HTMLInputElement>) =>
-                  setEmail(event.target.value),
-              }}
+              placeholder="aaaa@aaa.com"
+              value={email}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                setEmail(event.target.value)
+              }
               label="Email Adresiniz"
               isRequired
             />
 
             <InputV2
-              props={{
-                placeholder: "x hatası",
-                value: thread,
-                onChange: (event: React.ChangeEvent<HTMLInputElement>) =>
-                  setThread(event.target.value),
-              }}
+              placeholder="x hatası"
+              value={thread}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                setThread(event.target.value)
+              }
               label="Konu"
               isRequired
             />
 
             <TextareaV2
-              props={{
-                placeholder: "x hatası detayı",
-                value: content,
-                onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) =>
-                  setContent(event.target.value),
-              }}
+              placeholder="x hatası detayı"
+              value={content}
+              onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
+                setContent(event.target.value)
+              }
               label="İçerik"
               isRequired
             />

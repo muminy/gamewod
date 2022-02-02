@@ -32,7 +32,7 @@ const Header: React.FC = (props) => {
 
   return (
     <div className={classNames(style.header, F.paddingHorizontal)}>
-      <div className="xl:grid lg:grid flex grid-cols-12 w-full xl:space-x-4 lg:space-x-4 space-x-2">
+      <div className="flex w-full xl:space-x-4 lg:space-x-4 space-x-2">
         <Flexible className="mr-auto col-span-3" alignItem="items-center">
           <Link href="/">
             <a className="dark:text-white">

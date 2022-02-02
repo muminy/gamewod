@@ -1,5 +1,5 @@
 .header {
-  @apply h-[98px] flex items-center w-full dark:bg-black;
+  @apply min-h-[98px] flex items-center w-full dark:bg-black;
 }
 
 .menuLink {
@@ -59,7 +59,7 @@
   display: block;
 }
 
-.dropdown :is(a, button) {
+.dropdown :is(a, div) {
   @apply w-full hover:bg-gray-100 duration-200 block py-2 rounded-xl text-left px-3 mb-1 last:mb-0;
 }
 
