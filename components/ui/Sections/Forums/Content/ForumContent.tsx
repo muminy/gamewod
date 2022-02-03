@@ -30,7 +30,7 @@ export default function ForumContent(props: IProps) {
     <div className="mb-10">
       <Markdown content={props.content} />
 
-      <Flexible className="space-x-3">
+      <Flexible className="space-x-3 mt-4">
         {currentUser ? (
           <Fragment>
             {/* <Link href={"/"}>

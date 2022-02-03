@@ -57,7 +57,7 @@ export default function Tasks() {
 
   return (
     <Layout
-      seo={{ title: "Hakkımızda", openGraph: { title: "Hakkımızda" } }}
+      seo={{ title: "Bug Bildir", openGraph: { title: "Bug Bildir" } }}
       className={classNames(F.paddingHorizontal)}
     >
       <div

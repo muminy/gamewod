@@ -6,17 +6,18 @@ import { NextPageContext } from "next";
 import Layout from "components/core/Layout";
 import Grid from "components/ui/Grid";
 import STYLE from "constants/style";
-import ErrorFound from "components/ui/Error";
 import CategoryHeader from "components/ui/Category/Header";
 import NoData from "components/ui/NoData";
+import NotFound from "components/ui/NotFound";
 
-import { ArticleProps, ICategory, MenuCategoryProps } from "constants/types";
-import { fetcher } from "lib/fetcher";
-import { category_posts } from "services/article/config";
 import { BlogSkeleton } from "components/Skeleton/Blog";
 import { BlogCard } from "components/ui/Sections/Blogs/Blogs";
 import { menus } from "constants/datas";
 import { NextSeoProps } from "next-seo";
+
+import { ArticleProps, ICategory, MenuCategoryProps } from "constants/types";
+import { fetcher } from "lib/fetcher";
+import { category_posts } from "services/article/config";
 
 interface IProps {
   category: null | MenuCategoryProps;
@@ -31,7 +32,7 @@ export default function Category(props: IProps) {
   );
 
   if (error) {
-    return <ErrorFound />;
+    return <NotFound />;
   }
 
   const title = `${category?.title} | Gamewod.com`;
@@ -42,6 +43,7 @@ export default function Category(props: IProps) {
         openGraph: {
           description,
           title,
+          url: window.location.href,
         },
         description,
         title,
@@ -81,7 +83,7 @@ export default function Category(props: IProps) {
           </Grid.Col>
         )
       ) : (
-        <Grid.Col>
+        <Grid.Col className={STYLE.paddingHorizontal}>
           <BlogSkeleton />
         </Grid.Col>
       )}

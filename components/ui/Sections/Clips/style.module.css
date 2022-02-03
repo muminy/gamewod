@@ -1,5 +1,5 @@
 .menu {
-  @apply mb-10 rounded-md space-x-1;
+  @apply mb-10 rounded-md space-x-1 xl:flex-nowrap lg:flex-nowrap flex-wrap;
 }
 
 .card {

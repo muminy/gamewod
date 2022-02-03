@@ -29,13 +29,13 @@ export const menus = [
   //   href: "/matches",
   //   responsive: true,
   // },
-  // {
-  //   id: "clips",
-  //   title: "Popüler Clipler",
-  //   href: "/clips",
-  //   info: "",
-  //   responsive: true,
-  // },
+  {
+    id: "clips",
+    title: "Popüler Clipler",
+    href: "/clips",
+    info: "",
+    responsive: true,
+  },
 ];
 
 export const clipmenu = [

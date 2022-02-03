@@ -1,3 +1,4 @@
+import { ForumTypes } from "constants/enums";
 import getUsertoken from "helpers/usertoken";
 import { ApiInstance, ApiV2 } from "../apis";
 import { comments, comment } from "./config";
@@ -10,6 +11,7 @@ interface CommentFilter {
 
 interface CreateA2CommentProps {
   fid: number;
+  type: ForumTypes;
   comment: string;
 }
 

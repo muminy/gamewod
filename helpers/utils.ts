@@ -10,3 +10,11 @@ export const makeProfileImageURL = (url: string | null) => {
 };
 
 export const defaultUserImage = `${baseURLV2}/uploads/users/default.png`;
+
+export const setDescription = (description: string) => {
+  if (description.length > 100) {
+    return `${description.substring(0, 100)}...`;
+  } else {
+    return description;
+  }
+};

@@ -1,4 +1,5 @@
 import { MakeCommentSkeleton } from "components/Skeleton/MakeComment";
+import { ForumTypes } from "constants/enums";
 import { IComment } from "constants/types";
 import { useState } from "react";
 import { handleCreateForumComment } from "services/comment";
@@ -12,6 +13,7 @@ import style from "./style.module.css";
 interface IProps {
   setComments: (comment: IComment) => void;
   fid: number;
+  type: ForumTypes;
 }
 
 export default function MakeComment(props: IProps) {
@@ -26,13 +28,16 @@ export default function MakeComment(props: IProps) {
 
   const handleAddComment = () => {
     setLoading(true);
-    handleCreateForumComment({ comment, fid }).then((response) => {
-      // get if created comment
-      setComments(response.comment);
-      setComment("");
-      setLoading(false);
-      console.log(response);
-    });
+    handleCreateForumComment({ comment, fid, type: props.type }).then(
+      (response) => {
+        // get if created comment
+        if (response.status === 200) {
+          setComments(response.comment);
+          setComment("");
+          setLoading(false);
+        }
+      }
+    );
   };
 
   const toggle = () => setOpenComment(!openComment);

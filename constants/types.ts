@@ -89,6 +89,8 @@ export interface IComment {
   userID: number | null;
   forum: IForum;
   votes: IVoteComment[];
+  type: "CLIP" | "FORUM";
+  clip: IClip;
 }
 
 export interface IForum {
@@ -130,4 +132,27 @@ export interface LinkProps {
   href: string;
   title: string;
   icon: () => ReactNode;
+}
+
+export interface IClipDetail {
+  broadcaster_name: string;
+  creator_name: string;
+  duration: number;
+  embed_url: string;
+  language: string;
+  title: string;
+  url: string;
+  thumbnail_url: string;
+}
+
+export interface IClip {
+  id: number;
+  content: string;
+  createdAt: string;
+  status: boolean;
+  title: string;
+  username: string;
+  detail: IClipDetail;
+  comments: IComment[];
+  clipid: string;
 }

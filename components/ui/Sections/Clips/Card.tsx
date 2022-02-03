@@ -1,23 +1,19 @@
-import Flexible from "components/ui/Flexible";
-import { clipmenu } from "constants/datas";
+import { IClip } from "constants/types";
 import Link from "next/link";
+import slugify from "slugify";
 
 import style from "./style.module.css";
 
-interface IProps {
-  title: string;
-  time: string;
-  verified: boolean;
-  username: string;
-  image: string;
-  id: string;
-}
+export default function ClipCard(props: IClip) {
+  const slug = slugify(props.title, { replacement: "-", lower: true });
 
-export default function ClipCard(props: IProps) {
   return (
-    <Link href={"/clip/id/asd"}>
+    <Link href={`/clip/${props.id}/${slug}`}>
       <a className={style.card}>
-        <img src={props.image} className="w-full object-cover h-[600px]" />
+        <img
+          src={props.detail.thumbnail_url}
+          className="w-full object-cover xl:h-[600px] lg:h-[400px] h-[240px]"
+        />
 
         <div className={style.shadow}>
           <div className="text-white font-medium text-lg">{props.title}</div>
@@ -26,7 +22,7 @@ export default function ClipCard(props: IProps) {
           </div>
         </div>
 
-        <div className={style.time}>{props.time}</div>
+        <div className={style.time}>{props.detail.duration}</div>
       </a>
     </Link>
   );

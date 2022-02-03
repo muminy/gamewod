@@ -7,7 +7,10 @@ export default function PrivacyPolicy() {
   const website = <b>Gamewod.com</b>;
   return (
     <Layout
-      seo={{ title: "Hakkımızda", openGraph: { title: "Hakkımızda" } }}
+      seo={{
+        title: "Gizlilik Politikası",
+        openGraph: { title: "Gizlilik Politikası" },
+      }}
       className={classNames("mb-10", F.paddingHorizontal)}
     >
       <div className="bg-yellow-50 dark:bg-opacity-0 rounded-3xl py-20">

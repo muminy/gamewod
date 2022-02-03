@@ -22,6 +22,8 @@ import MakeComment from "components/ui/MakeComment";
 import ErrorFound from "components/ui/Error/ErrorFound";
 import { NextSeoProps } from "next-seo";
 import Grid from "components/ui/Grid";
+import { ForumTypes } from "constants/enums";
+import { setDescription } from "helpers/utils";
 
 export interface Props {
   id: number;
@@ -42,11 +44,12 @@ export default function Forum(props: Props) {
   const seo = data?.forum
     ? ({
         openGraph: {
-          description: data.forum.content,
+          description: setDescription(data.forum.content),
           title:
             `${data.forum.title} | Gamewod.com` || "Bulunamadı | Gamewod.com",
+          url: window.location.href,
         },
-        description: data.forum.content,
+        description: setDescription(data.forum.content),
         title:
           `${data.forum.title} | Gamewod.com` || "Bulunamadı | Gamewod.com",
       } as NextSeoProps)
@@ -67,12 +70,15 @@ export default function Forum(props: Props) {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className={classNames(STYLE.paddingHorizontal)}
+        className={classNames(
+          STYLE.paddingHorizontal,
+          "2xl:max-w-[1700px] xl:max-w-7xl mx-auto"
+        )}
       >
         {data ? (
           data.forum ? (
             !deleted && data.forum.status ? (
-              <Grid.Col className="xl:gap-10 lg:gap-8 gap-5 2xl:max-w-[1700px] xl:max-w-7xl mx-auto">
+              <Grid.Col className="xl:gap-10 lg:gap-8 gap-5">
                 <Grid.Span span="xl:col-span-8 lg:col-span-8 col-span-12">
                   <ForumHead
                     date={data.forum.createdAt}
@@ -91,6 +97,7 @@ export default function Forum(props: Props) {
                 <Grid.Span span="xl:col-span-4 lg:col-span-4 col-span-12">
                   <MakeComment
                     fid={data.forum.id}
+                    type={ForumTypes.FORUM}
                     setComments={(comment: IComment) =>
                       setComments(comments.concat(comment))
                     }

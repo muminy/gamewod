@@ -49,6 +49,7 @@ export default function Article(props: Props) {
           title:
             `${article?.data.attributes.title} | Gamewod.com` ||
             "Bulunamadı | Gamewod.com",
+          url: window.location.href,
         },
         description: article?.data.attributes.desc,
         title:

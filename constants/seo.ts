@@ -13,6 +13,7 @@ const seo: NextSeoProps = {
     title: "Gamewod.com | E-spor Haberleri, son gelişmeler ve takım analizleri",
     url: "https://gamewod.com",
     type: "website",
+    locale: "tr",
     description:
       "Csgo, valorant ve PUBG tarafından son dakika gelişmeler ve oyun analizleri.",
   },

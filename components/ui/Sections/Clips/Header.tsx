@@ -14,7 +14,7 @@ export default function Header() {
         <button
           onClick={() => setSelected(item.id)}
           className={classNames(
-            "px-3 font-semibold text-[14px] py-2 rounded-xl hover:bg-gray-100 duration-200",
+            "px-3 font-semibold whitespace-nowrap mb-1 text-[14px] py-2 rounded-xl hover:bg-gray-100 duration-200",
             {
               "!bg-gray-900 text-white": item.id === selected,
             }

@@ -13,12 +13,13 @@ interface IProps {
 export default function ForumHead(props: IProps) {
   return (
     <div className="mb-8 py-2">
-      <div className="text-2xl font-medium mb-2">{props.title}</div>
+      <h1 className="text-2xl font-medium mb-2">{props.title}</h1>
 
       <Link href={`/user/${props.user.username}`}>
         <a className="flex space-x-3 items-center">
           <div className="w-8 h-8 dark:bg-dark-border bg-gray-200 rounded-full">
             <img
+              alt={`"${props.user.username}" Profile image`}
               className="w-full h-full object-cover rounded-full"
               src={
                 props.user.image

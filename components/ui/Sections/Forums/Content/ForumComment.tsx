@@ -1,7 +1,10 @@
 import classNames from "classnames";
 import Flexible from "components/ui/Flexible";
+import Notify from "components/ui/Notify";
 import { IComment, IVoteComment } from "constants/types";
 import { defaultUserImage, makeProfileImageURL } from "helpers/utils";
+import useCurrentUser from "hooks/useCurrentUser";
+import useToggle from "hooks/useToggle";
 import Link from "next/link";
 import { useState } from "react";
 import {
@@ -12,12 +15,22 @@ import { useAppSelector } from "store/hooks";
 
 export default function ForumComment(props: IComment) {
   const [votes, setVotes] = useState<IVoteComment[]>(props.votes);
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const user = useAppSelector((state) => state.user);
+  const [isCurrentUser] = useCurrentUser({ username: props.user.username });
+
+  const { value, toggle } = useToggle();
 
   const alreadyVote = user.user
     ? votes.find((item: IVoteComment) => item.userID === user.user?.id)
     : false;
+
+  const toggleError = (error: string) => {
+    toggle();
+    setErrorMessage(error);
+    setTimeout(toggle, 2000);
+  };
 
   const handleUpVote = () => {
     handleUpvoteForumComment({ commentId: props.id }).then((response) => {
@@ -25,6 +38,8 @@ export default function ForumComment(props: IComment) {
       console.log("response upvote");
       if (response.status === 200) {
         setVotes(votes.concat(response.vote));
+      } else {
+        toggleError(response.error);
       }
     });
   };
@@ -35,6 +50,8 @@ export default function ForumComment(props: IComment) {
       console.log("response unvote");
       if (response.status === 200) {
         setVotes(votes.filter((item) => item.userID !== user.user?.id));
+      } else {
+        toggleError(response.error);
       }
     });
   };
@@ -53,7 +70,11 @@ export default function ForumComment(props: IComment) {
       <div>
         <div className="text-[14px]">
           <Link href={`/user/${props.user?.username}`}>
-            <a className="font-semibold pr-1 dark:text-gray-200">
+            <a
+              className={classNames("font-semibold pr-1 dark:text-gray-200", {
+                "text-blue-700": isCurrentUser,
+              })}
+            >
               @{props.user?.username}
             </a>
           </Link>{" "}
@@ -80,13 +101,17 @@ export default function ForumComment(props: IComment) {
             {votes.length} {alreadyVote ? "Liked" : "Likes"}
           </button>
 
-          <Link href={"/bug"}>
-            <a className="text-xs dark:hover:text-red-400 text-gray-400 hover:underline hover:text-gray-900 font-medium">
-              Bildir
-            </a>
-          </Link>
+          {!isCurrentUser && (
+            <Link href={"/bug"}>
+              <a className="text-xs dark:hover:text-red-400 text-gray-400 hover:underline hover:text-gray-900 font-medium">
+                Bildir
+              </a>
+            </Link>
+          )}
         </Flexible>
       </div>
+
+      {value && <Notify.Error title={errorMessage} />}
     </Flexible>
   );
 }

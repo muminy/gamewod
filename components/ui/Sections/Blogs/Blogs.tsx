@@ -12,7 +12,6 @@ import CustomTitle from "components/ui/Title";
 // packages
 import Link from "next/link";
 import Image from "next/image";
-import cn from "classnames";
 
 import style from "./blogs.module.css";
 
@@ -28,13 +27,15 @@ import { ArticleProps } from "constants/types";
 import { baseURL } from "services/apis";
 import { blog_posts } from "services/article/config";
 import { fetcher } from "lib/fetcher";
+
 import { BlogSkeleton } from "components/Skeleton/Blog";
+import ErrorFound from "components/ui/Error/ErrorFound";
 
 export default function BlogSection() {
   const { data: articles, error } = useSWR(blog_posts, fetcher);
 
   if (error) {
-    return <div>Lütfen bunu bize bildiriniz</div>;
+    return <ErrorFound />;
   }
 
   return (

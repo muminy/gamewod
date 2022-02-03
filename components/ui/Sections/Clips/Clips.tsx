@@ -1,17 +1,41 @@
 import Grid from "components/ui/Grid";
 
-import style from "./style.module.css";
-import cliplist from "./clips.json";
 import ClipCard from "./Card";
+import useSWR from "swr";
+
+import { clip } from "services/clip/config";
+import { fetcherV2 } from "lib/fetcher";
+import { IClip } from "constants/types";
+
+import ErrorFound from "components/ui/Error/ErrorFound";
+import NotFound from "components/ui/NotFound";
+import ClipSkeletons from "components/Skeleton/Clips";
 
 export default function Clips() {
+  const { data, error } = useSWR(clip, fetcherV2);
+
+  if (error) {
+    return <ErrorFound />;
+  }
+
   return (
     <Grid.Col>
-      {cliplist.map((item) => (
-        <Grid.Span key={item.id} span="col-span-2">
-          <ClipCard {...item} />
-        </Grid.Span>
-      ))}
+      {data ? (
+        data.clips ? (
+          data.clips.map((item: IClip) => (
+            <Grid.Span
+              key={item.id}
+              span="2xl:col-span-2 xl:col-span-3 lg:col-span-4 col-span-6"
+            >
+              <ClipCard {...item} />
+            </Grid.Span>
+          ))
+        ) : (
+          <NotFound />
+        )
+      ) : (
+        <ClipSkeletons />
+      )}
     </Grid.Col>
   );
 }

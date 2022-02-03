@@ -8,7 +8,6 @@ import initialseo from "constants/seo";
 export interface ILayout {
   seo?: NextSeoProps;
   children?: React.ReactNode;
-  layout?: "HORIZONTAL" | "VERTICAL" | "ARTICLE";
   className?: string;
 }
 

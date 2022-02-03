@@ -25,7 +25,11 @@ export default function Comments(props: Props) {
               span="xl:col-span-6 lg:col-span-6 col-span-12"
               className="rounded-md border dark:border-dark-border"
             >
-              <CommentCard {...item} />
+              {item.type === "CLIP" ? (
+                <ClipCommentCard {...item} />
+              ) : (
+                <ForumCommentCard {...item} />
+              )}
             </Grid.Span>
           ))
         )}
@@ -34,8 +38,8 @@ export default function Comments(props: Props) {
   );
 }
 
-export const CommentCard = (props: IComment) => {
-  const forumSlug = slugify(props.forum.title, {
+export const ForumCommentCard = (props: IComment) => {
+  const forumSlug = slugify(props.forum?.title, {
     lower: true,
     replacement: "-",
   });
@@ -45,6 +49,30 @@ export const CommentCard = (props: IComment) => {
       <a>
         <div className="border-b dark:border-dark-border dark:text-white font-medium text-gray-700 px-3 py-2 mb-1">
           {props.forum?.title}
+        </div>
+        <div className="px-3">
+          <div className="text-gray-300 mb-1">
+            <span className="text-gray-500 dark:text-darktext-color">
+              {props.comment}
+            </span>
+          </div>
+        </div>
+      </a>
+    </Link>
+  );
+};
+
+export const ClipCommentCard = (props: IComment) => {
+  const slug = slugify(props.clip?.title, {
+    lower: true,
+    replacement: "-",
+  });
+
+  return (
+    <Link href={`/clip/${props.clip.id}/${slug}`}>
+      <a>
+        <div className="border-b dark:border-dark-border dark:text-white font-medium text-gray-700 px-3 py-2 mb-1">
+          {props.clip.title}
         </div>
         <div className="px-3">
           <div className="text-gray-300 mb-1">

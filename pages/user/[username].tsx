@@ -9,7 +9,6 @@ import Layout from "components/core/Layout";
 import STYLE from "constants/style";
 import UserProfile from "components/ui/Sections/User";
 import NotFound from "components/ui/NotFound";
-import ErrorFound from "components/ui/Error/ErrorFound";
 
 import { fetcherV2 } from "lib/fetcher";
 import { find_user } from "services/user/config";
@@ -27,6 +26,7 @@ const Profile: NextPage<IProps> = (props) => {
         openGraph: {
           description: `${data.user.username} Gamewod Profili`,
           title: `${data.user.name} | Gamewod.com`,
+          url: window.location.href,
         },
         description: `${data.user.username} Gamewod Profili`,
         title: `${data.user.name} | Gamewod.com`,

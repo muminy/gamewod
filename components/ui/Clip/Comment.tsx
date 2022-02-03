@@ -1,14 +1,22 @@
-import { RightArrowPath } from "constants/flaticons";
+import { ForumTypes } from "constants/enums";
+import { IComment } from "constants/types";
 import useToggle from "hooks/useToggle";
-import Flaticon from "../Flaticon";
+import { useState } from "react";
 import MakeComment from "../MakeComment";
 import Modal from "../Modal";
 import Share from "../Modal/components/Share.modal";
 import ForumComment from "../Sections/Forums/Content/ForumComment";
-import commentlist from "./db.json";
 
-export default function Comments() {
+interface IProps {
+  id: number;
+  title: string;
+  comments: IComment[];
+}
+
+export default function Comments(props: IProps) {
   const { value: openModal, toggle: toogleModal } = useToggle();
+  console.log(props);
+  const [comments, setComments] = useState(props.comments);
 
   return (
     <div>
@@ -32,18 +40,24 @@ export default function Comments() {
         </svg>
       </button>
 
-      {/* <div className="mb-10">
-        {commentlist.map((item) => (
-          <ForumComment {...item} />
-        ))}
-      </div> */}
+      <MakeComment
+        type={ForumTypes.CLIP}
+        fid={props.id}
+        setComments={(comment: IComment) =>
+          setComments(comments.concat(comment))
+        }
+      />
 
-      <MakeComment fid={1} setComments={() => {}} />
+      <div className="mb-10">
+        {comments.map((item) => (
+          <ForumComment key={item.id} {...item} />
+        ))}
+      </div>
 
       <Modal
         open={openModal}
         toggle={toogleModal}
-        component={() => <Share toggle={toogleModal} />}
+        component={() => <Share title={props.title} toggle={toogleModal} />}
         size="sm"
       />
     </div>
