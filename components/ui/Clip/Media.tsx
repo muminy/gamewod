@@ -8,7 +8,7 @@ export default function Media(props: MediaProps) {
     <div className="">
       <div className="w-full rounded-2xl overflow-hidden mb-4 xl:h-[800px] lg:h-[600px] h-[400px]">
         <iframe
-          src={`${props.detail.embed_url}&parent=localhost`}
+          src={`${props.detail.embed_url}&parent=gamewod.com`}
           height="100%"
           width="100%"
           allowFullScreen
@@ -18,7 +18,7 @@ export default function Media(props: MediaProps) {
       <div className="font-bold text-2xl mb-1">{props.title}</div>
 
       <div className="font-semibold mb-4 text-sm text-gray-900 text-opacity-50">
-        billy
+        {props.detail.broadcaster_name}
       </div>
 
       <div className="max-w-5xl">
