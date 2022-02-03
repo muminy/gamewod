@@ -95,7 +95,12 @@ interface IBadgeProps {
 
 export const Badge = (props: IBadgeProps) => {
   return (
-    <a href={props.href} target={"_blank"} rel="" className="text-center block">
+    <a
+      href={props.href}
+      target={"_blank"}
+      rel="noreferrer"
+      className="text-center block"
+    >
       <div className="w-14 h-14 mb-2 text-gray-600 flex items-center justify-center rounded-full bg-gray-100">
         {props.icon}
       </div>
