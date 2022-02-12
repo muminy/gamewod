@@ -16,7 +16,7 @@
 }
 
 .blogImage {
-  @apply xl:rounded-md lg:rounded-md md:rounded-md mb-4;
+  @apply mb-4;
   object-fit: cover;
 }
 

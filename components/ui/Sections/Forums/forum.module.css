@@ -1,5 +1,5 @@
 .forum {
-  @apply flex space-x-4 items-center mb-4 xl:px-0 lg:px-0 px-4;
+  @apply flex space-x-4 p-3 bg-gray-100 items-center mb-2 px-4;
 }
 
 .userimage {
