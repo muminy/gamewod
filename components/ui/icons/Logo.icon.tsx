@@ -34,9 +34,9 @@ export default function LogoIcon({
           width="912"
           height="912"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feGaussianBlur in="BackgroundImage" stdDeviation="100" />
           <feComposite
             in2="SourceAlpha"
@@ -58,20 +58,12 @@ export default function LogoIcon({
           y2="570.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#1A268D" stop-opacity="0.46" />
-          <stop offset="0.21875" stop-color="#8B20A6" stop-opacity="0.578125" />
-          <stop
-            offset="0.504236"
-            stop-color="#355DC3"
-            stop-opacity="0.715937"
-          />
-          <stop offset="0.653197" stop-color="#34B0D7" stop-opacity="0.80875" />
-          <stop
-            offset="0.817708"
-            stop-color="#4C9BE4"
-            stop-opacity="0.901563"
-          />
-          <stop offset="1" stop-color="#33FFA9" />
+          <stop stop-color="#1A268D" stopOpacity="0.46" />
+          <stop offset="0.21875" stop-color="#8B20A6" stopOpacity="0.578125" />
+          <stop offset="0.504236" stopColor="#355DC3" stopOpacity="0.715937" />
+          <stop offset="0.653197" stopColor="#34B0D7" stopOpacity="0.80875" />
+          <stop offset="0.817708" stopColor="#4C9BE4" stopOpacity="0.901563" />
+          <stop offset="1" stopColor="#33FFA9" />
         </linearGradient>
       </defs>
     </svg>
