@@ -1,17 +1,10 @@
 import classNames from "classnames";
 
 import STYLE from "constants/style";
-import { useTheme } from "next-themes";
 import Link from "next/link";
 import style from "./style.module.css";
 
 export default function Footer() {
-  const { setTheme } = useTheme();
-
-  const toggleTheme = (set: "dark" | "light") => {
-    setTheme(set);
-  };
-
   return (
     <div
       className={classNames(
@@ -19,7 +12,7 @@ export default function Footer() {
         STYLE.paddingHorizontal
       )}
     >
-      <div className="font-semibold text-sm text-gray-900 text-opacity-50">
+      <div className="font-semibold text-sm w-full text-gray-900 text-opacity-50">
         © 2022 Gamewod{" "}
       </div>
 
