@@ -1,5 +1,11 @@
 .forum {
-  @apply rounded-md duration-300 p-2 shadow-sm mb-2;
+  @apply flex space-x-4 items-center mb-4 xl:px-0 lg:px-0 px-4;
+}
+
+.userimage {
+  width: 32px;
+  height: 32px;
+  @apply rounded-full;
 }
 
 .title {

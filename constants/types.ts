@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export interface SVGProps {
+export interface SVGProps extends React.SVGProps<SVGSVGElement> {
   size?: number;
   color?: string;
 }
@@ -105,7 +105,7 @@ export interface IForum {
   id: number;
   status: boolean;
   title: string;
-  user: IUser | null;
+  user: IUser | null | undefined;
   userId: number | null;
 }
 

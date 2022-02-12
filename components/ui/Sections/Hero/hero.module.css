@@ -3,7 +3,7 @@
   height: 100%;
   background-size: cover;
   background-position: center;
-  @apply rounded-md relative flex items-end p-4 cursor-pointer;
+  @apply relative flex items-end p-4 cursor-pointer;
 }
 
 .gridContainer::before {
@@ -39,6 +39,6 @@
 }
 
 .alt_card {
-  @apply xl:h-[420px] lg:h-[420px] md:h-[310px] h-[210px];
-  @apply 2xl:col-span-2 xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12;
+  @apply xl:h-[420px] lg:h-[420px] md:h-[310px] h-[270px];
+  @apply 2xl:col-span-3 xl:col-span-4 col-span-12;
 }

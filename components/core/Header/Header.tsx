@@ -25,6 +25,7 @@ import Dropdown from "./Dropdown";
 import Logo from "components/ui/Logo";
 import { baseURLV2 } from "services/apis";
 import { useTheme } from "next-themes";
+import MenuIcon from "components/ui/icons/Menu.icon";
 
 const Header: React.FC = (props) => {
   const [open, setOpen] = React.useState(false);
@@ -45,7 +46,14 @@ const Header: React.FC = (props) => {
           alignItem="items-center"
         >
           <Link href="/">
-            <a className="dark:text-white">
+            <a className="dark:text-white flex items-center">
+              <Button
+                color="icon"
+                onClick={toggle}
+                className="!min-w-[34px] !h-[34px] mr-2 items-center justify-center flex xl:hidden lg:hidden"
+              >
+                <MenuIcon size={24} />
+              </Button>
               <Logo size={18} />
             </a>
           </Link>
@@ -93,7 +101,7 @@ const Header: React.FC = (props) => {
             </Link>
             <button className={style.avatarDD}>
               <Avatar
-                className="!rounded-xl"
+                className="!rounded-full xl:!w-[38px] xl:!h-[38px]"
                 imageURL={
                   user.user.image &&
                   `${baseURLV2}/uploads/users/${user.user.image}`
@@ -104,7 +112,7 @@ const Header: React.FC = (props) => {
 
             <button
               className={
-                "dark:text-white dark:bg-dark-border h-[38px] rounded-xl w-[38px] flex items-center justify-center bg-gray-100 text-gray-600"
+                "dark:text-white flex dark:bg-dark-border h-[38px] rounded-full w-[38px] items-center justify-center bg-gray-100 text-gray-600"
               }
               onClick={toggleTheme}
             >
@@ -130,14 +138,6 @@ const Header: React.FC = (props) => {
             </Link>
           </Flexible>
         )}
-
-        <Button
-          color="icon"
-          onClick={toggle}
-          className="min-w-[38px] h-[38px] border !rounded-md ml-2 items-center justify-center flex xl:hidden lg:hidden"
-        >
-          <Flaticon paths={MenuIconPath} viewBox="0 0 512 512" size={14} />
-        </Button>
 
         <ResponsiveMenu open={open} toggle={toggle} />
       </div>

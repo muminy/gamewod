@@ -40,11 +40,11 @@ export default function BlogSection() {
   return (
     <section>
       <CustomTitle>Son Gelişmeler</CustomTitle>
-      <Grid.Col gap="xl:gap-x-10 lg:gap-x-6 gap-x-4 gap-y-5">
+      <Grid.Col gap="xl:gap-x-10 lg:gap-x-6 md:gap-x-6 gap-x-4 gap-y-5">
         {articles.data.map((item: ArticleProps) => (
           <Grid.Span
             key={item.id}
-            span="2xl:col-span-3 xl:col-span-4 lg:col-span-4 md:col-span-6 col-span-12"
+            span="2xl:col-span-3 xl:col-span-4 lg:col-span-6 col-span-12"
           >
             <BlogCard {...item} />
           </Grid.Span>
@@ -80,15 +80,19 @@ export const BlogCard: React.FC<ArticleProps> = (props) => {
           }
         />
 
-        <div className={style.date}>
-          {moment(props.attributes.createdAt).locale("tr").format("DD MMMM, y")}
-        </div>
+        <div className="xl:px-0 lg:px-0 md:px-0 px-4">
+          <div className={style.date}>
+            {moment(props.attributes.createdAt)
+              .locale("tr")
+              .format("DD MMMM, y")}
+          </div>
 
-        <h3 className={style.blogtitle}>{props.attributes.title}</h3>
+          <h3 className={style.blogtitle}>{props.attributes.title}</h3>
 
-        <div className="flex items-center dark:hover:text-white dark:text-gray-400 duration-200 text-gray-500 hover:text-gray-900 font-medium text-sm">
-          <span className="mr-2">Devamını Oku</span>
-          <Flaticon paths={RightArrowPath} size={14} />
+          <div className="flex items-center dark:hover:text-white dark:text-gray-400 duration-200 text-gray-500 hover:text-gray-900 font-medium text-sm">
+            <span className="mr-2">Devamını Oku</span>
+            <Flaticon paths={RightArrowPath} size={14} />
+          </div>
         </div>
       </a>
     </Link>

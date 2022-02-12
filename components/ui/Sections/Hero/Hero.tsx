@@ -1,28 +1,28 @@
 import Grid from "components/ui/Grid";
-import { HeroSkeleton } from "components/Skeleton/Hero";
 
 // packages
 import cn from "classnames";
 import Link from "next/link";
 import slugify from "slugify";
-import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import { lazy, Suspense } from "react";
 
 // base url
 import { baseURL } from "services/apis";
 
 // style
 import style from "./hero.module.css";
-import F from "constants/style";
 
 import { ArticleProps } from "constants/types";
 import ArticleBlogs from "./Blogs";
 
 export default function Hero() {
   return (
-    <div className={cn(style.section, F.paddingHorizontal)}>
-      <Grid.Col className="items-center" cols="grid-cols-12">
+    <div className={cn(style.section)}>
+      <Grid.Col
+        className="items-center"
+        gap="xl:gap-1 lg:gap-2 md:gap-1"
+        cols="grid-cols-12"
+      >
         <ArticleBlogs />
       </Grid.Col>
     </div>

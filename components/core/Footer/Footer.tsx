@@ -15,7 +15,7 @@ export default function Footer() {
   return (
     <div
       className={classNames(
-        "mt-auto flex items-center space-y-4 xl:flex-nowrap lg:flex-nowrap flex-wrap xl:justify-between lg:justify-between justify-center py-4 w-full mx-auto",
+        "mt-auto flex items-center space-y-4 xl:flex-nowrap lg:flex-nowrap flex-wrap py-4 w-full mx-auto",
         STYLE.paddingHorizontal
       )}
     >
@@ -23,7 +23,7 @@ export default function Footer() {
         © 2022 Gamewod{" "}
       </div>
 
-      <div className="flex xl:w-auto lg:w-auto w-full xl:flex-nowrap lg:flex-nowrap flex-wrap justify-between">
+      <div className="flex xl:space-y-0 lg:space-y-0 space-y-2 xl:w-auto lg:w-auto w-full xl:flex-nowrap lg:flex-nowrap flex-wrap justify-between">
         <Link href={"/bug"}>
           <a className={style.footer_link}>Bug form</a>
         </Link>

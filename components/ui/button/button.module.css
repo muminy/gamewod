@@ -9,7 +9,7 @@
 }
 
 :global(.dark) .btn-icon {
-  @apply text-darktext-color hover:border-dark-borderlight hover:text-gray-200 border border-dark-border;
+  @apply text-darktext-color hover:border-dark-borderlight hover:text-gray-200;
 }
 
 .btn-more {
