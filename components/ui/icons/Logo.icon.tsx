@@ -58,8 +58,8 @@ export default function LogoIcon({
           y2="570.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#1A268D" stopOpacity="0.46" />
-          <stop offset="0.21875" stop-color="#8B20A6" stopOpacity="0.578125" />
+          <stop stopColor="#1A268D" stopOpacity="0.46" />
+          <stop offset="0.21875" stopColor="#8B20A6" stopOpacity="0.578125" />
           <stop offset="0.504236" stopColor="#355DC3" stopOpacity="0.715937" />
           <stop offset="0.653197" stopColor="#34B0D7" stopOpacity="0.80875" />
           <stop offset="0.817708" stopColor="#4C9BE4" stopOpacity="0.901563" />
