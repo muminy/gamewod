@@ -1,4 +1,8 @@
-import type { NextPage, NextPageContext } from "next";
+import type {
+  GetServerSidePropsContext,
+  NextPage,
+  NextPageContext,
+} from "next";
 import useSWR from "swr";
 import { motion } from "framer-motion";
 
@@ -13,59 +17,48 @@ import NotFound from "components/ui/NotFound";
 import { fetcherV2 } from "lib/fetcher";
 import { find_user } from "services/user/config";
 import { ProfileSkeleton } from "components/Skeleton/Profile";
+import { ApiV2 } from "services/apis";
+import { IUser } from "constants/types";
 
 interface IProps {
-  username: string;
+  user: IUser;
 }
 
-const Profile: NextPage<IProps> = (props) => {
-  const { data, error } = useSWR(find_user(props.username), fetcherV2);
-
-  const seo = data?.user
-    ? ({
-        openGraph: {
-          description: `${data.user.username} Gamewod Profili`,
-          title: `${data.user.name} | Gamewod.com`,
-          url: window.location.href,
-        },
-        description: `${data.user.username} Gamewod Profili`,
-        title: `${data.user.name} | Gamewod.com`,
-      } as NextSeoProps)
-    : {};
+const Profile = (props: IProps) => {
+  const { user } = props;
 
   return (
-    <Layout seo={seo} className="relative">
-      {error ? (
-        <NotFound />
-      ) : data ? (
-        data.user ? (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className={STYLE.paddingHorizontal}
-          >
-            <UserProfile.Header {...data.user} />
-            <UserProfile.Cover {...data.user} />
-            <UserProfile.Tab {...data.user} />
-          </motion.div>
-        ) : (
-          <NotFound />
-        )
-      ) : (
-        <ProfileSkeleton />
-      )}
+    <Layout
+      seo={{
+        description: `${user.username} Gamewod Profili`,
+        title: `${user.name} | Gamewod.com`,
+      }}
+      className="relative"
+    >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className={STYLE.paddingHorizontal}
+      >
+        <UserProfile.Header {...user} />
+        <UserProfile.Cover {...user} />
+        <UserProfile.Tab {...user} />
+      </motion.div>
     </Layout>
   );
 };
 
-interface InitialProps extends NextPageContext {
-  query: {
-    username: string;
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const apipath = find_user(context.query.username as string);
+  const user = await ApiV2.get(apipath);
+
+  if (user.data.user) {
+    return { props: { user: user.data.user } };
+  }
+
+  return {
+    notFound: true,
   };
 }
-
-Profile.getInitialProps = async (ctx: InitialProps) => {
-  return { username: ctx.query.username };
-};
 
 export default Profile;

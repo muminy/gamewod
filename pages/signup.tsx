@@ -1,9 +1,8 @@
-import type { NextPage, GetServerSideProps } from "next";
+import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 
 import style from "styles/signup.module.css";
 
-import Flexible from "components/ui/Flexible";
 import Link from "next/link";
 import Head from "next/head";
 import {
@@ -15,6 +14,7 @@ import { useDispatch } from "react-redux";
 import { handleAddUser } from "store/actions/user";
 import { useRouter } from "next/router";
 import { validateEmail } from "helpers/utils";
+import Logo from "components/ui/Logo";
 
 type IAvailable = "LOADED" | "LOADING" | "EXIST" | "AVAILABLE";
 
@@ -103,7 +103,9 @@ const Signup: NextPage = () => {
         <img src="https://rarible.com/9db0a6651f2ce1120811.jpg" />
 
         <Link href={"/"}>
-          <a className={style.logo}>GW</a>
+          <a className={style.logo}>
+            <Logo />
+          </a>
         </Link>
       </div>
 

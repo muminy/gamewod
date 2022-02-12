@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 
 import Notify from "components/ui/Notify";
+import Logo from "components/ui/Logo";
 
 const Login: NextPage = () => {
   const [username, setUsername] = useState("");
@@ -59,7 +60,9 @@ const Login: NextPage = () => {
         <img src="https://rarible.com/9db0a6651f2ce1120811.jpg" />
 
         <Link href={"/"}>
-          <a className={style.logo}>GW</a>
+          <a className={style.logo}>
+            <Logo />
+          </a>
         </Link>
       </div>
 

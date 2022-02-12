@@ -1,14 +1,11 @@
-import Flexible from "../Flexible";
 import LogoIcon from "../icons/Logo.icon";
 import style from "./style.module.css";
 
-export default function LogoSVG({ size }: { size: number }) {
+export default function LogoSVG({ size = 38 }: { size?: number }) {
   return (
-    <Flexible alignItem="items-center">
-      <div className={style.logo}>
-        <LogoIcon className="rounded-md" size={38} />
-      </div>
-    </Flexible>
+    <div className={style.logo}>
+      <LogoIcon className="rounded-md" size={size} />
+    </div>
   );
 }
 

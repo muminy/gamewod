@@ -14,28 +14,19 @@ import ClipSkeletons from "components/Skeleton/Clips";
 export default function Clips() {
   const { data, error } = useSWR(clip, fetcherV2);
 
-  if (error) {
-    return <ErrorFound />;
-  }
+  if (error) return <ErrorFound />;
+  if (!data) return <ClipSkeletons />;
 
   return (
     <Grid.Col>
-      {data ? (
-        data.clips ? (
-          data.clips.map((item: IClip) => (
-            <Grid.Span
-              key={item.id}
-              span="2xl:col-span-2 xl:col-span-3 lg:col-span-4 col-span-6"
-            >
-              <ClipCard {...item} />
-            </Grid.Span>
-          ))
-        ) : (
-          <NotFound />
-        )
-      ) : (
-        <ClipSkeletons />
-      )}
+      {data.clips.map((item: IClip) => (
+        <Grid.Span
+          key={item.id}
+          span="2xl:col-span-2 xl:col-span-3 lg:col-span-4 col-span-6"
+        >
+          <ClipCard {...item} />
+        </Grid.Span>
+      ))}
     </Grid.Col>
   );
 }

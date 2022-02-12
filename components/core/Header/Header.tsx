@@ -52,7 +52,7 @@ const Header: React.FC = (props) => {
 
           <Link href="/">
             <a className="dark:text-white flex items-center mr-4">
-              <Logo size={18} />
+              <Logo />
             </a>
           </Link>
 

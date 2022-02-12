@@ -75,6 +75,8 @@ export interface IUser {
     [key: string]: string;
   };
   website: string;
+  forums: IForum[];
+  comments: IComment[];
 }
 
 export interface IVoteComment {
