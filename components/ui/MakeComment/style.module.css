@@ -1,5 +1,9 @@
 .button {
-  @apply bg-[#4834d4] font-semibold text-sm text-white rounded-md py-3 w-full mb-2;
+  @apply font-semibold text-sm bg-gray-900 text-white rounded-xl py-3 w-full;
+}
+
+:global(.dark) .button {
+  @apply bg-black;
 }
 
 .title {

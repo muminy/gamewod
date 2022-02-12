@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { handleChangeEmail, handleChangePassword } from "services/user";
 import { handleAddUser } from "store/actions/user";
 import style from "./style.module.css";
+import Title from "./Title";
 
 export default function Security() {
   const { data } = useUserdata();
@@ -77,10 +78,8 @@ export default function Security() {
   return (
     <div>
       <form className="mb-10" onSubmit={handleSubmit(handleUpdatePassword)}>
-        <div className="mb-5">
-          <label htmlFor="pass" className={style.formTitle}>
-            Eski Şifreniz
-          </label>
+        <label className="mb-5 block">
+          <Title className="!mb-3">Eski Şifreniz</Title>
           <input
             type={"password"}
             id="pass"
@@ -88,13 +87,11 @@ export default function Security() {
             placeholder="Kullanıcı Adı"
             className={style.input}
           />
-        </div>
+        </label>
 
         <Flexible className="mb-10 space-x-5">
-          <div className="w-2/4">
-            <label htmlFor="new_pass" className={style.formTitle}>
-              Yeni Şifreniz
-            </label>
+          <label className="w-2/4">
+            <Title className="!mb-3">Yeni Şifreniz</Title>
             <input
               type={"password"}
               id="new_pass"
@@ -102,11 +99,9 @@ export default function Security() {
               placeholder="Kullanıcı Adı"
               className={style.input}
             />
-          </div>
-          <div className="w-2/4">
-            <label htmlFor="new_pas" className={style.formTitle}>
-              Yeni Şifre Tekrar
-            </label>
+          </label>
+          <label className="w-2/4">
+            <Title className="!mb-3">Yeni Şifre Tekrar</Title>
             <input
               type={"password"}
               id="new_pas"
@@ -114,7 +109,7 @@ export default function Security() {
               placeholder="Kullanıcı Adı"
               className={style.input}
             />
-          </div>
+          </label>
         </Flexible>
 
         <button type="submit" className={style.button}>
@@ -123,21 +118,21 @@ export default function Security() {
       </form>
 
       <div className="mb-10">
-        <label htmlFor="email" className="font-semibold text-lg">
-          Email Adresiniz
+        <label>
+          <Title className="!mb-1">Email Adresiniz</Title>
+          <div className="text-gray-500 text-sm mb-3">
+            E-mail adresinizi sadece sizin istediğiniz kullanıcılar tarafından
+            görülecektir.
+          </div>
+          <input
+            type={"text"}
+            id="email"
+            defaultValue={email}
+            onChange={(event) => setEmail(event.target.value)}
+            placeholder="Email Adresiniz"
+            className={style.input}
+          />
         </label>
-        <div className="text-gray-500 text-sm mb-3">
-          E-mail adresinizi sadece sizin istediğiniz kullanıcılar tarafından
-          görülecektir.
-        </div>
-        <input
-          type={"text"}
-          id="email"
-          defaultValue={email}
-          onChange={(event) => setEmail(event.target.value)}
-          placeholder="Email Adresiniz"
-          className={style.input}
-        />
 
         {!validateEmail(email) && (
           <span className="text-sm mb-2 block text-red-500 font-medium">

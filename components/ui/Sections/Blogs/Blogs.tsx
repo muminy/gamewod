@@ -34,26 +34,21 @@ import ErrorFound from "components/ui/Error/ErrorFound";
 export default function BlogSection() {
   const { data: articles, error } = useSWR(blog_posts, fetcher);
 
-  if (error) {
-    return <ErrorFound />;
-  }
+  if (error) return <ErrorFound />;
+  if (!articles) return <BlogSkeleton />;
 
   return (
     <section>
       <CustomTitle>Son Gelişmeler</CustomTitle>
       <Grid.Col gap="xl:gap-x-10 lg:gap-x-6 gap-x-4 gap-y-5">
-        {articles ? (
-          articles.data.map((item: ArticleProps) => (
-            <Grid.Span
-              key={item.id}
-              span="2xl:col-span-3 xl:col-span-4 lg:col-span-4 md:col-span-6 col-span-12"
-            >
-              <BlogCard {...item} />
-            </Grid.Span>
-          ))
-        ) : (
-          <BlogSkeleton />
-        )}
+        {articles.data.map((item: ArticleProps) => (
+          <Grid.Span
+            key={item.id}
+            span="2xl:col-span-3 xl:col-span-4 lg:col-span-4 md:col-span-6 col-span-12"
+          >
+            <BlogCard {...item} />
+          </Grid.Span>
+        ))}
       </Grid.Col>
     </section>
   );
@@ -71,25 +66,20 @@ export const BlogCard: React.FC<ArticleProps> = (props) => {
   return (
     <Link href={"/article/[id]/[slug]"} as={`/article/${props.id}/${slug}`}>
       <a className={style.blogcard}>
-        {articleImage ? (
-          <Image
-            width={900}
-            height={550}
-            blurDataURL={blurDataURL}
-            placeholder="blur"
-            className={style.blogImage}
-            src={`${baseURL}${articleImage.attributes.formats.medium.url}`}
-          />
-        ) : (
-          <Image
-            width={900}
-            height={550}
-            blurDataURL={blurDataURL}
-            placeholder="blur"
-            className={style.blogImage}
-            src={blurDataURL}
-          />
-        )}
+        <Image
+          width={900}
+          height={550}
+          blurDataURL={blurDataURL}
+          placeholder="blur"
+          className={style.blogImage}
+          alt="blog"
+          src={
+            articleImage
+              ? `${baseURL}${articleImage.attributes.formats.medium.url}`
+              : blurDataURL
+          }
+        />
+
         <div className={style.date}>
           {moment(props.attributes.createdAt).locale("tr").format("DD MMMM, y")}
         </div>

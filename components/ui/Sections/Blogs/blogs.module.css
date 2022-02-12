@@ -2,6 +2,10 @@
   @apply font-bold text-xl mb-3 dark:!text-white;
 }
 
+:global(.dark) .blogtitle {
+  @apply text-white;
+}
+
 .blogdesc {
   @apply text-sm text-gray-500 mb-3;
   line-height: 20px;

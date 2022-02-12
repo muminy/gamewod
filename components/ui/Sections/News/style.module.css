@@ -91,8 +91,16 @@
   @apply font-medium text-gray-900;
 }
 
+:global(.dark) .comment_user {
+  @apply text-gray-100;
+}
+
+:global(.dark) .comment_text {
+  @apply text-white;
+}
+
 .comment_text {
-  @apply text-sm font-medium mb-3;
+  @apply text-sm font-medium;
 }
 
 .comment_username {
@@ -112,5 +120,5 @@
 }
 
 .comment_date {
-  @apply mb-4 font-medium text-xs text-gray-400;
+  @apply font-medium text-xs text-gray-400;
 }

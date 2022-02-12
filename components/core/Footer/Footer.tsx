@@ -23,7 +23,7 @@ export default function Footer() {
         © 2022 Gamewod{" "}
       </div>
 
-      <div className="flex space-x-2">
+      <div className="flex xl:w-auto lg:w-auto w-full xl:flex-nowrap lg:flex-nowrap flex-wrap justify-between">
         <Link href={"/bug"}>
           <a className={style.footer_link}>Bug form</a>
         </Link>

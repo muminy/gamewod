@@ -34,6 +34,7 @@ export default function Avatar({
       {children}
       <img
         className="object-cover"
+        alt="Avatar"
         src={imageURL || `${baseURLV2}/uploads/users/default.png`}
       />
     </div>

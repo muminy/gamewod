@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { MakeCommentSkeleton } from "components/Skeleton/MakeComment";
 import { ForumTypes } from "constants/enums";
 import { IComment } from "constants/types";
@@ -47,8 +48,15 @@ export default function MakeComment(props: IProps) {
     return <MakeCommentSkeleton />;
   } else if (user.user) {
     return (
-      <div className="mb-10">
-        <div className="text-gray-600 text-opacity-70 dark:text-gray-500 text-sm font-medium mb-3">
+      <div
+        className={classNames(
+          "bg-gray-100 dark:bg-dark-border p-3 rounded-xl mb-6",
+          {
+            "bg-transparent dark:bg-transparent": openComment,
+          }
+        )}
+      >
+        <div className="text-gray-600 text-opacity-70 dark:text-gray-300 text-sm font-medium mb-3">
           Yorum yaparak görüşlerinizi bildirebilirsiniz.
         </div>
 
@@ -58,21 +66,21 @@ export default function MakeComment(props: IProps) {
               rows={4}
               value={comment}
               onChange={(e) => setComment(e.target.value)}
-              className="rounded-md w-full border-2 resize-none px-3 py-3 text-sm"
+              className="rounded-md w-full border-2 dark:bg-black dark:border-dark-border resize-none px-3 py-3 mb-4 text-sm"
               placeholder="Yorum içeriği"
             />
 
             <Flexible justifyContent="justify-end" className="space-x-2">
               <button
                 onClick={handleAddComment}
-                className="text-sm font-medium rounded-md bg-[#f3effd] px-3 py-1.5"
+                className="text-sm font-medium rounded-md dark:bg-opacity-40 dark:text-white  bg-[#f3effd] px-3 py-1.5"
               >
                 {loading ? "Yorum yapılıyor..." : "Yorum yap"}
               </button>
 
               <button
                 onClick={toggle}
-                className="text-sm text-gray-500 font-medium rounded-md block bg-[#f5f5f5] px-3 py-1.5"
+                className="text-sm text-gray-500 font-medium rounded-md block dark:bg-opacity-25 dark:text-white bg-[#f5f5f5] px-3 py-1.5"
               >
                 İptal
               </button>

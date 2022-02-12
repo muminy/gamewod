@@ -8,13 +8,22 @@ export default function Header() {
 
   return (
     <div className="border rounded-md overflow-hidden dark:border-dark-border">
+      <Link href={"/settings/general"}>
+        <a
+          className={classNames(style.menu, {
+            "bg-gray-50 dark:bg-dark-border": router.query.slug === "general",
+          })}
+        >
+          Genel
+        </a>
+      </Link>
       <Link href={"/settings/profile"}>
         <a
           className={classNames(style.menu, {
             "bg-gray-50 dark:bg-dark-border": router.query.slug === "profile",
           })}
         >
-          Profile
+          Profil
         </a>
       </Link>
       <Link href={"/settings/security"}>
@@ -23,7 +32,7 @@ export default function Header() {
             "bg-gray-50 dark:bg-dark-border": router.query.slug === "security",
           })}
         >
-          Security
+          Güvenlik
         </a>
       </Link>
     </div>

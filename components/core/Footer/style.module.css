@@ -3,7 +3,7 @@
 }
 
 .footer_link {
-  @apply font-semibold px-3 last:pr-0 text-sm block text-gray-800 hover:text-opacity-100 text-opacity-60;
+  @apply font-semibold w-full text-center whitespace-nowrap px-3 last:pr-0 text-sm block text-gray-800 hover:text-opacity-100 text-opacity-60;
 }
 
 :global(.dark) .footer_link {

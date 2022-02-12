@@ -1,45 +1,29 @@
 import Grid from "components/ui/Grid";
-import F from "constants/style";
+import { HeroSkeleton } from "components/Skeleton/Hero";
 
 // packages
 import cn from "classnames";
 import Link from "next/link";
+import slugify from "slugify";
+import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
+import { lazy, Suspense } from "react";
 
 // base url
 import { baseURL } from "services/apis";
 
 // style
 import style from "./hero.module.css";
-
-// packages
-import slugify from "slugify";
-import useSWR from "swr";
-import { motion } from "framer-motion";
+import F from "constants/style";
 
 import { ArticleProps } from "constants/types";
-import { HeroSkeleton } from "components/Skeleton/Hero";
-import { grid_posts } from "services/article/config";
-import { fetcher } from "lib/fetcher";
+import ArticleBlogs from "./Blogs";
 
 export default function Hero() {
-  const { data: articles, error } = useSWR(grid_posts, fetcher);
-
-  if (error) {
-    return <div>Lütfen bunu bize bildiriniz</div>;
-  }
-
   return (
     <div className={cn(style.section, F.paddingHorizontal)}>
       <Grid.Col className="items-center" cols="grid-cols-12">
-        {articles ? (
-          articles.data.map((item: ArticleProps) => (
-            <Grid.Span key={item.id} span={style.alt_card}>
-              <ArticleCard {...item} key={item.id} />
-            </Grid.Span>
-          ))
-        ) : (
-          <HeroSkeleton />
-        )}
+        <ArticleBlogs />
       </Grid.Col>
     </div>
   );

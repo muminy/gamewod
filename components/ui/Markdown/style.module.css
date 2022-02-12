@@ -22,6 +22,10 @@
   @apply font-medium text-xs text-blue-600;
 }
 
+:global(.dark) .content {
+  @apply text-white;
+}
+
 .content .modal_image {
   @apply w-10 h-10 rounded-full;
 }

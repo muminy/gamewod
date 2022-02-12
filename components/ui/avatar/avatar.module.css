@@ -1,7 +1,7 @@
 .avatar {
   width: 38px;
   height: 38px;
-  @apply rounded-full;
+  @apply rounded-xl;
 }
 
 .avatar img {

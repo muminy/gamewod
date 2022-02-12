@@ -9,7 +9,7 @@ module.exports = {
         primary: "#0066ff",
         "dark-border": "#222224",
         "dark-borderlight": "#484848",
-        "darktext-color": "#ffffff80",
+        "darktext-color": "#f1f1f1",
       },
     },
   },

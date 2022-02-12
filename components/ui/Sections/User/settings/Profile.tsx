@@ -15,6 +15,7 @@ import {
 } from "services/user";
 import { handleAddUser } from "store/actions/user";
 import style from "./style.module.css";
+import Title from "./Title";
 
 type IAvailable = "LOADED" | "LOADING" | "EXIST" | "AVAILABLE";
 
@@ -102,7 +103,7 @@ export default function Profile() {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Flexible className="space-x-5 mb-10">
         <div className="w-2/4">
-          <h3 className="font-semibold text-lg mb-3">Profil Fotoğrafı</h3>
+          <Title>Profil Fotoğrafı</Title>
           <label htmlFor="pphoto" className={style.uplaodlabel}>
             Profil Fotoğrafı Değiştir
           </label>
@@ -115,13 +116,14 @@ export default function Profile() {
 
           {data.user?.image && (
             <img
+              alt="User profile"
               className="w-10 h-10 rounded-full"
               src={makeProfileImageURL(data.user.image)}
             />
           )}
         </div>
         <div className="w-2/4">
-          <h3 className="font-semibold text-lg mb-3">Kapak Fotoğrafı</h3>
+          <Title>Kapak Fotoğrafı</Title>
           <label htmlFor="headerphoto" className={style.uplaodlabel}>
             Kapak Fotoğrafı Değiştir
           </label>
@@ -135,6 +137,7 @@ export default function Profile() {
 
           {data.user?.headerImage && (
             <img
+              alt="user header"
               className="w-full h-20 rounded-md"
               src={makeProfileImageURL(data.user.headerImage)}
             />
@@ -143,20 +146,17 @@ export default function Profile() {
       </Flexible>
 
       <div className="mb-10">
-        <label htmlFor="name" className="font-semibold block text-lg">
-          Adınız
+        <label>
+          <Title>Adınız</Title>
+          <input
+            id="name"
+            type={"text"}
+            defaultValue={data.user?.name}
+            {...register("name")}
+            placeholder="Adınızı Giriniz"
+            className={style.input}
+          />
         </label>
-        <div className="text-gray-500 text-sm mb-3">
-          Adınızın herkes tarafından görülebileceğini unutumayınız.
-        </div>
-        <input
-          id="name"
-          type={"text"}
-          defaultValue={data.user?.name}
-          {...register("name")}
-          placeholder="Adınızı Giriniz"
-          className={style.input}
-        />
       </div>
 
       <button type="submit" className={classNames(style.button, "!mb-10")}>
@@ -164,20 +164,17 @@ export default function Profile() {
       </button>
 
       <div className="mb-10">
-        <label htmlFor="username" className="font-semibold block text-lg">
-          Kullanıcı Adı
+        <label>
+          <Title>Kullanıcı Adı</Title>
+          <input
+            id="username"
+            defaultValue={data.user?.username}
+            onChange={(event) => setUsername(event.target.value)}
+            type={"text"}
+            placeholder="Kullanıcı Adı"
+            className={style.input}
+          />
         </label>
-        <div className="text-gray-500 text-sm mb-3">
-          Kullanıcı adınızı girerken Türkçe karakter kullanmayınız.
-        </div>
-        <input
-          id="username"
-          defaultValue={data.user?.username}
-          onChange={(event) => setUsername(event.target.value)}
-          type={"text"}
-          placeholder="Kullanıcı Adı"
-          className={style.input}
-        />
 
         {!username.match(match) ? (
           <span className="text-sm text-red-500 font-medium">

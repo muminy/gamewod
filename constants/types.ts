@@ -70,6 +70,11 @@ export interface IUser {
   createdAt: string;
   image: string | null;
   headerImage: string | null;
+  bio: string;
+  socials: {
+    [key: string]: string;
+  };
+  website: string;
 }
 
 export interface IVoteComment {

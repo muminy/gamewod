@@ -1,5 +1,5 @@
 .header {
-  @apply min-h-[98px] flex items-center w-full dark:bg-black;
+  @apply min-h-[90px] flex items-center w-full dark:bg-black;
 }
 
 .menuLink {
@@ -44,11 +44,10 @@
 .dropdown {
   display: none;
   min-width: 200px;
-  top: 50px;
   box-shadow: rgba(4, 4, 5, 0.089) 0px 0px 10px 2px;
   transition: all 0.12s ease-in-out 0s;
   @apply xl:absolute lg:absolute fixed z-10 rounded-xl p-2 bg-white;
-  @apply xl:right-0 lg:right-0 right-4 xl:w-auto lg:w-auto w-[calc(100%-32px)];
+  @apply xl:right-0 lg:right-0 right-4 xl:top-[50px] lg:top-[50px] top-16 xl:w-auto lg:w-auto w-[calc(100%-32px)];
 }
 
 :global(.dark) .dropdown {

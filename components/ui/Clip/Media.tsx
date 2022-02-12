@@ -15,35 +15,37 @@ export default function Media(props: MediaProps) {
         ></iframe>
       </div>
 
-      <div className="font-bold text-2xl mb-1">{props.title}</div>
+      <div className="font-bold text-2xl dark:text-white mb-1">
+        {props.title}
+      </div>
 
-      <div className="font-semibold mb-4 text-sm text-gray-900 text-opacity-50">
+      <div className="font-semibold mb-4 text-sm dark:text-dark-borderlight text-gray-900 text-opacity-50">
         {props.detail.broadcaster_name}
       </div>
 
       <div className="max-w-5xl">
-        <div className="text-sm mb-4 text-gray-900 text-opacity-60 font-medium">
+        <div className="text-sm mb-4 dark:text-white text-gray-900 text-opacity-60 font-medium">
           {props.content}
         </div>
 
         <div className="space-y-5">
           <Link href={"/"}>
             <a className="block">
-              <span className="rounded-2xl text-gray-700 font-semibold text-sm px-5 py-2 bg-gray-100">
+              <span className="rounded-2xl dark:bg-dark-border dark:text-white text-gray-700 font-semibold text-sm px-5 py-2 bg-gray-100">
                 Twitter Hesabımız
               </span>
             </a>
           </Link>
           <Link href={"/"}>
             <a className="block">
-              <span className="rounded-2xl text-gray-700 font-semibold text-sm px-5 py-2 bg-gray-100">
+              <span className="rounded-2xl dark:bg-dark-border dark:text-white text-gray-700 font-semibold text-sm px-5 py-2 bg-gray-100">
                 Tiktok Hesabımız
               </span>
             </a>
           </Link>
           <Link href={"/"}>
             <a className="block">
-              <span className="rounded-2xl text-gray-700 font-semibold text-sm px-5 py-2 bg-gray-100">
+              <span className="rounded-2xl dark:bg-dark-border dark:text-white text-gray-700 font-semibold text-sm px-5 py-2 bg-gray-100">
                 Instagram Hesabımız
               </span>
             </a>

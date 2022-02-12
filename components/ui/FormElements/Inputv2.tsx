@@ -33,7 +33,7 @@ export default memo(function InputV2({
       <input
         {...props}
         id={label}
-        className="w-full dark:placeholder-darktext-color resize-none mb-0 bg-opacity-50 dark:bg-opacity-10 dark:text-white bg-white outline-none px-4 py-3"
+        className="w-full dark:placeholder-darktext-color resize-none mb-0 bg-opacity-50 dark:bg-opacity-10 dark:text-white bg-white outline-none px-4 pb-3"
       />
     </label>
   );

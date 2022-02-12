@@ -7,5 +7,6 @@ export const update_detail = "/user/details";
 export const change_username = "/user/username";
 export const change_email = "/user/email";
 export const change_password = "/user/password";
+export const update_general = "/user/general";
 
 export const find_user = (username: string) => `/user/find/${username}`;

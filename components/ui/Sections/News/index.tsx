@@ -1,6 +1,6 @@
 import Header from "./Header";
-import Comment from "./Comments";
+import Comments from "./Comments";
 
-const News = { Header, Comment };
+const News = { Header, Comments };
 
 export default News;

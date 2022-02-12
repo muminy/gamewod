@@ -21,6 +21,8 @@ export default function SettingPage() {
             <Settings.Profile />
           ) : router.query.slug === "security" ? (
             <Settings.Security />
+          ) : router.query.slug === "general" ? (
+            <Settings.General />
           ) : null}
         </SettingLayout>
       ) : (

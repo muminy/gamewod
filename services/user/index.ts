@@ -9,6 +9,7 @@ import {
   change_username,
   change_email,
   change_password,
+  update_general,
 } from "./config";
 
 interface ILogin {
@@ -30,6 +31,15 @@ interface ICheckUsername {
 
 interface ICheckEmail {
   email?: string;
+  id?: number;
+}
+
+interface GeneralData {
+  bio?: string;
+  socials: {
+    [key: string]: string;
+  };
+  website?: string;
   id?: number;
 }
 
@@ -88,6 +98,15 @@ export async function handleChangeUsername(props: ICheckUsername) {
 
 export async function handleChangeEmail(props: ICheckEmail) {
   const upt = await ApiV2.patch(change_email, props, {
+    headers: {
+      Authorization: `Bearer ${getUsertoken()}`,
+    },
+  });
+  return upt.data;
+}
+
+export async function handleUpdateGeneral(props: GeneralData) {
+  const upt = await ApiV2.patch(update_general, props, {
     headers: {
       Authorization: `Bearer ${getUsertoken()}`,
     },

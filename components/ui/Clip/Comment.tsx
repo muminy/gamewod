@@ -15,14 +15,13 @@ interface IProps {
 
 export default function Comments(props: IProps) {
   const { value: openModal, toggle: toogleModal } = useToggle();
-  console.log(props);
   const [comments, setComments] = useState(props.comments);
 
   return (
     <div>
       <button
         onClick={toogleModal}
-        className="flex mb-10 w-full rounded-xl bg-gray-50 hover:bg-gray-100 px-6 py-3 items-center justify-between"
+        className="flex mb-4 w-full rounded-xl bg-gray-50 dark:bg-dark-border dark:text-white hover:bg-gray-100 px-6 py-3 items-center justify-between"
       >
         <span className="font-semibold text-sm">Klibi paylaş</span>
 
@@ -48,7 +47,7 @@ export default function Comments(props: IProps) {
         }
       />
 
-      <div className="mb-10">
+      <div className="mb-10 mt-10">
         {comments.map((item) => (
           <ForumComment key={item.id} {...item} />
         ))}

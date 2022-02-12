@@ -24,6 +24,7 @@ import { NextSeoProps } from "next-seo";
 import Grid from "components/ui/Grid";
 import { ForumTypes } from "constants/enums";
 import { setDescription } from "helpers/utils";
+import UserCard from "components/ui/UserCard";
 
 export interface Props {
   id: number;
@@ -70,20 +71,20 @@ export default function Forum(props: Props) {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className={classNames(
-          STYLE.paddingHorizontal,
-          "2xl:max-w-[1700px] xl:max-w-7xl mx-auto"
-        )}
+        className={classNames(STYLE.paddingHorizontal, "")}
       >
         {data ? (
           data.forum ? (
             !deleted && data.forum.status ? (
               <Grid.Col className="xl:gap-10 lg:gap-8 gap-5">
-                <Grid.Span span="xl:col-span-8 lg:col-span-8 col-span-12">
+                <Grid.Span span="2xl:col-span-3 xl:col-span-4 xl:block lg:block hidden col-span-12">
+                  <UserCard {...data.forum.user} />
+                </Grid.Span>
+
+                <Grid.Span span="2xl:col-span-6 xl:col-span-5 col-span-12 xl:px-24 lg:px-14 px-0">
                   <ForumHead
                     date={data.forum.createdAt}
                     title={data.forum.title}
-                    user={data.forum.user}
                   />
 
                   <ForumContent
@@ -94,7 +95,7 @@ export default function Forum(props: Props) {
                   />
                 </Grid.Span>
 
-                <Grid.Span span="xl:col-span-4 lg:col-span-4 col-span-12">
+                <Grid.Span span="xl:col-span-3 lg:col-span-3 col-span-12">
                   <MakeComment
                     fid={data.forum.id}
                     type={ForumTypes.FORUM}

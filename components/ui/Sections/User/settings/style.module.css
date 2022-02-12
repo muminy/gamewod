@@ -33,3 +33,18 @@
 .formTitle {
   @apply font-semibold block text-sm mb-1.5;
 }
+
+.socialinput {
+  @apply outline-none w-full py-3 px-3 text-sm;
+}
+
+:global(.dark) .socialinput {
+  @apply bg-transparent text-white;
+}
+
+.sociallabel {
+  @apply border mb-2 overflow-hidden focus-within:border-gray-700 flex items-center w-full rounded-md;
+}
+:global(.dark) .sociallabel {
+  @apply border-dark-border;
+}
