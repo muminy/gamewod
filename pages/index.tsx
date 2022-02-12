@@ -13,7 +13,7 @@ import Layout from "components/core/Layout";
 
 const Home: NextPage = () => {
   return (
-    <Layout className="relative">
+    <Layout className="relative pt-10">
       {/* <TeamSection /> */}
 
       <Grid.Col

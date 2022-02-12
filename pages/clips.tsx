@@ -9,14 +9,8 @@ export default function Clips() {
       seo={{
         title: "Popüler klipler",
         description: "Günün önemli olaryları, clipleri sizlerle",
-        defaultTitle: "Popüler klipler",
-        openGraph: {
-          title: "Popüler klipler",
-          url: "https://gamewod.com/clips",
-          description: "Günün önemli olaryları, clipleri sizlerle",
-        },
       }}
-      className={classNames(F.paddingHorizontal)}
+      className={classNames(F.paddingHorizontal, "py-10")}
     >
       {/* <Clip.Header /> */}
 

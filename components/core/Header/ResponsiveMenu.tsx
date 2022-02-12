@@ -4,6 +4,7 @@ import Flexible from "components/ui/Flexible/flex";
 import { Dialog, Transition } from "@headlessui/react";
 import { LinkCard } from "./MenuLists";
 import { menus } from "constants/datas";
+import useUserdata from "hooks/useUserdata";
 
 interface MenuProps {
   toggle: () => void;
@@ -11,6 +12,8 @@ interface MenuProps {
 }
 
 const ResponsiveMenu: React.FC<MenuProps> = (props) => {
+  const user = useUserdata();
+
   return (
     <Transition.Root show={props.open} as={Fragment}>
       <Dialog
@@ -65,18 +68,20 @@ const ResponsiveMenu: React.FC<MenuProps> = (props) => {
                     <LinkCard {...item} key={item.title} />
                   ))}
 
-                  <Flexible className="mt-auto px-3" alignItem="items-center">
-                    <Link href="/login">
-                      <a className="hover:bg-gray-200 w-full text-center mr-3 dark:bg-dark-border dark:text-white bg-gray-100 text-gray-900 whitespace-nowrap px-4 text-sm font-medium py-2 rounded-md">
-                        Giriş yap
-                      </a>
-                    </Link>
-                    <Link href="/signup">
-                      <a className="hover:bg-opacity-90 w-full text-center ml-3 dark:bg-dark-borderlight dark:text-white  bg-darkcolor text-white whitespace-nowrap px-4 text-sm font-medium py-2 rounded-md">
-                        Kayıt ol
-                      </a>
-                    </Link>
-                  </Flexible>
+                  {!user.data && (
+                    <Flexible className="mt-auto px-3" alignItem="items-center">
+                      <Link href="/login">
+                        <a className="hover:bg-gray-200 w-full text-center mr-3 dark:bg-dark-border dark:text-white bg-gray-100 text-gray-900 whitespace-nowrap px-4 text-sm font-medium py-2 rounded-md">
+                          Giriş yap
+                        </a>
+                      </Link>
+                      <Link href="/signup">
+                        <a className="hover:bg-opacity-90 w-full text-center ml-3 dark:bg-dark-borderlight dark:text-white  bg-darkcolor text-white whitespace-nowrap px-4 text-sm font-medium py-2 rounded-md">
+                          Kayıt ol
+                        </a>
+                      </Link>
+                    </Flexible>
+                  )}
                 </div>
               </div>
             </Transition.Child>

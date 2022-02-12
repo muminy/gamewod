@@ -56,10 +56,7 @@ export default function Tasks() {
   };
 
   return (
-    <Layout
-      seo={{ title: "Bug Bildir", openGraph: { title: "Bug Bildir" } }}
-      className={classNames(F.paddingHorizontal)}
-    >
+    <Layout seo={{ title: "Bug Bildir | Gamewod.com" }}>
       <div
         className={classNames(
           "bg-blue-50 dark:bg-black",

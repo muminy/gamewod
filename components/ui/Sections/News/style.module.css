@@ -1,5 +1,5 @@
 .header {
-  @apply py-10 flex flex-col items-center;
+  @apply mb-10 flex flex-col items-center;
 }
 
 .title {

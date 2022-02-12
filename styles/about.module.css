@@ -15,5 +15,5 @@
 }
 
 .staticcontainer {
-  @apply dark:bg-black rounded-3xl xl:py-20 lg:py-16 py-10 xl:px-10 lg:px-10 px-8;
+  @apply dark:bg-black h-full xl:py-20 lg:py-16 py-10 xl:px-10 lg:px-10 px-8;
 }

@@ -41,19 +41,17 @@ const Header: React.FC = (props) => {
   return (
     <div className={classNames(style.header, F.paddingHorizontal)}>
       <div className="flex w-full xl:space-x-2 lg:space-x-2 space-x-2">
-        <Flexible
-          className="w-full col-span-3 space-x-10"
-          alignItem="items-center"
-        >
+        <Flexible className="w-full col-span-3" alignItem="items-center">
+          <Button
+            color="icon"
+            onClick={toggle}
+            className="!min-w-[34px] !h-[34px] mr-2 items-center justify-center flex xl:hidden lg:hidden"
+          >
+            <MenuIcon size={24} />
+          </Button>
+
           <Link href="/">
-            <a className="dark:text-white flex items-center">
-              <Button
-                color="icon"
-                onClick={toggle}
-                className="!min-w-[34px] !h-[34px] mr-2 items-center justify-center flex xl:hidden lg:hidden"
-              >
-                <MenuIcon size={24} />
-              </Button>
+            <a className="dark:text-white flex items-center mr-4">
               <Logo size={18} />
             </a>
           </Link>
@@ -95,7 +93,7 @@ const Header: React.FC = (props) => {
               <Flaticon paths={BellFilledPaths} size={14} />
             </Button> */}
             <Link href={"/forum/new"}>
-              <a className="bg-blue-600 h-[38px] whitespace-nowrap rounded-xl text-sm font-semibold text-white px-6 flex items-center justify-center">
+              <a className="bg-blue-600 h-[38px] whitespace-nowrap rounded-full text-sm font-semibold text-white px-6 flex items-center justify-center">
                 Forum Aç
               </a>
             </Link>

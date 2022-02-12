@@ -1,21 +1,12 @@
-import { NextSeoProps } from "next-seo";
+import { ISeoMeta } from "constants/types";
 
-const seo: NextSeoProps = {
-  title: "Gamewod.com | E-spor Haberleri, son gelişmeler ve takım analizleri  ",
-  description:
-    "Csgo, valorant ve PUBG tarafından son dakika gelişmeler ve oyun analizleri.",
+const seo: ISeoMeta = {
+  image: "/static/images/banner.png",
+  title: "Muminy's blog",
+  description: "Muminy's blog",
   twitter: {
-    site: "@gamewod",
-    cardType: "summary",
-    handle: "@gamewod",
-  },
-  openGraph: {
-    title: "Gamewod.com | E-spor Haberleri, son gelişmeler ve takım analizleri",
-    url: "https://gamewod.com",
-    type: "website",
-    locale: "tr",
-    description:
-      "Csgo, valorant ve PUBG tarafından son dakika gelişmeler ve oyun analizleri.",
+    site: "@gamewodcom",
+    cardType: "summary_large_image",
   },
 };
 

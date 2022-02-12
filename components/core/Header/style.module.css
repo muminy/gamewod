@@ -1,5 +1,9 @@
 .header {
-  @apply xl:h-[90px] lg:h-[80px] h-[70px] flex items-center w-full dark:bg-black;
+  @apply xl:h-[90px] lg:h-[80px] h-[70px] border-b flex items-center w-full dark:bg-black;
+}
+
+:global(.dark) .header {
+  @apply border-dark-border;
 }
 
 .menulink {
