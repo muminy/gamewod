@@ -1,5 +1,6 @@
 import type {
   GetServerSidePropsContext,
+  GetStaticPropsContext,
   NextPage,
   NextPageContext,
 } from "next";
@@ -12,13 +13,11 @@ import { NextSeoProps } from "next-seo";
 import Layout from "components/core/Layout";
 import STYLE from "constants/style";
 import UserProfile from "components/ui/Sections/User";
-import NotFound from "components/ui/NotFound";
 
-import { fetcherV2 } from "lib/fetcher";
 import { find_user } from "services/user/config";
-import { ProfileSkeleton } from "components/Skeleton/Profile";
 import { ApiV2 } from "services/apis";
 import { IUser } from "constants/types";
+import { handleGetUsers } from "services/user";
 
 interface IProps {
   user: IUser;
@@ -38,7 +37,7 @@ const Profile = (props: IProps) => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className={STYLE.paddingHorizontal}
+        className={""}
       >
         <UserProfile.Header {...user} />
         <UserProfile.Cover {...user} />
@@ -48,8 +47,8 @@ const Profile = (props: IProps) => {
   );
 };
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const apipath = find_user(context.query.username as string);
+export async function getStaticProps(context: GetStaticPropsContext) {
+  const apipath = find_user(context.params?.username as string);
   const user = await ApiV2.get(apipath);
 
   if (user.data.user) {
@@ -58,6 +57,15 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   return {
     notFound: true,
+  };
+}
+
+export async function getStaticPaths() {
+  const data = await handleGetUsers();
+  const paths = data.users.map((item: IUser) => `/user/${item.username}`);
+  return {
+    paths: paths || [],
+    fallback: false,
   };
 }
 

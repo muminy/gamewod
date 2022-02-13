@@ -35,10 +35,7 @@ export default function Tabs(props: IProps) {
 
   return (
     <div>
-      <Flexible
-        className="border-b space-x-2 mb-4 dark:border-dark-border"
-        justifyContent="justify-center"
-      >
+      <div className={style.usertabs}>
         {tabs.map((item) => (
           <button
             key={item.id}
@@ -52,7 +49,7 @@ export default function Tabs(props: IProps) {
             {item.disabled && <span>Yakında</span>}
           </button>
         ))}
-      </Flexible>
+      </div>
 
       {selectedTab === "topluluk" && <Forums forums={props.forums} />}
       {selectedTab === "yorum" && <Comments comments={props.comments} />}

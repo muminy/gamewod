@@ -14,7 +14,7 @@ export default function Forums(props: Props) {
         {props.forums.length === 0 ? (
           <Grid.Span
             span="col-span-12"
-            className="py-10 text-center dark:bg-dark-border dark:text-white bg-gray-100 rounded-md text-gray-600 "
+            className="py-10 text-center dark:bg-dark-border dark:text-white bg-gray-100 xl:rounded-md lg:rounded-md text-gray-600 "
           >
             Forum Oluşturmadı
           </Grid.Span>

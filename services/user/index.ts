@@ -49,6 +49,11 @@ interface IChangePassword {
   id?: number;
 }
 
+export async function handleGetUsers() {
+  const users = await ApiV2.get(user);
+  return users.data;
+}
+
 export async function handleUserLogin(props: ILogin) {
   const login = await ApiV2.post(user_login, props);
   return login.data;

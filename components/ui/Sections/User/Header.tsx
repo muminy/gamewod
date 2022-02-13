@@ -1,6 +1,6 @@
 import Flexible from "components/ui/Flexible";
 import { IUser } from "constants/types";
-import { defaultUserImage, makeProfileImageURL } from "helpers/utils";
+import { makeProfileImageURL } from "helpers/utils";
 import useCurrentUser from "hooks/useCurrentUser";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -14,7 +14,7 @@ export default function Header(props: IUser) {
 
   return (
     <Flexible className="flex-col mb-4" alignItem="items-center">
-      <div className="rounded-md relative overflow-hidden w-full group xl:h-[360px] lg:h-[280px]  h-[200px]  dark:bg-dark-border bg-gray-100">
+      <div className="relative overflow-hidden w-full group xl:h-[360px] lg:h-[280px]  h-[200px]  dark:bg-dark-border bg-gray-100">
         {current && (
           <Link href={"/settings/profile"}>
             <a className="absolute hidden ov group-hover:block bottom-0 bg-gray-300 bg-opacity-20 text-sm rounded-md px-3 py-2 font-medium">
@@ -41,9 +41,7 @@ export default function Header(props: IUser) {
 
         <img
           className="w-full h-full object-cover"
-          src={
-            props.image ? makeProfileImageURL(props.image) : defaultUserImage
-          }
+          src={makeProfileImageURL(props.image)}
         />
       </div>
     </Flexible>

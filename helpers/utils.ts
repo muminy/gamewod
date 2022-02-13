@@ -4,6 +4,8 @@ import GithubIcon from "components/ui/icons/Girhub.icon";
 import InstagramIcon from "components/ui/icons/Instagram.icon";
 import FacebookIcon from "components/ui/icons/Facebook.icon";
 
+export const defaultUserImage = `${baseURLV2}/uploads/users/default.png`;
+
 export const validateEmail = (email?: string) =>
   email?.match(
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -12,8 +14,6 @@ export const validateEmail = (email?: string) =>
 export const makeProfileImageURL = (url: string | null | undefined) => {
   return url ? `${baseURLV2}/uploads/users/${url}` : defaultUserImage;
 };
-
-export const defaultUserImage = `${baseURLV2}/uploads/users/default.png`;
 
 export const setDescription = (description: string) => {
   if (description.length > 100) {

@@ -9,9 +9,6 @@ import ErrorFound from "components/ui/Error/ErrorFound";
 import { ForumCardSkeleton } from "components/Skeleton/Forum";
 import NoData from "components/ui/NoData";
 
-// ** moment js for date locale
-import moment from "moment";
-
 // ** cn opt
 import useSWR from "swr";
 import Link from "next/link";
@@ -20,6 +17,7 @@ import { makeProfileImageURL } from "helpers/utils";
 import { forum } from "services/forum/config";
 import { fetcherV2 } from "lib/fetcher";
 import { IForum } from "constants/types";
+import CustomTitle from "components/ui/Title";
 
 export default function Forums() {
   const { data, error } = useSWR(forum, fetcherV2);
@@ -29,11 +27,18 @@ export default function Forums() {
 
   return (
     <section>
-      {data.forums.length === 0 && <NoData title="Henüz Bir Konu Girilmedi" />}
+      <CustomTitle className="xl:px-0 lg:px-0 md:px-0 px-4">
+        Topluluklar
+      </CustomTitle>
 
-      {data.forums.map((item: IForum) => (
-        <ForumCard key={item.id} {...item} />
-      ))}
+      <div className="p-1 border dark:border-dark-borderlight dark:bg-dark-border bg-gray-100 xl:rounded-2xl lg:rounded-2xl">
+        {data.forums.length === 0 && (
+          <NoData title="Henüz Bir Konu Girilmedi" />
+        )}
+        {data.forums.map((item: IForum) => (
+          <ForumCard key={item.id} {...item} />
+        ))}
+      </div>
     </section>
   );
 }

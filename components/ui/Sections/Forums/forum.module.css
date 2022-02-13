@@ -1,5 +1,9 @@
 .forum {
-  @apply flex space-x-4 p-3 bg-gray-100 items-center mb-2 px-4;
+  @apply flex space-x-4 xl:rounded-2xl lg:rounded-2xl bg-white duration-200 items-center last:mb-0  mb-1 p-3 pl-6;
+}
+
+:global(.dark) .forum {
+  @apply border-0 border-dark-borderlight;
 }
 
 .userimage {

@@ -8,6 +8,11 @@ interface Props {
   category: string[];
 }
 
+export async function handleGetForums() {
+  const forums = await ApiV2.get(forum);
+  return forums.data;
+}
+
 export async function handleCreateForum(props: Props) {
   const create = await ApiV2.post(forum, props, {
     headers: {
