@@ -12,7 +12,7 @@ interface MenuProps {
 }
 
 const ResponsiveMenu: React.FC<MenuProps> = (props) => {
-  const user = useUserdata();
+  const { data } = useUserdata();
 
   return (
     <Transition.Root show={props.open} as={Fragment}>
@@ -68,7 +68,7 @@ const ResponsiveMenu: React.FC<MenuProps> = (props) => {
                     <LinkCard {...item} key={item.title} />
                   ))}
 
-                  {!user.data && (
+                  {!data.user && (
                     <Flexible className="mt-auto px-3" alignItem="items-center">
                       <Link href="/login">
                         <a className="hover:bg-gray-200 w-full text-center mr-3 dark:bg-dark-border dark:text-white bg-gray-100 text-gray-900 whitespace-nowrap px-4 text-sm font-medium py-2 rounded-md">

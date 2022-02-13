@@ -4,16 +4,11 @@ import Grid from "components/ui/Grid";
 import BlogSection from "components/ui/Sections/Blogs";
 import Hero from "components/ui/Sections/Hero";
 import Forums from "components/ui/Sections/Forums";
-import STYLE from "constants/style";
-
-// packages
-import classNames from "classnames";
-
 import Layout from "components/core/Layout";
 
 const Home: NextPage = () => {
   return (
-    <Layout className="relative pt-10">
+    <Layout className="relative xl:pt-10 lg:pt-10">
       {/* <TeamSection /> */}
 
       <Grid.Col

@@ -53,4 +53,19 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   };
 }
 
+// export async function getStaticPaths() {
+//   const articles = await handleGetArticles({});
+//   const paths = articles.data.map((item: ArticleProps) => {
+//     const slug = slugify(item.attributes.title, {
+//       replacement: "-",
+//       lower: true,
+//     });
+//     return `/article/${item.id}/${slug}`;
+//   });
+//   return {
+//     paths: paths || [],
+//     fallback: true,
+//   };
+// }
+
 export default Clips;

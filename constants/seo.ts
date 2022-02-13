@@ -1,7 +1,7 @@
 import { ISeoMeta } from "constants/types";
 
 const seo: ISeoMeta = {
-  image: "/static/images/banner.png",
+  image: "/assets/images/banner.png",
   title: "Muminy's blog",
   description: "Muminy's blog",
   twitter: {

@@ -57,7 +57,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     const apipath = find_post(context.params?.id as unknown as number);
     const article = await ApiInstance.get(apipath);
     return {
-      props: { article: article.data.data }, // will be passed to the page component as props
+      props: { article: article.data.data },
     };
   } catch (e) {
     return {
@@ -68,16 +68,15 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
 export async function getStaticPaths() {
   const articles = await handleGetArticles({});
-
+  const paths = articles.data.map((item: ArticleProps) => {
+    const slug = slugify(item.attributes.title, {
+      replacement: "-",
+      lower: true,
+    });
+    return `/article/${item.id}/${slug}`;
+  });
   return {
-    paths:
-      articles.data.map(
-        (item: ArticleProps) =>
-          `/article/${item.id}/${slugify(item.attributes.title, {
-            replacement: "-",
-            lower: true,
-          })}`
-      ) || [],
-    fallback: true,
+    paths: paths || [],
+    fallback: false,
   };
 }
