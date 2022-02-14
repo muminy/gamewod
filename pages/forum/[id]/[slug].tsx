@@ -31,7 +31,7 @@ export interface Props {
 }
 
 export default function Forum({ forum }: Props) {
-  const [comments, setComments] = useState<IComment[]>([]);
+  const [comments, setComments] = useState<IComment[]>(forum.comments);
   const [deleted, setDeleted] = useState<boolean>(false);
 
   return (
@@ -94,14 +94,14 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   const apipath = find_forum(context.params?.id as unknown as number);
   const forum = await ApiV2.get(apipath);
 
-  if (!forum.data.forum) {
+  if (forum.data.forum) {
     return {
-      notFound: true,
+      props: { forum: forum.data.forum },
     };
   }
 
   return {
-    props: { forum: forum.data.forum },
+    notFound: true,
   };
 }
 
