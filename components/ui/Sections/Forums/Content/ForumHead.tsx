@@ -7,7 +7,7 @@ interface IProps {
 
 export default function ForumHead(props: IProps) {
   return (
-    <h1 className="text-2xl mb-10 dark:text-white font-medium">
+    <h1 className="text-4xl mb-10 leading-[50px] dark:text-white font-semibold">
       {props.title}
     </h1>
   );

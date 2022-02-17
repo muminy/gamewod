@@ -61,6 +61,7 @@ const Header: React.FC = (props) => {
             placeholder="Araa"
           />
         </Flexible>
+        <MenuList />
 
         {user.loading ? (
           <HeaderSkeleton />
@@ -69,7 +70,6 @@ const Header: React.FC = (props) => {
             alignItem="items-center"
             className="space-x-2 ml-2 xl:col-span-3 lg:col-span-3 col-span-9 justify-end"
           >
-            <MenuList />
             {/* <Button
               color="icon"
               className="min-w-[40px] border items-center justify-center hidden xl:flex lg:flex"
@@ -123,14 +123,14 @@ const Header: React.FC = (props) => {
           </Flexible>
         ) : (
           <Flexible
-            className="xl:flex lg:flex hidden space-x-3 col-span-3 justify-end"
+            className="xl:flex border-l pl-4 lg:flex hidden space-x-4 col-span-3 justify-end"
             alignItem="items-center"
           >
             <Link href="/login">
               <a className="whitespace-nowrap text-sm font-medium">Giriş yap</a>
             </Link>
             <Link href="/signup">
-              <a className="hidden hover:bg-opacity-90 xl:block lg:block dark:bg-dark-border bg-darkcolor text-white whitespace-nowrap px-4 text-sm font-medium py-2 rounded-md">
+              <a className="hidden hover:bg-opacity-90 xl:block lg:block dark:bg-dark-border bg-darkcolor text-white whitespace-nowrap px-4 text-sm font-medium py-2 rounded-xl">
                 Kayıt ol
               </a>
             </Link>

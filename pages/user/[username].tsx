@@ -1,23 +1,13 @@
-import type {
-  GetServerSidePropsContext,
-  GetStaticPropsContext,
-  NextPage,
-  NextPageContext,
-} from "next";
-import useSWR from "swr";
+import type { GetServerSidePropsContext } from "next";
 import { motion } from "framer-motion";
-
-import { NextSeoProps } from "next-seo";
 
 // ** components
 import Layout from "components/core/Layout";
-import STYLE from "constants/style";
 import UserProfile from "components/ui/Sections/User";
 
 import { find_user } from "services/user/config";
 import { ApiV2 } from "services/apis";
 import { IUser } from "constants/types";
-import { handleGetUsers } from "services/user";
 
 interface IProps {
   user: IUser;
@@ -47,8 +37,8 @@ const Profile = (props: IProps) => {
   );
 };
 
-export async function getStaticProps(context: GetStaticPropsContext) {
-  const apipath = find_user(context.params?.username as string);
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const apipath = find_user(context.query.username as string);
   const user = await ApiV2.get(apipath);
 
   if (user.data.user) {
@@ -57,15 +47,6 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
   return {
     notFound: true,
-  };
-}
-
-export async function getStaticPaths() {
-  const data = await handleGetUsers();
-  const paths = data.users.map((item: IUser) => `/user/${item.username}`);
-  return {
-    paths: paths || [],
-    fallback: false,
   };
 }
 

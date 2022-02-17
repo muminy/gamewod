@@ -2,9 +2,11 @@ import classNames from "classnames";
 import Flexible from "components/ui/Flexible";
 import Notify from "components/ui/Notify";
 import { IComment, IVoteComment } from "constants/types";
-import { defaultUserImage, makeProfileImageURL } from "helpers/utils";
+import { makeProfileImageURL } from "helpers/utils";
 import useCurrentUser from "hooks/useCurrentUser";
 import useToggle from "hooks/useToggle";
+import moment from "moment";
+import "moment/locale/tr";
 import Link from "next/link";
 import { useState } from "react";
 import {
@@ -21,6 +23,11 @@ export default function ForumComment(props: IComment) {
   const [isCurrentUser] = useCurrentUser({ username: props.user.username });
 
   const { value, toggle } = useToggle();
+
+  const userLink = `/user/${props.user?.username}`;
+  const rtf = new Intl.RelativeTimeFormat("TR", {
+    style: "long",
+  });
 
   const alreadyVote = user.user
     ? votes.find((item: IVoteComment) => item.userID === user.user?.id)
@@ -58,8 +65,8 @@ export default function ForumComment(props: IComment) {
 
   return (
     <Flexible className="space-x-3 mb-3 last:mb-0">
-      <Link href={`/user/${props.user?.username}`}>
-        <a className="min-w-[32px] h-[32px] block rounded-full dark:bg-dark-border bg-gray-200">
+      <Link href={userLink}>
+        <a className="min-w-[20px] h-[20px] block rounded-full dark:bg-dark-border bg-gray-200">
           <img
             className="w-full rounded-full h-full object-cover"
             src={makeProfileImageURL(props.user.image)}
@@ -68,23 +75,15 @@ export default function ForumComment(props: IComment) {
       </Link>
 
       <div>
-        <div className="text-[14px]">
-          <Link href={`/user/${props.user?.username}`}>
-            <a
-              className={classNames("font-semibold pr-1 dark:text-gray-200", {
-                "text-blue-700": isCurrentUser,
-              })}
-            >
-              @{props.user?.username}
-            </a>
-          </Link>{" "}
-          {props.comment.split("\n").map((item) => (
-            <span
-              key={item}
-              className="inline-block mb-2 dark:text-gray-300"
-            >{`${item}`}</span>
-          ))}
+        <div className="flex items-center space-x-2 mb-0.5 font-medium text-sm">
+          <Link href={userLink}>
+            <a>{props.user.username}</a>
+          </Link>
+
+          {/* <span>{moment(props.createdAt).local().format("DD MMMM yyyy")}</span> */}
         </div>
+
+        <div className="text-sm mb-3">{props.comment}</div>
 
         <Flexible className="space-x-2">
           <button

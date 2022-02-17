@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 import { find_forum } from "services/article/config";
 
 import { IComment, IForum } from "constants/types";
-import { GetStaticPropsContext } from "next";
+import { GetServerSidePropsContext, GetStaticPropsContext } from "next";
 import ForumHead from "components/ui/Sections/Forums/Content/ForumHead";
 import ForumContent from "components/ui/Sections/Forums/Content/ForumContent";
 import ForumComment from "components/ui/Sections/Forums/Content/ForumComment";
@@ -45,17 +45,20 @@ export default function Forum({ forum }: Props) {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className={classNames(STYLE.paddingHorizontal, "")}
+        className={classNames(STYLE.paddingHorizontal, "max-w-7xl mx-auto")}
       >
         {deleted ? (
           <div>Silindi</div>
         ) : (
           <Grid.Col className="xl:gap-10 lg:gap-8 gap-5">
-            <Grid.Span span="2xl:col-span-3 xl:col-span-4 xl:block lg:block hidden col-span-12">
+            {/* <Grid.Span span="2xl:col-span-3 xl:col-span-4 xl:block lg:block hidden col-span-12">
               <UserCard {...forum.user} />
-            </Grid.Span>
+            </Grid.Span> */}
 
-            <Grid.Span span="2xl:col-span-6 xl:col-span-5 col-span-12 xl:px-24 lg:px-14 px-0">
+            <Grid.Span
+              span="2xl:col-span-8 xl:col-span-7 col-span-12"
+              className="xl:px-10 lg:px-10 px-0"
+            >
               <ForumHead date={forum.createdAt} title={forum.title} />
 
               <ForumContent
@@ -66,7 +69,7 @@ export default function Forum({ forum }: Props) {
               />
             </Grid.Span>
 
-            <Grid.Span span="xl:col-span-3 lg:col-span-3 col-span-12">
+            <Grid.Span span="xl:col-span-4 lg:col-span-5 col-span-12">
               <MakeComment
                 fid={forum.id}
                 type={ForumTypes.FORUM}
@@ -90,8 +93,9 @@ export default function Forum({ forum }: Props) {
   );
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
-  const apipath = find_forum(context.params?.id as unknown as number);
+// Get average runtime of successful runs in seconds
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const apipath = find_forum(context.query.id as unknown as number);
   const forum = await ApiV2.get(apipath);
 
   if (forum.data.forum) {
@@ -102,20 +106,5 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
   return {
     notFound: true,
-  };
-}
-
-export async function getStaticPaths() {
-  const data = await handleGetForums();
-  const paths = data.forums.map((item: IForum) => {
-    const slug = slugify(item.title, {
-      replacement: "-",
-      lower: true,
-    });
-    return `/forum/${item.id}/${slug}`;
-  });
-  return {
-    paths: paths || [],
-    fallback: false,
   };
 }

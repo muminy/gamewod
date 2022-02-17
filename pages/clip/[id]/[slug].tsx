@@ -1,4 +1,4 @@
-import { GetServerSidePropsContext, GetStaticPropsContext } from "next";
+import { GetServerSidePropsContext } from "next";
 
 import classNames from "classnames";
 
@@ -12,8 +12,6 @@ import Grid from "components/ui/Grid";
 
 import { ApiV2 } from "services/apis";
 import { IClip } from "constants/types";
-import { handleGetClips } from "services/clip";
-import slugify from "slugify";
 
 interface IProps {
   clip: IClip;
@@ -43,32 +41,16 @@ const Clips = (props: IProps) => {
   );
 };
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const apipath = find_clip(context.params?.id as unknown as number);
   const clip = await ApiV2.get(apipath);
-  const clips = await handleGetClips();
 
   if (clip.data.clip) {
-    return { props: { clip: clip.data.clip, clips } };
+    return { props: { clip: clip.data.clip } };
   }
 
   return {
     notFound: true,
-  };
-}
-
-export async function getStaticPaths() {
-  const data = await handleGetClips();
-  const paths = data.clips.map((item: IClip) => {
-    const slug = slugify(item.title, {
-      replacement: "-",
-      lower: true,
-    });
-    return `/clip/${item.id}/${slug}`;
-  });
-  return {
-    paths: paths || [],
-    fallback: false,
   };
 }
 

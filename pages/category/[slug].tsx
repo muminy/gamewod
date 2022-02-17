@@ -1,10 +1,5 @@
-import useSWR from "swr";
 import classNames from "classnames";
-import {
-  GetServerSidePropsContext,
-  GetStaticPropsContext,
-  NextPageContext,
-} from "next";
+import { GetServerSidePropsContext } from "next";
 
 // ** components
 import Layout from "components/core/Layout";
@@ -12,20 +7,11 @@ import Grid from "components/ui/Grid";
 import STYLE from "constants/style";
 import CategoryHeader from "components/ui/Category/Header";
 import NoData from "components/ui/NoData";
-import NotFound from "components/ui/NotFound";
 
-import { BlogSkeleton } from "components/Skeleton/Blog";
 import { BlogCard } from "components/ui/Sections/Blogs/Blogs";
 import { menus } from "constants/datas";
-import { NextSeoProps } from "next-seo";
 
-import {
-  ArticleProps,
-  ICategory,
-  ISeoMeta,
-  MenuCategoryProps,
-} from "constants/types";
-import { fetcher } from "lib/fetcher";
+import { ArticleProps, ICategory, MenuCategoryProps } from "constants/types";
 import { category_posts } from "services/article/config";
 import { ApiInstance } from "services/apis";
 
@@ -75,25 +61,18 @@ export default function Category(props: IProps) {
   );
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   try {
-    const category = menus.find((item) => item.id === context.params?.slug);
+    const category = menus.find((item) => item.id === context.query.slug);
     const apipath = category_posts(category?.title);
     const posts = await ApiInstance.get(apipath);
 
     return {
-      props: { posts: posts.data.data, category }, // will be passed to the page component as props
+      props: { posts: posts.data.data, category },
     };
   } catch (e) {
     return {
       notFound: true,
     };
   }
-}
-
-export async function getStaticPaths() {
-  return {
-    paths: menus.map((item) => `/category/${item.id}`),
-    fallback: false,
-  };
 }
