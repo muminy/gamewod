@@ -1,37 +1,35 @@
 import { Fragment, useEffect, useState } from "react";
 
 // components
+import Grid from "components/ui/Grid";
 import Layout from "components/core/Layout";
-import STYLE from "constants/style";
-import { ArticleSkeleton } from "components/Skeleton/Article";
-
-// ** packages
-import classNames from "classnames";
-import useSWR from "swr";
-import { motion } from "framer-motion";
-
-import { find_forum } from "services/article/config";
-
-import { IComment, IForum } from "constants/types";
-import { GetServerSidePropsContext, GetStaticPropsContext } from "next";
+import UserCard from "components/ui/UserCard";
 import ForumHead from "components/ui/Sections/Forums/Content/ForumHead";
 import ForumContent from "components/ui/Sections/Forums/Content/ForumContent";
-import ForumComment from "components/ui/Sections/Forums/Content/ForumComment";
-import MakeComment from "components/ui/MakeComment";
-import Grid from "components/ui/Grid";
-import { ForumTypes } from "constants/enums";
+import ForumComments from "components/ui/Sections/Forums/Content/Comments";
+
+import STYLE from "constants/style";
+
+// ** packages
+import { GetStaticPropsContext } from "next";
+import classNames from "classnames";
+import { motion } from "framer-motion";
+import slugify from "slugify";
+
+import { find_forum } from "services/article/config";
+import { IForum } from "constants/types";
 import { setDescription } from "helpers/utils";
-import UserCard from "components/ui/UserCard";
 import { ApiV2 } from "services/apis";
 import { handleGetForums } from "services/forum";
-import slugify from "slugify";
+import { useRouter } from "next/router";
+import { ForumSkeleton } from "components/Skeleton/Forum";
 
 export interface Props {
   forum: IForum;
 }
 
 export default function Forum({ forum }: Props) {
-  const [comments, setComments] = useState<IComment[]>(forum.comments);
+  const router = useRouter();
   const [deleted, setDeleted] = useState<boolean>(false);
 
   return (
@@ -47,14 +45,12 @@ export default function Forum({ forum }: Props) {
         animate={{ opacity: 1 }}
         className={classNames(STYLE.paddingHorizontal, "max-w-7xl mx-auto")}
       >
-        {deleted ? (
+        {router.isFallback ? (
+          <ForumSkeleton />
+        ) : deleted ? (
           <div>Silindi</div>
         ) : (
           <Grid.Col className="xl:gap-10 lg:gap-8 gap-5">
-            {/* <Grid.Span span="2xl:col-span-3 xl:col-span-4 xl:block lg:block hidden col-span-12">
-              <UserCard {...forum.user} />
-            </Grid.Span> */}
-
             <Grid.Span
               span="2xl:col-span-8 xl:col-span-7 col-span-12"
               className="xl:px-10 lg:px-10 px-0"
@@ -70,21 +66,7 @@ export default function Forum({ forum }: Props) {
             </Grid.Span>
 
             <Grid.Span span="xl:col-span-4 lg:col-span-5 col-span-12">
-              <MakeComment
-                fid={forum.id}
-                type={ForumTypes.FORUM}
-                setComments={(comment: IComment) =>
-                  setComments(comments.concat(comment))
-                }
-              />
-
-              <div className="mb-4 font-semibold text-sm text-gray-600 dark:text-gray-400">
-                Yorumlar ({comments.length})
-              </div>
-
-              {comments.map((item: IComment) => (
-                <ForumComment key={item.id} {...item} />
-              ))}
+              <ForumComments id={forum.id} comments={forum.comments} />
             </Grid.Span>
           </Grid.Col>
         )}
@@ -93,18 +75,33 @@ export default function Forum({ forum }: Props) {
   );
 }
 
-// Get average runtime of successful runs in seconds
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const apipath = find_forum(context.query.id as unknown as number);
+export async function getStaticProps(context: GetStaticPropsContext) {
+  const apipath = find_forum(context.params?.id as unknown as number);
   const forum = await ApiV2.get(apipath);
 
-  if (forum.data.forum) {
+  if (!forum.data.forum) {
     return {
-      props: { forum: forum.data.forum },
+      notFound: true,
     };
   }
 
   return {
-    notFound: true,
+    props: { forum: forum.data.forum },
+    revalidate: 200,
+  };
+}
+
+export async function getStaticPaths() {
+  const data = await handleGetForums();
+  const paths = data.forums.map((item: IForum) => {
+    const slug = slugify(item.title, {
+      replacement: "-",
+      lower: true,
+    });
+    return `/forum/${item.id}/${slug}`;
+  });
+  return {
+    paths: paths || [],
+    fallback: "blocking",
   };
 }

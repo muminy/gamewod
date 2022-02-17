@@ -1,5 +1,3 @@
-import { IUser } from "constants/types";
-
 interface IProps {
   title: string;
   date: string;

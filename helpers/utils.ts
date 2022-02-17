@@ -16,7 +16,7 @@ export const makeProfileImageURL = (url: string | null | undefined) => {
 };
 
 export const setDescription = (description: string) => {
-  if (description.length > 100) {
+  if (description && description.length > 100) {
     return `${description.substring(0, 100)}...`;
   } else {
     return description;
