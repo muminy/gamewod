@@ -83,7 +83,7 @@ export default function ForumComment(props: IComment) {
           {/* <span>{moment(props.createdAt).local().format("DD MMMM yyyy")}</span> */}
         </div>
 
-        <div className="text-sm mb-3">{props.comment}</div>
+        <div className="text-sm mb-3 break-all">{props.comment}</div>
 
         <Flexible className="space-x-2">
           <button

@@ -2,7 +2,7 @@
   background: -webkit-linear-gradient(45deg, #3c68e2, #f560e1 80%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  @apply font-medium;
+  @apply font-medium mb-4;
 }
 
 .tabbtn {

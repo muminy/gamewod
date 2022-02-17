@@ -1,7 +1,5 @@
-import Link from "next/link";
 import FacebookIcon from "../icons/Facebook.icon";
 import FaceitIcon from "../icons/Faceit.icon";
-import GithubIcon from "../icons/Girhub.icon";
 import InstagramIcon from "../icons/Instagram.icon";
 import TwitterIcon from "../icons/Twitter.icon";
 
@@ -19,7 +17,7 @@ export default function SocialLinks(props: IProps) {
         target="_blank"
         rel="noreferrer"
         href={social.href}
-        className="flex items-center h-10 space-x-2 bg-gray-100 dark:bg-dark-border dark:text-white rounded-xl px-3 py-2"
+        className="flex items-center space-x-2 border dark:border-dark-border px-5 h-[40px] text-sm rounded-full leading-[18px]"
       >
         {social.icon}
         <span className="font-semibold text-sm">{social.title}</span>

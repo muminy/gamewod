@@ -45,8 +45,8 @@ export const ForumCard = (props: CardProps) => {
     >
       <Link href={`/forum/${props.id}/${slug}`}>
         <a className="block">
-          <div className="font-medium">{props.title}</div>
-          <div className="text-sm text-gray-400">
+          <div className="font-medium break-all">{props.title}</div>
+          <div className="text-sm text-gray-400 break-all">
             {props.comments.length} Yorum
           </div>
         </a>

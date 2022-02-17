@@ -1,9 +1,8 @@
-import { Fragment, useEffect, useState } from "react";
+import { useState } from "react";
 
 // components
 import Grid from "components/ui/Grid";
 import Layout from "components/core/Layout";
-import UserCard from "components/ui/UserCard";
 import ForumHead from "components/ui/Sections/Forums/Content/ForumHead";
 import ForumContent from "components/ui/Sections/Forums/Content/ForumContent";
 import ForumComments from "components/ui/Sections/Forums/Content/Comments";
