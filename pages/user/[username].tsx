@@ -9,8 +9,6 @@ import { find_user } from "services/user/config";
 import { ApiV2 } from "services/apis";
 import { IUser } from "constants/types";
 import { handleGetUsers } from "services/user";
-import { useRouter } from "next/router";
-import { ProfileSkeleton } from "components/Skeleton/Profile";
 
 interface IProps {
   user: IUser;
@@ -18,12 +16,6 @@ interface IProps {
 
 const Profile = (props: IProps) => {
   const { user } = props;
-
-  const router = useRouter();
-
-  if (router.isFallback) {
-    return <ProfileSkeleton />;
-  }
 
   return (
     <Layout
@@ -53,7 +45,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   if (user.data.user) {
     return {
       props: { user: user.data.user },
-      revalidate: 1,
+      revalidate: 3,
     };
   }
 
@@ -67,7 +59,7 @@ export async function getStaticPaths() {
   const paths = data.users.map((item: IUser) => `/user/${item.username}`);
   return {
     paths: paths || [],
-    fallback: true,
+    fallback: false,
   };
 }
 

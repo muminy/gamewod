@@ -13,7 +13,6 @@ import { menus } from "constants/datas";
 import { ArticleProps, ICategory, MenuCategoryProps } from "constants/types";
 import { category_posts } from "services/article/config";
 import { ApiInstance } from "services/apis";
-import { useRouter } from "next/router";
 
 interface IProps {
   category: MenuCategoryProps;
@@ -22,12 +21,6 @@ interface IProps {
 
 export default function Category(props: IProps) {
   const { category, posts } = props;
-
-  const router = useRouter();
-
-  if (router.isFallback) {
-    return <div>Loading</div>;
-  }
 
   return (
     <Layout
@@ -89,6 +82,6 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 export async function getStaticPaths() {
   return {
     paths: menus.map((item) => `/category/${item.id}`),
-    fallback: true,
+    fallback: false,
   };
 }
