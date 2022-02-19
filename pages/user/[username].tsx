@@ -43,7 +43,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   const user = await ApiV2.get(apipath);
 
   if (user.data.user) {
-    return { props: { user: user.data.user }, revalidate: 1 };
+    return { props: { user: user.data.user } };
   }
 
   return {
@@ -56,7 +56,7 @@ export async function getStaticPaths() {
   const paths = data.users.map((item: IUser) => `/user/${item.username}`);
   return {
     paths: paths || [],
-    fallback: true,
+    fallback: false,
   };
 }
 

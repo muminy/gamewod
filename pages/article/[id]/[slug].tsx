@@ -51,7 +51,6 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     const article = await ApiInstance.get(apipath);
     return {
       props: { article: article.data.data },
-      revalidate: 1,
     };
   } catch (e) {
     return {
@@ -71,6 +70,6 @@ export async function getStaticPaths() {
   });
   return {
     paths: paths || [],
-    fallback: true,
+    fallback: false,
   };
 }

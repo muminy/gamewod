@@ -86,7 +86,6 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
   return {
     props: { forum: forum.data.forum },
-    revalidate: 1,
   };
 }
 
@@ -101,6 +100,6 @@ export async function getStaticPaths() {
   });
   return {
     paths: paths || [],
-    fallback: true,
+    fallback: false,
   };
 }

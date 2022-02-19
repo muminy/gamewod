@@ -73,7 +73,6 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
     return {
       props: { posts: posts.data.data, category },
-      revalidate: 1,
     };
   } catch (e) {
     return {
@@ -85,6 +84,6 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 export async function getStaticPaths() {
   return {
     paths: menus.map((item) => ({ params: { slug: item.id } })),
-    fallback: true,
+    fallback: false,
   };
 }

@@ -47,7 +47,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   const clip = await ApiV2.get(apipath);
 
   if (clip.data.clip) {
-    return { props: { clip: clip.data.clip }, revalidate: 1 };
+    return { props: { clip: clip.data.clip } };
   }
 
   return {
@@ -66,7 +66,7 @@ export async function getStaticPaths() {
   });
   return {
     paths: paths || [],
-    fallback: true,
+    fallback: false,
   };
 }
 
