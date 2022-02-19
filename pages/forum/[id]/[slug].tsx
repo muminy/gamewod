@@ -20,14 +20,18 @@ import { IComment, IForum } from "constants/types";
 import { setDescription } from "helpers/utils";
 import { ApiV2 } from "services/apis";
 import { handleGetForums } from "services/forum";
+import useSWR from "swr";
+import { fetcherV2 } from "lib/fetcher";
 
 export interface Props {
   forum: IForum;
-  comments: IComment[];
+  id: number;
 }
 
-export default function Forum({ forum, comments }: Props) {
+export default function Forum({ forum, id }: Props) {
   const [deleted, setDeleted] = useState<boolean>(false);
+
+  const { data, error } = useSWR(`/comment/${id}`, fetcherV2);
 
   return (
     <Layout
@@ -61,7 +65,13 @@ export default function Forum({ forum, comments }: Props) {
             </Grid.Span>
 
             <Grid.Span span="xl:col-span-4 lg:col-span-5 col-span-12">
-              <ForumComments id={forum.id} comments={comments} />
+              {error ? (
+                <div>Yorumlar yüklenirken hata oluştu</div>
+              ) : data ? (
+                <ForumComments id={forum.id} comments={data.comments} />
+              ) : (
+                <div>Yorumlar yükleniyor</div>
+              )}
             </Grid.Span>
           </Grid.Col>
         )}
@@ -71,9 +81,9 @@ export default function Forum({ forum, comments }: Props) {
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  const apipath = find_forum(context.params?.id as unknown as number);
+  const id = context.params?.id as unknown as number;
+  const apipath = find_forum(id);
   const forum = await ApiV2.get(apipath);
-  const comments = await ApiV2.get(`/comment/${context.params?.id}`);
 
   if (!forum.data.forum) {
     return {
@@ -82,7 +92,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   }
 
   return {
-    props: { forum: forum.data.forum, comments: comments.data.comments },
+    props: { forum: forum.data.forum, id },
   };
 }
 
