@@ -74,7 +74,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   const apipath = find_forum(context.params?.id as unknown as number);
   const forum = await ApiV2.get(apipath);
   const comments = await ApiV2.get(`/comment/${context.params?.id}`);
-  console.log(comments);
+
   if (!forum.data.forum) {
     return {
       notFound: true,
