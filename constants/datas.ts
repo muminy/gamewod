@@ -1,5 +1,10 @@
 export const menus = [
   {
+    id: "forums",
+    title: "Forumlar",
+    href: "/forum",
+  },
+  {
     id: "csgo",
     title: "CS:GO",
     href: "/category/csgo",

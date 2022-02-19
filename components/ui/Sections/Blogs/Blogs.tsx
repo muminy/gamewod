@@ -39,12 +39,12 @@ export default function BlogSection() {
 
   return (
     <section>
-      <CustomTitle>Son Gelişmeler</CustomTitle>
+      <CustomTitle className="xl:px-0 lg:px-0 px-4">Son Gelişmeler</CustomTitle>
       <Grid.Col gap="xl:gap-x-10 lg:gap-x-6 md:gap-x-6 gap-x-4 gap-y-5">
         {articles.data.map((item: ArticleProps) => (
           <Grid.Span
             key={item.id}
-            span="2xl:col-span-3 xl:col-span-4 lg:col-span-6 col-span-12"
+            span="2xl:col-span-3 xl:col-span-4 lg:col-span-4 col-span-12"
           >
             <BlogCard {...item} />
           </Grid.Span>

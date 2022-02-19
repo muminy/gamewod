@@ -17,7 +17,7 @@ import { makeProfileImageURL } from "helpers/utils";
 import { forum } from "services/forum/config";
 import { fetcherV2 } from "lib/fetcher";
 import { IForum } from "constants/types";
-import CustomTitle from "components/ui/Title";
+import ForumBigCard from "./ForumBigCard";
 
 export default function Forums() {
   const { data, error } = useSWR(forum, fetcherV2);
@@ -27,16 +27,12 @@ export default function Forums() {
 
   return (
     <section>
-      <CustomTitle className="xl:px-0 lg:px-0 md:px-0 px-4">
-        Topluluklar
-      </CustomTitle>
-
-      <div className="p-1 border dark:border-dark-borderlight dark:bg-dark-border bg-gray-100 xl:rounded-2xl lg:rounded-2xl">
+      <div className="border dark:border-dark-border ">
         {data.forums.length === 0 && (
           <NoData title="Henüz Bir Konu Girilmedi" />
         )}
         {data.forums.map((item: IForum) => (
-          <ForumCard key={item.id} {...item} />
+          <ForumBigCard key={item.id} {...item} />
         ))}
       </div>
     </section>

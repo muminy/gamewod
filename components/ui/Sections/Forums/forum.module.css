@@ -1,9 +1,9 @@
 .forum {
-  @apply flex space-x-4 xl:rounded-2xl lg:rounded-2xl bg-white duration-200 items-center last:mb-0  mb-1 p-3 pl-6;
+  @apply flex space-x-4 hover:bg-gray-50 last:border-b-0 border-b p-3 duration-200 items-center last:mb-0;
 }
 
 :global(.dark) .forum {
-  @apply border-0 border-dark-borderlight;
+  @apply border-dark-border bg-transparent;
 }
 
 .userimage {
@@ -28,14 +28,40 @@
   @apply text-blue-500;
 }
 
-:global(.dark) .forum {
-  @apply bg-dark-border;
-}
-
 :global(.dark) .title {
   @apply text-gray-300;
 }
 
 :global(.dark) .fcontent {
   color: #ffffff;
+}
+
+.imagecard {
+  @apply min-w-[20px] h-[20px] block rounded-full bg-gray-200;
+}
+
+.imagecard::after {
+  content: "";
+  width: 2px;
+  height: calc(100% - 32px);
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  @apply bg-gray-100;
+}
+
+:global(.dark) .imagecard {
+  @apply bg-dark-border;
+}
+
+:global(.dark) .imagecard::after {
+  @apply bg-dark-border;
+}
+
+.fbclighttext {
+  @apply text-gray-900 text-opacity-40;
+}
+
+:global(.dark) .fbclighttext {
+  @apply text-white text-opacity-40;
 }

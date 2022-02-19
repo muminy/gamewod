@@ -13,7 +13,6 @@ import STYLE from "constants/style";
 // ** packages
 import { NextPageContext } from "next";
 import classNames from "classnames";
-import { motion } from "framer-motion";
 
 import { find_forum } from "services/article/config";
 import { IForum } from "constants/types";
@@ -33,41 +32,38 @@ export default function Forum({ forum }: Props) {
 
   return (
     <Layout
-      className="pt-10"
+      className={classNames(
+        STYLE.paddingHorizontal,
+        "xl:max-w-7xl lg:max-w-7xl w-full mx-auto pt-10"
+      )}
       seo={{
         description: setDescription(forum.content),
         title: `${forum.title} | Gamewod.com`,
       }}
     >
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className={classNames(STYLE.paddingHorizontal, "max-w-7xl mx-auto")}
-      >
-        {deleted ? (
-          <div>Silindi</div>
-        ) : (
-          <Grid.Col className="xl:gap-10 lg:gap-8 gap-5">
-            <Grid.Span
-              span="2xl:col-span-8 xl:col-span-7 col-span-12"
-              className="xl:px-10 lg:px-10 px-0"
-            >
-              <ForumHead date={forum.createdAt} title={forum.title} />
+      {deleted ? (
+        <div>Silindi</div>
+      ) : (
+        <Grid.Col className="xl:gap-10 lg:gap-8 gap-5">
+          <Grid.Span
+            span="2xl:col-span-8 xl:col-span-7 lg:col-span-7 col-span-12"
+            className="xl:px-10 lg:px-10 px-0"
+          >
+            <ForumHead date={forum.createdAt} title={forum.title} />
 
-              <ForumContent
-                username={forum.user.username}
-                id={forum.id}
-                content={forum.content}
-                deleted={() => setDeleted(true)}
-              />
-            </Grid.Span>
+            <ForumContent
+              username={forum.user.username}
+              id={forum.id}
+              content={forum.content}
+              deleted={() => setDeleted(true)}
+            />
+          </Grid.Span>
 
-            <Grid.Span span="xl:col-span-4 lg:col-span-5 col-span-12">
-              <ForumComments id={forum.id} comments={forum.comments} />
-            </Grid.Span>
-          </Grid.Col>
-        )}
-      </motion.div>
+          <Grid.Span span="xl:col-span-4 lg:col-span-5 lg:col-span-5 col-span-12">
+            <ForumComments id={forum.id} comments={forum.comments} />
+          </Grid.Span>
+        </Grid.Col>
+      )}
     </Layout>
   );
 }

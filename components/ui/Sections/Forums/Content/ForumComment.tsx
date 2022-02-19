@@ -14,6 +14,7 @@ import {
   handleUpvoteForumComment,
 } from "services/comment/vote";
 import { useAppSelector } from "store/hooks";
+import style from "../forum.module.css";
 
 export default function ForumComment(props: IComment) {
   const [votes, setVotes] = useState<IVoteComment[]>(props.votes);
@@ -64,9 +65,9 @@ export default function ForumComment(props: IComment) {
   };
 
   return (
-    <Flexible className="space-x-3 mb-3 last:mb-0">
+    <Flexible className="space-x-3 relative mb-3 last:mb-0">
       <Link href={userLink}>
-        <a className="min-w-[20px] h-[20px] block rounded-full dark:bg-dark-border bg-gray-200">
+        <a className={style.imagecard}>
           <img
             className="w-full rounded-full h-full object-cover"
             src={makeProfileImageURL(props.user.image)}

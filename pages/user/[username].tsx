@@ -26,15 +26,9 @@ const Profile = ({ user }: IProps) => {
       }}
       className="relative"
     >
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className={""}
-      >
-        <UserProfile.Header {...user} />
-        <UserProfile.Cover {...user} />
-        <UserProfile.Tab {...user} />
-      </motion.div>
+      <UserProfile.Header {...user} />
+      <UserProfile.Cover {...user} />
+      <UserProfile.Tab {...user} />
     </Layout>
   );
 };

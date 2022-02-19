@@ -14,7 +14,7 @@ const get_grid_posts = (grid = false) =>
       },
       pagination: {
         page: 1,
-        pageSize: grid ? 5 : 18,
+        pageSize: grid ? 10 : 18,
       },
       sort: ["id:DESC"],
     },

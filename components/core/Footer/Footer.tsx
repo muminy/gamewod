@@ -12,7 +12,7 @@ export default function Footer() {
         STYLE.paddingHorizontal
       )}
     >
-      <div className="font-semibold text-sm w-full text-gray-900 text-opacity-50">
+      <div className="font-semibold dark:text-white text-sm w-full text-gray-900 text-opacity-50">
         © 2022 Gamewod{" "}
       </div>
 

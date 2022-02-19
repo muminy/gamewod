@@ -46,7 +46,7 @@ const handleSocialLinks = (type: string, value: string) => {
       };
     case "instagram":
       return {
-        href: `https://twitter.com/${value}`,
+        href: `https://instagram.com/${value}`,
         title: "Instagram",
         icon: <InstagramIcon />,
       };

@@ -7,6 +7,7 @@ import Seo from "../Seo";
 
 import { ISeoMeta } from "constants/types";
 import initialseo from "constants/seo";
+import { motion } from "framer-motion";
 
 export interface ILayout {
   seo?: ISeoMeta;
@@ -20,9 +21,13 @@ const Layout: React.FC<ILayout> = (props) => {
     <div className="flex flex-col min-h-screen">
       <Seo {...initialseo} {...seo} />
       <Header />
-      <main className={classNames("dark:bg-black h-full mb-20", className)}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className={classNames("dark:bg-black h-full mb-20", className)}
+      >
         {children}
-      </main>
+      </motion.div>
       <Footer />
     </div>
   );

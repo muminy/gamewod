@@ -7,7 +7,6 @@ import STYLE from "constants/style";
 // ** packages
 import { NextPageContext } from "next";
 import classNames from "classnames";
-import { motion } from "framer-motion";
 
 import { find_post } from "services/article/config";
 import { ApiInstance } from "services/apis";
@@ -28,15 +27,9 @@ export default function Article({ article }: Props) {
         title: `${article?.attributes.title} | Gamewod.com`,
         description: article?.attributes.desc,
       }}
-      className="py-10"
+      className={classNames(STYLE.paddingHorizontal, "py-10")}
     >
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className={classNames(STYLE.paddingHorizontal)}
-      >
-        <ArticleContent {...article} />
-      </motion.div>
+      <ArticleContent {...article} />
     </Layout>
   );
 }

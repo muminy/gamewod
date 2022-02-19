@@ -15,21 +15,21 @@ export default function Cover(props: IUser) {
       <div className={style.username}>@{props.username}</div>
       <div>{props.bio || "Henü bio eklemedi"}</div>
 
-      <Flexible alignItem="items-center" className="mt-6 space-x-2">
+      <div className="mt-6 items-center flex xl:flex-nowrap justify-center lg:flex-nowrap flex-wrap space-x-2 space-y-1">
         {Object.keys(props.socials).map((item) => (
           <SocialLinks key={item} value={props.socials[item]} id={item} />
         ))}
 
         <Flexible
           alignItem="items-center"
-          className=" px-5 py-2 dark:text-gray-300 dark:border-dark-border border h-[40px] text-sm rounded-full font-medium leading-[18px]"
+          className="px-5 py-2 justify-center dark:text-gray-300 dark:border-dark-border border h-[40px] text-sm rounded-full font-medium leading-[18px]"
         >
           {userRank(props.level)}
         </Flexible>
 
         <Flexible
           alignItem="items-center"
-          className="space-x-2 border dark:border-dark-border px-5 h-[40px] text-sm rounded-full leading-[18px]"
+          className="space-x-2 border justify-center dark:border-dark-border px-5 h-[40px] text-sm rounded-full leading-[18px]"
         >
           <div className="font-medium mt-0.5 dark:text-gray-300">
             {props.point}
@@ -38,7 +38,7 @@ export default function Cover(props: IUser) {
             <Flaticon paths={HeartFilledIconPath} />
           </div>
         </Flexible>
-      </Flexible>
+      </div>
     </Flexible>
   );
 }

@@ -20,7 +20,7 @@ export default function Hero() {
     <div className={cn(style.section)}>
       <Grid.Col
         className="items-center"
-        gap="xl:gap-1 lg:gap-2 md:gap-1"
+        gap="xl:gap-1 lg:gap-1 gap-0"
         cols="grid-cols-12"
       >
         <ArticleBlogs />
@@ -51,9 +51,7 @@ export const ArticleCard = (props: ArticleProps) => {
         }
         className={style.gridContainer}
       >
-        <div className="relative">
-          <div className={style.title}>{props.attributes.title}</div>
-        </div>
+        <div className={style.title}>{props.attributes.title}</div>
       </motion.a>
     </Link>
   );
