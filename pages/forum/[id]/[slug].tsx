@@ -10,7 +10,7 @@ import ForumComments from "components/ui/Sections/Forums/Content/Comments";
 import STYLE from "constants/style";
 
 // ** packages
-import { GetStaticPropsContext } from "next";
+import { GetStaticPropsContext, NextPageContext } from "next";
 import classNames from "classnames";
 import { motion } from "framer-motion";
 import slugify from "slugify";
@@ -24,21 +24,28 @@ import useSWR from "swr";
 import { fetcherV2 } from "lib/fetcher";
 
 export interface Props {
-  forum: IForum;
   id: number;
 }
 
-export default function Forum({ forum, id }: Props) {
+export default function Forum({ id }: Props) {
   const [deleted, setDeleted] = useState<boolean>(false);
 
-  const { data, error } = useSWR(`/comment/${id}`, fetcherV2);
+  const { data, error } = useSWR(find_forum(id), fetcherV2);
+
+  if (!data) {
+    return <div>loading</div>;
+  }
+
+  if (error) {
+    return <div>error</div>;
+  }
 
   return (
     <Layout
       className="pt-10"
       seo={{
-        description: setDescription(forum.content),
-        title: `${forum.title} | Gamewod.com`,
+        description: setDescription(data.forum.content),
+        title: `${data.forum.title} | Gamewod.com`,
       }}
     >
       <motion.div
@@ -54,24 +61,18 @@ export default function Forum({ forum, id }: Props) {
               span="2xl:col-span-8 xl:col-span-7 col-span-12"
               className="xl:px-10 lg:px-10 px-0"
             >
-              <ForumHead date={forum.createdAt} title={forum.title} />
+              <ForumHead date={data.forum.createdAt} title={data.forum.title} />
 
               <ForumContent
-                username={forum.user.username}
-                id={forum.id}
-                content={forum.content}
+                username={data.forum.user.username}
+                id={data.forum.id}
+                content={data.forum.content}
                 deleted={() => setDeleted(true)}
               />
             </Grid.Span>
 
             <Grid.Span span="xl:col-span-4 lg:col-span-5 col-span-12">
-              {error ? (
-                <div>Yorumlar yüklenirken hata oluştu</div>
-              ) : data ? (
-                <ForumComments id={forum.id} comments={data.comments} />
-              ) : (
-                <div>Yorumlar yükleniyor</div>
-              )}
+              <ForumComments id={id} comments={data.forum.comments} />
             </Grid.Span>
           </Grid.Col>
         )}
@@ -80,33 +81,12 @@ export default function Forum({ forum, id }: Props) {
   );
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
-  const id = context.params?.id as unknown as number;
-  const apipath = find_forum(id);
-  const forum = await ApiV2.get(apipath);
-
-  if (!forum.data.forum) {
-    return {
-      notFound: true,
-    };
-  }
-
-  return {
-    props: { forum: forum.data.forum, id },
+interface InitialProps extends NextPageContext {
+  query: {
+    id: string;
   };
 }
 
-export async function getStaticPaths() {
-  const data = await handleGetForums();
-  const paths = data.forums.map((item: IForum) => {
-    const slug = slugify(item.title, {
-      replacement: "-",
-      lower: true,
-    });
-    return `/forum/${item.id}/${slug}`;
-  });
-  return {
-    paths: paths || [],
-    fallback: "blocking",
-  };
-}
+Forum.getInitialProps = async (ctx: InitialProps) => {
+  return { id: ctx.query.id };
+};
