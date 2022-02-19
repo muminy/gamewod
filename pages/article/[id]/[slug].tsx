@@ -22,6 +22,11 @@ export interface Props {
 
 export default function Article({ article }: Props) {
   const router = useRouter();
+
+  if (router.isFallback) {
+    return <ArticleSkeleton />;
+  }
+
   return (
     <Layout
       seo={{
@@ -35,11 +40,7 @@ export default function Article({ article }: Props) {
         animate={{ opacity: 1 }}
         className={classNames(STYLE.paddingHorizontal)}
       >
-        {router.isFallback ? (
-          <ArticleSkeleton />
-        ) : (
-          <ArticleContent {...article} />
-        )}
+        <ArticleContent {...article} />
       </motion.div>
     </Layout>
   );

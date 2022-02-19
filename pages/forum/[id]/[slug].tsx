@@ -31,6 +31,10 @@ export default function Forum({ forum }: Props) {
   const router = useRouter();
   const [deleted, setDeleted] = useState<boolean>(false);
 
+  if (router.isFallback) {
+    return <ForumSkeleton />;
+  }
+
   return (
     <Layout
       className="pt-10"
@@ -44,9 +48,7 @@ export default function Forum({ forum }: Props) {
         animate={{ opacity: 1 }}
         className={classNames(STYLE.paddingHorizontal, "max-w-7xl mx-auto")}
       >
-        {router.isFallback ? (
-          <ForumSkeleton />
-        ) : deleted ? (
+        {deleted ? (
           <div>Silindi</div>
         ) : (
           <Grid.Col className="xl:gap-10 lg:gap-8 gap-5">
@@ -100,6 +102,6 @@ export async function getStaticPaths() {
   });
   return {
     paths: paths || [],
-    fallback: false,
+    fallback: true,
   };
 }

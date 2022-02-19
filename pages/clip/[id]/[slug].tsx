@@ -13,6 +13,7 @@ import { ApiV2 } from "services/apis";
 import { IClip } from "constants/types";
 import { handleGetClips } from "services/clip";
 import slugify from "slugify";
+import { useRouter } from "next/router";
 
 interface IProps {
   clip: IClip;
@@ -21,6 +22,11 @@ interface IProps {
 
 const Clips = (props: IProps) => {
   const { clip } = props;
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Loading</div>;
+  }
 
   return (
     <Layout
@@ -66,7 +72,7 @@ export async function getStaticPaths() {
   });
   return {
     paths: paths || [],
-    fallback: false,
+    fallback: true,
   };
 }
 
