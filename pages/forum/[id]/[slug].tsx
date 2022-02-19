@@ -16,16 +16,17 @@ import { motion } from "framer-motion";
 import slugify from "slugify";
 
 import { find_forum } from "services/article/config";
-import { IForum } from "constants/types";
+import { IComment, IForum } from "constants/types";
 import { setDescription } from "helpers/utils";
 import { ApiV2 } from "services/apis";
 import { handleGetForums } from "services/forum";
 
 export interface Props {
   forum: IForum;
+  comments: IComment[];
 }
 
-export default function Forum({ forum }: Props) {
+export default function Forum({ forum, comments }: Props) {
   const [deleted, setDeleted] = useState<boolean>(false);
 
   return (
@@ -60,7 +61,7 @@ export default function Forum({ forum }: Props) {
             </Grid.Span>
 
             <Grid.Span span="xl:col-span-4 lg:col-span-5 col-span-12">
-              <ForumComments id={forum.id} comments={forum.comments} />
+              <ForumComments id={forum.id} comments={comments} />
             </Grid.Span>
           </Grid.Col>
         )}
@@ -72,7 +73,8 @@ export default function Forum({ forum }: Props) {
 export async function getStaticProps(context: GetStaticPropsContext) {
   const apipath = find_forum(context.params?.id as unknown as number);
   const forum = await ApiV2.get(apipath);
-
+  const comments = await ApiV2.get(`/comment/${context.params?.id}`);
+  console.log(comments);
   if (!forum.data.forum) {
     return {
       notFound: true,
@@ -80,7 +82,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   }
 
   return {
-    props: { forum: forum.data.forum },
+    props: { forum: forum.data.forum, comments: comments.data.comments },
   };
 }
 
