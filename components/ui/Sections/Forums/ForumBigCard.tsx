@@ -29,7 +29,7 @@ export default function ForumBigCard(props: IForum) {
           <div className="font-semibold text-lg">{props.title}</div>
           <Flexible className="text-sm font-semibold space-x-3 whitespace-nowrap">
             <div className="text-gray-900 dark:text-white dark:text-opacity-80 font-semibold">
-              {props.user.name}
+              {props.user.username}
             </div>
             <div className={style.fbclighttext}>
               {moment(props.createdAt).local().format("DD MMMM, yy")}
