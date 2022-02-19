@@ -1,10 +1,12 @@
 // components
 import Layout from "components/core/Layout";
 import ArticleContent from "components/ui/Article/Content";
+import { ArticleSkeleton } from "components/Skeleton/Article";
 import STYLE from "constants/style";
 
 // ** packages
 import { GetStaticPropsContext } from "next";
+import { useRouter } from "next/router";
 import classNames from "classnames";
 import { motion } from "framer-motion";
 import slugify from "slugify";
@@ -19,6 +21,12 @@ export interface Props {
 }
 
 export default function Article({ article }: Props) {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <ArticleSkeleton />;
+  }
+
   return (
     <Layout
       seo={{
@@ -44,7 +52,6 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     const article = await ApiInstance.get(apipath);
     return {
       props: { article: article.data.data },
-      revalidate: 3,
     };
   } catch (e) {
     return {
@@ -64,6 +71,6 @@ export async function getStaticPaths() {
   });
   return {
     paths: paths || [],
-    fallback: false,
+    fallback: true,
   };
 }
