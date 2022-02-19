@@ -20,20 +20,13 @@ import { IForum } from "constants/types";
 import { setDescription } from "helpers/utils";
 import { ApiV2 } from "services/apis";
 import { handleGetForums } from "services/forum";
-import { useRouter } from "next/router";
-import { ForumSkeleton } from "components/Skeleton/Forum";
 
 export interface Props {
   forum: IForum;
 }
 
 export default function Forum({ forum }: Props) {
-  const router = useRouter();
   const [deleted, setDeleted] = useState<boolean>(false);
-
-  if (router.isFallback) {
-    return <ForumSkeleton />;
-  }
 
   return (
     <Layout
@@ -102,6 +95,6 @@ export async function getStaticPaths() {
   });
   return {
     paths: paths || [],
-    fallback: true,
+    fallback: "blocking",
   };
 }
