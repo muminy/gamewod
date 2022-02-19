@@ -1,4 +1,4 @@
-import type { GetStaticPropsContext } from "next";
+import type { GetServerSidePropsContext } from "next";
 import { motion } from "framer-motion";
 
 // ** components
@@ -8,7 +8,6 @@ import UserProfile from "components/ui/Sections/User";
 import { find_user } from "services/user/config";
 import { ApiV2 } from "services/apis";
 import { IUser } from "constants/types";
-import { handleGetUsers } from "services/user";
 
 interface IProps {
   user: IUser;
@@ -20,8 +19,8 @@ const Profile = (props: IProps) => {
   return (
     <Layout
       seo={{
-        description: `${user.username} Gamewod Profili`,
-        title: `${user.name} | Gamewod.com`,
+        description: `${user?.username} Gamewod Profili`,
+        title: `${user?.name || "Bulunamadı"} | Gamewod.com`,
       }}
       className="relative"
     >
@@ -38,8 +37,8 @@ const Profile = (props: IProps) => {
   );
 };
 
-export async function getStaticProps(context: GetStaticPropsContext) {
-  const apipath = find_user(context.params?.username as string);
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const apipath = find_user(context.query.username as string);
   const user = await ApiV2.get(apipath);
 
   if (user.data.user) {
@@ -48,15 +47,6 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
   return {
     notFound: true,
-  };
-}
-
-export async function getStaticPaths() {
-  const data = await handleGetUsers();
-  const paths = data.users.map((item: IUser) => `/user/${item.username}`);
-  return {
-    paths: paths || [],
-    fallback: "blocking",
   };
 }
 

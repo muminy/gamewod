@@ -10,21 +10,16 @@ import ForumComments from "components/ui/Sections/Forums/Content/Comments";
 import STYLE from "constants/style";
 
 // ** packages
-import { GetStaticPropsContext, NextPageContext } from "next";
+import { GetServerSidePropsContext } from "next";
 import classNames from "classnames";
 import { motion } from "framer-motion";
-import slugify from "slugify";
 
 import { find_forum } from "services/article/config";
-import { IComment, IForum } from "constants/types";
+import { IForum } from "constants/types";
 import { setDescription } from "helpers/utils";
 import { ApiV2 } from "services/apis";
-import { handleGetForums } from "services/forum";
-import useSWR from "swr";
-import { fetcherV2 } from "lib/fetcher";
 
 export interface Props {
-  id: number;
   forum: IForum;
 }
 
@@ -72,13 +67,15 @@ export default function Forum({ forum }: Props) {
   );
 }
 
-interface InitialProps extends NextPageContext {
-  query: {
-    id: string;
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const apipath = find_forum(context.query.id as unknown as number);
+  const result = await ApiV2.get(apipath);
+
+  if (result.data.forum) {
+    return { props: { user: result.data.forum } };
+  }
+
+  return {
+    notFound: true,
   };
 }
-
-Forum.getInitialProps = async (ctx: InitialProps) => {
-  const result = await ApiV2.get(find_forum(ctx.query.id as unknown as number));
-  return { id: ctx.query.id, forum: result.data.forum };
-};

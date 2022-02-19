@@ -101,8 +101,8 @@ export default function Profile() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Flexible className="space-x-5 mb-10">
-        <div className="w-2/4">
+      <Flexible className="grid grid-cols-12 gap-5 mb-10">
+        <div className="xl:col-span-6 lg:col-span-6 col-span-12">
           <Title>Profil Fotoğrafı</Title>
           <label htmlFor="pphoto" className={style.uplaodlabel}>
             Profil Fotoğrafı Değiştir
@@ -122,7 +122,7 @@ export default function Profile() {
             />
           )}
         </div>
-        <div className="w-2/4">
+        <div className="xl:col-span-6 lg:col-span-6 col-span-12">
           <Title>Kapak Fotoğrafı</Title>
           <label htmlFor="headerphoto" className={style.uplaodlabel}>
             Kapak Fotoğrafı Değiştir

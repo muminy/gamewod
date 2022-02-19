@@ -66,7 +66,7 @@ export default function General() {
 
       <div className="mb-10">
         <Title>Sosyal Medya Hesaplarınız</Title>
-        <div className="flex items-center space-x-2">
+        <div className="grid grid-cols-12 items-center gap-5">
           <label className={style.sociallabel}>
             <div className="px-4 py-3 dark:text-darktext-color font-semibold text-sm dark:bg-dark-border bg-gray-50">
               twitter.com

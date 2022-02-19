@@ -44,6 +44,7 @@
 
 .sociallabel {
   @apply border mb-2 overflow-hidden focus-within:border-gray-700 flex items-center w-full rounded-md;
+  @apply xl:col-span-4 lg:col-span-4 col-span-12;
 }
 :global(.dark) .sociallabel {
   @apply border-dark-border;
