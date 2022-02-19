@@ -25,27 +25,18 @@ import { fetcherV2 } from "lib/fetcher";
 
 export interface Props {
   id: number;
+  forum: IForum;
 }
 
-export default function Forum({ id }: Props) {
+export default function Forum({ forum }: Props) {
   const [deleted, setDeleted] = useState<boolean>(false);
-
-  const { data, error } = useSWR(find_forum(id), fetcherV2);
-
-  if (!data) {
-    return <div>loading</div>;
-  }
-
-  if (error) {
-    return <div>error</div>;
-  }
 
   return (
     <Layout
       className="pt-10"
       seo={{
-        description: setDescription(data.forum.content),
-        title: `${data.forum.title} | Gamewod.com`,
+        description: setDescription(forum.content),
+        title: `${forum.title} | Gamewod.com`,
       }}
     >
       <motion.div
@@ -61,18 +52,18 @@ export default function Forum({ id }: Props) {
               span="2xl:col-span-8 xl:col-span-7 col-span-12"
               className="xl:px-10 lg:px-10 px-0"
             >
-              <ForumHead date={data.forum.createdAt} title={data.forum.title} />
+              <ForumHead date={forum.createdAt} title={forum.title} />
 
               <ForumContent
-                username={data.forum.user.username}
-                id={data.forum.id}
-                content={data.forum.content}
+                username={forum.user.username}
+                id={forum.id}
+                content={forum.content}
                 deleted={() => setDeleted(true)}
               />
             </Grid.Span>
 
             <Grid.Span span="xl:col-span-4 lg:col-span-5 col-span-12">
-              <ForumComments id={id} comments={data.forum.comments} />
+              <ForumComments id={forum.id} comments={forum.comments} />
             </Grid.Span>
           </Grid.Col>
         )}
@@ -88,5 +79,6 @@ interface InitialProps extends NextPageContext {
 }
 
 Forum.getInitialProps = async (ctx: InitialProps) => {
-  return { id: ctx.query.id };
+  const result = await ApiV2.get(find_forum(ctx.query.id as unknown as number));
+  return { id: ctx.query.id, forum: result.data.forum };
 };
