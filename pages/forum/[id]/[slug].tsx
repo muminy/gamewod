@@ -88,6 +88,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
   return {
     props: { forum: forum.data.forum },
+    revalidate: 1,
   };
 }
 

@@ -77,6 +77,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
     return {
       props: { posts: posts.data.data, category },
+      revalidate: 1,
     };
   } catch (e) {
     return {

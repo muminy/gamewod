@@ -51,7 +51,10 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   const user = await ApiV2.get(apipath);
 
   if (user.data.user) {
-    return { props: { user: user.data.user } };
+    return {
+      props: { user: user.data.user },
+      revalidate: 1,
+    };
   }
 
   return {
