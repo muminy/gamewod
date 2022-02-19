@@ -80,6 +80,6 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 export async function getStaticPaths() {
   return {
     paths: menus.map((item) => `/category/${item.id}`),
-    fallback: false,
+    fallback: "blocking",
   };
 }
