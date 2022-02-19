@@ -101,6 +101,6 @@ export async function getStaticPaths() {
   });
   return {
     paths: paths || [],
-    fallback: "blocking",
+    fallback: true,
   };
 }

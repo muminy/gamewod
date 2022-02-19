@@ -56,7 +56,7 @@ export async function getStaticPaths() {
   const paths = data.users.map((item: IUser) => `/user/${item.username}`);
   return {
     paths: paths || [],
-    fallback: "blocking",
+    fallback: true,
   };
 }
 
