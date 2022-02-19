@@ -72,7 +72,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const result = await ApiV2.get(apipath);
 
   if (result.data.forum) {
-    return { props: { user: result.data.forum } };
+    return { props: { forum: result.data.forum } };
   }
 
   return {
