@@ -3,6 +3,7 @@ import { useState } from "react";
 // components
 import Grid from "components/ui/Grid";
 import Layout from "components/core/Layout";
+import NotFound from "components/ui/NotFound";
 import ForumHead from "components/ui/Sections/Forums/Content/ForumHead";
 import ForumContent from "components/ui/Sections/Forums/Content/ForumContent";
 import ForumComments from "components/ui/Sections/Forums/Content/Comments";
@@ -10,7 +11,7 @@ import ForumComments from "components/ui/Sections/Forums/Content/Comments";
 import STYLE from "constants/style";
 
 // ** packages
-import { GetServerSidePropsContext } from "next";
+import { NextPageContext } from "next";
 import classNames from "classnames";
 import { motion } from "framer-motion";
 
@@ -25,6 +26,10 @@ export interface Props {
 
 export default function Forum({ forum }: Props) {
   const [deleted, setDeleted] = useState<boolean>(false);
+
+  // forum not created or deleted
+  // and render not found data
+  if (!forum) return <NotFound />;
 
   return (
     <Layout
@@ -67,15 +72,13 @@ export default function Forum({ forum }: Props) {
   );
 }
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const apipath = find_forum(context.query.id as unknown as number);
-  const result = await ApiV2.get(apipath);
-
-  if (result.data.forum) {
-    return { props: { forum: result.data.forum } };
-  }
-
-  return {
-    notFound: true,
+interface InitialProps extends NextPageContext {
+  query: {
+    id: string;
   };
 }
+
+Forum.getInitialProps = async (ctx: InitialProps) => {
+  const result = await ApiV2.get(find_forum(ctx.query.id as unknown as number));
+  return { forum: result.data.forum };
+};

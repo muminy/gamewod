@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { GetStaticPropsContext } from "next";
+import { NextPageContext } from "next";
 
 // ** components
 import Layout from "components/core/Layout";
@@ -7,6 +7,7 @@ import Grid from "components/ui/Grid";
 import STYLE from "constants/style";
 import CategoryHeader from "components/ui/Category/Header";
 import NoData from "components/ui/NoData";
+import NotFound from "components/ui/NotFound";
 import { BlogCard } from "components/ui/Sections/Blogs/Blogs";
 
 import { menus } from "constants/datas";
@@ -19,8 +20,10 @@ interface IProps {
   posts: ICategory[];
 }
 
-export default function Category(props: IProps) {
-  const { category, posts } = props;
+export default function Category({ category, posts }: IProps) {
+  // ** if not founded category or posts
+  // ** return not found component
+  if (!category || !posts) return <NotFound />;
 
   return (
     <Layout
@@ -62,26 +65,26 @@ export default function Category(props: IProps) {
   );
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+interface InitialProps extends NextPageContext {
+  query: {
+    slug: string;
+  };
+}
+
+Category.getInitialProps = async (context: InitialProps) => {
   try {
-    const category = menus.find((item) => item.id === context.params?.slug);
+    const category = menus.find((item) => item.id === context.query?.slug);
     const apipath = category_posts(category?.title);
     const posts = await ApiInstance.get(apipath);
 
     return {
-      props: { posts: posts.data.data, category },
-      revalidate: 1,
+      posts: posts.data.data,
+      category,
     };
   } catch (e) {
     return {
-      notFound: true,
+      posts: null,
+      category: null,
     };
   }
-}
-
-export async function getStaticPaths() {
-  return {
-    paths: menus.map((item) => `/category/${item.id}`),
-    fallback: "blocking",
-  };
-}
+};

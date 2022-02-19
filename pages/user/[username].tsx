@@ -1,20 +1,22 @@
-import type { GetServerSidePropsContext } from "next";
+import type { NextPageContext } from "next";
 import { motion } from "framer-motion";
 
 // ** components
 import Layout from "components/core/Layout";
 import UserProfile from "components/ui/Sections/User";
+import NotFound from "components/ui/NotFound";
 
 import { find_user } from "services/user/config";
 import { ApiV2 } from "services/apis";
 import { IUser } from "constants/types";
 
 interface IProps {
-  user: IUser;
+  user?: IUser;
 }
 
-const Profile = (props: IProps) => {
-  const { user } = props;
+const Profile = ({ user }: IProps) => {
+  // if not found user data then return not found data
+  if (!user) return <NotFound />;
 
   return (
     <Layout
@@ -37,17 +39,15 @@ const Profile = (props: IProps) => {
   );
 };
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const apipath = find_user(context.query.username as string);
-  const user = await ApiV2.get(apipath);
-
-  if (user.data.user) {
-    return { props: { user: user.data.user } };
-  }
-
-  return {
-    notFound: true,
+interface InitialProps extends NextPageContext {
+  query: {
+    username: string;
   };
 }
+
+Profile.getInitialProps = async (ctx: InitialProps) => {
+  const result = await ApiV2.get(find_user(ctx.query?.username));
+  return { user: result.data.user };
+};
 
 export default Profile;
