@@ -24,22 +24,19 @@ export default function Toolbar(props: Props) {
   const toggleImageLink = () => setOpenImageModal(!openImageModal);
 
   return (
-    <Flexible
-      justifyContent="justify-between"
-      className="border-b p-1 dark:border-dark-border"
-    >
-      <Flexible>
+    <Flexible className="mb-3 dark:border-dark-border space-x-2">
+      <Flexible className="editor-toolbar">
         <button
           onClick={toggleImageLink}
           disabled={props.preview}
-          className="h-[34px] w-[30px] flex justify-center dark:hover:bg-dark-border dark:hover:text-gray-300 items-center duration-200 rounded-md hover:bg-gray-100 text-gray-600"
+          className="editor-icon-btn"
         >
           <ImageFilledIcon size={14} />
         </button>
         <button
           disabled={props.preview}
           onClick={toggleMLink}
-          className="h-[34px] w-[30px] flex justify-center dark:hover:bg-dark-border dark:hover:text-gray-300 items-center duration-200 rounded-md hover:bg-gray-100 text-gray-600"
+          className="editor-icon-btn"
         >
           <Flaticon
             paths={LinkFilledIconPath}
@@ -49,26 +46,20 @@ export default function Toolbar(props: Props) {
         </button>
       </Flexible>
 
-      <Flexible className="space-x-2">
+      <Flexible className="editor-toolbar">
         <button
           onClick={toggle}
-          className={classNames(
-            "h-[34px] font-medium text-sm px-4 duration-200 dark:hover:bg-dark-border hover:bg-gray-100 rounded-md text-gray-400",
-            {
-              "bg-gray-100 text-gray-900 dark:bg-dark-border": !props.preview,
-            }
-          )}
+          className={classNames("editor-button", {
+            "active-editor-btn": !props.preview,
+          })}
         >
           Editor
         </button>
         <button
           onClick={toggle}
-          className={classNames(
-            "h-[34px] font-medium text-sm px-4 duration-200 hover:bg-gray-100 dark:hover:bg-dark-border rounded-md text-gray-400",
-            {
-              "bg-gray-100 text-gray-900 dark:bg-dark-border": props.preview,
-            }
-          )}
+          className={classNames("editor-button", {
+            "active-editor-btn": props.preview,
+          })}
         >
           Ön İzleme
         </button>

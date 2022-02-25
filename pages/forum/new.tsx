@@ -75,23 +75,23 @@ export default function Article() {
           </div>
         )}
         <div className="mb-10">
-          <Inputv2
+          <label className="font-semibold text-lg">Başlık</label>
+          <p className="shadow-text">
+            Lütfen argo ve hakaret içeren kelimeler kullanmayınız
+          </p>
+          <input
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               setTitle(event.target.value)
             }
-            label="Konu Başlığı"
-            isRequired
+            value={title}
+            className="border-b-2 placeholder-inputs outline-none focus:border-gray-300 border-gray-200 w-full py-2"
             placeholder="Sorum size..."
           />
-
-          <p className="text-sm text-gray-500">
-            Lütfen argo ve hakaret içeren kelimeler kullanmayınız
-          </p>
         </div>
 
         <div className="mb-10">
-          <div className="font-semibold">Konu İçeriği*</div>
-          <div className="text-sm mb-2 text-gray-500">
+          <div className="font-semibold text-lg">Konu İçeriği</div>
+          <div className="shadow-text">
             Konu içeriği{" "}
             <a
               className="text-blue-600 font-medium"
@@ -108,11 +108,11 @@ export default function Article() {
           />
         </div>
 
-        {/* <div className="mb-10">
-          <div className="font-semibold mb-2">Konu Kategorisi</div>
+        <div className="mb-10">
+          <div className="font-semibold mb-2 text-lg">Konu Kategorisi</div>
 
-          <Select
-            className="py-3 px-6 mb-4"
+          <select
+            className="py-3 mb-4 border-b-2 placeholder-inputs w-full"
             onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
               setCategory(category.concat(e.target.value))
             }
@@ -130,44 +130,26 @@ export default function Article() {
                   {item}
                 </option>
               ))}
-          </Select>
+          </select>
 
-          <Flexible className="space-x-2">
+          <div className="flex items-center">
             {category.map((item) => (
               <button
                 onClick={() =>
                   setCategory(category.filter((cate) => cate !== item))
                 }
-                className="px-3 py-1 text-sm dark:bg-dark-border hover:bg-gray-200 duration-200 bg-gray-100 flex items-center space-x-2 rounded-full"
+                className="forum-category-selected-items"
                 key={item}
               >
                 <span>{item}</span>
                 <Flaticon paths={CancelFilledIconPath} size={14} />
               </button>
             ))}
-          </Flexible>
-        </div> */}
+          </div>
+        </div>
 
-        <button
-          disabled={creating || success}
-          onClick={handleCreate}
-          className={classNames(
-            "bg-gray-900 focus:ring-2 ring-gray-900 ring-offset-2 text-white py-3 px-10 rounded-full",
-            {
-              "bg-green-400 font-semibold mb-10 !text-gray-900": success,
-              "disabled:opacity-40": !success,
-            }
-          )}
-        >
-          {success
-            ? "Konu Açıldı"
-            : creating
-            ? "Konuyu Paylaşılıyor.."
-            : "Konuyu Paylaş"}
-        </button>
-
-        {forum && (
-          <div className="text-gray-500 dark:text-gray-300">
+        {success && forum ? (
+          <div className="text-gray-900 font-medium dark:text-gray-300">
             Konunuz Açıldı, konunuza gitmek için{" "}
             <Link
               href={`/forum/${forum.id}/${slugify(forum.title, {
@@ -179,6 +161,14 @@ export default function Article() {
             </Link>{" "}
             tıklayın.
           </div>
+        ) : (
+          <button
+            disabled={creating}
+            onClick={handleCreate}
+            className={"btn-dark"}
+          >
+            {creating ? "Konuyu Paylaşılıyor.." : "Konuyu Paylaş"}
+          </button>
         )}
       </div>
     </Layout>

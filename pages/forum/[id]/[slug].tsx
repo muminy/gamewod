@@ -44,7 +44,10 @@ export default function Forum({ forum }: Props) {
       {deleted ? (
         <div>Silindi</div>
       ) : (
-        <Grid.Col className="xl:gap-10 lg:gap-8 gap-5">
+        <div className="content-wrapper">
+          <Grid.Span span="xl:col-span-4 lg:col-span-5 lg:col-span-5 col-span-12">
+            <ForumComments id={forum.id} comments={forum.comments} />
+          </Grid.Span>
           <Grid.Span
             span="2xl:col-span-8 xl:col-span-7 lg:col-span-7 col-span-12"
             className="xl:px-10 lg:px-10 px-0"
@@ -58,11 +61,7 @@ export default function Forum({ forum }: Props) {
               deleted={() => setDeleted(true)}
             />
           </Grid.Span>
-
-          <Grid.Span span="xl:col-span-4 lg:col-span-5 lg:col-span-5 col-span-12">
-            <ForumComments id={forum.id} comments={forum.comments} />
-          </Grid.Span>
-        </Grid.Col>
+        </div>
       )}
     </Layout>
   );

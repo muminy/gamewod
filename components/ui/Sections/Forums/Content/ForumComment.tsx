@@ -1,20 +1,25 @@
+import { useState } from "react";
+
 import classNames from "classnames";
+import Link from "next/link";
+
 import Flexible from "components/ui/Flexible";
 import Notify from "components/ui/Notify";
-import { IComment, IVoteComment } from "constants/types";
-import { makeProfileImageURL } from "helpers/utils";
+
+import style from "../forum.module.css";
+import "moment/locale/tr";
+
+// ** hooks
 import useCurrentUser from "hooks/useCurrentUser";
 import useToggle from "hooks/useToggle";
-import moment from "moment";
-import "moment/locale/tr";
-import Link from "next/link";
-import { useState } from "react";
+import { useAppSelector } from "store/hooks";
+
 import {
   handleUnvoteForumComment,
   handleUpvoteForumComment,
 } from "services/comment/vote";
-import { useAppSelector } from "store/hooks";
-import style from "../forum.module.css";
+import { IComment, IVoteComment } from "constants/types";
+import { makeProfileImageURL } from "helpers/utils";
 
 export default function ForumComment(props: IComment) {
   const [votes, setVotes] = useState<IVoteComment[]>(props.votes);
@@ -26,9 +31,6 @@ export default function ForumComment(props: IComment) {
   const { value, toggle } = useToggle();
 
   const userLink = `/user/${props.user?.username}`;
-  const rtf = new Intl.RelativeTimeFormat("TR", {
-    style: "long",
-  });
 
   const alreadyVote = user.user
     ? votes.find((item: IVoteComment) => item.userID === user.user?.id)
@@ -47,7 +49,7 @@ export default function ForumComment(props: IComment) {
       if (response.status === 200) {
         setVotes(votes.concat(response.vote));
       } else {
-        toggleError(response.error);
+        toggleError("Buna yetkiniz yok");
       }
     });
   };
@@ -59,7 +61,7 @@ export default function ForumComment(props: IComment) {
       if (response.status === 200) {
         setVotes(votes.filter((item) => item.userID !== user.user?.id));
       } else {
-        toggleError(response.error);
+        toggleError("Buna yetkiniz yok");
       }
     });
   };
@@ -78,7 +80,9 @@ export default function ForumComment(props: IComment) {
       <div>
         <div className="flex items-center space-x-2 mb-0.5 font-medium text-sm">
           <Link href={userLink}>
-            <a>{props.user.username}</a>
+            <a className={classNames({ "text-blue-600": isCurrentUser })}>
+              {props.user.username}
+            </a>
           </Link>
 
           {/* <span>{moment(props.createdAt).local().format("DD MMMM yyyy")}</span> */}

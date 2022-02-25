@@ -2,3 +2,51 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .content-wrapper {
+    @apply xl:grid lg:grid flex flex-col-reverse grid-cols-12 xl:gap-10 lg:gap-8 gap-5
+      /* ... */;
+  }
+
+  .editor-button {
+    @apply h-[34px] font-medium text-sm px-4 duration-200 first:border-r hover:bg-gray-50 hover:text-gray-900 text-gray-400;
+    @apply dark:hover:bg-dark-border dark:text-white dark:text-opacity-50 dark:hover:text-white dark:border-dark-border;
+  }
+
+  .editor-icon-btn {
+    @apply h-[34px] w-[34px] dark:text-white dark:text-opacity-50 border-r dark:border-dark-border flex justify-center dark:hover:bg-dark-border dark:hover:text-gray-300 items-center duration-200 hover:bg-gray-50 text-gray-600;
+  }
+
+  .btn-dark {
+    @apply px-6 py-3 rounded-2xl dark:bg-dark-border bg-black text-white text-sm font-medium;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 rounded-2xl bg-primary text-white text-sm font-medium;
+  }
+
+  .btn-success {
+    @apply px-6 py-3 rounded-2xl bg-green-400 text-gray-900 !font-semibold;
+  }
+
+  .forum-category-selected-items {
+    @apply px-3 py-1 dark:border-dark-border dark:text-white dark:text-opacity-50 text-sm space-x-2 flex items-center border border-r-0 last:border-r;
+  }
+
+  .shadow-text {
+    @apply text-sm mb-5 text-gray-900 text-opacity-40 dark:text-white dark:text-opacity-50 font-medium;
+  }
+
+  .placeholder-inputs {
+    @apply bg-transparent dark:border-dark-border dark:placeholder-white dark:placeholder-opacity-50;
+  }
+
+  .editor-toolbar {
+    @apply border dark:border-dark-border;
+  }
+
+  .active-editor-btn {
+    @apply bg-gray-50 dark:!text-white !text-gray-900 dark:bg-dark-border;
+  }
+}

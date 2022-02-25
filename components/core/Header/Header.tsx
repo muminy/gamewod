@@ -57,11 +57,11 @@ const Header: React.FC = (props) => {
           </Link>
 
           <input
-            className="bg-gray-100 dark:bg-dark-border outline-none focus:ring-2 ring-offset-2 ring-gray-200 xl:block lg:block hidden py-2 rounded-md px-4"
+            className="bg-gray-100 mr-10 dark:bg-dark-border outline-none focus:ring-2 ring-offset-2 ring-gray-200 xl:block lg:block hidden py-2 rounded-md px-4"
             placeholder="Araa"
           />
+          <MenuList />
         </Flexible>
-        <MenuList />
 
         {user.loading ? (
           <HeaderSkeleton />
@@ -107,23 +107,10 @@ const Header: React.FC = (props) => {
               />
               <Dropdown />
             </button>
-
-            <button
-              className={
-                "dark:text-white flex dark:bg-dark-border h-[38px] rounded-full w-[38px] items-center justify-center bg-gray-100 text-gray-600"
-              }
-              onClick={toggleTheme}
-            >
-              <Flaticon
-                viewBox="0 0 32 32"
-                size={24}
-                paths={theme === "dark" ? MoonIconPath : Sun}
-              />
-            </button>
           </Flexible>
         ) : (
           <Flexible
-            className="xl:flex border-l pl-4 lg:flex hidden space-x-4 col-span-3 justify-end"
+            className="xl:flex pl-4 lg:flex hidden space-x-4 col-span-3 justify-end"
             alignItem="items-center"
           >
             <Link href="/login">
@@ -136,6 +123,19 @@ const Header: React.FC = (props) => {
             </Link>
           </Flexible>
         )}
+
+        <button
+          className={
+            "dark:text-white flex dark:bg-dark-border h-[38px] rounded-full min-w-[38px] items-center justify-center bg-gray-100 text-gray-600"
+          }
+          onClick={toggleTheme}
+        >
+          <Flaticon
+            viewBox="0 0 32 32"
+            size={24}
+            paths={theme === "dark" ? MoonIconPath : Sun}
+          />
+        </button>
 
         <ResponsiveMenu open={open} toggle={toggle} />
       </div>

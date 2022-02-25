@@ -6,8 +6,9 @@ import db from "./db.json";
 
 // ** components
 import ErrorFound from "components/ui/Error/ErrorFound";
-import { ForumCardSkeleton } from "components/Skeleton/Forum";
 import NoData from "components/ui/NoData";
+import ForumBigCard from "./ForumBigCard";
+import { ForumCardSkeleton } from "components/Skeleton/Forum";
 
 // ** cn opt
 import useSWR from "swr";
@@ -17,10 +18,11 @@ import { makeProfileImageURL } from "helpers/utils";
 import { forum } from "services/forum/config";
 import { fetcherV2 } from "lib/fetcher";
 import { IForum } from "constants/types";
-import ForumBigCard from "./ForumBigCard";
 
 export default function Forums() {
   const { data, error } = useSWR(forum, fetcherV2);
+
+  const forumlimits = 10;
 
   if (error) return <ErrorFound />;
   if (!data) return <ForumCardSkeleton />;
@@ -35,6 +37,14 @@ export default function Forums() {
           <ForumBigCard key={item.id} {...item} />
         ))}
       </div>
+
+      {data.forums.length > forumlimits && (
+        <Link href={"/forum"}>
+          <a className="bg-primary text-white text-center py-3 rounded-xl text-sm font-medium block mt-4">
+            Tümünü Gör
+          </a>
+        </Link>
+      )}
     </section>
   );
 }

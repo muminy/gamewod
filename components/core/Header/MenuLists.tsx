@@ -10,7 +10,7 @@ const MenuList: React.FC = () => {
   return (
     <Flexible
       alignItem="items-center"
-      className="hidden space-x-1 xl:flex ml-10 justify-center"
+      className="hidden space-x-1 xl:flex justify-center"
     >
       {menus.map((item) => (
         <LinkCard key={item.title} {...item} />
