@@ -18,7 +18,7 @@ export default function Seo(props: ISeoMeta) {
       <meta content={meta.description} name="description" />
       <meta property="og:url" content={`https://gamewod.com${router.asPath}`} />
       <link rel="canonical" href={`https://gamewod.com${router.asPath}`} />
-      <meta property="og:type" content={meta.openGraph?.type} />
+      <meta property="og:type" content="website" />
       <meta property="og:site_name" content="Gamewod" />
       <meta property="og:description" content={meta.description} />
       <meta property="og:title" content={meta.title} />

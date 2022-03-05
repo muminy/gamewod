@@ -120,7 +120,7 @@ export default function Security() {
       <div className="mb-10">
         <label>
           <Title className="!mb-1">Email Adresiniz</Title>
-          <div className="text-gray-500 text-sm mb-3">
+          <div className="text-gray-500 shadow-text text-sm mb-3">
             E-mail adresinizi sadece sizin istediğiniz kullanıcılar tarafından
             görülecektir.
           </div>

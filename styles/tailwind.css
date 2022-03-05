@@ -15,7 +15,7 @@
   }
 
   .editor-icon-btn {
-    @apply h-[34px] w-[34px] dark:text-white dark:text-opacity-50 border-r dark:border-dark-border flex justify-center dark:hover:bg-dark-border dark:hover:text-gray-300 items-center duration-200 hover:bg-gray-50 text-gray-600;
+    @apply h-[34px] w-[34px] dark:text-white dark:text-opacity-50 border-r last:border-r-0 dark:border-dark-border flex justify-center dark:hover:bg-dark-border dark:hover:text-gray-300 items-center duration-200 hover:bg-gray-50 text-gray-600;
   }
 
   .btn-dark {
@@ -35,7 +35,7 @@
   }
 
   .shadow-text {
-    @apply text-sm mb-5 text-gray-900 text-opacity-40 dark:text-white dark:text-opacity-50 font-medium;
+    @apply text-sm text-gray-900 text-opacity-40 dark:text-white dark:text-opacity-50 font-medium;
   }
 
   .placeholder-inputs {

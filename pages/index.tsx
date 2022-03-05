@@ -8,10 +8,10 @@ import Layout from "components/core/Layout";
 
 const Home: NextPage = () => {
   return (
-    <Layout className="relative lx:pt-10 lg:pt-10 xl:px-10 lg:px-8 md:px-6 px-0">
+    <Layout className="relative lx:pt-10 lg:pt-10 md:pt-6 xl:px-10 lg:px-8 md:px-6 px-0">
       {/* <TeamSection /> */}
 
-      <Grid.Col gap="gap-y-10 xl:gap-x-10 lg:gap-x-6 gap-y-0 gap-x-4">
+      <div className="content-wrapper xl:gap-x-10 lg:gap-x-6 gap-y-0 gap-x-4">
         <Grid.Span span="2xl:col-span-4 xl:col-span-4 col-span-12">
           <Forums />
         </Grid.Span>
@@ -22,7 +22,7 @@ const Home: NextPage = () => {
           <Hero />
           <BlogSection />
         </Grid.Span>
-      </Grid.Col>
+      </div>
     </Layout>
   );
 };

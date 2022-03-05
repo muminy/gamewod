@@ -50,12 +50,9 @@ export default function MakeComment(props: IProps) {
   } else if (user.user) {
     return (
       <div
-        className={classNames(
-          "bg-gray-100 dark:bg-dark-border p-3 rounded-xl mb-6",
-          {
-            "bg-transparent dark:bg-transparent": openComment,
-          }
-        )}
+        className={classNames("dark:bg-dark-border rounded-xl mb-6", {
+          "bg-transparent dark:bg-transparent": openComment,
+        })}
       >
         <div className="text-gray-600 text-opacity-70 dark:text-gray-300 text-sm font-medium mb-3">
           Yorum yaparak görüşlerinizi bildirebilirsiniz.
@@ -97,7 +94,7 @@ export default function MakeComment(props: IProps) {
   } else {
     return (
       <div className="mb-10">
-        <div className={style.title}>
+        <div className={classNames(style.title, "shadow-text")}>
           Yorum yapabilmek için ilk önce giriş yapmalısınız
         </div>
 

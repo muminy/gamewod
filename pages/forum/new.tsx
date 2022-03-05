@@ -76,7 +76,7 @@ export default function Article() {
         )}
         <div className="mb-10">
           <label className="font-semibold text-lg">Başlık</label>
-          <p className="shadow-text">
+          <p className="shadow-text mb-5">
             Lütfen argo ve hakaret içeren kelimeler kullanmayınız
           </p>
           <input
@@ -91,7 +91,7 @@ export default function Article() {
 
         <div className="mb-10">
           <div className="font-semibold text-lg">Konu İçeriği</div>
-          <div className="shadow-text">
+          <div className="shadow-text mb-5">
             Konu içeriği{" "}
             <a
               className="text-blue-600 font-medium"

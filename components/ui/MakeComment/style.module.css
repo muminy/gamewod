@@ -3,9 +3,9 @@
 }
 
 :global(.dark) .button {
-  @apply bg-black;
+  @apply bg-dark-border;
 }
 
 .title {
-  @apply text-gray-600 text-opacity-70 dark:text-gray-500 text-sm font-medium mb-3;
+  @apply text-gray-600 text-opacity-70 text-sm font-medium mb-3;
 }

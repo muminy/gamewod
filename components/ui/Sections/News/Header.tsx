@@ -13,7 +13,7 @@ export default function Header(props: Props) {
     <div className={style.header}>
       <div className={style.title}>{props.title}</div>
 
-      <div className="font-medium text-sm text-gray-600">
+      <div className="font-medium text-sm text-gray-600 shadow-text">
         {moment(props.date).format("DD MMMM, y")}
       </div>
     </div>
