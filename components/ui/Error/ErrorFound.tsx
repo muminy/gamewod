@@ -6,7 +6,7 @@ export default function ErrorFound() {
     <Flexible
       alignItem="items-center"
       justifyContent="justify-center"
-      className="flex-col dark:bg-dark-border bg-gray-200 bg-opacity-50 p-5 py-10 rounded-md"
+      className="flex-col dark:bg-dark-border bg-opacity-50 p-5 py-10 rounded-md"
     >
       <div className="text-lg font-medium">Bir sorunla karşılaştık</div>
       <p className="text-gray-400 mb-4 text-sm">Lütfen bunu bize bildiriniz</p>

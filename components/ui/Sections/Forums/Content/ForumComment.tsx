@@ -84,8 +84,6 @@ export default function ForumComment(props: IComment) {
               {props.user.username}
             </a>
           </Link>
-
-          {/* <span>{moment(props.createdAt).local().format("DD MMMM yyyy")}</span> */}
         </div>
 
         <div className="text-sm mb-3 break-all">{props.comment}</div>

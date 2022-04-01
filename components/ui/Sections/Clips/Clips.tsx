@@ -8,7 +8,6 @@ import { fetcherV2 } from "lib/fetcher";
 import { IClip } from "constants/types";
 
 import ErrorFound from "components/ui/Error/ErrorFound";
-import NotFound from "components/ui/NotFound";
 import ClipSkeletons from "components/Skeleton/Clips";
 
 export default function Clips() {

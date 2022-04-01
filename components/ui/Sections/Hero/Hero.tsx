@@ -18,13 +18,7 @@ import ArticleBlogs from "./Blogs";
 export default function Hero() {
   return (
     <div className={cn(style.section)}>
-      <Grid.Col
-        className="items-center"
-        gap="xl:gap-1 lg:gap-1 md:gap-1 gap-0"
-        cols="grid-cols-12"
-      >
-        <ArticleBlogs />
-      </Grid.Col>
+      <ArticleBlogs />
     </div>
   );
 }

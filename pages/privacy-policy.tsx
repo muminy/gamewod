@@ -10,10 +10,7 @@ export default function PrivacyPolicy() {
       seo={{
         title: "Gizlilik Politikası",
       }}
-      className={classNames(
-        "bg-yellow-50 dark:bg-opacity-0 py-20",
-        style.staticcontainer
-      )}
+      className={classNames("dark:bg-opacity-0 py-20", style.staticcontainer)}
     >
       <div className="max-w-5xl mx-auto">
         <h3 className="font-bold dark:text-white text-3xl mb-0.5 text-gray-700 text-opacity-90">

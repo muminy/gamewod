@@ -15,7 +15,6 @@ interface IProps {
 }
 
 const Profile = ({ user }: IProps) => {
-  // if not found user data then return not found data
   if (!user) return <NotFound />;
 
   return (
