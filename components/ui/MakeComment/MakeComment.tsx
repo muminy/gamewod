@@ -3,7 +3,6 @@ import { MakeCommentSkeleton } from "components/Skeleton/MakeComment";
 import { ForumTypes } from "constants/enums";
 import { IComment } from "constants/types";
 import { useState } from "react";
-import { rvlApi } from "services/apis";
 import { handleCreateForumComment } from "services/comment";
 import { useAppSelector } from "store/hooks";
 import Flexible from "../Flexible";
